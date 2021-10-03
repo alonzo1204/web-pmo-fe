@@ -7,12 +7,12 @@
 }
 
 .authentication-bg{
-    background-image: url("../../../images/authentication-bg.jpg");
+    background-image: url("../../../images/fondo-upc.jpg");
     height: 100vh;
     background-size: cover;
     background-position: center;
     .bg-overlay{
-        background-color: #292626;
+        background-color: #ffffff00;
     }
 
     @media (max-width: 991px) {
