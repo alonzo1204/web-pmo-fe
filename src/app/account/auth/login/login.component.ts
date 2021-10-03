@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
     document.body.classList.add('auth-body-bg');
 
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesdesign.in', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['u201413960@upc.edu.pe', [Validators.required, Validators.email]],
+      password: ['12345', [Validators.required]],
     });
 
     // reset login status
