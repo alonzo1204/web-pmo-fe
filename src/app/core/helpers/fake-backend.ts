@@ -11,7 +11,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // array in local storage for registered users
         // tslint:disable-next-line: max-line-length
-        const users: any[] = JSON.parse(localStorage.getItem('users')) || [{ username: 'admin', email: 'admin@themesdesign.in', password: '123456' }];
+        const users: any[] = JSON.parse(localStorage.getItem('users')) || [{ username: 'admin', email: 'u201413960@upc.edu.pe', password: '123456' }];
 
         // wrap in delayed observable to simulate server api call
         return of(null).pipe(mergeMap(() => {
@@ -80,7 +80,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 // validation
                 const duplicateUser = users.filter(user => user.username === newUser.username).length;
                 if (duplicateUser) {
-                    return throwError({ error: { message: 'Username "' + newUser.username + '" is already taken' } });
+                    return throwError({ error: { message: 'El usuario "' + newUser.username + '" ya envió solitud de acceso' } });
                 }
 
                 // save new user

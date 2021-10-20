@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     this.loginForm = this.formBuilder.group({
       email: ['u201413960@upc.edu.pe', [Validators.required, Validators.email]],
-      password: ['12345', [Validators.required]],
+      password: ['123456', [Validators.required]],
     });
 
     // reset login status
