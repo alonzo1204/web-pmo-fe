@@ -14,6 +14,6 @@ export class AddProductComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Ecommerce' }, { label: 'Add Product', active: true }];
+    this.breadCrumbItems = [{ label: 'Ecommerce' }, { label: 'Añadir Proyecto', active: true }];
   }
 }
