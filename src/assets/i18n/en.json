@@ -89,6 +89,13 @@
 
       }
     },
+    "POSTULATIONS": {
+      "TEXT": "Postulaciones",
+      "LIST": {
+        "ADDUSER": "Iniciar Postulacion",
+        "USERLIST": "Lista de Postulaciones"
+
+      }
     },
     "DASHBOARDS": {
       "TEXT": "Dashboard",
