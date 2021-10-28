@@ -104,9 +104,9 @@
         "PRODUCTDETAIL": "Detalle del producto",
         "ORDERS": "Pedidos",
         "CUSTOMERS": "Clientes",
-        "CART": "Carro",
-        "CHECKOUT": "Revisa",
-        "SHOPS": "Tiendas",
+        "CART": "Proyectos Pendientes",
+        "CHECKOUT": "Proyectos Rechazados",
+        "SHOPS": "Proyectos Aceptados",
         "ADDPRODUCT": "Añadir Proyecto"
       }
     },

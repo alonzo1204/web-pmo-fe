@@ -98,15 +98,11 @@
       "BADGE": "New"
     },
     "ECOMMERCE": {
-      "TEXT": "Ecommerce",
+      "TEXT": "Proyecto",
       "LIST": {
-        "PRODUCTS": "Products",
-        "PRODUCTDETAIL": "Product Detail",
-        "ORDERS": "Orders",
-        "CUSTOMERS": "Customers",
-        "CART": "Cart",
-        "CHECKOUT": "Checkout",
-        "SHOPS": "Shops",
+        "CART": "Proyectos Pendientes",
+        "CHECKOUT": "Proyectos Rechazados",
+        "SHOPS": "Proyectos Aceptados",
         "ADDPRODUCT": "Añadir Proyecto"
       }
     },

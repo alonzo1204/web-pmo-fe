@@ -9,12 +9,8 @@
             <table class="table table-centered mb-0 table-nowrap">
               <thead class="bg-light">
                 <tr>
-                  <th style="width: 120px">Product</th>
-                  <th>Product Desc</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                  <th class="text-center">Action</th>
+                  <th style="width: 120px">Proyecto</th>
+                  <th>Descripción de Proyectos</th>
                 </tr>
               </thead>
               <tbody>
@@ -25,67 +21,8 @@
                   <td>
                     <h5 class="font-size-14 text-truncate"><a routerLink="/ecommerce/product-detail"
                         class="text-dark">{{ product.name }}</a></h5>
-                    <p class="mb-0">Color : <span class="font-weight-medium">{{ product.color }}</span></p>
+                    <p class="mb-0"><span class="font-weight-medium">{{ product.color }}</span></p>
                   </td>
-                  <td>
-                    {{ product.price }}
-                  </td>
-                  <td>
-                    <div style="width: 120px;">
-                      <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                        <input type="number" [(ngModel)]="product.quantity" name="demo_vertical" class="form-control">
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    {{ product.total }}
-                  </td>
-                  <td style="width: 90px;" class="text-center">
-                    <a href="javascript:void(0);" class="action-icon text-danger"> <i
-                        class="mdi mdi-trash-can font-size-18"></i></a>
-                  </td>
-                </tr>
-
-                <tr class="bg-light text-right">
-
-                  <th scope="row" colspan="5">
-                    Sub Total :
-                  </th>
-
-                  <td>
-                    $ 1530
-                  </td>
-                </tr>
-                <tr class="bg-light text-right">
-
-                  <th scope="row" colspan="5">
-                    Discount :
-                  </th>
-
-                  <td>
-                    - $ 30
-                  </td>
-                </tr>
-                <tr class="bg-light text-right">
-
-                  <th scope="row" colspan="5">
-                    Shipping Charge :
-                  </th>
-
-                  <td>
-                    $ 25
-                  </td>
-                </tr>
-                <tr class="bg-light text-right">
-
-                  <th scope="row" colspan="5">
-                    Total :
-                  </th>
-
-                  <td>
-                    $ 1525
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>

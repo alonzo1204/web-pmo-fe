@@ -145,24 +145,6 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.ECOMMERCE.TEXT',
                 subItems: [
                     {
-                        id: 28,
-                        label: 'MENUITEMS.ECOMMERCE.LIST.PRODUCTS',
-                        link: '/ecommerce/products',
-                        parentId: 27
-                    },
-                    {
-                        id: 30,
-                        label: 'MENUITEMS.ECOMMERCE.LIST.ORDERS',
-                        link: '/ecommerce/orders',
-                        parentId: 27
-                    },
-                    {
-                        id: 31,
-                        label: 'MENUITEMS.ECOMMERCE.LIST.CUSTOMERS',
-                        link: '/ecommerce/customers',
-                        parentId: 27
-                    },
-                    {
                         id: 32,
                         label: 'MENUITEMS.ECOMMERCE.LIST.CART',
                         link: '/ecommerce/cart',
