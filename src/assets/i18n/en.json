@@ -79,6 +79,16 @@
         "REJECTEDPROJECTS": "Proyectos Rechazados"
       }
     },
+    "USERS": {
+      "TEXT": "Usuarios",
+      "LIST": {
+        "ADDUSER": "Añadir Usuario",
+        "USERLIST": "Lista de Alumnos",
+        "TEACHERSLIST": "Lista de Docentes",
+        "DELETEDUSER": "Usuarios de Baja"
+
+      }
+    },
     },
     "DASHBOARDS": {
       "TEXT": "Dashboard",
