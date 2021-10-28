@@ -68,6 +68,17 @@
   "MENUITEMS": {
     "MENU": {
       "TEXT": "Menu"
+      "TEXT": "Administración"
+    },
+    "PROJECTS": {
+      "TEXT": "Proyectos",
+      "LIST": {
+        "ADDPROJECT": "Añadir Proyecto",
+        "APPROVEDPROJECTS": "Proyectos Aceptados",
+        "PENDINGPROJECTS": "Proyectos Pendientes",
+        "REJECTEDPROJECTS": "Proyectos Rechazados"
+      }
+    },
     },
     "DASHBOARDS": {
       "TEXT": "Dashboard",
@@ -96,15 +107,6 @@
     "CHAT": {
       "TEXT": "Chat",
       "BADGE": "New"
-    },
-    "ECOMMERCE": {
-      "TEXT": "Proyecto",
-      "LIST": {
-        "CART": "Proyectos Pendientes",
-        "CHECKOUT": "Proyectos Rechazados",
-        "SHOPS": "Proyectos Aceptados",
-        "ADDPRODUCT": "Añadir Proyecto"
-      }
     },
     "EMAIL": {
       "TEXT": "Email",
