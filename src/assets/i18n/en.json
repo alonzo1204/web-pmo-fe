@@ -84,7 +84,7 @@
         "ADDUSER": "Añadir Usuario",
         "USERLIST": "Lista de Alumnos",
         "TEACHERSLIST": "Lista de Docentes",
-        "DELETEDUSER": "Usuarios de Baja"
+        "DELETEDUSER": "Usuarios Inactivos"
 
       }
     },
@@ -92,7 +92,7 @@
       "TEXT": "Postulaciones",
       "LIST": {
         "ADDUSER": "Iniciar Postulacion",
-        "USERLIST": "Lista de Postulaciones"
+        "POSTULATIONSLIST": "Postulaciones Cerradas"
 
       }
     },

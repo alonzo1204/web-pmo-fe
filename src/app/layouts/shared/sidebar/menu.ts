@@ -96,6 +96,23 @@ export const MENU: MenuItem[] = [
 
         ]
     },
+    {
+        id: 6,
+        label: 'MENUITEMS.POSTULATIONS.TEXT',
+        icon: 'ri-table-2',
+        subItems: [
+            {
+                id: 13,
+                label: 'MENUITEMS.POSTULATIONS.LIST.POSTULATIONSLIST',
+                icon: 'ri-file-add-line',
+                //link: '/ecommerce/add-product',
+                parentId: 5
+            },
+
+
+
+        ]
+    },
     // {
     //     id: 14,
     //     label: 'MENUITEMS.EMAIL.TEXT',
