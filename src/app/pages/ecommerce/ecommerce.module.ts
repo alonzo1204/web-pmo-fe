@@ -23,10 +23,11 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShopsComponent } from './shops/shops.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { DetallesComponent } from './detalles/detalles.component';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [ProductsComponent, ProductDetailComponent, OrdersComponent, CustomersComponent, CartComponent, CheckoutComponent, ShopsComponent, AddProductComponent, OrderSortableDirective],
+  declarations: [ProductsComponent, ProductDetailComponent, OrdersComponent, CustomersComponent, CartComponent, CheckoutComponent, ShopsComponent, AddProductComponent, OrderSortableDirective, DetallesComponent],
   imports: [
     CommonModule,
     FormsModule,

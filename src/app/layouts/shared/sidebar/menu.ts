@@ -34,22 +34,16 @@ export const MENU: MenuItem[] = [
         icon: 'ri-layout-3-line',
         subItems: [
             {
+                id: 10,
+                label: 'MENUITEMS.ECOMMERCE.LIST.CART',
+                link: '/ecommerce/cart',
+                parentId: 5
+            },
+            {
                 id: 13,
-                label: 'MENUITEMS.PROJECTS.LIST.ADDPROJECT',
+                label: 'MENUITEMS.ECOMMERCE.LIST.ADDPRODUCT',
                 icon: 'ri-file-add-line',
                 link: '/ecommerce/add-product',
-                parentId: 5
-            },
-            {
-                id: 12,
-                label: 'MENUITEMS.PROJECTS.LIST.APPROVEDPROJECTS',
-                link: '/ecommerce/shops',
-                parentId: 5
-            },
-            {
-                id: 10,
-                label: 'MENUITEMS.PROJECTS.LIST.PENDINGPROJECTS',
-                link: '/ecommerce/cart',
                 parentId: 5
             },
             {

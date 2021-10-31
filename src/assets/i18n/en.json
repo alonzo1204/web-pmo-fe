@@ -124,6 +124,13 @@
       "TEXT": "Chat",
       "BADGE": "New"
     },
+    "ECOMMERCE": {
+      "TEXT": "Proyecto",
+      "LIST": {
+        "CART": "Proyectos",
+        "ADDPRODUCT": "Añadir Proyecto"
+      }
+    },
     "EMAIL": {
       "TEXT": "Email",
       "LIST": {
