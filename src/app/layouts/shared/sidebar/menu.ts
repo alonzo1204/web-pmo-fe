@@ -45,15 +45,7 @@ export const MENU: MenuItem[] = [
                 icon: 'ri-file-add-line',
                 link: '/ecommerce/add-product',
                 parentId: 5
-            },
-            {
-                id: 11,
-                label: 'MENUITEMS.PROJECTS.LIST.REJECTEDPROJECTS',
-                link: '/ecommerce/checkout',
-                parentId: 5
-            },
-
-
+            }
         ]
     },
     {
