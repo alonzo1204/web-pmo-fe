@@ -12,15 +12,15 @@
                     <th>Nombre Completo</th>
                     <th>Código</th>
                     <th>Estado</th>
-                    <th>Habilitar</th>
+                    <th>Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let inactive of inactives">
                     <td>{{ inactive.name }}</td>
                     <td>{{ inactive.code }}</td>
-                    <td><div class="badge-soft-danger badge font-size-14">{{ inactive.state }}</div></td>
-                    <td><button type="button" class="btn btn-success btn-rounded">Activar</button></td>
+                    <td><div class="badge-soft-danger badge font-size-15">{{ inactive.state }}</div></td>
+                    <td><button type="button" class="btn btn-outline-success  btn-sm w-sm ">Habilitar</button></td>
                   </tr>
                 </tbody>
               </table>
