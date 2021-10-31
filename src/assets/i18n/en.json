@@ -67,7 +67,34 @@
   },
   "MENUITEMS": {
     "MENU": {
-      "TEXT": "Menu"
+      "TEXT": "Administración"
+    },
+    "PROJECTS": {
+      "TEXT": "Proyectos",
+      "LIST": {
+        "ADDPROJECT": "Añadir Proyecto",
+        "APPROVEDPROJECTS": "Proyectos Aceptados",
+        "PENDINGPROJECTS": "Proyectos Pendientes",
+        "REJECTEDPROJECTS": "Proyectos Rechazados"
+      }
+    },
+    "USERS": {
+      "TEXT": "Usuarios",
+      "LIST": {
+        "ADDUSER": "Añadir Usuario",
+        "USERLIST": "Lista de Alumnos",
+        "TEACHERSLIST": "Lista de Docentes",
+        "DELETEDUSER": "Usuarios Inactivos"
+
+      }
+    },
+    "POSTULATIONS": {
+      "TEXT": "Postulaciones",
+      "LIST": {
+        "ADDUSER": "Iniciar Postulacion",
+        "POSTULATIONSLIST": "Postulaciones Cerradas"
+
+      }
     },
     "DASHBOARDS": {
       "TEXT": "Dashboard",
