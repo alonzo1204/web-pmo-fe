@@ -71,25 +71,25 @@ export const MENU: MenuItem[] = [
                 id: 13,
                 label: 'MENUITEMS.USERS.LIST.ADDUSER',
                 icon: 'ri-file-add-line',
-                //link: '/ecommerce/add-product',
+                link: '/user-register',
                 parentId: 5
             },
             {
                 id: 12,
                 label: 'MENUITEMS.USERS.LIST.USERLIST',
-                //link: '/ecommerce/shops',
+                link: '/student-list',
                 parentId: 5
             },
             {
                 id: 10,
                 label: 'MENUITEMS.USERS.LIST.TEACHERSLIST',
-                //link: '/ecommerce/cart',
+                link: '/teacher-list',
                 parentId: 5
             },
             {
                 id: 11,
                 label: 'MENUITEMS.USERS.LIST.DELETEDUSER',
-                //link: '/ecommerce/checkout',
+                link: '/inactive-users',
                 parentId: 5
             },
 
@@ -105,7 +105,7 @@ export const MENU: MenuItem[] = [
                 id: 13,
                 label: 'MENUITEMS.POSTULATIONS.LIST.POSTULATIONSLIST',
                 icon: 'ri-file-add-line',
-                //link: '/ecommerce/add-product',
+                link: '/postulations',
                 parentId: 5
             },
 
