@@ -100,9 +100,7 @@
     "ECOMMERCE": {
       "TEXT": "Proyecto",
       "LIST": {
-        "CART": "Proyectos Pendientes",
-        "CHECKOUT": "Proyectos Rechazados",
-        "SHOPS": "Proyectos Aceptados",
+        "CART": "Proyectos",
         "ADDPRODUCT": "Añadir Proyecto"
       }
     },

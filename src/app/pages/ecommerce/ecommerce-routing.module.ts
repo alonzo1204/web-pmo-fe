@@ -9,6 +9,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShopsComponent } from './shops/shops.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { DetallesComponent } from './detalles/detalles.component';
 
 const routes: Routes = [
     {
@@ -30,6 +31,10 @@ const routes: Routes = [
     {
         path: 'cart',
         component: CartComponent
+    },
+    {
+        path: 'cart/detail',
+        component: DetallesComponent
     },
     {
         path: 'add-product',

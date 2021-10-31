@@ -30,6 +30,54 @@ const cartData = [
         price: '$ 275',
         quantity: 1,
         total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/img-5.png',
+        name: 'Proyecto 5',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/img-6.png',
+        name: 'Proyecto 6',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/img-7.png',
+        name: 'Proyecto 7',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/img-8.png',
+        name: 'Proyecto 8',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/img-9.png',
+        name: 'Proyecto 9',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/img-10.png',
+        name: 'Proyecto 10',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
     }
 ];
 

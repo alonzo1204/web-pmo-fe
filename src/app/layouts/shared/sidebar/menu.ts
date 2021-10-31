@@ -40,18 +40,6 @@ export const MENU: MenuItem[] = [
                 parentId: 5
             },
             {
-                id: 11,
-                label: 'MENUITEMS.ECOMMERCE.LIST.CHECKOUT',
-                link: '/ecommerce/checkout',
-                parentId: 5
-            },
-            {
-                id: 12,
-                label: 'MENUITEMS.ECOMMERCE.LIST.SHOPS',
-                link: '/ecommerce/shops',
-                parentId: 5
-            },
-            {
                 id: 13,
                 label: 'MENUITEMS.ECOMMERCE.LIST.ADDPRODUCT',
                 icon: 'ri-file-add-line',
