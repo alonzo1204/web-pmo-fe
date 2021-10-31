@@ -12,15 +12,15 @@
                     <th>Nombre Completo</th>
                     <th>Código</th>
                     <th>Estado</th>
-                    <th>Dar de Baja</th>
+                    <th>Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let teacher of teachers">
                     <td>{{ teacher.name }}</td>
                     <td>{{ teacher.code }}</td>
-                    <td><div class="badge-soft-success badge font-size-14">{{ teacher.state }}</div></td>
-                    <td><button type="button" class="btn btn-danger btn-rounded">Inactivar</button></td>
+                    <td><div class="badge-soft-success badge font-size-15">{{ teacher.state }}</div></td>
+                    <td><button type="button" class="btn btn-outline-danger  btn-sm w-sm ">Dar de Baja</button></td>
                   </tr>
                 </tbody>
               </table>
