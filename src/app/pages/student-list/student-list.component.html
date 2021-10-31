@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <app-pagetitle title="Lista de Alumnos"></app-pagetitle>
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>Nombre Completo</th>
+                    <th>Código</th>
+                    <th>Estado</th>
+                    <th>Dar de Baja</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let student of students">
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.code }}</td>
+                    <td><div class="badge-soft-success badge font-size-14">{{ student.state }}</div></td>
+                    <td><button type="button" class="btn btn-danger btn-rounded">Inactivar</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+
+  </div>
+  

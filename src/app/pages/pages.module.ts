@@ -31,6 +31,12 @@ import { TablesModule } from './tables/tables.module';
 import { MapsModule } from './maps/maps.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { PostulationsComponent } from './postulations/postulations.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { TeacherListComponent } from './teacher-list/teacher-list.component';
+import { InactiveUsersComponent } from './inactive-users/inactive-users.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -38,7 +44,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, CalendarComponent, ChatComponent, KanbanComponent],
+  declarations: [DashboardComponent, CalendarComponent, ChatComponent, KanbanComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, StudentListComponent, TeacherListComponent, InactiveUsersComponent],
   imports: [
     CommonModule,
     FormsModule,
