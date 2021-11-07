@@ -17,7 +17,7 @@ export class PostulationsComponent implements OnInit {
   constructor(private router: Router) { }
 
   gotodetails(id) {
-    this.router.navigate(['/project-details/'+this.postulations[id].code], {state: {data: this.postulations[id]}});
+    this.router.navigate(['/project-details/'+this.postulations[id].code]);
   }
 
   ngOnInit(): void {

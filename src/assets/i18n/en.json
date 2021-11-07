@@ -82,7 +82,7 @@
       "TEXT": "Usuarios",
       "LIST": {
         "ADDUSER": "Añadir Usuario",
-        "USERLIST": "Lista de Alumnos",
+        "USERLIST": "Lista de Usuarios",
         "TEACHERSLIST": "Lista de Docentes",
         "DELETEDUSER": "Usuarios Inactivos"
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InactiveUsersComponent } from './inactive-users.component';
+import { ChangeManagementComponent } from './change-management.component';
 
-describe('InactiveUsersComponent', () => {
-  let component: InactiveUsersComponent;
-  let fixture: ComponentFixture<InactiveUsersComponent>;
+describe('ChangeManagementComponent', () => {
+  let component: ChangeManagementComponent;
+  let fixture: ComponentFixture<ChangeManagementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InactiveUsersComponent ]
+      declarations: [ ChangeManagementComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InactiveUsersComponent);
+    fixture = TestBed.createComponent(ChangeManagementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

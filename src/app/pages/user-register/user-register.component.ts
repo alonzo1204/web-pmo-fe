@@ -11,8 +11,9 @@ export class UserRegisterComponent implements OnInit {
 
   name: string = "";
   code: string = "";
-  type: string = "alumno";
-  studies: string = "";
+  type: any = "alumno";
+  studies: string = "CC";
+  teachertype: string = "PM";
 
   constructor() { }
 
@@ -20,11 +21,16 @@ export class UserRegisterComponent implements OnInit {
   }
 
   successmsg() {
+    console.log(this.name);
+    console.log(this.code);
+    console.log(this.type);
+    console.log(this.studies);
+    console.log(this.teachertype);
     Swal.fire({
       title: 'Usuario Registrado',
       text: 'Se ha enviado las instrucciones al usuario generado',
       icon: 'success',
-      confirmButtonColor: '#008000',
+      confirmButtonColor: '#EF360E',
     });
   }
 

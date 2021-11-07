@@ -77,19 +77,7 @@ export const MENU: MenuItem[] = [
             {
                 id: 12,
                 label: 'MENUITEMS.USERS.LIST.USERLIST',
-                link: '/student-list',
-                parentId: 5
-            },
-            {
-                id: 10,
-                label: 'MENUITEMS.USERS.LIST.TEACHERSLIST',
-                link: '/teacher-list',
-                parentId: 5
-            },
-            {
-                id: 11,
-                label: 'MENUITEMS.USERS.LIST.DELETEDUSER',
-                link: '/inactive-users',
+                link: '/users-list',
                 parentId: 5
             },
 
