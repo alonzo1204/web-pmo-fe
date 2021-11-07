@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectDetailsComponent implements OnInit {
 
+  project: any;
+  isLoaded: Boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+    this.project = history.state.data;
+    this.isLoaded = true;
   }
 
 }

@@ -27,7 +27,7 @@ const routes: Routes = [
     { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },
     { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
     { path: 'postulations', component: PostulationsComponent },
-    { path: 'project-details', component: ProjectDetailsComponent },
+    { path: 'project-details/:code', component: ProjectDetailsComponent },
     { path: 'user-register', component: UserRegisterComponent },
     { path: 'student-list', component: StudentListComponent },
     { path: 'teacher-list', component: TeacherListComponent },

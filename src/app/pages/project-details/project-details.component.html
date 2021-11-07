@@ -3,31 +3,49 @@
     <!-- start page title -->
     <app-pagetitle title="Detalle de Proyecto"></app-pagetitle>
     <!-- end page title -->
-  
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card card-body">
-          <h3 class="card-title mt-0 text-center">Proyecto Nro 1</h3>
-          <div>Objetivo general: texto de ejemplo</div>
-          <div>Descripción del proyecto: texto de ejemplo</div>
+    <div class="card card-body">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="card card-body more-shadow">
+            <h3 class="card-title mt-0 text-center" *ngIf="isLoaded">{{ project.code }}</h3>
+            <div class="row">
+              <div class="col-md-9">
+                <div class="text-black">Objetivo general:</div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</div>
+                <br>
+                <div class="text-black">Descripción del proyecto:</div>
+                <div>{{ project.definition }}</div>
+              </div>
+              <div class="col-md-3 pl-4 pt-4">
+                <img src="{{ project.image }}" class="avatar-md" />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card card-body">
-            <div class="mt-2 text-center">Integrante 1: texto ejemplo</div>
-            <div class="mt-2 text-center">Integrante 2: texto ejemplo</div>
+        <div class="col-md-5">
+          <div class="card card-body more-shadow">
+              <div class="mt-2 row">
+                <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
+                <div class="ml-2 mt-1"><span class="text-black">Integrante 1:&nbsp;</span>Camilo Aarón Silva Olivares - CC</div>
+              </div>
+              <div class="mt-2 row">
+                <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
+                <div class="ml-2 mt-1"><span class="text-black">Integrante 2:&nbsp;</span>Juan Diego Peña Chafalote - CC</div>
+              </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-12"> 
-        <div class="card card-body">
-            <div class="mt-2 text-center">PM Asignado: texto de ejemplo</div>
-            <div class="mt-2 text-center">PO Asignado: texto de ejemplo</div>
-            <div class="mt-2 text-center">Co-Autor Asignado: texto de ejemplo</div>
+        <div class="col-md-12">
+          <div class="card card-body more-shadow col-md-7 centered mb-4">
+              <div class="mt-2 text-center"><span class="text-black">PM Asignado:&nbsp;</span>Walter Cueva</div>
+              <div class="mt-2 text-center"><span class="text-black">PO Asignado:&nbsp;</span>Willy Ugarte</div>
+              <div class="mt-2 text-center"><span class="text-black">Co-Autor Asignado:&nbsp;</span>Willy Ugarte</div>
+              <div class="mt-2 text-center"><span class="text-black">Observaciones:&nbsp;</span>No hay observaciones</div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-12">
-        <div class="text-center">
-            <button type="button" class="btn btn-success btn-rounded w-lg">Gestiones de Cambio</button>
+        <div class="col-md-12">
+          <div class="text-center">
+              <button type="button" class="btn btn-success w-lg">Gestiones de Cambio</button>
+          </div>
         </div>
       </div>
     </div>

@@ -8,16 +8,16 @@ import {Router} from '@angular/router';
 })
 export class PostulationsComponent implements OnInit {
   postulations: any[] = [
-    { "name": "Proyecto Nro 1", "definition": "Definición del Proyecto", "estado": "activo" },
-    { "name": "Proyecto Nro 2", "definition": "Definición del Proyecto", "estado": "activo" },
-    { "name": "Proyecto Nro 3", "definition": "Definición del Proyecto", "estado": "activo" },
-    { "name": "Proyecto Nro 4", "definition": "Definición del Proyecto", "estado": "inactivo" }
+    { "id": 0, "code": "PRY2021201", "definition": "CoVMASPeru: Modelos multi agente para predecir la evolución de la pandemia en Perú Research & Games", "image": "assets/images/logos/Data-Center.png"},
+    { "id": 1, "code": "PRY2021202", "definition": "Imagination: Generación de imágenes a partir de un texto Research & Games", "image": "assets/images/logos/Innova-TI.png"},
+    { "id": 2, "code": "PRY2021203", "definition": "NAOEmotion: Generación de texto a partir de un sentimiento utilizando el robot NAO", "image": "assets/images/logos/IT-Consulting.png"},
+    { "id": 3, "code": "PRY2021204", "definition": "SmartAgro: pattern mining con computación evolutiva para extracción de patrones en agricultura", "image": "assets/images/logos/IT-Research.png"}
   ];
 
   constructor(private router: Router) { }
 
-  gotodetails() {
-    this.router.navigate(['/project-details']);
+  gotodetails(id) {
+    this.router.navigate(['/project-details/'+this.postulations[id].code], {state: {data: this.postulations[id]}});
   }
 
   ngOnInit(): void {

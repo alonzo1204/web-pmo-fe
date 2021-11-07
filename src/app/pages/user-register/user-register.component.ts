@@ -9,6 +9,11 @@ import Swal from 'sweetalert2';
 })
 export class UserRegisterComponent implements OnInit {
 
+  name: string = "";
+  code: string = "";
+  type: string = "alumno";
+  studies: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
