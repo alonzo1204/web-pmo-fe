@@ -31,6 +31,22 @@ const cartData = [
         price: '$ 275',
         quantity: 1,
         total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/IT-Consulting.png',
+        name: 'Proyecto en Evaluacion 5',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
+    },
+    {
+        image: 'assets/images/companies/IT-Services.png',
+        name: 'Proyecto en Evaluacion 6',
+        color: 'This phone is unlocked and compatible with any carrier of choice on GSM ',
+        price: '$ 275',
+        quantity: 1,
+        total: '$ 275'
     }
 ];
 

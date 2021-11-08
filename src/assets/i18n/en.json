@@ -129,6 +129,9 @@
         "CART": "Proyectos",
         "POSTULACION": "Postulación",
         "PROCESOASIGNACION": "Proceso de Asignación",
+        "PO": "Asignación PO",
+        "PM": "Asignación PM",
+        "COAUTOR": "Asignación COAUTOR",
         "ADDPRODUCT": "Añadir Proyecto"
       }
     },

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostexitosaComponent } from './postexitosa.component';
+import { AsignacionpmComponent } from './asignacionpm.component';
 
-describe('PostexitosaComponent', () => {
-  let component: PostexitosaComponent;
-  let fixture: ComponentFixture<PostexitosaComponent>;
+describe('AsignacionpmComponent', () => {
+  let component: AsignacionpmComponent;
+  let fixture: ComponentFixture<AsignacionpmComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostexitosaComponent ]
+      declarations: [ AsignacionpmComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostexitosaComponent);
+    fixture = TestBed.createComponent(AsignacionpmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -53,6 +53,27 @@ export const MENU: MenuItem[] = [
             },
             {
                 id: 14,
+                label: 'MENUITEMS.ECOMMERCE.LIST.PO',
+                icon: 'ri-file-add-line',
+                link: '/ecommerce/asignacionpo',
+                parentId: 5
+            },
+            {
+                id: 14,
+                label: 'MENUITEMS.ECOMMERCE.LIST.PM',
+                icon: 'ri-file-add-line',
+                link: '/ecommerce/asignacionpm',
+                parentId: 5
+            },
+            {
+                id: 14,
+                label: 'MENUITEMS.ECOMMERCE.LIST.COAUTOR',
+                icon: 'ri-file-add-line',
+                link: '/ecommerce/asignacioncoautor',
+                parentId: 5
+            },
+            {
+                id: 14,
                 label: 'MENUITEMS.ECOMMERCE.LIST.ADDPRODUCT',
                 icon: 'ri-file-add-line',
                 link: '/ecommerce/add-product',

@@ -30,13 +30,15 @@ import { DeclinedComponent } from './declined/declined.component';
 import { DetallesacceptedComponent } from './detallesaccepted/detallesaccepted.component';
 import { PostulacionComponent } from './postulacion/postulacion.component';
 import { DetallespostulacionComponent } from './detallespostulacion/detallespostulacion.component';
-import { PostexitosaComponent } from './postexitosa/postexitosa.component';
 import { ProcesoasignacionComponent } from './procesoasignacion/procesoasignacion.component';
+import { AsignacioncoautorComponent } from './asignacioncoautor/asignacioncoautor.component';
+import { AsignacionpoComponent } from './asignacionpo/asignacionpo.component';
+import { AsignacionpmComponent } from './asignacionpm/asignacionpm.component';
 
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [ProductsComponent, ProductDetailComponent, OrdersComponent, CustomersComponent, CartComponent, CheckoutComponent, ShopsComponent, AddProductComponent, OrderSortableDirective, DetallesComponent, AcceptedComponent, PendingComponent, DeclinedComponent, DetallesacceptedComponent, PostulacionComponent, DetallespostulacionComponent, PostexitosaComponent, ProcesoasignacionComponent],
+  declarations: [ProductsComponent, ProductDetailComponent, OrdersComponent, CustomersComponent, CartComponent, CheckoutComponent, ShopsComponent, AddProductComponent, OrderSortableDirective, DetallesComponent, AcceptedComponent, PendingComponent, DeclinedComponent, DetallesacceptedComponent, PostulacionComponent, DetallespostulacionComponent, ProcesoasignacionComponent, AsignacioncoautorComponent, AsignacionpoComponent, AsignacionpmComponent],
   imports: [
     CommonModule,
     FormsModule,
