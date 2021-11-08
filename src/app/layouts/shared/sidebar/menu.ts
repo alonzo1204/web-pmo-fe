@@ -40,7 +40,19 @@ export const MENU: MenuItem[] = [
                 parentId: 5
             },
             {
+                id: 12,
+                label: 'MENUITEMS.ECOMMERCE.LIST.POSTULACION',
+                link: '/ecommerce/postulacion',
+                parentId: 5
+            },
+            {
                 id: 13,
+                label: 'MENUITEMS.ECOMMERCE.LIST.PROCESOASIGNACION',
+                link: '/ecommerce/procesoasignacion',
+                parentId: 5
+            },
+            {
+                id: 14,
                 label: 'MENUITEMS.ECOMMERCE.LIST.ADDPRODUCT',
                 icon: 'ri-file-add-line',
                 link: '/ecommerce/add-product',

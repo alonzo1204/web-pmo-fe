@@ -127,6 +127,8 @@
       "TEXT": "Proyecto",
       "LIST": {
         "CART": "Proyectos",
+        "POSTULACION": "Postulación",
+        "PROCESOASIGNACION": "Proceso de Asignación",
         "ADDPRODUCT": "Añadir Proyecto"
       }
     },
