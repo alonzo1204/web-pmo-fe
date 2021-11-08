@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <app-pagetitle title="Lista de Usuarios"></app-pagetitle>
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="bg-light pt-2 pb-2 topusers">
+                <div class="card-title list-title">{{ title }}</div>
+                <div class="dropdown" ngbDropdown>
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" ngbDropdownToggle>
+                      Filtrar lista <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                      <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
+                      <a class="dropdown-item" (click)="FiltrarAlumnos()">Alumnos</a>
+                      <a class="dropdown-item" (click)="FiltrarDocentes()">Docentes</a>
+                      <a class="dropdown-item" (click)="FiltrarInactivos()">Usuarios inactivos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>Nombre Completo</th>
+                    <th>Código</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="isLoaded == true">
+                  <tr *ngFor="let user of filter">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.code }}</td>
+                    <td>
+                        <div *ngIf="user.state == 'activo'; else elseBlock1">
+                            <div class="badge-soft-success badge font-size-15">{{ user.state }}</div>
+                        </div>
+                        <ng-template #elseBlock1>
+                            <div class="badge-soft-danger badge font-size-15">{{ user.state }}</div>
+                        </ng-template>
+                    </td>
+                    <td>
+                        <div *ngIf="user.state == 'activo'; else elseBlock2">
+                            <button type="button" class="btn btn-outline-danger btn-sm w-sm ">Inhabilitar</button>
+                        </div>
+                        <ng-template #elseBlock2>
+                            <button type="button" class="btn btn-outline-success btn-sm w-sm ">Habilitar</button>
+                        </ng-template>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+
+  </div>

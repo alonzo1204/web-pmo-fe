@@ -8,9 +8,8 @@ import { KanbanComponent } from './kanban/kanban.component';
 import { PostulationsComponent } from './postulations/postulations.component'
 import { ProjectDetailsComponent } from './project-details/project-details.component'
 import { UserRegisterComponent } from './user-register/user-register.component'
-import { StudentListComponent } from './student-list/student-list.component'
-import { TeacherListComponent } from './teacher-list/teacher-list.component';
-import { InactiveUsersComponent } from './inactive-users/inactive-users.component';
+import { UsersListComponent } from './users-list/users-list.component'
+import { ChangeManagementComponent } from './change-management/change-management.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent },
@@ -27,11 +26,10 @@ const routes: Routes = [
     { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },
     { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
     { path: 'postulations', component: PostulationsComponent },
-    { path: 'project-details', component: ProjectDetailsComponent },
+    { path: 'project-details/:code', component: ProjectDetailsComponent },
+    { path: 'change-management/:code', component: ChangeManagementComponent},
     { path: 'user-register', component: UserRegisterComponent },
-    { path: 'student-list', component: StudentListComponent },
-    { path: 'teacher-list', component: TeacherListComponent },
-    { path: 'inactive-users', component: InactiveUsersComponent },
+    { path: 'users-list', component: UsersListComponent },
     { path: 'employees', component: DashboardComponent},
 ];
 
