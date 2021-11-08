@@ -4,6 +4,7 @@ import { Cart } from './procesoasignacion.model';
 
 import { cartData } from './data';
 
+
 @Component({
   selector: 'app-procesoasignacion',
   templateUrl: './procesoasignacion.component.html',

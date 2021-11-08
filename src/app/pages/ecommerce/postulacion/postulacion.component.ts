@@ -4,6 +4,8 @@ import { Cart } from './postulacion.model';
 
 import { cartData } from './data';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-postulacion',
   templateUrl: './postulacion.component.html',
@@ -18,6 +20,8 @@ export class PostulacionComponent implements OnInit {
   breadCrumbItems: Array<{}>;
 
   cartData: Cart[];
+
+  detalles: string = "";
 
   constructor() { }
 
@@ -35,4 +39,16 @@ export class PostulacionComponent implements OnInit {
   private _fetchData() {
     this.cartData = cartData;
   }
+
+  
+  successmsg() {
+    console.log(this.detalles);
+    Swal.fire({
+      title: 'Postulación confirmada',
+      text: 'La postulación ha sido confirmada',
+      icon: 'success',
+      confirmButtonColor: '#EF360E',
+    });
+  }
+
 }
