@@ -1,0 +1,32 @@
+<div class="container-fluid">
+
+  <app-pagetitle title="Proceso de Asignación"></app-pagetitle>
+  <div class="row">
+    <div class="col-lg-12">
+ 
+        <div class="card card-body more-shadow centered">
+          <div class="table-responsive">
+            <table class="table table-centered mb-0 table-nowrap">
+              <thead class="bg-light">
+                <tr>
+                  <th>Lista de Miembros</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of cartData">
+                  <td>
+                    <h5 class="font-size-14 text-truncate"><a routerLink="/ecommerce/product-detail"
+                        class="text-dark">{{ product.name }}</a></h5>
+                    <p class="mb-0"><span class="font-weight-medium">{{ product.color }}</span></p>
+                    <a href="/ecommerce/postulacion/detalles">Asignación</a>
+                  </td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <!-- end row -->
+</div>
