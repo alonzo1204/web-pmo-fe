@@ -18,17 +18,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { ChatComponent } from './chat/chat.component';
 import { EcommerceModule } from './ecommerce/ecommerce.module';
-import { KanbanComponent } from './kanban/kanban.component';
-import { EmailModule } from './email/email.module';
-import { UIModule } from './ui/ui.module';
-import { IconsModule } from './icons/icons.module';
-import { ChartModule } from './chart/chart.module';
-import { FormModule } from './form/form.module';
-import { TablesModule } from './tables/tables.module';
-import { MapsModule } from './maps/maps.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { PostulationsComponent } from './postulations/postulations.component';
@@ -43,14 +33,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, CalendarComponent, ChatComponent, KanbanComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     PagesRoutingModule,
     UiModule,
-    UIModule,
     Ng2SearchPipeModule,
     NgbNavModule,
     NgbDropdownModule,
@@ -59,12 +48,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     DndModule,
     FullCalendarModule,
-    EcommerceModule, EmailModule,
-    IconsModule,
-    ChartModule,
-    FormModule,
-    TablesModule,
-    MapsModule,
+    EcommerceModule,
     LeafletModule,
     WidgetModule,
     NgbModule,

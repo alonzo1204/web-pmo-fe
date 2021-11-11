@@ -75,7 +75,20 @@
         "ADDPROJECT": "Añadir Proyecto",
         "APPROVEDPROJECTS": "Proyectos Aceptados",
         "PENDINGPROJECTS": "Proyectos Pendientes",
-        "REJECTEDPROJECTS": "Proyectos Rechazados"
+        "REJECTEDPROJECTS": "Proyectos Rechazados",
+        "REVIEWPROJECTS": "Revision de Proyectos"
+      }
+    },
+    "TEACHERASSIGNMENT": {
+      "TEXT": "Asignacion de Docentes",
+      "LIST": {
+        "LISTPROJECTS": "Lista de Proyectos"
+      }
+    },
+    "POSTULATION": {
+      "TEXT": "Postulación",
+      "LIST": {
+        "LISTPROJECTS": "Lista de Proyectos"
       }
     },
     "USERS": {
@@ -89,10 +102,9 @@
       }
     },
     "POSTULATIONS": {
-      "TEXT": "Postulaciones",
+      "TEXT": "Postulaciones Cerradas",
       "LIST": {
-        "ADDUSER": "Iniciar Postulacion",
-        "POSTULATIONSLIST": "Postulaciones Cerradas"
+        "POSTULATIONSLIST": "Lista de Proyectos"
 
       }
     },
