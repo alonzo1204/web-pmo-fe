@@ -7,9 +7,11 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { UserRegisterComponent } from './user-register/user-register.component'
 import { UsersListComponent } from './users-list/users-list.component'
 import { ChangeManagementComponent } from './change-management/change-management.component';
+import { AddProjectComponent } from './add-project/add-project.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 const routes: Routes = [
-    { path: '', component: DashboardComponent },
+    { path: '', component: MaintenanceComponent },
     { path: 'ecommerce', loadChildren: () => import('./ecommerce/ecommerce.module').then(m => m.EcommerceModule) },
     { path: 'postulations', component: PostulationsComponent },
     { path: 'project-details/:code', component: ProjectDetailsComponent },
@@ -17,6 +19,7 @@ const routes: Routes = [
     { path: 'user-register', component: UserRegisterComponent },
     { path: 'users-list', component: UsersListComponent },
     { path: 'employees', component: DashboardComponent},
+    { path: 'add-project', component: AddProjectComponent},
 ];
 
 @NgModule({

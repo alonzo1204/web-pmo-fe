@@ -16,6 +16,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { ArchwizardModule } from 'angular-archwizard';
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EcommerceModule } from './ecommerce/ecommerce.module';
@@ -27,6 +29,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { ChangeManagementComponent } from './change-management/change-management.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { AddProjectComponent } from './add-project/add-project.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -34,7 +37,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -53,7 +56,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LeafletModule,
     WidgetModule,
     NgbModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    ArchwizardModule,
+    DropzoneModule
   ],
   providers: [
     {

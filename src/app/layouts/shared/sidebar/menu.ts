@@ -37,7 +37,7 @@ export const MENU: MenuItem[] = [
                 id: 13,
                 label: 'MENUITEMS.PROJECTS.LIST.ADDPROJECT',
                 //icon: 'ri-file-add-line',
-                link: '/ecommerce/add-product',
+                link: '/add-project',
                 parentId: 5
             },
             {
