@@ -43,7 +43,7 @@ export const MENU: MenuItem[] = [
             {
                 id: 10,
                 label: 'MENUITEMS.PROJECTS.LIST.REVIEWPROJECTS',
-                link: '/ecommerce/cart',
+                link: '/project-review',
                 parentId: 5
             }
         ]
@@ -56,6 +56,7 @@ export const MENU: MenuItem[] = [
             {
                 id: 13,
                 label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS',
+                link: '/projects-list',
                 parentId: 6
             },
         ]

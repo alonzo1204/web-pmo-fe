@@ -13,6 +13,7 @@ export class PostulationsComponent implements OnInit {
     { "id": 2, "code": "PRY2021203", "definition": "NAOEmotion: Generación de texto a partir de un sentimiento utilizando el robot NAO", "image": "assets/images/logos/IT-Consulting.png"},
     { "id": 3, "code": "PRY2021204", "definition": "SmartAgro: pattern mining con computación evolutiva para extracción de patrones en agricultura", "image": "assets/images/logos/IT-Research.png"}
   ];
+  breadCrumbItems: Array<{}>;
 
   constructor(private router: Router) { }
 
@@ -21,6 +22,7 @@ export class PostulationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breadCrumbItems = [{ label: 'Postulaciones Cerradas' }, { label: 'Lista de Proyectos', active: true }];
   }
 
 }

@@ -30,6 +30,10 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { ChangeManagementComponent } from './change-management/change-management.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { AddProjectComponent } from './add-project/add-project.component';
+import { ProjectReviewComponent } from './project-review/project-review.component';
+import { ProjectsListComponent } from './projects-list/projects-list.component';
+import { ProjectDetailsReviewComponent } from './project-details-review/project-details-review.component';
+import { ProjectDetailsAsignationComponent } from './project-details-asignation/project-details-asignation.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -37,7 +41,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent],
   imports: [
     CommonModule,
     FormsModule,

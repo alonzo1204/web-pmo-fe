@@ -9,6 +9,10 @@ import { UsersListComponent } from './users-list/users-list.component'
 import { ChangeManagementComponent } from './change-management/change-management.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { ProjectReviewComponent } from './project-review/project-review.component';
+import { ProjectsListComponent } from './projects-list/projects-list.component';
+import { ProjectDetailsAsignationComponent } from './project-details-asignation/project-details-asignation.component'
+import { ProjectDetailsReviewComponent } from './project-details-review/project-details-review.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -20,6 +24,10 @@ const routes: Routes = [
     { path: 'users-list', component: UsersListComponent },
     { path: 'employees', component: DashboardComponent},
     { path: 'add-project', component: AddProjectComponent},
+    { path: 'project-review', component: ProjectReviewComponent},
+    { path: 'projects-list', component: ProjectsListComponent},
+    { path: 'project-details-review/:code', component: ProjectDetailsReviewComponent},
+    { path: 'project-details-asignation/:code', component: ProjectDetailsAsignationComponent},
 ];
 
 @NgModule({

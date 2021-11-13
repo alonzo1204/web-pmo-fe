@@ -15,10 +15,12 @@ export class ProjectDetailsComponent implements OnInit {
     { "id": 3, "code": "PRY2021204", "definition": "SmartAgro: pattern mining con computación evolutiva para extracción de patrones en agricultura", "image": "assets/images/logos/IT-Research.png"}
   ];
   isLoaded: Boolean = false;
+  breadCrumbItems: Array<{}>;
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.breadCrumbItems = [{ label: 'Postulaciones Cerradas' }, { label: 'Lista de Proyectos' }, { label: 'Detalles', active: true }];
     var code = this.route.snapshot.params.code
     this.project = this.projects.filter(function(data){ return data.code == code })[0];
     this.isLoaded = true;
