@@ -31,65 +31,74 @@ export const MENU: MenuItem[] = [
     {
         id: 5,
         label: 'MENUITEMS.PROJECTS.TEXT',
-        icon: 'ri-layout-3-line',
+        //icon: 'ri-layout-3-line',
         subItems: [
             {
-                id: 10,
-                label: 'MENUITEMS.ECOMMERCE.LIST.CART',
-                link: '/ecommerce/cart',
-                parentId: 5
-            },
-            {
-                id: 12,
-                label: 'MENUITEMS.ECOMMERCE.LIST.POSTULACION',
-                link: '/ecommerce/postulacion',
-                parentId: 5
-            },
-            {
                 id: 13,
-                label: 'MENUITEMS.ECOMMERCE.LIST.PROCESOASIGNACION',
-                link: '/ecommerce/procesoasignacion',
+                label: 'MENUITEMS.PROJECTS.LIST.ADDPROJECT',
+                //icon: 'ri-file-add-line',
+                link: '/add-project',
                 parentId: 5
             },
             {
-                id: 14,
-                label: 'MENUITEMS.ECOMMERCE.LIST.PO',
-                icon: 'ri-file-add-line',
-                link: '/ecommerce/asignacionpo',
-                parentId: 5
-            },
-            {
-                id: 14,
-                label: 'MENUITEMS.ECOMMERCE.LIST.PM',
-                icon: 'ri-file-add-line',
-                link: '/ecommerce/asignacionpm',
-                parentId: 5
-            },
-            {
-                id: 14,
-                label: 'MENUITEMS.ECOMMERCE.LIST.COAUTOR',
-                icon: 'ri-file-add-line',
-                link: '/ecommerce/asignacioncoautor',
-                parentId: 5
-            },
-            {
-                id: 14,
-                label: 'MENUITEMS.ECOMMERCE.LIST.ADDPRODUCT',
-                icon: 'ri-file-add-line',
-                link: '/ecommerce/add-product',
+                id: 10,
+                label: 'MENUITEMS.PROJECTS.LIST.REVIEWPROJECTS',
+                link: '/project-review',
                 parentId: 5
             }
         ]
     },
     {
         id: 6,
+        label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 13,
+                label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS',
+                link: '/projects-list',
+                parentId: 6
+            },
+        ]
+    },
+    {
+        id: 6,
+        label: 'MENUITEMS.POSTULATION.TEXT',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 13,
+                label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS',
+                parentId: 6
+            },
+        ]
+    },
+    {
+        id: 6,
+        label: 'MENUITEMS.POSTULATIONS.TEXT',
+        //icon: 'ri-table-2',
+        subItems: [
+            {
+                id: 13,
+                label: 'MENUITEMS.POSTULATIONS.LIST.POSTULATIONSLIST',
+                //icon: 'ri-file-add-line',
+                link: '/postulations',
+                parentId: 5
+            },
+
+
+
+        ]
+    },
+    {
+        id: 6,
         label: 'MENUITEMS.USERS.TEXT',
-        icon: 'ri-account-circle-line',
+        //icon: 'ri-account-circle-line',
         subItems: [
             {
                 id: 13,
                 label: 'MENUITEMS.USERS.LIST.ADDUSER',
-                icon: 'ri-file-add-line',
+                //icon: 'ri-file-add-line',
                 link: '/user-register',
                 parentId: 5
             },
@@ -99,25 +108,6 @@ export const MENU: MenuItem[] = [
                 link: '/users-list',
                 parentId: 5
             },
-
-
-        ]
-    },
-    {
-        id: 6,
-        label: 'MENUITEMS.POSTULATIONS.TEXT',
-        icon: 'ri-table-2',
-        subItems: [
-            {
-                id: 13,
-                label: 'MENUITEMS.POSTULATIONS.LIST.POSTULATIONSLIST',
-                icon: 'ri-file-add-line',
-                link: '/postulations',
-                parentId: 5
-            },
-
-
-
         ]
     },
     // {
