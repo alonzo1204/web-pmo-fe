@@ -1,0 +1,180 @@
+<div class="container-fluid">
+
+  <app-pagetitle title="Cartera de proyectos" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+            <div class="bg-light pt-2 pb-2 toppostulations">
+                <div class="card-title postulations-title">Proyectos Seleccionados <span>{{ n_addeds }}</span>/4</div>
+            </div>
+          <div class="table-responsive">
+            <table class="table table-centered mb-0">
+              <thead class="bg-white">
+                <tr>
+                  <th style="width: 120px">Empresa</th>
+                  <th>Descripción del proyecto</th>
+                  <th class="text-center">Carrera</th>
+                  <th class="text-center">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let project of addedprojects">
+                  <td>
+                    <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                  </td>
+                  <td class="project-description">
+                    <div (click)="gotodetails(project.id)">
+                        <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
+                    </div>
+                    <div>
+                        <p class="card-text">{{ project.name }}</p>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <label>{{ project.career.name }}</label>
+                  </td>
+                  <td class="text-center">
+                    <button (click)="removeProject(project.id)" type="button" class="btn btn-primary btn-sm">QUITAR</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center mt-4">
+            <div *ngIf="canpostulate == true">
+                <button type="button" (click)="openConfirmationModal(confirmationModal)" class="btn btn-primary">Confirmar Postulación</button>
+            </div>
+            <div *ngIf="canpostulate == false">
+                <button type="button" (click)="openConfirmationModal(confirmationModal)" class="btn btn-primary" disabled>Confirmar Postulación</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end row -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+            <div class="bg-light pt-2 pb-2 topusers">
+                <div class="card-title list-title">
+                    <form class="search-box app-search d-none d-lg-block">
+                        <div class="position-relative">
+                          <input type="text" class="form-control bg-white" placeholder="Buscar...">
+                          <span class="ri-search-line"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="dropdown" ngbDropdown>
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" ngbDropdownToggle>
+                      Filtrar por Estado <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                      <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
+                      <a class="dropdown-item" (click)="FiltrarAsignados()">Asignados</a>
+                      <a class="dropdown-item" (click)="FiltrarPendientes()">Pendientes</a>
+                    </div>
+                </div>
+            </div>
+          <div class="table-responsive">
+            <table class="table table-centered mb-0">
+              <thead class="bg-white">
+                <tr>
+                  <th style="width: 120px">Empresa</th>
+                  <th>Descripción del proyecto</th>
+                  <th class="text-center">Carrera</th>
+                  <th class="text-center">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let project of filter">
+                  <td>
+                    <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                  </td>
+                  <td class="project-description">
+                    <div (click)="gotodetails(project.id)">
+                        <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
+                    </div>
+                    <div>
+                        <p class="card-text">{{ project.name }}</p>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <label>{{ project.career.name }}</label>
+                  </td>
+                  <td class="text-center">
+                    <div *ngIf="project.added == false">
+                        <div *ngIf="canadd == true">
+                            <button (click)="addProject(project.id)" type="button" class="btn btn-primary btn-sm">AGREGAR</button>
+                        </div>
+                        <div *ngIf="canadd == false">
+                            <button (click)="addProject(project.id)" type="button" class="btn btn-primary btn-sm" disabled>AGREGAR</button>
+                        </div>
+                    </div>
+                    <div *ngIf="project.added == true">
+                        <button type="button" class="btn btn-outline-primary btn-sm" disabled>AGREGADO</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center mt-4">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-light"><i class="fas fa-forward fa-flip-horizontal"></i></button>
+                <button type="button" class="btn btn-light"><i class="fas fa-angle-left"></i></button>
+                <button type="button" class="btn btn-light">1</button>
+                <button type="button" class="btn btn-light">2</button>
+                <button type="button" class="btn btn-light">3</button>
+                <button type="button" class="btn btn-light">4</button>
+                <button type="button" class="btn btn-light"><i class="fas fa-angle-right"></i></button>
+                <button type="button" class="btn btn-light"><i class="fas fa-forward"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end row -->
+  
+    
+  
+  </div> <!-- container-fluid -->
+
+<!-- Center Modal -->
+<ng-template #confirmationModal let-modal>
+    <div class="modal-header">
+      <div class="centered-header mt-0">Resumen de postulación</div>
+    </div>
+    <div class="modal-body">
+        <table class="table table-centered mb-0">
+            <tbody>
+              <tr *ngFor="let project of addedprojects" (click)="gotodetails(project.id)">
+                <td>
+                  <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                </td>
+                <td class="project-description">
+                  <div>
+                      <h5 class="font-size-14 text-truncate"><a class="text-dark">{{ project.code }}</a></h5>
+                  </div>
+                  <div>
+                      <p class="card-text">{{ project.name }}</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center mb-4">
+        <div class="text-center mb-2">¿Estas seguro de enviar la Postulación?</div>
+        <div class="text-center">
+            <button type="button" (click)="modal.dismiss('Cross click')" class="btn btn-primary mr-4">Cancelar</button>
+            <button type="button" (click)="modal.dismiss('Cross click'); postular()" class="btn btn-primary">Aceptar</button>
+        </div>
+    </div>
+</ng-template>
+  

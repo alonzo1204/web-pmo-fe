@@ -3,21 +3,21 @@
     <!-- start page title -->
     <app-pagetitle title="Detalle de Proyecto" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
     <!-- end page title -->
-    <div class="card card-body">
+    <div class="card card-body" *ngIf="isLoaded">
       <div class="row">
         <div class="col-md-7">
           <div class="card card-body more-shadow">
-            <h3 class="card-title mt-0 text-center" *ngIf="isLoaded">{{ project.code }}</h3>
+            <h3 class="card-title mt-0 text-center">{{ project.code }}</h3>
             <div class="row">
               <div class="col-md-9">
                 <div class="text-black">Objetivo general:</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</div>
+                <div>{{ project.general_objective }}</div>
                 <br>
                 <div class="text-black">Descripción del proyecto:</div>
-                <div>{{ project.definition }}</div>
+                <div>{{ project.name }}</div>
               </div>
               <div class="col-md-3 pl-4 pt-4">
-                <img src="{{ project.image }}" class="avatar-md" />
+                <img src="{{ project.company.image }}" class="avatar-md" />
               </div>
             </div>
           </div>
@@ -26,19 +26,19 @@
           <div class="card card-body more-shadow">
               <div class="mt-2 row">
                 <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
-                <div class="ml-2 mt-1"><span class="text-black">Integrante 1:&nbsp;</span>Camilo Aarón Silva Olivares - CC</div>
+                <div class="ml-2 mt-1"><span class="text-black">Integrante 1:&nbsp;</span>{{ project.student_1.firstname + project.student_1.lastname }}</div>
               </div>
               <div class="mt-2 row">
                 <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
-                <div class="ml-2 mt-1"><span class="text-black">Integrante 2:&nbsp;</span>Juan Diego Peña Chafalote - CC</div>
+                <div class="ml-2 mt-1"><span class="text-black">Integrante 2:&nbsp;</span>{{ project.student_2.firstname + project.student_2.lastname }}</div>
               </div>
           </div>
         </div>
         <div class="col-md-12">
           <div class="card card-body more-shadow col-md-7 centered mb-4">
-              <div class="mt-2 text-center"><span class="text-black">PM Asignado:&nbsp;</span>Walter Cueva</div>
-              <div class="mt-2 text-center"><span class="text-black">PO Asignado:&nbsp;</span>Willy Ugarte</div>
-              <div class="mt-2 text-center"><span class="text-black">Co-Autor Asignado:&nbsp;</span>Willy Ugarte</div>
+              <div class="mt-2 text-center"><span class="text-black">PM Asignado:&nbsp;</span>{{ project.portfolio_manager.firstname + project.portfolio_manager.lastname }}</div>
+              <div class="mt-2 text-center"><span class="text-black">PO Asignado:&nbsp;</span>{{ project.product_owner.firstname + project.product_owner.lastname }}</div>
+              <div class="mt-2 text-center"><span class="text-black">Co-Autor Asignado:&nbsp;</span>{{ project.co_autor.firstname + project.co_autor.lastname }}</div>
               <div class="mt-2 text-center"><span class="text-black">Observaciones:&nbsp;</span>No hay observaciones</div>
           </div>
         </div>

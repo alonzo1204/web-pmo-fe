@@ -6,7 +6,14 @@
         <div class="card">
           <div class="card-body">
             <div class="bg-light pt-2 pb-2 topusers">
-                <div class="card-title list-title">{{ title }}</div>
+                <div class="card-title list-title">
+                  <form class="search-box app-search d-none d-lg-block">
+                    <div class="position-relative">
+                      <input type="text" class="form-control bg-white" placeholder="Buscar...">
+                      <span class="ri-search-line"></span>
+                    </div>
+                  </form>
+                </div>
                 <div class="dropdown" ngbDropdown>
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" ngbDropdownToggle>
                       Filtrar lista <i class="mdi mdi-chevron-down"></i>
@@ -15,6 +22,7 @@
                       <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
                       <a class="dropdown-item" (click)="FiltrarAlumnos()">Alumnos</a>
                       <a class="dropdown-item" (click)="FiltrarDocentes()">Docentes</a>
+                      <a class="dropdown-item" (click)="FiltrarComites()">Comites</a>
                       <a class="dropdown-item" (click)="FiltrarInactivos()">Usuarios inactivos</a>
                     </div>
                 </div>
@@ -31,18 +39,18 @@
                 </thead>
                 <tbody *ngIf="isLoaded == true">
                   <tr *ngFor="let user of filter">
-                    <td>{{ user.name }}</td>
+                    <td>{{ user.firstname + user.lastname }}</td>
                     <td>{{ user.code }}</td>
                     <td>
-                        <div *ngIf="user.state == 'activo'; else elseBlock1">
-                            <div class="badge-soft-success badge font-size-15">{{ user.state }}</div>
+                        <div *ngIf="user.active == 1; else elseBlock1">
+                            <div class="badge-soft-success badge font-size-15">activo</div>
                         </div>
                         <ng-template #elseBlock1>
-                            <div class="badge-soft-danger badge font-size-15">{{ user.state }}</div>
+                            <div class="badge-soft-danger badge font-size-15">inactivo</div>
                         </ng-template>
                     </td>
                     <td>
-                        <div *ngIf="user.state == 'activo'; else elseBlock2">
+                        <div *ngIf="user.active == 1; else elseBlock2">
                             <button type="button" class="btn btn-outline-danger btn-sm w-sm ">Inhabilitar</button>
                         </div>
                         <ng-template #elseBlock2>
@@ -52,6 +60,18 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div class="text-center mt-4">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-light"><i class="fas fa-forward fa-flip-horizontal"></i></button>
+                  <button type="button" class="btn btn-light"><i class="fas fa-angle-left"></i></button>
+                  <button type="button" class="btn btn-light">1</button>
+                  <button type="button" class="btn btn-light">2</button>
+                  <button type="button" class="btn btn-light">3</button>
+                  <button type="button" class="btn btn-light">4</button>
+                  <button type="button" class="btn btn-light"><i class="fas fa-angle-right"></i></button>
+                  <button type="button" class="btn btn-light"><i class="fas fa-forward"></i></button>
+              </div>
             </div>
           </div>
         </div>

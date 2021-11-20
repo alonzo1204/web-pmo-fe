@@ -4,7 +4,7 @@
     <app-pagetitle title="Gestiones de cambio"></app-pagetitle>
     <!-- end page title -->
 
-    <div class="card card-body">
+    <div class="card card-body" *ngIf="isLoaded">
         <div class="row">
           <div class="col-md-12">
             <div class="card card-body more-shadow col-md-7 centered">
@@ -12,10 +12,10 @@
                 <div class="row">
                     <div class="col-md-9 pt-3">
                       <div class="text-black">Descripción del proyecto:</div>
-                      <div>{{ project.definition }}</div>
+                      <div>{{ project.name }}</div>
                     </div>
                     <div class="col-md-3 pl-4 pt-2">
-                      <img src="{{ project.image }}" class="avatar-md" />
+                      <img src="{{ project.company.image }}" class="avatar-md" />
                     </div>
                 </div>
             </div>

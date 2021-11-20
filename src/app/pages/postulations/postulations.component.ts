@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-postulations',
@@ -7,22 +8,24 @@ import {Router} from '@angular/router';
   styleUrls: ['./postulations.component.scss']
 })
 export class PostulationsComponent implements OnInit {
-  postulations: any[] = [
-    { "id": 0, "code": "PRY2021201", "definition": "CoVMASPeru: Modelos multi agente para predecir la evolución de la pandemia en Perú Research & Games", "image": "assets/images/logos/Data-Center.png"},
-    { "id": 1, "code": "PRY2021202", "definition": "Imagination: Generación de imágenes a partir de un texto Research & Games", "image": "assets/images/logos/Innova-TI.png"},
-    { "id": 2, "code": "PRY2021203", "definition": "NAOEmotion: Generación de texto a partir de un sentimiento utilizando el robot NAO", "image": "assets/images/logos/IT-Consulting.png"},
-    { "id": 3, "code": "PRY2021204", "definition": "SmartAgro: pattern mining con computación evolutiva para extracción de patrones en agricultura", "image": "assets/images/logos/IT-Research.png"}
-  ];
+  postulations: any[] = [];
   breadCrumbItems: Array<{}>;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   gotodetails(id) {
     this.router.navigate(['/project-details/'+this.postulations[id].code]);
   }
 
+  getProjectsData() {
+    return this.http.get("http://localhost:3000/api/v1.0/projects");
+  }
+
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Postulaciones Cerradas' }, { label: 'Lista de Proyectos', active: true }];
+    this.breadCrumbItems = [{ label: 'Postulaciones Cerradas' }, { label: 'Proyectos Cerrados', active: true }];
+    this.getProjectsData().subscribe(data => {
+      this.postulations = Object.values(data)[0];
+    });
   }
 
 }
