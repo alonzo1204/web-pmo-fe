@@ -9,7 +9,7 @@
                 <div class="card-title list-title">
                   <form class="search-box app-search d-none d-lg-block">
                     <div class="position-relative">
-                      <input type="text" class="form-control bg-white" placeholder="Buscar...">
+                      <input (ngModelChange)="onSearchFilter($event)" [(ngModel)]="keyword" name="search-box" type="text" class="form-control bg-white" placeholder="Buscar...">
                       <span class="ri-search-line"></span>
                     </div>
                   </form>
@@ -33,14 +33,26 @@
                   <tr>
                     <th>Nombre Completo</th>
                     <th>Código</th>
+                    <th>Tipo de usuario</th>
+                    <th>Cargo</th>
                     <th>Estado</th>
                     <th>Opciones</th>
                   </tr>
                 </thead>
                 <tbody *ngIf="isLoaded == true">
-                  <tr *ngFor="let user of filter">
-                    <td>{{ user.firstname + user.lastname }}</td>
+                  <tr *ngFor="let user of filter | slice: (page-1) * pageSize : page * pageSize">
+                    <td class="pointer" (click)=gotodetails(user.id)>{{ user.firstname + ' ' + user.lastname }}</td>
                     <td>{{ user.code }}</td>
+                    <td>
+                      <ng-template [ngIf]="user.role.id == 4">Docente</ng-template>
+                      <ng-template [ngIf]="user.role.id == 5">Miembro del comité</ng-template>
+                      <ng-template [ngIf]="user.role.id < 4">Alumno</ng-template>
+                    </td>
+                    <td>
+                      <ng-template [ngIf]="user.role.id < 4">
+                        <span class="uppercase">{{ user.role.name }}</span>
+                      </ng-template>
+                    </td>
                     <td>
                         <div *ngIf="user.active == 1; else elseBlock1">
                             <div class="badge-soft-success badge font-size-15">activo</div>
@@ -62,15 +74,9 @@
               </table>
             </div>
             <div class="text-center mt-4">
-              <div class="btn-group mr-2" role="group" aria-label="First group">
-                  <button type="button" class="btn btn-light"><i class="fas fa-forward fa-flip-horizontal"></i></button>
-                  <button type="button" class="btn btn-light"><i class="fas fa-angle-left"></i></button>
-                  <button type="button" class="btn btn-light">1</button>
-                  <button type="button" class="btn btn-light">2</button>
-                  <button type="button" class="btn btn-light">3</button>
-                  <button type="button" class="btn btn-light">4</button>
-                  <button type="button" class="btn btn-light"><i class="fas fa-angle-right"></i></button>
-                  <button type="button" class="btn btn-light"><i class="fas fa-forward"></i></button>
+              <div class="centered">
+                <ngb-pagination class="pagination" [collectionSize]="number_projects" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+                  [boundaryLinks]="true"></ngb-pagination>
               </div>
             </div>
           </div>

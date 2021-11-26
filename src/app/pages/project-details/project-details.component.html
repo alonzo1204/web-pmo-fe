@@ -5,46 +5,108 @@
     <!-- end page title -->
     <div class="card card-body" *ngIf="isLoaded">
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-10 centered">
           <div class="card card-body more-shadow">
             <h3 class="card-title mt-0 text-center">{{ project.code }}</h3>
             <div class="row">
-              <div class="col-md-9">
-                <div class="text-black">Objetivo general:</div>
+              <div class="col-md-10 mb-4 padding-right">
+                <div class="text-black">Nombre de Proyecto:</div>
+                <div>{{ project.name }}</div>
+                <br>
+                <div class="text-black">Carrera:</div>
+                <div>{{ project.career.name }}</div>
+                <br>
+                <div class="text-black">Objetivo General:</div>
                 <div>{{ project.general_objective }}</div>
                 <br>
-                <div class="text-black">Descripción del proyecto:</div>
-                <div>{{ project.name }}</div>
+                <div class="text-black">Petición de dispositivos:</div>
+                <div>Lentes de realidad Aumentada</div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-lg-4 pt-2">
+                      <label class="text-black">Requerimiento de paper</label>
+                    </div>
+                    <div class="col-lg-1 pt-2">
+                      <label>Sí</label>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-lg-4 pt-2">
+                      <label class="text-black" for="peticion">Documento Adjunto</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-download">
+                            Descargar<i class="fas fa-file-download align-middle ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="text-black">Descripción:</div>
+                <div>{{ project.description }}</div>
               </div>
-              <div class="col-md-3 pl-4 pt-4">
-                <img src="{{ project.company.image }}" class="avatar-md" />
+              <div class="col-md-2 pt-4">
+                <img src="{{ project.company.image }}" class="avatar-lg" />
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-10 centered">
           <div class="card card-body more-shadow">
-              <div class="mt-2 row">
-                <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
-                <div class="ml-2 mt-1"><span class="text-black">Integrante 1:&nbsp;</span>{{ project.student_1.firstname + project.student_1.lastname }}</div>
+            <h3 class="card-title mt-0 text-center">Integrantes del grupo</h3>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="mt-2 row">
+                  <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
+                  <div class="ml-2">
+                    <div class="text-black">{{ project.student_1.firstname + project.student_1.lastname }}</div>
+                    <div>{{ project.student_1.code }}</div>
+                  </div>
+                </div>
+                <div class="mt-2 row">
+                  <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
+                  <div class="ml-2">
+                    <div class="text-black">{{ project.student_2.firstname + project.student_2.lastname }}</div>
+                    <div>{{ project.student_2.code }}</div>
+                  </div>
+                </div>
               </div>
-              <div class="mt-2 row">
-                <div><img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"></div>
-                <div class="ml-2 mt-1"><span class="text-black">Integrante 2:&nbsp;</span>{{ project.student_2.firstname + project.student_2.lastname }}</div>
+              <div class="col-md-4">
+                <div class="mt-2 row">
+                  <div class="mt-1">{{ project.career.name }}</div>
+                </div>
+                <div class="mt-4 row">
+                  <div class="mt-2">{{ project.career.name }}</div>
+                </div>
               </div>
+              <div class="col-md-3">
+                <div class="mt-2 row">
+                  <div class="mt-1">{{ project.student_1.code }}@upc.edu.pe</div>
+                </div>
+                <div class="mt-4 row">
+                  <div class="mt-2">{{ project.student_2.code }}@upc.edu.pe</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="card card-body more-shadow col-md-7 centered mb-4">
-              <div class="mt-2 text-center"><span class="text-black">PM Asignado:&nbsp;</span>{{ project.portfolio_manager.firstname + project.portfolio_manager.lastname }}</div>
-              <div class="mt-2 text-center"><span class="text-black">PO Asignado:&nbsp;</span>{{ project.product_owner.firstname + project.product_owner.lastname }}</div>
-              <div class="mt-2 text-center"><span class="text-black">Co-Autor Asignado:&nbsp;</span>{{ project.co_autor.firstname + project.co_autor.lastname }}</div>
-              <div class="mt-2 text-center"><span class="text-black">Observaciones:&nbsp;</span>No hay observaciones</div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="text-center">
-              <button type="button" class="btn btn-primary w-lg" (click)="goToChangeManagment(project.id)">Gestiones de Cambio</button>
+        <div class="col-md-10 centered">
+          <div class="card card-body more-shadow">
+            <div class="row">
+              <div class="col-md-10 mb-4 padding-right">
+                <div class="text-black">Product Owner Asignado:</div>
+                <div>{{ project.product_owner.firstname + project.product_owner.lastname }}</div>
+                <br>
+                <div class="text-black">Portfolio Manager Asignado:</div>
+                <div>{{ project.portfolio_manager.firstname + project.portfolio_manager.lastname }}</div>
+                <br>
+                <div class="text-black">Coautor Asignado:</div>
+                <div>{{ project.co_autor.firstname + project.co_autor.lastname }}</div>
+                <br>
+                <div class="text-black">Observaciones:</div>
+                <div>Ninguna</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

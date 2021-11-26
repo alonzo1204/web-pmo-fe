@@ -42,3 +42,19 @@
 .pointer {
     cursor: pointer;
 }
+
+.uppercase {
+    text-transform:uppercase;
+}
+
+.centered {
+    margin: 0 auto;
+    display: table;
+    height: 100%;
+}
+
+.pagination {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}

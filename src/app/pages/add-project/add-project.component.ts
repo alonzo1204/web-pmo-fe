@@ -38,7 +38,6 @@ export class AddProjectComponent implements OnInit {
     body["cycle_id"] = 1;
     body["company"] = this.company;
     body["project_process_state_id"] = 1;
-    console.log(body);
     this.postProject(body).subscribe(result => {
       console.log(result);
     });;
