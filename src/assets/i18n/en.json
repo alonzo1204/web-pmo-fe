@@ -88,7 +88,7 @@
     "POSTULATION": {
       "TEXT": "Postulación",
       "LIST": {
-        "LISTPROJECTS": "Lista de Proyectos"
+        "LISTPROJECTS": "Cartera de Proyectos"
       }
     },
     "USERS": {
@@ -104,7 +104,7 @@
     "POSTULATIONS": {
       "TEXT": "Postulaciones Cerradas",
       "LIST": {
-        "POSTULATIONSLIST": "Lista de Proyectos"
+        "POSTULATIONSLIST": "Proyectos Cerrados"
 
       }
     },

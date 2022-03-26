@@ -13,10 +13,12 @@ import { ProjectReviewComponent } from './project-review/project-review.componen
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { ProjectDetailsAsignationComponent } from './project-details-asignation/project-details-asignation.component'
 import { ProjectDetailsReviewComponent } from './project-details-review/project-details-review.component';
+import { ProjectPortfolioComponent } from './project-portfolio/project-portfolio.component';
+import { ProjectDetailsPortfolioComponent } from './project-details-portfolio/project-details-portfolio.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
-    { path: 'ecommerce', loadChildren: () => import('./ecommerce/ecommerce.module').then(m => m.EcommerceModule) },
     { path: 'postulations', component: PostulationsComponent },
     { path: 'project-details/:code', component: ProjectDetailsComponent },
     { path: 'change-management/:code', component: ChangeManagementComponent},
@@ -26,8 +28,11 @@ const routes: Routes = [
     { path: 'add-project', component: AddProjectComponent},
     { path: 'project-review', component: ProjectReviewComponent},
     { path: 'projects-list', component: ProjectsListComponent},
+    { path: 'project-portfolio', component: ProjectPortfolioComponent},
     { path: 'project-details-review/:code', component: ProjectDetailsReviewComponent},
     { path: 'project-details-asignation/:code', component: ProjectDetailsAsignationComponent},
+    { path: 'project-details-portfolio/:code', component: ProjectDetailsPortfolioComponent},
+    { path: 'user-details/:code', component: UserDetailsComponent},
 ];
 
 @NgModule({

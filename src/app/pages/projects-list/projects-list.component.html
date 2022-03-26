@@ -7,7 +7,14 @@
       <div class="card">
         <div class="card-body">
             <div class="bg-light pt-2 pb-2 topusers">
-                <div class="card-title list-title">{{ title }}</div>
+                <div class="card-title list-title">
+                  <form class="search-box app-search d-none d-lg-block">
+                    <div class="position-relative">
+                      <input (ngModelChange)="onSearchFilter($event)" [(ngModel)]="keyword" name="search-box" type="text" class="form-control bg-white" placeholder="Buscar...">
+                      <span class="ri-search-line"></span>
+                    </div>
+                  </form>
+                </div>
                 <div class="dropdown" ngbDropdown>
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" ngbDropdownToggle>
                       Filtrar por Estado <i class="mdi mdi-chevron-down"></i>
@@ -30,32 +37,38 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let project of filter" (click)="gotodetails(project.id)">
+                <tr *ngFor="let project of filter | slice: (page-1) * pageSize : page * pageSize">
                   <td>
-                    <img src="{{ project.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                    <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
                   </td>
                   <td class="project-description">
-                    <div>
-                        <h5 class="font-size-14 text-truncate"><a class="text-dark">{{ project.code }}</a></h5>
+                    <div (click)="gotodetails(project.id)">
+                        <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
                     </div>
                     <div>
-                        <p class="card-text">{{ project.definition }}</p>
+                        <p class="card-text">{{ project.name }}</p>
                     </div>
                   </td>
                   <td class="text-center">
-                    <label>{{ project.studies }}</label>
+                    <label>{{ project.career.name }}</label>
                   </td>
                   <td class="text-center">
-                    <div *ngIf="project.state == 'Asignado'">
-                        <div class="badge-soft-success badge font-size-15">{{ project.state }}</div>
+                    <div *ngIf="project.project_process_state.id == 2">
+                      <div class="badge-soft-success badge font-size-15">Aprobado</div>
                     </div>
-                    <div *ngIf="project.state == 'Pendiente'">
-                        <div class="badge-soft-warning badge font-size-15">{{ project.state }}</div>
+                    <div *ngIf="project.project_process_state.id == 1">
+                      <div class="badge-soft-warning badge font-size-15">Pendiente</div>
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div class="text-center mt-4">
+            <div class="centered">
+              <ngb-pagination class="pagination" [collectionSize]="number_projects" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+                [boundaryLinks]="true"></ngb-pagination>
+            </div>
           </div>
         </div>
       </div>

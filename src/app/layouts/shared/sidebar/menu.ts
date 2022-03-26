@@ -35,14 +35,16 @@ export const MENU: MenuItem[] = [
         subItems: [
             {
                 id: 13,
-                label: 'MENUITEMS.PROJECTS.LIST.ADDPROJECT',
+                /* label: 'MENUITEMS.PROJECTS.LIST.ADDPROJECT', */
+                label: 'Añadir Proyecto',
                 //icon: 'ri-file-add-line',
                 link: '/add-project',
                 parentId: 5
             },
             {
                 id: 10,
-                label: 'MENUITEMS.PROJECTS.LIST.REVIEWPROJECTS',
+                /* label: 'MENUITEMS.PROJECTS.LIST.REVIEWPROJECTS', */
+                label: 'Lista de Proyectos',
                 link: '/project-review',
                 parentId: 5
             }
@@ -50,12 +52,14 @@ export const MENU: MenuItem[] = [
     },
     {
         id: 6,
-        label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT',
+        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
+        label: 'Asignación de Docentes',
         //icon: 'ri-profile-line',
         subItems: [
             {
                 id: 13,
-                label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS',
+                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
+                label: 'Listado de Proyectos',
                 link: '/projects-list',
                 parentId: 6
             },
@@ -63,17 +67,20 @@ export const MENU: MenuItem[] = [
     },
     {
         id: 6,
-        label: 'MENUITEMS.POSTULATION.TEXT',
+        /* label: 'MENUITEMS.POSTULATION.TEXT', */
+        label: 'Postulaciones',
         //icon: 'ri-profile-line',
         subItems: [
             {
                 id: 13,
-                label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS',
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Realizar Postulación',
+                link: '/project-portfolio',
                 parentId: 6
             },
         ]
     },
-    {
+    /* {
         id: 6,
         label: 'MENUITEMS.POSTULATIONS.TEXT',
         //icon: 'ri-table-2',
@@ -89,22 +96,25 @@ export const MENU: MenuItem[] = [
 
 
         ]
-    },
+    }, */
     {
         id: 6,
-        label: 'MENUITEMS.USERS.TEXT',
+        /* label: 'MENUITEMS.USERS.TEXT', */
+        label: 'Usuarios',
         //icon: 'ri-account-circle-line',
         subItems: [
             {
                 id: 13,
-                label: 'MENUITEMS.USERS.LIST.ADDUSER',
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Registrar Usuario',
                 //icon: 'ri-file-add-line',
                 link: '/user-register',
                 parentId: 5
             },
             {
                 id: 12,
-                label: 'MENUITEMS.USERS.LIST.USERLIST',
+                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
+                label: 'Lista de Usuarios',
                 link: '/users-list',
                 parentId: 5
             },

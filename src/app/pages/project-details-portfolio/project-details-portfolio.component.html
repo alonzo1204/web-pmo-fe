@@ -1,0 +1,60 @@
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <app-pagetitle title="{{ titlecode }}" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+    <!-- end page title -->
+    <div class="card card-body" *ngIf="isLoaded == true">
+      <div class="row">
+        <div class="col-md-10 centered">
+          <div class="card card-body more-shadow">
+            <h3 class="card-title mt-0 text-center">{{ project.code }}</h3>
+            <div class="row">
+              <div class="col-md-10 mb-4 padding-right">
+                <div class="text-black">Nombre de Proyecto:</div>
+                <div>{{ project.name }}</div>
+                <br>
+                <div class="text-black">Carrera:</div>
+                <div>{{ project.career.name }}</div>
+                <br>
+                <div class="text-black">Objetivo General:</div>
+                <div>{{ project.general_objective }}</div>
+                <br>
+                <div class="text-black">Petición de dispositivos:</div>
+                <div>Lentes de realidad Aumentada</div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-lg-4 pt-2">
+                      <label class="text-black">Requerimiento de paper</label>
+                    </div>
+                    <div class="col-lg-1 pt-2">
+                      <label>Sí</label>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-lg-4 pt-2">
+                      <label class="text-black" for="peticion">Documento Adjunto</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-download">
+                            Descargar<i class="fas fa-file-download align-middle ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="text-black">Descripción:</div>
+                <div>{{ project.description }}</div>
+              </div>
+              <div class="col-md-2 pt-4">
+                <img src="{{ project.company.image }}" class="avatar-lg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+  
+    
+  
+  </div> <!-- container-fluid -->

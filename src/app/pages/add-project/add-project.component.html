@@ -22,9 +22,9 @@
                           </div>
                           <div class="col-lg-9">
                             <select class="form-control" [(ngModel)]="studies">
-                              <option value="CC">Ciencias de la Computación</option>
-                              <option value="IS">Ingenieria de Sistemas</option>
-                              <option value="SW">Ingenieria de Software</option>
+                              <option value=3>Ciencias de la Computación</option>
+                              <option value=2>Ingenieria de Sistemas</option>
+                              <option value=1>Ingenieria de Software</option>
                             </select>
                           </div>
                         </div>
@@ -46,8 +46,11 @@
                             <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="pswitch">
                             <label class="custom-control-label" for="customSwitch1">Sí</label>
                           </div>
-                          <div class="col-lg-8">
+                          <div class="col-lg-8" *ngIf="pswitch == true">
                             <input id="peticion" name="peticion" type="text" class="form-control" [(ngModel)]="petition">
+                          </div>
+                          <div class="col-lg-8" *ngIf="pswitch == false">
+                            <input id="peticion" name="peticion" type="text" class="form-control disabled" [(ngModel)]="petition" disabled>
                           </div>
                         </div>
 
@@ -67,10 +70,10 @@
                             </div>
                             <div class="col-lg-9">
                                 <select class="form-control" [(ngModel)]="company">
-                                  <option value="DC">Data Center</option>
-                                  <option value="IT">Innova TI</option>
-                                  <option value="IC">IT Consulting</option>
-                                  <option value="IR">IT Research</option>
+                                  <option value=1>Data Center</option>
+                                  <option value=2>Innova TI</option>
+                                  <option value=3>IT Consulting</option>
+                                  <option value=4>IT Research</option>
                                 </select>
                             </div>
                         </div>
@@ -83,7 +86,9 @@
   
                 <div class="tab-pane" id="product-img">
                   <h4 class="card-title">Adjuntar Documento</h4>
-                  <dropzone class="dropzone"></dropzone>
+                  <form>
+                    <dropzone class="dropzone"></dropzone>
+                  </form>
                 </div>
   
                 <div class="float-right mt-4">

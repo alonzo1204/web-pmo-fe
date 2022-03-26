@@ -2,12 +2,59 @@
     display:flex;
     justify-content: space-between;
     padding-right: 2rem;
-    padding-left: 4rem;
+    padding-left: 1rem;
 }
 
 .list-title {
     font-size: 16px;
     font-weight: 900;
     color: black;
+    margin-bottom: 0px;
+}
+
+.search-box {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.toppostulations {
+    display:flex;
+    justify-content: space-between;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.postulations-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: black;
     padding-top: 8px;
+}
+
+.centered-header {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: black;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.uppercase {
+    text-transform:uppercase;
+}
+
+.centered {
+    margin: 0 auto;
+    display: table;
+    height: 100%;
+}
+
+.pagination {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }

@@ -14,7 +14,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-
+  username: any;
   element: any;
   configData: any;
   cookieValue;
@@ -37,6 +37,8 @@ export class TopbarComponent implements OnInit {
   @Output() settingsButtonClicked = new EventEmitter();
 
   ngOnInit(): void {
+    var currentUser = localStorage.getItem("currentUser");
+    this.username = JSON.parse(currentUser).email.substring(0,10).toUpperCase();
     this.element = document.documentElement;
     this.configData = {
       suppressScrollX: true,
