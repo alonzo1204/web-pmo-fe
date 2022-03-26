@@ -37,7 +37,7 @@ export class ProjectPortfolioComponent implements OnInit {
   }
 
   getProjectsData() {
-    return this.http.get("http://localhost:3000/api/v1.0/projects");
+    return this.http.get("http://localhost:30/api/v1.0/projects");
   }
 
   FiltrarTodos(): void {

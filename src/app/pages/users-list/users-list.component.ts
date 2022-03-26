@@ -24,7 +24,7 @@ export class UsersListComponent implements OnInit {
   }
 
   getUsersData() {
-    return this.http.get("http://localhost:3000/api/v1.0/users/");
+    return this.http.get("http://localhost:30/api/v1.0/users/");
   }
 
   FiltrarTodos(): void {

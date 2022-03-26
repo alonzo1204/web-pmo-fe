@@ -51,7 +51,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   postProject(body) {
-    return this.http.post('localhost:3000/api/v1.0/projects/save', body);
+    return this.http.post('http://localhost:30/api/v1.0/projects/save', body);
   }
 
   makeid(length) {
