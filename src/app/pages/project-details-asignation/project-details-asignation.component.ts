@@ -66,4 +66,14 @@ export class ProjectDetailsAsignationComponent implements OnInit {
     });
   }
 
+  downloadMyFile() {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', '../../../assets/file.docx');
+    link.setAttribute('download', `file.docx`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
 }

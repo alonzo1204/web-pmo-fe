@@ -64,7 +64,7 @@
                 <div class="card-title list-title">
                     <form class="search-box app-search d-none d-lg-block">
                         <div class="position-relative">
-                          <input type="text" class="form-control bg-white" placeholder="Buscar...">
+                          <input (ngModelChange)="onSearchFilter($event)" [(ngModel)]="keyword" name="search-box" type="text" class="form-control bg-white" placeholder="Buscar...">
                           <span class="ri-search-line"></span>
                         </div>
                     </form>
@@ -91,7 +91,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let project of filter">
+                <tr *ngFor="let project of filter | slice: (page-1) * pageSize : page * pageSize">
                   <td>
                     <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
                   </td>
@@ -124,15 +124,9 @@
             </table>
           </div>
           <div class="text-center mt-4">
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-light"><i class="fas fa-forward fa-flip-horizontal"></i></button>
-                <button type="button" class="btn btn-light"><i class="fas fa-angle-left"></i></button>
-                <button type="button" class="btn btn-light">1</button>
-                <button type="button" class="btn btn-light">2</button>
-                <button type="button" class="btn btn-light">3</button>
-                <button type="button" class="btn btn-light">4</button>
-                <button type="button" class="btn btn-light"><i class="fas fa-angle-right"></i></button>
-                <button type="button" class="btn btn-light"><i class="fas fa-forward"></i></button>
+            <div class="centered">
+              <ngb-pagination class="pagination" [collectionSize]="number_projects" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+                [boundaryLinks]="true"></ngb-pagination>
             </div>
           </div>
         </div>

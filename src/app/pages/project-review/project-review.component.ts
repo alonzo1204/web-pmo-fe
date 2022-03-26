@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,6 +8,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./project-review.component.scss']
 })
 export class ProjectReviewComponent implements OnInit {
+  page = 1;
+  number_projects: number = 50;
+  pageSize = 10;
+  keyword: string = "";
   projects: any[] = [];
   filter: any[] = [];
   isLoaded: boolean = false;
@@ -19,6 +23,7 @@ export class ProjectReviewComponent implements OnInit {
     this.filter = this.projects;
     this.getProjectsData().subscribe(data => {
       this.projects = Object.values(data)[0];
+      this.number_projects = this.projects.length;
       this.filter = this.projects;
       this.isLoaded = true;
     });
@@ -43,6 +48,15 @@ export class ProjectReviewComponent implements OnInit {
 
   FiltrarRechazados(): void {
     this.filter = this.projects.filter(function(item){return item.project_process_state.id == 3;});
+  }
+
+  onSearchFilter(keyword: string) {
+    this.filter = this.projects.filter(function(item){
+      return (item.code.toLowerCase().includes(keyword.toLowerCase()) || 
+      item.name.toLowerCase().includes(keyword.toLowerCase()) || 
+      item.company.name.toLowerCase().includes(keyword.toLowerCase()) || 
+      item.career.name.toLowerCase().includes(keyword.toLowerCase()));
+    });
   }
 
   gotodetails(id) {

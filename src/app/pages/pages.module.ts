@@ -20,7 +20,6 @@ import { ArchwizardModule } from 'angular-archwizard';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EcommerceModule } from './ecommerce/ecommerce.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { PostulationsComponent } from './postulations/postulations.component';
@@ -36,14 +35,23 @@ import { ProjectDetailsReviewComponent } from './project-details-review/project-
 import { ProjectDetailsAsignationComponent } from './project-details-asignation/project-details-asignation.component';
 import { ProjectPortfolioComponent } from './project-portfolio/project-portfolio.component';
 import { ProjectDetailsPortfolioComponent } from './project-details-portfolio/project-details-portfolio.component';
+import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 0.3
 };
 
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  url: 'https://httpbin.org/post',
+  maxFilesize: 50
+};
+
 @NgModule({
-  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -58,7 +66,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     DndModule,
     FullCalendarModule,
-    EcommerceModule,
     LeafletModule,
     WidgetModule,
     NgbModule,
@@ -70,6 +77,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
     }
   ]
 })
