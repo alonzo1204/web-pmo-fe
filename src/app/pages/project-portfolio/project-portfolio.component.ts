@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 
@@ -86,11 +86,49 @@ export class ProjectPortfolioComponent implements OnInit {
   }
 
   postular(): void {
+    this.requestProjects();
+    this.addedprojects = []; this.n_addeds = 0;
+    this.canadd = true; this.canpostulate = false;
+    this.projects.forEach(function (element) {element.added = false;});
     Swal.fire({
       title: 'Postulación enviada',
       text: 'Su postulación ha sido enviada con éxito',
       icon: 'success',
       confirmButtonColor: '#EF360E',
     });
+  }
+
+  requestProjects(): void {
+    var count: number = 0;
+    var projects: any[] = [];
+    while (count < this.addedprojects.length){
+      var request = { code: this.addedprojects[count].code, name: this.addedprojects[count].name, 
+        career: this.addedprojects[count].career.name, image: this.addedprojects[count].company.image, status: 'pendiente' };
+      projects.push(request);
+      count++;
+    }
+    this.insertLocalStorage(projects);
+  }
+
+  insertLocalStorage(projects): void {
+    var listPostulation = JSON.parse(localStorage.getItem('postulations')!);
+    var requestPostulation: any[] = [];
+
+    if (listPostulation != undefined) requestPostulation = listPostulation;
+    var postulation = { code: "POS" + this.makeid(8), date: new Date(), status: 'pendiente', projects: projects };
+    requestPostulation.push(postulation);
+
+    localStorage.setItem('postulations', JSON.stringify(requestPostulation));
+    console.log(requestPostulation);
+  }
+
+  makeid(length) {
+    var result = '';
+    var characters = '0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 }
