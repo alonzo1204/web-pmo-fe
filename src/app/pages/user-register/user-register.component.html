@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <!-- start page title -->
-  <app-pagetitle title="Registro de Usuario"></app-pagetitle>
+  <!--app-pagetitle title="Añadir Usuario"></app-pagetitle>
   <!-- end page title -->
 
     <!-- start page title -->
-    <app-pagetitle title="Añadir Usuario" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+    <app-pagetitle title="Registro de Usuario" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
     <!-- end page title -->
   
     <div class="row">
@@ -64,12 +64,12 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group row">
+              <!--div class="form-group row">
                 <label for="score-input" class="col-md-2 col-form-label">Promedio Ponderado</label>
                 <div class="col-md-2">
                   <input class="form-control" type="number" id="score-input" [(ngModel)]="score">
                 </div>
-              </div>
+              </div-->
             </div>
             <div *ngIf="type == 'docente'">
               <div class="form-group row">
