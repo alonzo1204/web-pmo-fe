@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <app-pagetitle title="Lista de Usuarios"></app-pagetitle>
+    <app-pagetitle title="Lista de Usuarios" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
   
     <div class="row">
       <div class="col-lg-12">
@@ -34,6 +34,8 @@
                     <th>Nombre Completo</th>
                     <th>Código</th>
                     <th>Tipo de usuario</th>
+                    <th>Promedio Ponderado</th>
+                    <th>Nivel de Inglés</th>
                     <th>Cargo</th>
                     <th>Estado</th>
                     <th>Opciones</th>
@@ -49,9 +51,25 @@
                       <ng-template [ngIf]="user.role.id < 4">Alumno</ng-template>
                     </td>
                     <td>
+                      <ng-template [ngIf]="user.role.id < 4">{{ averageStudent(13, 20) }}</ng-template>
+                      <ng-template [ngIf]="user.role.id >= 4">No Disponible</ng-template>
+                    </td>
+                    <td>
+                      <ng-template [ngIf]="user.role.id < 4">
+                        <div *ngIf="englishLevel(3, 5) == 5; else elseBlock1">
+                          <div class="badge-soft-success badge font-size-15">{{ englishLabel(level) }}</div>
+                        </div>
+                        <ng-template #elseBlock1>
+                            <div class="badge-soft-danger badge font-size-15">{{ englishLabel(level) }}</div>
+                        </ng-template>
+                      </ng-template>
+                      <ng-template [ngIf]="user.role.id >= 4">No Disponible</ng-template>
+                    </td>
+                    <td>
                       <ng-template [ngIf]="user.role.id < 4">
                         <span class="uppercase">{{ user.role.name }}</span>
                       </ng-template>
+                      <ng-template [ngIf]="user.role.id >= 4">No Disponible</ng-template>
                     </td>
                     <td>
                         <div *ngIf="user.active == 1; else elseBlock1">
@@ -63,10 +81,10 @@
                     </td>
                     <td>
                         <div *ngIf="user.active == 1; else elseBlock2">
-                            <button type="button" class="btn btn-outline-danger btn-sm w-sm ">Inhabilitar</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm w-sm">Inhabilitar</button>
                         </div>
                         <ng-template #elseBlock2>
-                            <button type="button" class="btn btn-outline-success btn-sm w-sm ">Habilitar</button>
+                            <button type="button" class="btn btn-outline-success btn-sm w-sm">Habilitar</button>
                         </ng-template>
                     </td>
                   </tr>

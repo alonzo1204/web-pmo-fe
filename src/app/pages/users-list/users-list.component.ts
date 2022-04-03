@@ -16,10 +16,14 @@ export class UsersListComponent implements OnInit {
   filter: any[] = [];
   isLoaded: boolean = false;
   title: string = "Todos";
+  breadCrumbItems: Array<{}>;
+
+  level: number;
 
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.breadCrumbItems = [{ label: 'Usuarios' }, { label: 'Lista de Usuarios', active: true }];
     this.getUsersData().subscribe(data => {
       this.users = Object.values(data)[0];
       this.number_projects = this.users.length;
@@ -63,6 +67,21 @@ export class UsersListComponent implements OnInit {
 
   gotodetails(id) {
     this.router.navigate(['/user-details/'+this.users[id-1].code]);
+  }
+
+  averageStudent(min, max): string {
+    var average = Math.floor(Math.random() * (max - min + 1) + min);
+    return average.toFixed(2);
+  }
+
+  englishLevel(min, max): number {
+    this.level = Math.floor(Math.random() * (max - min + 1) + min);
+    return this.level;
+  }
+
+  englishLabel(level): string {
+    if (level == 5) return level + ' - apto'
+    else return level + ' - no apto'
   }
 
 }
