@@ -42,7 +42,7 @@ export const MENU: MenuItem[] = [
                 parentId: 5
             },
             {
-                id: 10,
+                id: 12,
                 /* label: 'MENUITEMS.PROJECTS.LIST.REVIEWPROJECTS', */
                 label: 'Lista de Proyectos',
                 link: '/project-review',
@@ -66,7 +66,7 @@ export const MENU: MenuItem[] = [
         ]
     },
     {
-        id: 6,
+        id: 7,
         /* label: 'MENUITEMS.POSTULATION.TEXT', */
         label: 'Postulaciones',
         //icon: 'ri-profile-line',
@@ -76,7 +76,14 @@ export const MENU: MenuItem[] = [
                 /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
                 label: 'Realizar Postulación',
                 link: '/project-portfolio',
-                parentId: 6
+                parentId: 7
+            },
+            {
+                id: 12,
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Lista de Postulaciones',
+                link: '/postulations-list',
+                parentId: 7
             },
         ]
     },
@@ -98,7 +105,7 @@ export const MENU: MenuItem[] = [
         ]
     }, */
     {
-        id: 6,
+        id: 8,
         /* label: 'MENUITEMS.USERS.TEXT', */
         label: 'Usuarios',
         //icon: 'ri-account-circle-line',
@@ -109,14 +116,14 @@ export const MENU: MenuItem[] = [
                 label: 'Registrar Usuario',
                 //icon: 'ri-file-add-line',
                 link: '/user-register',
-                parentId: 5
+                parentId: 8
             },
             {
                 id: 12,
                 /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
                 label: 'Lista de Usuarios',
                 link: '/users-list',
-                parentId: 5
+                parentId: 8
             },
         ]
     },

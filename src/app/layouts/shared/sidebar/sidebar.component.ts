@@ -16,8 +16,9 @@ import { MenuItem } from './menu.model';
 export class SidebarComponent implements OnInit, AfterViewInit {
 
   menu: any;
-
+  menuMain = [];
   menuItems = [];
+
 
   @ViewChild('sideMenu') sideMenu: ElementRef;
 
@@ -113,7 +114,18 @@ export class SidebarComponent implements OnInit, AfterViewInit {
    * Initialize
    */
   initialize(): void {
-    this.menuItems = MENU;
+    var count = 0;
+    var search: any[] = [];
+    var user = JSON.parse(localStorage.getItem('currentUser')!);
+    console.log(user);
+
+    this.menuMain = MENU;
+    if (user == 'tdp' || user == 'tp1' || user == 'tp2') search = [1, 5, 7];
+    else search = [1, 6, 8];
+    while (count < search.length) {
+      this.menuItems.push(this.menuMain.filter(function(data){ return data.id == search[count] })[0]);
+      count++
+    }
   }
 
   /**
