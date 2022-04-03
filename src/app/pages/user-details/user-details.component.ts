@@ -17,7 +17,7 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Usuarios' }, { label: 'Lista de Usuarios' }, { label: 'Detalles', active: true }];
-    var code = this.route.snapshot.params.code
+    var code = this.route.snapshot.params.code;
     this.getUsersData().subscribe(data => {
       this.users = Object.values(data)[0];
       this.user = this.users.filter(function(data){ return data.code == code })[0];
@@ -26,7 +26,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUsersData() {
-    return this.http.get("http://localhost:3000/api/v1.0/users/");
+    return this.http.get("http://localhost:30/api/v1.0/users/");
   }
 
 }
