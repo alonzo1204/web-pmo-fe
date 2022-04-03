@@ -26,6 +26,23 @@
                               <option value=2>Ingenieria de Sistemas</option>
                               <option value=1>Ingenieria de Software</option>
                             </select>
+                            <div class="form-check">
+                              <input id="Activar Input" type="checkbox" class="form-check-input" [(ngModel)]="active">
+                              <label for="Activar Input">Añadir otra Carrera (Opcional)</label> 
+                            </div>
+                          </div>
+                        </div>
+
+                        <div *ngIf="active" class="form-group row">
+                          <div class="col-lg-3 pt-2">
+                            <label for="Otra Carrera">Otra Carrera</label>
+                          </div>
+                          <div class="col-lg-9">
+                            <select class="form-control" [(ngModel)]="studies_two">
+                              <option value=3>Ciencias de la Computación</option>
+                              <option value=2>Ingenieria de Sistemas</option>
+                              <option value=1>Ingenieria de Software</option>
+                            </select>
                           </div>
                         </div>
   
@@ -66,10 +83,11 @@
 
                         <div class="form-group row">
                             <div class="col-lg-3 pt-2">
-                              <label for="peticion">Empresa perteneciente</label>
+                              <label for="peticion">Empresa perteneciente (Opcional)</label>
                             </div>
                             <div class="col-lg-9">
                                 <select class="form-control" [(ngModel)]="company">
+                                  <option value=0>Selecciona una empresa</option>
                                   <option value=1>Data Center</option>
                                   <option value=2>Innova TI</option>
                                   <option value=3>IT Consulting</option>

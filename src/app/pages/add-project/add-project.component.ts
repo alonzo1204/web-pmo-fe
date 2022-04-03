@@ -16,9 +16,12 @@ export class AddProjectComponent implements OnInit {
   pswitch: boolean = true;
   petition: string = "";
   requeriment: boolean = true;
-  company: number = 1;
+  company: number = 0;
   description: string = "";
   breadCrumbItems: Array<{}>;
+
+  active: boolean = false;
+  studies_two: number = 3;
 
   constructor(private http: HttpClient) { }
 
@@ -27,20 +30,23 @@ export class AddProjectComponent implements OnInit {
   }
 
   successmsg() {
-    var body = {"code": "","name": "","description": "","general_objective": "","paper": 1,"devices": 1,"career_id": 1,"cycle_id": 1,"company": 1,"project_process_state_id": 1};
+    var body = {"code": "","name": "","description": "","general_objective": "","paper": 1,"devices": 1,"career_id": 1,"career_two_id": 1,"cycle_id": 1,"company": 1,"project_process_state_id": 1};
     body["code"] = "PRY" + this.makeid(8);
     body["name"] = this.name;
     body["description"] = this.description;
     body["general_objective"] = this.objective;
     if (this.pswitch == true) { body["paper"] = 1; } else { body["paper"] = 0; }
     if (this.requeriment == true) { body["devices"] = 1; } else { body["devices"] = 0; }
+    //if (this.active == true) { body["other_carrer_id"] = this.otherStudies; } else { body["other_carrer_id"] = 0; }
     body["career_id"] = this.studies;
+    body["career_two_id"] = this.studies_two;
     body["cycle_id"] = 1;
     body["company"] = this.company;
     body["project_process_state_id"] = 1;
-    this.postProject(body).subscribe(result => {
+    console.log(body);
+    /*this.postProject(body).subscribe(result => {
       console.log(result);
-    });;
+    });;*/
     Swal.fire({
       title: 'Proyecto Registrado',
       text: 'El proyecto ha sido registrado exitosamente',
