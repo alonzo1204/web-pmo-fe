@@ -16,10 +16,16 @@ import { ProjectDetailsReviewComponent } from './project-details-review/project-
 import { ProjectPortfolioComponent } from './project-portfolio/project-portfolio.component';
 import { ProjectDetailsPortfolioComponent } from './project-details-portfolio/project-details-portfolio.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { PostulationsListComponent } from './postulations-list/postulations-list.component';
+import { PostulationsDetailsComponent } from './postulations-details/postulations-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
+    { path: 'profile/:code', component: ProfileComponent },
     { path: 'postulations', component: PostulationsComponent },
+    { path: 'postulations-list', component: PostulationsListComponent },
+    { path: 'postulations-details/:code', component: PostulationsDetailsComponent },
     { path: 'project-details/:code', component: ProjectDetailsComponent },
     { path: 'change-management/:code', component: ChangeManagementComponent},
     { path: 'user-register', component: UserRegisterComponent },

@@ -116,6 +116,10 @@ export class TopbarComponent implements OnInit {
     this.languageService.setLanguage(lang);
   }
 
+  profile(username) {
+    var code = username.toLowerCase();
+    this.router.navigate(['/profile/'+code]);
+  }
 
   /**
    * Logout the user

@@ -364,7 +364,7 @@
 
         <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
           <!-- item-->
-          <a class="dropdown-item" href="javascript: void(0);"><i class="ri-user-line align-middle mr-1"></i>
+          <a class="dropdown-item" href="javascript: void(0);" (click)="profile(username)"><i class="ri-user-line align-middle mr-1"></i>
             {{ 'HEADER.LOGIN.PROFILE' | translate}}</a>
           <a class="dropdown-item" href="javascript: void(0);"><i
               class="ri-wallet-2-line align-middle mr-1"></i>{{ 'HEADER.LOGIN.MY_WALLET' | translate}}</a>

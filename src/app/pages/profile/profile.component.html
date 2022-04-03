@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <!-- start page title -->
+    <app-pagetitle title="Mi Perfil" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+    <!-- end page title -->
+    <div class="card card-body" *ngIf="isLoaded">
+        <div class="row">
+            <div class="col-md-10 centered">
+              <div class="card card-body more-shadow">
+                <div class="row centered">
+                    <img class="rounded-circle header-profile-user avatar-lg" src="assets/images/users/avatar-2.jpg">
+                </div>
+                <div class="row mt-4 ml-4">
+                  <div class="col-md-6 mb-4 padding-right">
+                    <div class="text-black">Nombre Completo:</div>
+                    <div>{{ user.firstname + " " + user.lastname }}</div>
+                    <br>
+                    <div class="text-black">Correo:</div>
+                    <div>{{ user.code }}@upc.edu.pe</div>
+                    <br>
+                    <div class="text-black">Carrera:</div>
+                    <div>Ciencias de la Computación</div>
+                  </div>
+                  <div class="col-md-6 mb-4 padding-right">
+                    <div class="text-black">Sede:</div>
+                    <div>San Isidro</div>
+                    <br>
+                    <div class="text-black">Teléfono:</div>
+                    <div>972734556</div>
+                    <br>
+                    <div class="text-black">Avance Actual:</div>
+                    <div><span class="uppercase">{{ user.role.name }}</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div> 
+
+</div>

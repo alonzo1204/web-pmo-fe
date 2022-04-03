@@ -38,6 +38,9 @@ import { ProjectDetailsPortfolioComponent } from './project-details-portfolio/pr
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { PostulationsListComponent } from './postulations-list/postulations-list.component';
+import { PostulationsDetailsComponent } from './postulations-details/postulations-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -51,7 +54,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent, PostulationsListComponent, PostulationsDetailsComponent, ProfileComponent],
   imports: [
     CommonModule,
     FormsModule,
