@@ -120,12 +120,13 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     console.log(user);
 
     this.menuMain = MENU;
-    if (user == 'tdp' || user == 'tp1' || user == 'tp2') search = [1, 5, 7];
+    this.menuItems = MENU
+    /* if (user == 'tdp' || user == 'tp1' || user == 'tp2') search = [1, 5, 7];
     else search = [1, 6, 8];
     while (count < search.length) {
       this.menuItems.push(this.menuMain.filter(function(data){ return data.id == search[count] })[0]);
       count++
-    }
+    } */
   }
 
   /**
