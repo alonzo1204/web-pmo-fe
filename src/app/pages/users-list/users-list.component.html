@@ -51,7 +51,7 @@
                       <ng-template [ngIf]="user.role.id < 4">Alumno</ng-template>
                     </td>
                     <td>
-                      <ng-template [ngIf]="user.role.id < 4">{{ averageStudent(13, 20) }}</ng-template>
+                      <ng-template [ngIf]="user.role.id < 4">{{ user.weighted_average }}</ng-template>
                       <ng-template [ngIf]="user.role.id >= 4">No Disponible</ng-template>
                     </td>
                     <td>
