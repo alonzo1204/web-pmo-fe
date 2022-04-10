@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -11,6 +12,8 @@ import Swal from 'sweetalert2';
 export class AddProjectComponent implements OnInit {
 
   name: string = "";
+  careers: any[] = [];
+  companies: any[] = [];
   studies: number = 3;
   objective: string = "";
   pswitch: boolean = true;
@@ -23,10 +26,12 @@ export class AddProjectComponent implements OnInit {
   active: boolean = false;
   studies_two: number = 3;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Proyectos' }, { label: 'Añadir Proyecto', active: true }];
+    this.getCompaniesData().subscribe(data => { this.companies = Object.values(data)[0]; });
+    this.getCareersData().subscribe(data => { this.careers = Object.values(data)[0]; });
   }
 
   successmsg() {
@@ -55,6 +60,14 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
+  getCompaniesData() {
+    return this.http.get("http://localhost:30/api/v1.0/companies");
+  }
+
+  getCareersData() {
+    return this.http.get("http://localhost:30/api/v1.0/careers");
+  }
+
   postProject(body) {
     return this.http.post('http://localhost:30/api/v1.0/projects/save', body);
   }
@@ -67,6 +80,10 @@ export class AddProjectComponent implements OnInit {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  }
+
+  buckupload() {
+    this.router.navigate(['/bulk-upload-projects']);
   }
 
 }

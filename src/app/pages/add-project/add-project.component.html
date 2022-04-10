@@ -7,111 +7,105 @@
             <aw-wizard>
               <aw-wizard-step stepTitle="Registro de Proyecto">
                 <div class="tab-pane" id="regpoy">
-                    <div class="form-group row mt-4">
-                      <div class="col-lg-3 pt-2">
-                        <label for="projectname">Nombre</label>
-                      </div>
-                      <div class="col-lg-9">
-                        <input id="projectname" name="projectname" type="text" class="form-control" [(ngModel)]="name">
-                      </div>
+                  <div class="form-group row mt-4">
+                    <div class="col-lg-3 pt-2">
+                      <label for="projectname">Nombre</label>
                     </div>
+                    <div class="col-lg-9">
+                      <input id="projectname" name="projectname" type="text" class="form-control" [(ngModel)]="name">
+                    </div>
+                  </div>
                   
-                        <div class="form-group row">
-                          <div class="col-lg-3 pt-2">
-                            <label for="Carrera">Carrera</label>
-                          </div>
-                          <div class="col-lg-9">
-                            <select class="form-control" [(ngModel)]="studies">
-                              <option value=3>Ciencias de la Computación</option>
-                              <option value=2>Ingenieria de Sistemas</option>
-                              <option value=1>Ingenieria de Software</option>
-                            </select>
-                            <div class="form-check">
-                              <input id="Activar Input" type="checkbox" class="form-check-input" [(ngModel)]="active">
-                              <label for="Activar Input">Añadir otra Carrera (Opcional)</label> 
-                            </div>
-                          </div>
-                        </div>
-
-                        <div *ngIf="active" class="form-group row">
-                          <div class="col-lg-3 pt-2">
-                            <label for="Otra Carrera">Otra Carrera</label>
-                          </div>
-                          <div class="col-lg-9">
-                            <select class="form-control" [(ngModel)]="studies_two">
-                              <option value=3>Ciencias de la Computación</option>
-                              <option value=2>Ingenieria de Sistemas</option>
-                              <option value=1>Ingenieria de Software</option>
-                            </select>
-                          </div>
-                        </div>
-  
-                        <div class="form-group row">
-                          <div class="col-lg-3 pt-2">
-                            <label for="Objetivo General">Objetivo General</label>
-                          </div>
-                          <div class="col-lg-9">
-                            <input id="Objetivo General" name="Objetivo General" type="text" class="form-control" [(ngModel)]="objective">
-                          </div>
-                        </div>
-  
-                        <div class="form-group row">
-                          <div class="col-lg-3 pt-2">
-                            <label for="peticion">Petición de dispositivos</label>
-                          </div>
-                          <div class="col-lg-1 custom-switch pt-2">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="pswitch">
-                            <label class="custom-control-label" for="customSwitch1">Sí</label>
-                          </div>
-                          <div class="col-lg-8" *ngIf="pswitch == true">
-                            <input id="peticion" name="peticion" type="text" class="form-control" [(ngModel)]="petition">
-                          </div>
-                          <div class="col-lg-8" *ngIf="pswitch == false">
-                            <input id="peticion" name="peticion" type="text" class="form-control disabled" [(ngModel)]="petition" disabled>
-                          </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-lg-3 pt-2">
-                              <label for="peticion">Requerimiento de paper</label>
-                            </div>
-                            <div class="col-lg-1 custom-switch pt-2">
-                              <input type="checkbox" class="custom-control-input" id="customSwitch2" [(ngModel)]="requeriment">
-                              <label class="custom-control-label" for="customSwitch2">Sí</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-lg-3 pt-2">
-                              <label for="peticion">Empresa perteneciente (Opcional)</label>
-                            </div>
-                            <div class="col-lg-9">
-                                <select class="form-control" [(ngModel)]="company">
-                                  <option value=0>Selecciona una empresa</option>
-                                  <option value=1>Data Center</option>
-                                  <option value=2>Innova TI</option>
-                                  <option value=3>IT Consulting</option>
-                                  <option value=4>IT Research</option>
-                                </select>
-                            </div>
-                        </div>
-  
-                    <div class="form-group">
-                      <label for="Descripcion">Descripción</label>
-                      <textarea class="form-control" id="Descripcion" rows="5" [(ngModel)]="description"></textarea>
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                        <label for="Carrera">Carrera</label>
                     </div>
+                    <div class="col-lg-9">
+                      <select class="form-control" [(ngModel)]="studies">
+                        <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
+                      </select>
+                      <div class="form-check">
+                        <input id="Activar Input" type="checkbox" class="form-check-input" [(ngModel)]="active">
+                        <label for="Activar Input">Añadir otra Carrera (Opcional)</label> 
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="active" class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="Otra Carrera">Otra Carrera</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <select class="form-control" [(ngModel)]="studies_two">
+                        <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+  
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="Objetivo General">Objetivo General</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <input id="Objetivo General" name="Objetivo General" type="text" class="form-control" [(ngModel)]="objective">
+                    </div>
+                  </div>
+  
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="peticion">Petición de dispositivos</label>
+                    </div>
+                    <div class="col-lg-1 custom-switch pt-2">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="pswitch">
+                      <label class="custom-control-label" for="customSwitch1">Sí</label>
+                    </div>
+                    <div class="col-lg-8" *ngIf="pswitch == true">
+                      <input id="peticion" name="peticion" type="text" class="form-control" [(ngModel)]="petition">
+                    </div>
+                    <div class="col-lg-8" *ngIf="pswitch == false">
+                      <input id="peticion" name="peticion" type="text" class="form-control disabled" [(ngModel)]="petition" disabled>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="peticion">Requerimiento de paper</label>
+                    </div>
+                    <div class="col-lg-1 custom-switch pt-2">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch2" [(ngModel)]="requeriment">
+                      <label class="custom-control-label" for="customSwitch2">Sí</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="peticion">Empresa perteneciente (Opcional)</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <select class="form-control" [(ngModel)]="company">
+                        <option [ngValue]=0>Selecciona una empresa</option>
+                        <option *ngFor="let company of companies" [ngValue]="company.id">{{ company.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="Descripcion">Descripción</label>
+                    <textarea class="form-control" id="Descripcion" rows="5" [(ngModel)]="description"></textarea>
+                  </div>
                 </div>
   
                 <div class="tab-pane" id="product-img">
                   <h4 class="card-title">Adjuntar Documento</h4>
                   <form>
-                    <dropzone class="dropzone"></dropzone>
+                    <dropzone class="dropzone-container"></dropzone>
                   </form>
                 </div>
   
-                <div class="float-right mt-4">
-                  <button type="submit" class="btn btn-light waves-effect mr-3">Cancelar</button>
-                  <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light" (click)="successmsg()">Registrar Proyecto</button>
+                <div class="mt-4">
+                  <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light float-left" (click)="buckupload()">Carga Masiva de Proyectos</button>
+                  <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()">Registrar Proyecto</button>
+                  <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
                 </div>           
                 
               </aw-wizard-step>
