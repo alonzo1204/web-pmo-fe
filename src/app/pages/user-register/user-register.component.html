@@ -3,97 +3,97 @@
   <!--app-pagetitle title="Añadir Usuario"></app-pagetitle>
   <!-- end page title -->
 
-    <!-- start page title -->
-    <app-pagetitle title="Registro de Usuario" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
-    <!-- end page title -->
-  
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <aw-wizard>
-              <aw-wizard-step stepTitle="Registro de Usuario">
-            <div class="form-group row mt-4">
-              <label for="name-input" class="col-md-2 col-form-label">Nombre</label>
-              <div class="col-md-10">
-                <input class="form-control" type="text" id="name-input" [(ngModel)]="name">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="code-input" class="col-md-2 col-form-label">Código</label>
-              <div class="col-md-10">
-                <input class="form-control" type="text" id="code-input" [(ngModel)]="code">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="code-input" class="col-md-2 col-form-label">Sede Perteneciente</label>
-              <div class="col-md-10">
-                <select class="form-control" [(ngModel)]="sede">
-                  <option value="M">Monterrico</option>
-                  <option value="V">Villa</option>
-                  <option value="SM">San Miguel</option>
-                  <option value="SI">San Isidro</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="usertype-input" class="col-md-2 col-form-label">Tipo de usuario</label>
-              <div class="col-md-10 row mt-2 pl-5">
-                  <div class="form-check mr-5">
-                    <input class="form-check-input" type="radio" name="userTypeRadios" id="alumnoRadio" value="alumno" checked [(ngModel)]="type">
-                    <label class="form-check-label" for="alumnoRadio">Alumno</label>
-                  </div>
-                  <div class="form-check mr-5">
-                    <input class="form-check-input" type="radio" name="userTypeRadios" id="docenteRadio" value="docente" [(ngModel)]="type">
-                    <label class="form-check-label" for="docenteRadio">Docente</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="userTypeRadios" id="mcomiteRadio" value="mcomite" [(ngModel)]="type">
-                    <label class="form-check-label" for="mcomiteRadio">Miembro de Comité</label>
-                  </div>
-              </div>
-            </div>
-            <div *ngIf="type == 'alumno'">
-              <div class="form-group row">
-                <label class="col-md-2 col-form-label">Carrera</label>
+  <!-- start page title -->
+  <app-pagetitle title="Registro de Usuario" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+  <!-- end page title -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <aw-wizard>
+            <aw-wizard-step stepTitle="Registro de Usuario">
+              <div class="form-group row mt-4">
+                <label for="name-input" class="col-md-2 col-form-label">Nombre</label>
                 <div class="col-md-10">
-                  <select class="form-control" [(ngModel)]="studies">
-                    <option value=3>Ciencias de la Computación</option>
-                    <option value=2>Ingenieria de Sistemas</option>
-                    <option value=1>Ingenieria de Software</option>
+                  <input class="form-control" type="text" id="name-input" [(ngModel)]="name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="code-input" class="col-md-2 col-form-label">Código</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="code-input" [(ngModel)]="code">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="code-input" class="col-md-2 col-form-label">Sede Perteneciente</label>
+                <div class="col-md-10">
+                  <select class="form-control" [(ngModel)]="sede">
+                    <option value="M">Monterrico</option>
+                    <option value="V">Villa</option>
+                    <option value="SM">San Miguel</option>
+                    <option value="SI">San Isidro</option>
                   </select>
                 </div>
               </div>
-              <!--div class="form-group row">
-                <label for="score-input" class="col-md-2 col-form-label">Promedio Ponderado</label>
-                <div class="col-md-2">
-                  <input class="form-control" type="number" id="score-input" [(ngModel)]="score">
-                </div>
-              </div-->
-            </div>
-            <div *ngIf="type == 'docente'">
               <div class="form-group row">
-                <label class="col-md-2 col-form-label">Tipo de docente</label>
-                <div class="col-md-10">
-                  <select class="form-control" [(ngModel)]="teachertype">
-                    <option value="PM">Portafolio Manager</option>
-                    <option value="PO">Product Owner</option>
-                    <option value="CA">Co-Autor</option>
-                  </select>
+                <label for="usertype-input" class="col-md-2 col-form-label">Tipo de usuario</label>
+                <div class="col-md-10 row mt-2 pl-5">
+                    <div class="form-check mr-5">
+                      <input class="form-check-input" type="radio" name="userTypeRadios" id="alumnoRadio" value="alumno" checked [(ngModel)]="type">
+                      <label class="form-check-label" for="alumnoRadio">Alumno</label>
+                    </div>
+                    <div class="form-check mr-5">
+                      <input class="form-check-input" type="radio" name="userTypeRadios" id="docenteRadio" value="docente" [(ngModel)]="type">
+                      <label class="form-check-label" for="docenteRadio">Docente</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="userTypeRadios" id="mcomiteRadio" value="mcomite" [(ngModel)]="type">
+                      <label class="form-check-label" for="mcomiteRadio">Miembro de Comité</label>
+                    </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="float-right mt-4">
-                <button type="submit" class="btn btn-light waves-effect mr-3">Cancelar</button>
-                <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light" (click)="successmsg()">Registrar Usuario</button>
+              <div *ngIf="type == 'alumno'">
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label">Carrera</label>
+                  <div class="col-md-10">
+                    <select class="form-control" [(ngModel)]="studies">
+                      <option value=3>Ciencias de la Computación</option>
+                      <option value=2>Ingenieria de Sistemas</option>
+                      <option value=1>Ingenieria de Software</option>
+                    </select>
+                  </div>
+                </div>
+                <!--div class="form-group row">
+                  <label for="score-input" class="col-md-2 col-form-label">Promedio Ponderado</label>
+                  <div class="col-md-2">
+                    <input class="form-control" type="number" id="score-input" [(ngModel)]="score">
+                  </div>
+                </div-->
               </div>
-            </div>
-          </aw-wizard-step>
-        </aw-wizard>
-          </div>
+              <div *ngIf="type == 'docente'">
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label">Tipo de docente</label>
+                  <div class="col-md-10">
+                    <select class="form-control" [(ngModel)]="teachertype">
+                      <option value="PM">Portafolio Manager</option>
+                      <option value="PO">Product Owner</option>
+                      <option value="CA">Co-Autor</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light float-left" (click)="buckupload()">Carga Masiva de Usuarios</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()">Registrar Usuario</button>
+                <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
+              </div>  
+            </aw-wizard-step>
+          </aw-wizard>
         </div>
       </div>
     </div>
-    <!-- end row -->
-</div> <!-- container-fluid -->
+  </div>
+
+</div>

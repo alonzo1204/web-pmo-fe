@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-register',
@@ -19,7 +20,7 @@ export class UserRegisterComponent implements OnInit {
   score: number;
   breadCrumbItems: Array<{}>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Usuarios' }, { label: 'Añadir Usuario', active: true }];
@@ -50,6 +51,10 @@ export class UserRegisterComponent implements OnInit {
 
   postUser(body) {
     return this.http.post('localhost:3000/api/v1.0/users/save', body);
+  }
+
+  buckupload() {
+    this.router.navigate(['/bulk-upload-users']);
   }
 
 }
