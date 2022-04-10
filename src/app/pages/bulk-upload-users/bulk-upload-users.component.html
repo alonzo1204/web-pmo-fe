@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <app-pagetitle title="Registro de Usuarios" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <aw-wizard>
+                <aw-wizard-step stepTitle="Carga Masiva de Usuarios">
+                    <div class="form-group row mt-4">
+                        <div class="col-lg-3 pt-2">
+                          <label for="Tipo de Carga Masiva">Tipo de Carga Masiva</label>
+                        </div>
+                        <div class="col-lg-9">
+                          <select class="form-control" [(ngModel)]="type_upload">
+                            <option *ngFor="let typeUpload of typeUploades" [ngValue]="typeUpload.id">{{ typeUpload.name }}</option>
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="product-img">
+                        <h4 class="card-title">Adjuntar Documento</h4>
+                        <form>
+                          <dropzone class="dropzone-container"></dropzone>
+                        </form>
+                    </div>
+        
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-light waves-effect mr-3" (click)="goback()">Volver</button>
+                        <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light">Subir Archivo</button>
+                    </div>  
+                </aw-wizard-step>
+              </aw-wizard>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -117,7 +117,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     var count = 0;
     var search: any[] = [];
     var user = JSON.parse(localStorage.getItem('currentUser')!);
-    console.log(user);
+    //console.log(user);
 
     this.menuMain = MENU;
     this.menuItems = MENU

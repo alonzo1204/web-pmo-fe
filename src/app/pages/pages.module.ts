@@ -20,8 +20,8 @@ import { ArchwizardModule } from 'angular-archwizard';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostulationsComponent } from './postulations/postulations.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
@@ -41,6 +41,11 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { PostulationsListComponent } from './postulations-list/postulations-list.component';
 import { PostulationsDetailsComponent } from './postulations-details/postulations-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BulkUploadProjectsComponent } from './bulk-upload-projects/bulk-upload-projects.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { BulkUploadUsersComponent } from './bulk-upload-users/bulk-upload-users.component';
+import { GroupViewComponent } from './group-view/group-view.component';
+import { GroupRegisterComponent } from './group-register/group-register.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -54,7 +59,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent, PostulationsListComponent, PostulationsDetailsComponent, ProfileComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent, PostulationsListComponent, PostulationsDetailsComponent, ProfileComponent, BulkUploadProjectsComponent, UserManagementComponent, BulkUploadUsersComponent, GroupViewComponent, GroupRegisterComponent],
   imports: [
     CommonModule,
     FormsModule,

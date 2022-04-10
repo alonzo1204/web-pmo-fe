@@ -19,6 +19,11 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { PostulationsListComponent } from './postulations-list/postulations-list.component';
 import { PostulationsDetailsComponent } from './postulations-details/postulations-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BulkUploadProjectsComponent } from './bulk-upload-projects/bulk-upload-projects.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { BulkUploadUsersComponent } from './bulk-upload-users/bulk-upload-users.component';
+import { GroupViewComponent } from './group-view/group-view.component';
+import { GroupRegisterComponent } from './group-register/group-register.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -29,16 +34,21 @@ const routes: Routes = [
     { path: 'project-details/:code', component: ProjectDetailsComponent },
     { path: 'change-management/:code', component: ChangeManagementComponent},
     { path: 'user-register', component: UserRegisterComponent },
+    { path: 'user-management', component: UserManagementComponent },
     { path: 'users-list', component: UsersListComponent },
-    { path: 'employees', component: DashboardComponent},
-    { path: 'add-project', component: AddProjectComponent},
-    { path: 'project-review', component: ProjectReviewComponent},
-    { path: 'projects-list', component: ProjectsListComponent},
-    { path: 'project-portfolio', component: ProjectPortfolioComponent},
-    { path: 'project-details-review/:code', component: ProjectDetailsReviewComponent},
-    { path: 'project-details-asignation/:code', component: ProjectDetailsAsignationComponent},
-    { path: 'project-details-portfolio/:code', component: ProjectDetailsPortfolioComponent},
+    { path: 'bulk-upload-users', component: BulkUploadUsersComponent },
     { path: 'user-details/:code', component: UserDetailsComponent},
+    { path: 'group-view', component: GroupViewComponent },
+    { path: 'group-register', component: GroupRegisterComponent },
+    { path: 'employees', component: DashboardComponent },
+    { path: 'add-project', component: AddProjectComponent },
+    { path: 'project-review', component: ProjectReviewComponent },
+    { path: 'projects-list', component: ProjectsListComponent },
+    { path: 'project-portfolio', component: ProjectPortfolioComponent },
+    { path: 'bulk-upload-projects', component: BulkUploadProjectsComponent },
+    { path: 'project-details-review/:code', component: ProjectDetailsReviewComponent },
+    { path: 'project-details-asignation/:code', component: ProjectDetailsAsignationComponent },
+    { path: 'project-details-portfolio/:code', component: ProjectDetailsPortfolioComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,127 @@
+<div class="container-fluid">
+    <app-pagetitle title="Visualizar Mi Grupo" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body" *ngIf="isLoaded">
+                <div class="row">
+                    <div class="col-md-10 centered">
+                        <div class="card card-body more-shadow">
+                            <h3 class="card-title mt-0 text-center">GRP20212001</h3>
+
+                            <h3 class="card-title mt-4 px-4">Promedio Ponderado Grupal</h3>
+                            <div class="ml-4">18.50</div>
+
+                            <h3 class="card-title mt-4 px-4">Proyecto Asignado</h3>
+                            <div class="px-4" *ngIf="!assigned">Actualmente no cuentas con un proyecto asignado</div>
+                            <div class="d-flex mt-2 px-4 table-responsive" *ngIf="assigned">
+                                <table class="table table-centered mb-0">
+                                    <thead class="bg-white">
+                                        <tr>
+                                          <th style="width: 120px">Empresa</th>
+                                          <th>Descripción del proyecto</th>
+                                          <th class="text-center">Carrera</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                                            </td>
+                                            <td class="project-description">
+                                                <div (click)="gotodetails(project.code)">
+                                                    <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
+                                                </div>
+                                                <div>
+                                                    <p class="card-text">{{ project.name }}</p>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <label>{{ project.career.name }}</label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h3 class="card-title mt-4 px-4">Primer Integrante</h3>
+                            <div class="row mt-2 px-4">
+                                <div class="col-md-6 mb-2 padding-right">
+                                    <div class="text-black">Nombre Completo:</div>
+                                    <div>Juan Carlos Sotomayor Rodriguez</div>
+                                    <br>
+                                    <div class="text-black">Correo:</div>
+                                    <div>u201712390@upc.edu.pe</div>
+                                    <br>
+                                    <div class="text-black">Carrera:</div>
+                                    <div>Ciencias de la Computación</div>
+                                </div>
+
+                                <div class="col-md-6 mb-2 padding-right">
+                                    <div class="text-black">Sede:</div>
+                                    <div>San Isidro</div>
+                                    <br>
+                                    <div class="text-black">Teléfono:</div>
+                                    <div>972734556</div>
+                                    <br>
+                                    <div class="text-black">Avance Actual:</div>
+                                    <div><span class="uppercase">TP1</span></div>
+                                </div>
+                            </div>
+
+                            <h3 class="card-title mt-4 px-4">Segundo Integrante</h3>
+                            <div class="row mt-2 mb-2 px-4">
+                                <div class="col-md-6 mb-2 padding-right">
+                                    <div class="text-black">Nombre Completo:</div>
+                                    <div>Manuel Gonzalo Lopez Sandoval</div>
+                                    <br>
+                                    <div class="text-black">Correo:</div>
+                                    <div>u201614c11@upc.edu.pe</div>
+                                    <br>
+                                    <div class="text-black">Carrera:</div>
+                                    <div>Ciencias de la Computación</div>
+                                </div>
+
+                                <div class="col-md-6 mb-2 padding-right">
+                                    <div class="text-black">Sede:</div>
+                                    <div>San Isidro</div>
+                                    <br>
+                                    <div class="text-black">Teléfono:</div>
+                                    <div>941789546</div>
+                                    <br>
+                                    <div class="text-black">Avance Actual:</div>
+                                    <div><span class="uppercase">TP1</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center my-5" *ngIf="!isLoaded">
+                <div class="mb-4">
+                  <a routerLink="">
+                    <img src="assets/images/logo-upc.png" alt="logo" height="60" />
+                  </a>
+                </div>
+      
+                <div class="row justify-content-center">
+                  <div class="col-sm-4">
+                    <div class="maintenance-img">
+                      <img src="assets/images/maintenance-bg.png" alt="" class="img-fluid mx-auto d-block">
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="mt-4">Actualmente no cuentas con un grupo</h3>
+                <p>Porfavor dirigete al botón para registrar tu grupo.</p>
+
+                <div class="mt-3 text-center">
+                    <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light" (click)="groupregister()">Registrar Grupo</button>
+                </div> 
+                <!-- end row -->
+            </div>
+        </div>
+    </div>
+</div>
