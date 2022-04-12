@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class GroupViewComponent implements OnInit {
 
+  user: any;
   project: any;
   assigned: boolean = true;
   isLoaded: boolean = true;
@@ -18,6 +19,8 @@ export class GroupViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Grupos' }, { label: 'Visualizar Mi Grupo', active: true }];
+    var currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    this.user = currentUser.data;
     this.getProjectsData().subscribe(data => {
       var projects = Object.values(data)[0];
       this.project = projects[0];
