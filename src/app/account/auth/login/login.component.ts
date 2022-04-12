@@ -64,10 +64,14 @@ export class LoginComponent implements OnInit {
             this.error = error ? error : '';
           });
       } else {
-        this.authFackservice.login(this.f.email.value, this.f.password.value)
+        var email = this.f.email.value
+        var newEmail = email.substring(0, 10);
+        console.log(newEmail);
+        this.authFackservice.login(newEmail, this.f.password.value)
           .pipe(first())
           .subscribe(
             data => {
+              console.log(data);
               this.router.navigate(['/']);
             },
             error => {

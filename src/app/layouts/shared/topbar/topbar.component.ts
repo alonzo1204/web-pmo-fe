@@ -37,8 +37,10 @@ export class TopbarComponent implements OnInit {
   @Output() settingsButtonClicked = new EventEmitter();
 
   ngOnInit(): void {
-    var currentUser = localStorage.getItem("currentUser");
-    this.username = JSON.parse(currentUser).email.substring(0,10).toUpperCase();
+    var currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    this.username = currentUser.data.code;
+
+    //this.username = JSON.parse(currentUser).email.substring(0,10).toUpperCase();
     this.element = document.documentElement;
     this.configData = {
       suppressScrollX: true,
