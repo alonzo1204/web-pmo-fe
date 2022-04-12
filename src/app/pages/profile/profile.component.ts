@@ -16,9 +16,10 @@ export class ProfileComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
+    var currentUser = JSON.parse(localStorage.getItem("currentUser")!);
     this.breadCrumbItems = [{ label: 'Perfil' }, { label: 'Datos Personales', active: true }];
     //var code = this.route.snapshot.params.code;
-    var code = 'u201213280';
+    var code = currentUser.data.code;
     this.getUsersData().subscribe(data => {
       this.users = Object.values(data)[0];
       this.user = this.users.filter(function(data){ return data.code == code })[0];
