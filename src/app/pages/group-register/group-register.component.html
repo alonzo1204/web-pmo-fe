@@ -15,7 +15,7 @@
                                           <label for="projectname">Codigo</label>
                                         </div>
                                         <div class="col-lg-9">
-                                          <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="userprofile.code" disabled>
+                                          <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="user.code" disabled>
                                         </div>
                                     </div>
 
@@ -33,7 +33,7 @@
                                           <label for="Otra Carrera">Carrera</label>
                                         </div>
                                         <div class="col-lg-9">
-                                          <select class="form-control form-disabled" [(ngModel)]="userprofile.career" disabled>
+                                          <select class="form-control form-disabled" [(ngModel)]="user.career" disabled>
                                             <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
                                           </select>
                                         </div>
@@ -44,7 +44,7 @@
                                             <label for="projectname">Sede Perteneciente</label>
                                         </div>
                                         <div class="col-lg-9">
-                                          <select class="form-control form-disabled" [(ngModel)]="userprofile.sede" disabled>
+                                          <select class="form-control form-disabled" [(ngModel)]="user.sede" disabled>
                                             <option value="M">Monterrico</option>
                                             <option value="V">Villa</option>
                                             <option value="SM">San Miguel</option>
@@ -61,7 +61,7 @@
                                           <label for="projectname">Codigo</label>
                                         </div>
                                         <div class="col-lg-9">
-                                          <input id="projectname" name="projectname" type="text" class="form-control">
+                                          <input id="typeahead-basic" type="text" class="form-control" (ngModelChange)="getPartnerData(partner)" [(ngModel)]="partner" [ngbTypeahead]="search"/>
                                         </div>
                                     </div>
                                     
@@ -70,7 +70,7 @@
                                           <label for="projectname">Nombre</label>
                                         </div>
                                         <div class="col-lg-9">
-                                          <input id="projectname" name="projectname" type="text" class="form-control form-disabled" disabled>
+                                          <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="partnername" disabled>
                                         </div>
                                     </div>
 
@@ -79,7 +79,7 @@
                                           <label for="Otra Carrera">Carrera</label>
                                         </div>
                                         <div class="col-lg-9">
-                                          <select class="form-control form-disabled" disabled>
+                                          <select class="form-control form-disabled" [(ngModel)]="user.career" disabled>
                                             <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
                                           </select>
                                         </div>
@@ -90,7 +90,7 @@
                                             <label for="projectname">Sede Perteneciente</label>
                                         </div>
                                         <div class="col-lg-9">
-                                          <select class="form-control form-disabled" disabled>
+                                          <select class="form-control form-disabled" [(ngModel)]="user.sede" disabled>
                                             <option value="M">Monterrico</option>
                                             <option value="V">Villa</option>
                                             <option value="SM">San Miguel</option>
