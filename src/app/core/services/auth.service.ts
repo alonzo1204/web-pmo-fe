@@ -22,8 +22,7 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    let params = { code: email, password: password };
-    return this.http.post<any>(environment.apiURL + '/auth/login', params)
+    return this.http.post<any>(environment.apiURL + '/auth/login', { code: email, password: password })
       .pipe(map(response => {
         if (response) {
           localStorage.setItem('currentUser', JSON.stringify(response.data));
@@ -33,18 +32,15 @@ export class AuthenticationService {
   }
 
   logout() {
-    let params = { token: this.getToken(), user_id: JSON.parse(localStorage.getItem('currentUser')!).user.information.id }; 
-    return this.http.post<any>(environment.apiURL + '/auth/logout', params)
+    let token = JSON.parse(localStorage.getItem('currentUser')!).token;
+    let user_id = JSON.parse(localStorage.getItem('currentUser')!).user.information.id;
+    return this.http.post<any>(environment.apiURL + '/auth/logout', { token: token, user_id: user_id })
       .pipe(map(response => {
         if (response) {
           //console.log(response);
           localStorage.clear();
         } return response;
       }));
-  }
-
-  private getToken() {
-    return JSON.parse(localStorage.getItem('currentUser')!).token;
   }
 
 }
