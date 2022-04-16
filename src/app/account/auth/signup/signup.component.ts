@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/services/auth.service';
 import { environment } from '../../../../environments/environment';
 import { first } from 'rxjs/operators';
-import { UserProfileService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,8 +22,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
   year: number = new Date().getFullYear();
 
   // tslint:disable-next-line: max-line-length
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService,
-              private userService: UserProfileService) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     document.body.removeAttribute('data-layout');
@@ -64,7 +62,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
             this.error = error ? error : '';
           });*/
       } else {
-        this.userService.register(this.signupForm.value)
+        /*this.userService.register(this.signupForm.value)
           .pipe(first())
           .subscribe(
             data => {
@@ -75,7 +73,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
             },
             error => {
               this.error = error ? error : '';
-            });
+            });*/
       }
     }
   }
