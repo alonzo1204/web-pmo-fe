@@ -1,66 +1,46 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Auth } from '../models/auth.models';
 
-import { getFirebaseBackend } from '../../authUtils';
-
-import { User } from '../models/auth.models';
-
-@Injectable({ providedIn: 'root' })
-
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthenticationService {
+  private currentUserSubject: BehaviorSubject<Auth>;
+  public currentUser: Observable<Auth>;
 
-    user: User;
+  constructor(private http: HttpClient) { 
+    this.currentUserSubject = new BehaviorSubject<Auth>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
 
-    constructor() {
-    }
+  currentUserValue(): Auth {
+    return this.currentUserSubject.value;
+  }
 
-    /**
-     * Returns the current user
-     */
-    public currentUser(): User {
-        return getFirebaseBackend().getAuthenticatedUser();
-    }
+  login(email: string, password: string) {
+    return this.http.post<any>(environment.apiURL + '/auth/login', { code: email, password: password })
+      .pipe(map(response => {
+        if (response) {
+          localStorage.setItem('currentUser', JSON.stringify(response.data));
+          this.currentUserSubject.next(response.data);
+        } return response.data;
+      }));
+  }
 
-    /**
-     * Performs the auth
-     * @param email email of user
-     * @param password password of user
-     */
-    login(email: string, password: string) {
-        return getFirebaseBackend().loginUser(email, password).then((response: any) => {
-            const user = response;
-            return user;
-        });
-    }
+  logout() {
+    let token = JSON.parse(localStorage.getItem('currentUser')!).token;
+    let user_id = JSON.parse(localStorage.getItem('currentUser')!).user.information.id;
+    return this.http.post<any>(environment.apiURL + '/auth/logout', { token: token, user_id: user_id })
+      .pipe(map(response => {
+        if (response) {
+          //console.log(response);
+          localStorage.clear();
+        } return response;
+      }));
+  }
 
-    /**
-     * Performs the register
-     * @param email email
-     * @param password password
-     */
-    register(email: string, password: string) {
-        return getFirebaseBackend().registerUser(email, password).then((response: any) => {
-            const user = response;
-            return user;
-        });
-    }
-
-    /**
-     * Reset password
-     * @param email email
-     */
-    resetPassword(email: string) {
-        return getFirebaseBackend().forgetPassword(email).then((response: any) => {
-            const message = response.data;
-            return message;
-        });
-    }
-
-    /**
-     * Logout the user
-     */
-    logout() {
-        // logout the user
-        getFirebaseBackend().logout();
-    }
 }
-

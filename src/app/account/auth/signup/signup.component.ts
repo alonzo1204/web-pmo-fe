@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
       return;
     } else {
       if (environment.defaultauth === 'firebase') {
-        this.authenticationService.register(this.f.email.value, this.f.password.value).then((res: any) => {
+        /*this.authenticationService.register(this.f.email.value, this.f.password.value).then((res: any) => {
           this.successmsg = true;
           if (this.successmsg) {
             this.router.navigate(['/']);
@@ -62,7 +62,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
         })
           .catch(error => {
             this.error = error ? error : '';
-          });
+          });*/
       } else {
         this.userService.register(this.signupForm.value)
           .pipe(first())

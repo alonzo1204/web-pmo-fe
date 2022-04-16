@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { AuthenticationService } from '../../../core/services/auth.service';
-import { AuthfakeauthenticationService } from '../../../core/services/authfake.service';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-
-import { environment } from '../../../../environments/environment';
+import { AuthenticationService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,15 +20,15 @@ export class LoginComponent implements OnInit {
   year: number = new Date().getFullYear();
 
   // tslint:disable-next-line: max-line-length
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, public authenticationService: AuthenticationService, public authFackservice: AuthfakeauthenticationService) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, public authService: AuthenticationService) { }
 
   ngOnInit() {
     document.body.removeAttribute('data-layout');
     document.body.classList.add('auth-body-bg');
 
     this.loginForm = this.formBuilder.group({
-      email: ['u201413960@upc.edu.pe', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['u201716037@upc.edu.pe', [Validators.required, Validators.email]],
+      password: ['12345', [Validators.required]],
     });
 
     // reset login status
@@ -51,33 +46,15 @@ export class LoginComponent implements OnInit {
    */
   onSubmit() {
     this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    } else {
-      if (environment.defaultauth === 'firebase') {
-        this.authenticationService.login(this.f.email.value, this.f.password.value).then((res: any) => {
+    if (this.loginForm.invalid) return;
+    else {
+      var email = (this.f.email.value).substring(0, 10);
+      this.authService.login(email, this.f.password.value)
+        .pipe(first())
+        .subscribe(data => {
+          //console.log(data);
           this.router.navigate(['/']);
-        })
-          .catch(error => {
-            this.error = error ? error : '';
-          });
-      } else {
-        var email = this.f.email.value
-        var newEmail = email.substring(0, 10);
-        console.log(newEmail);
-        this.authFackservice.login(newEmail, this.f.password.value)
-          .pipe(first())
-          .subscribe(
-            data => {
-              console.log(data);
-              this.router.navigate(['/']);
-            },
-            error => {
-              this.error = error ? error : '';
-            });
-      }
+        }, error => { this.error = error ? error : ''; });
     }
   }
 

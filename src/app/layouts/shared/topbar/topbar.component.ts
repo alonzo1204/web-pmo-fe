@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../../core/services/authfake.service';
 import { LanguageService } from '../../../core/services/language.service';
-import { environment } from '../../../../environments/environment';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-topbar',
@@ -21,6 +21,7 @@ export class TopbarComponent implements OnInit {
   flagvalue;
   countryName;
   valueset: string;
+  error = '';
 
   listLang = [
     { text: 'English', flag: 'assets/images/flags/us.jpg', lang: 'en' },
@@ -38,7 +39,7 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit(): void {
     var currentUser = JSON.parse(localStorage.getItem("currentUser")!);
-    this.username = currentUser.data.code;
+    this.username = currentUser.user.information.code;
 
     //this.username = JSON.parse(currentUser).email.substring(0,10).toUpperCase();
     this.element = document.documentElement;
@@ -127,11 +128,11 @@ export class TopbarComponent implements OnInit {
    * Logout the user
    */
   logout() {
-    if (environment.defaultauth === 'firebase') {
-      this.authService.logout();
-    } else {
-      this.authFackservice.logout();
-    }
-    this.router.navigate(['/account/login']);
+    this.authService.logout()
+    .pipe(first())
+    .subscribe(data => {
+      //console.log(data);
+      this.router.navigate(['/account/login']);
+    }, error => { this.error = error ? error : ''; });
   }
 }
