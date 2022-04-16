@@ -5,16 +5,16 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class RoleService {
 
   constructor(private http: HttpClient) { }
 
-  getUsersData() {
-    return this.http.get<any>(environment.apiURL + '/users/');
+  getRolesData() {
+    return this.http.get<any>(environment.apiURL + '/roles/');
   }
 
-  saveUser(body: any) {
-    return this.http.post<any>(environment.apiURL + '/users/save', body);
+  saveRole(body: any) {
+    return this.http.post<any>(environment.apiURL + '/roles/save', body);
   }
 
 }

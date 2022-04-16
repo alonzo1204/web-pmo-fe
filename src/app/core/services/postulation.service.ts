@@ -5,16 +5,16 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class PostulationService {
 
   constructor(private http: HttpClient) { }
 
-  getUsersData() {
-    return this.http.get<any>(environment.apiURL + '/users/');
+  getPostulationsData() {
+    return this.http.get<any>(environment.apiURL + '/postulations/');
   }
 
-  saveUser(body: any) {
-    return this.http.post<any>(environment.apiURL + '/users/save', body);
+  savePostulation(body: any) {
+    return this.http.post<any>(environment.apiURL + '/postulations/save', body);
   }
 
 }
