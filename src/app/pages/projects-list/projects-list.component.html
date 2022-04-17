@@ -20,9 +20,9 @@
                       Filtrar por Estado <i class="mdi mdi-chevron-down"></i>
                     </button>
                     <div class="dropdown-menu" ngbDropdownMenu>
-                      <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
-                      <a class="dropdown-item" (click)="FiltrarAsignados()">Asignados</a>
-                      <a class="dropdown-item" (click)="FiltrarPendientes()">Pendientes</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(0)">Todos</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(2)">Asignados</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(1)">Pendientes</a>
                     </div>
                 </div>
             </div>
