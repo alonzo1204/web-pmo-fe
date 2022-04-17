@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
   selector: 'app-project-details-portfolio',
@@ -8,26 +8,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./project-details-portfolio.component.scss']
 })
 export class ProjectDetailsPortfolioComponent implements OnInit {
+  
   project: any;
   projects: any[] = [];
   titlecode: string = "";
   isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos' }, { label: 'Detalles', active: true }];
     var code = this.route.snapshot.params.code;
     this.titlecode = "Detalles del Proyecto " + code;
-    this.getProjectsData().subscribe(data => {
-      this.projects = Object.values(data)[0];
-      this.project = this.projects.filter(function(data){ return data.code == code })[0];
-      this.isLoaded = true;
+    this.projectService.getProjectsData().subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => { 
+        this.projects = rest.data;
+        this.project = this.projects.filter(function(data){ return data.code == code })[0];
+        this.isLoaded = true;
+      } 
     });
-  }
-
-  getProjectsData() {
-    return this.http.get("http://localhost:30/api/v1.0/projects");
   }
 }
