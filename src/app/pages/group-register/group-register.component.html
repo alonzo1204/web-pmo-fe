@@ -1,114 +1,113 @@
 <div class="container-fluid">
-    <app-pagetitle title="Registro de Grupo" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+  <app-pagetitle title="Registro de Grupo" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <aw-wizard>
+            <aw-wizard-step stepTitle="Registro de Grupo">
+              <div class="tab-pane" id="regpoy">
+                <div class="mt-4 mb-4">
+                  <h3 class="card-title mb-4">Mis Datos</h3>
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="projectname">Codigo</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="user.code" disabled>
+                    </div>
+                  </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <aw-wizard>
-                        <aw-wizard-step stepTitle="Registro de Grupo">
-                            <div class="tab-pane" id="regpoy">
-                                <div class="mt-4 mb-4">
-                                    <h3 class="card-title mb-4">Mis Datos</h3>
-                                    <div class="form-group row">
-                                        <div class="col-lg-3 pt-2">
-                                          <label for="projectname">Codigo</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="user.code" disabled>
-                                        </div>
-                                    </div>
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="projectname">Nombre</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="name" disabled>
+                    </div>
+                  </div>
 
-                                    <div class="form-group row">
-                                        <div class="col-lg-3 pt-2">
-                                          <label for="projectname">Nombre</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="username" disabled>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group row">
-                                        <div class="col-lg-3 pt-2">
-                                          <label for="Otra Carrera">Carrera</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <select class="form-control form-disabled" [(ngModel)]="user.career" disabled>
-                                            <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
-                                          </select>
-                                        </div>
-                                    </div>
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="Otra Carrera">Carrera</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <select class="form-control form-disabled" [(ngModel)]="career" disabled>
+                        <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
+                      </select>
+                    </div>
+                  </div>
 
-                                    <div class="form-group row">
-                                        <div class="col-lg-3 pt-2">
-                                            <label for="projectname">Sede Perteneciente</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <select class="form-control form-disabled" [(ngModel)]="user.sede" disabled>
-                                            <option value="M">Monterrico</option>
-                                            <option value="V">Villa</option>
-                                            <option value="SM">San Miguel</option>
-                                            <option value="SI">San Isidro</option>
-                                          </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="mt-4 mb-4">
-                                    <h3 class="card-title mb-4">Agregar Compañero</h3>
-                                    <div class="form-group row">
-                                        <div class="col-lg-3 pt-2">
-                                          <label for="projectname">Codigo</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <input id="typeahead-basic" type="text" class="form-control" (ngModelChange)="getPartnerData(partner)" [(ngModel)]="partner" [ngbTypeahead]="search"/>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group row" *ngIf="activepartner">
-                                        <div class="col-lg-3 pt-2">
-                                          <label for="projectname">Nombre</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="partnername" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row" *ngIf="activepartner">
-                                        <div class="col-lg-3 pt-2">
-                                          <label for="Otra Carrera">Carrera</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <select class="form-control form-disabled" [(ngModel)]="user.career" disabled>
-                                            <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
-                                          </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row" *ngIf="activepartner">
-                                        <div class="col-lg-3 pt-2">
-                                            <label for="projectname">Sede Perteneciente</label>
-                                        </div>
-                                        <div class="col-lg-9">
-                                          <select class="form-control form-disabled" [(ngModel)]="user.sede" disabled>
-                                            <option value="M">Monterrico</option>
-                                            <option value="V">Villa</option>
-                                            <option value="SM">San Miguel</option>
-                                            <option value="SI">San Isidro</option>
-                                          </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="mt-4">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light float-right">Registrar Grupo</button>
-                                <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
-                            </div> 
-                        </aw-wizard-step>
-                    </aw-wizard>
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                        <label for="projectname">Sede Perteneciente</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <select class="form-control form-disabled" [(ngModel)]="sede" disabled>
+                        <option value="M">Monterrico</option>
+                        <option value="V">Villa</option>
+                        <option value="SM">San Miguel</option>
+                        <option value="SI">San Isidro</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
-            </div>
+
+                <div class="mt-4 mb-4">
+                  <h3 class="card-title mb-4">Agregar Compañero</h3>
+                  <div class="form-group row">
+                    <div class="col-lg-3 pt-2">
+                      <label for="projectname">Codigo</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <input id="typeahead-basic" type="text" class="form-control" (ngModelChange)="getPartnerData($event)" [(ngModel)]="partner" [ngbTypeahead]="searchPartner"/>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="active">
+                    <div class="col-lg-3 pt-2">
+                      <label for="projectname">Nombre</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <input id="projectname" name="projectname" type="text" class="form-control form-disabled" [(ngModel)]="partner_name" disabled>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="active">
+                    <div class="col-lg-3 pt-2">
+                      <label for="Otra Carrera">Carrera</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <select class="form-control form-disabled" [(ngModel)]="partner_career" disabled>
+                        <option *ngFor="let carrer of careers" [ngValue]="carrer.id">{{ carrer.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="active">
+                    <div class="col-lg-3 pt-2">
+                        <label for="projectname">Sede Perteneciente</label>
+                    </div>
+                    <div class="col-lg-9">
+                      <select class="form-control form-disabled" [(ngModel)]="partner_sede" disabled>
+                        <option value="M">Monterrico</option>
+                        <option value="V">Villa</option>
+                        <option value="SM">San Miguel</option>
+                        <option value="SI">San Isidro</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()">Registrar Grupo</button>
+                <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
+              </div> 
+            </aw-wizard-step>
+          </aw-wizard>
         </div>
+      </div>
     </div>
+  </div>
 </div>

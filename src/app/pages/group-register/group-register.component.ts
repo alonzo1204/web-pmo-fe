@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CareerService } from 'src/app/core/services/career.service';
+import { UserService } from 'src/app/core/services/user.service';
+import { GroupService } from 'src/app/core/services/group.service';
 
 @Component({
   selector: 'app-group-register',
@@ -17,62 +17,69 @@ import 'rxjs/add/operator/distinctUntilChanged';
 export class GroupRegisterComponent implements OnInit {
 
   user: any;
-  username: string;
-  users_code: any = [];
-  
-  partner: any;
-  datapartner: any;
-  partnername: string;
-  activepartner: boolean = false;
+  name: string = '';
+  sede: string = 'V';
+  career: number = 3;
 
+  partner: any;
+  partner_name: string = '';
+  partner_sede: string = 'M';
+  partner_career: number = 1;
+
+  codes: any = [];
   users: any[] = [];
   careers: any[] = [];
-  companies: any[] = [];
-  studies: number = 3;
+  partner_data: any = [];
+  active: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private careerService: CareerService, 
+    private userService: UserService, private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Grupos' }, { label: 'Añadir Grupo', active: true }];
-    var currentUser = JSON.parse(localStorage.getItem("currentUser")!);
-    var viewUser = currentUser.data;
-    this.user = { code: viewUser.code, firstname: viewUser.firstname, lastname: viewUser.lastname, sede: 'M', career: 1 };
-    this.username = this.user.firstname+" "+this.user.lastname;
-
-    this.getUsersData().subscribe(data => { 
-      var count = 0;
-      this.users = Object.values(data)[0]; 
-      while (count < this.users.length) { this.users[count].code != 'u201213280' ? this.users_code.push(this.users[count].code) : ''; count++ }
+    this.user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
+    this.name = this.user.firstname+" "+this.user.lastname;
+    this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
+    this.userService.getUsersData().subscribe({ 
+      error: (err) => console.log(err), 
+      next: (rest) => {
+        var count = 0; this.users = rest.data;
+        while(count < this.users.length) { this.users[count].code != this.user.code ? this.codes.push(this.users[count].code) : ''; count++; }
+      } 
     });
-    this.getCompaniesData().subscribe(data => { this.companies = Object.values(data)[0]; });
-    this.getCareersData().subscribe(data => { this.careers = Object.values(data)[0]; });
   }
 
-  getUsersData() {
-    return this.http.get("http://localhost:30/api/v1.0/users/");
+  successmsg() {
+    var body = { student_1_id: 0, student_2_id: 0, group_weighted_average: 0 }
+    body['student_1_id'] = this.user.id;
+    body['student_2_id'] = this.partner_data.id;
+    body['group_weighted_average'] = 15.8;
+    /*
+    this.groupService.saveGroup(body).subscribe({
+      error: (err) => console.log(err),
+      next: (rest) => {
+        Swal.fire({
+          title: 'Grupo Registrado',
+          text: 'El grupo ha sido registrado exitosamente',
+          icon: 'success',
+          confirmButtonColor: '#EF360E',
+        });
+      }
+    });*/
   }
 
-  getCompaniesData() {
-    return this.http.get("http://localhost:30/api/v1.0/companies");
-  }
-
-  getCareersData() {
-    return this.http.get("http://localhost:30/api/v1.0/careers");
-  }
-
-  getPartnerData(code) {
-    if (code != undefined) {
-      this.datapartner = this.users.filter(function(data){ return data.code == code })[0];
-      this.datapartner != undefined ? this.activepartner = true : this.activepartner = false;
-      this.datapartner != undefined ? this.partnername = this.datapartner.firstname+" "+this.datapartner.lastname : this.partnername = '';
+  getPartnerData(code: any) {
+    if(code.length == 10){
+      this.partner_data = this.users.filter(function(data){ return data.code == code })[0];
+      this.partner_data != undefined ? this.partner_name = this.partner_data.firstname+" "+this.partner_data.lastname : this.partner_name = '';
     }
+    code.length < 10 ? this.active = false : this.active = true;
   }
 
-  search = (text$: Observable<string>) =>
-    text$
-      .debounceTime(200)
-      .distinctUntilChanged()
-      .map(term => term.length < 3 ? [] : this.users_code.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
-
+  searchPartner = (text$: Observable<string>) => text$
+    .debounceTime(200)
+    .distinctUntilChanged()
+    .map(term => term.length < 3 ? [] : this.codes.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+  
 }
