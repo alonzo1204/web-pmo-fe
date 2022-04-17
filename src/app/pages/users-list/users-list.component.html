@@ -19,11 +19,11 @@
                       Filtrar lista <i class="mdi mdi-chevron-down"></i>
                     </button>
                     <div class="dropdown-menu" ngbDropdownMenu>
-                      <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
-                      <a class="dropdown-item" (click)="FiltrarAlumnos()">Alumnos</a>
-                      <a class="dropdown-item" (click)="FiltrarDocentes()">Docentes</a>
-                      <a class="dropdown-item" (click)="FiltrarComites()">Comites</a>
-                      <a class="dropdown-item" (click)="FiltrarInactivos()">Usuarios inactivos</a>
+                      <a class="dropdown-item" (click)="onRoleFilter(0)">Todos</a>
+                      <a class="dropdown-item" (click)="onRoleFilter(1)">Alumnos</a>
+                      <a class="dropdown-item" (click)="onRoleFilter(2)">Docentes</a>
+                      <a class="dropdown-item" (click)="onRoleFilter(3)">Comites</a>
+                      <a class="dropdown-item" (click)="onRoleFilter(4)">Usuarios inactivos</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
             </div>
             <div class="text-center mt-4">
               <div class="centered">
-                <ngb-pagination class="pagination" [collectionSize]="number_projects" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+                <ngb-pagination class="pagination" [collectionSize]="number_users" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
                   [boundaryLinks]="true"></ngb-pagination>
               </div>
             </div>
