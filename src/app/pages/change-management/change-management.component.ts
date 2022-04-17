@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProjectService } from 'src/app/core/services/project.service';
 import Swal from 'sweetalert2';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-change-management',
@@ -15,19 +15,18 @@ export class ChangeManagementComponent implements OnInit {
   detalles: string = "";
   cambio: string = "CNP";
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     var code = this.route.snapshot.params.code
-    this.getProjectsData().subscribe(data => {
-      this.projects = Object.values(data)[0];
-      this.project = this.projects.filter(function(data){ return data.code == code })[0];
-      this.isLoaded = true;
+    this.projectService.getProjectsData().subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => { 
+        this.projects = rest.data;
+        this.project = this.projects.filter(function(data){ return data.code == code })[0];
+        this.isLoaded = true;
+      }
     });
-  }
-
-  getProjectsData() {
-    return this.http.get("http://localhost:30/api/v1.0/projects");
   }
 
   successmsg() {
