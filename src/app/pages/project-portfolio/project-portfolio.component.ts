@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from '@angular/common/http';
-
 import Swal from 'sweetalert2';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
   selector: 'app-project-portfolio',
@@ -24,16 +23,19 @@ export class ProjectPortfolioComponent implements OnInit {
   canpostulate: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private router: Router, private http: HttpClient, private modalService: NgbModal) { }
+  constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos', active: true }];
-    this.getProjectsData().subscribe(data => {
-      this.projects = Object.values(data)[0];
-      this.number_projects = this.projects.length;
-      this.projects.forEach(function (element) {element.added = false;});
-      this.filter = this.projects;
-      this.isLoaded = true;
+    this.projectService.getProjectsData().subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => { 
+        this.projects = rest.data;
+        this.number_projects = this.projects.length;
+        this.projects.forEach(function (element) { element.added = false; });
+        this.filter = this.projects;
+        this.isLoaded = true;
+      } 
     });
   }
 
@@ -41,20 +43,13 @@ export class ProjectPortfolioComponent implements OnInit {
     this.modalService.open(confirmationModal, { centered: true, size: 'lg'});
   }
 
-  getProjectsData() {
-    return this.http.get("http://localhost:30/api/v1.0/projects");
-  }
-
-  FiltrarTodos(): void {
-    this.filter = this.projects;
-  }
-
-  FiltrarAsignados(): void {
-    this.filter = this.projects.filter(function(item){return item.project_process_state.id == 2;});
-  }
-
-  FiltrarPendientes(): void {
-    this.filter = this.projects.filter(function(item){return item.project_process_state.id == 1;});
+  onStatusFilter(id: number) {
+    switch(id) {
+      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 1; }); break;
+      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 2; }); break;
+      default: this.filter = this.projects;
+    }
+    this.number_projects = this.filter.length;
   }
 
   onSearchFilter(keyword: string) {
@@ -64,9 +59,10 @@ export class ProjectPortfolioComponent implements OnInit {
       item.company.name.toLowerCase().includes(keyword.toLowerCase()) || 
       item.career.name.toLowerCase().includes(keyword.toLowerCase()));
     });
+    this.number_projects = this.filter.length;
   }
 
-  gotodetails(id) {
+  gotodetails(id: number) {
     this.router.navigate(['/project-details-portfolio/'+this.projects[id-1].code]);
   }
 
@@ -131,4 +127,5 @@ export class ProjectPortfolioComponent implements OnInit {
     }
     return result;
   }
+
 }
