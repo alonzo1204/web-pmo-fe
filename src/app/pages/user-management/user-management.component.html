@@ -20,9 +20,9 @@
                                 Filtrar por Estado <i class="mdi mdi-chevron-down"></i>
                               </button>
                               <div class="dropdown-menu" ngbDropdownMenu>
-                                <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
-                                <a class="dropdown-item" (click)="FiltrarEstado(1)">Habilitados</a>
-                                <a class="dropdown-item" (click)="FiltrarEstado(0)">Bloqueados</a>
+                                <a class="dropdown-item" (click)="onAllFilter()">Todos</a>
+                                <a class="dropdown-item" (click)="onStatusFilter(1)">Habilitados</a>
+                                <a class="dropdown-item" (click)="onStatusFilter(0)">Bloqueados</a>
                               </div>
                             </div>
                             <div class="dropdown" ngbDropdown>
@@ -30,8 +30,8 @@
                                   Filtrar por Ciclo <i class="mdi mdi-chevron-down"></i>
                                 </button>
                                 <div class="dropdown-menu" ngbDropdownMenu>
-                                  <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
-                                  <a *ngFor="let semester of semesters" class="dropdown-item" (click)="FiltrarSemestre(semester.id)">{{ semester.name }}</a>
+                                  <a class="dropdown-item" (click)="onAllFilter()">Todos</a>
+                                  <a *ngFor="let semester of semesters" class="dropdown-item" (click)="onSemesterFilter(semester.id)">{{ semester.name }}</a>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                       </div>
                       <div class="text-center mt-4">
                         <div class="centered">
-                          <ngb-pagination class="pagination" [collectionSize]="number_projects" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+                          <ngb-pagination class="pagination" [collectionSize]="number_users" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
                             [boundaryLinks]="true"></ngb-pagination>
                         </div>
                       </div>
