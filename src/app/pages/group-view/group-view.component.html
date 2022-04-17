@@ -26,18 +26,18 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                                                <img src="{{ project?.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
                                             </td>
                                             <td class="project-description">
-                                                <div (click)="gotodetails(project.code)">
-                                                    <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
+                                                <div (click)="gotodetails(project?.code)">
+                                                    <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project?.code }}</a></h5>
                                                 </div>
                                                 <div>
-                                                    <p class="card-text">{{ project.name }}</p>
+                                                    <p class="card-text">{{ project?.name }}</p>
                                                 </div>
                                             </td>
                                             <td class="text-center">
-                                                <label>{{ project.career.name }}</label>
+                                                <label>{{ project?.career.name }}</label>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -48,10 +48,10 @@
                             <div class="row mt-2 px-4">
                                 <div class="col-md-6 mb-2 padding-right">
                                     <div class="text-black">Nombre Completo:</div>
-                                    <div>{{ user.firstname+" "+user.lastname }}</div>
+                                    <div>{{ user?.firstname+" "+user?.lastname }}</div>
                                     <br>
                                     <div class="text-black">Correo:</div>
-                                    <div>{{ user.code+"@upc.edu.pe" }}</div>
+                                    <div>{{ user?.code+"@upc.edu.pe" }}</div>
                                     <br>
                                     <div class="text-black">Carrera:</div>
                                     <div>Ciencias de la Computación</div>
@@ -73,10 +73,10 @@
                             <div class="row mt-2 mb-2 px-4">
                                 <div class="col-md-6 mb-2 padding-right">
                                     <div class="text-black">Nombre Completo:</div>
-                                    <div>Manuel Gonzalo Lopez Sandoval</div>
+                                    <div>{{ partner?.firstname+" "+partner?.lastname }}</div>
                                     <br>
                                     <div class="text-black">Correo:</div>
-                                    <div>u201614c11@upc.edu.pe</div>
+                                    <div>{{ partner?.code+"@upc.edu.pe" }}</div>
                                     <br>
                                     <div class="text-black">Carrera:</div>
                                     <div>Ciencias de la Computación</div>
