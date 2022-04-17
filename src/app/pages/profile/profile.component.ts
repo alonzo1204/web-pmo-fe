@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +11,7 @@ export class ProfileComponent implements OnInit {
   isLoaded: Boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Perfil' }, { label: 'Datos Personales', active: true }];

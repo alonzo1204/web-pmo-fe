@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CompanyService } from 'src/app/core/services/company.service';
+import { CareerService } from 'src/app/core/services/career.service';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
   selector: 'app-add-project',
@@ -11,65 +12,54 @@ import { Router } from '@angular/router';
 })
 export class AddProjectComponent implements OnInit {
 
-  name: string = "";
-  careers: any[] = [];
-  companies: any[] = [];
+  name: string = '';
   studies: number = 3;
-  objective: string = "";
+  studies_two: number = 3;
+  active: boolean = false;
+  objective: string = '';
   pswitch: boolean = true;
   petition: string = "";
   requeriment: boolean = true;
   company: number = 0;
-  description: string = "";
+  description: string = '';
+
+  careers: any[] = [];
+  companies: any[] = [];
   breadCrumbItems: Array<{}>;
 
-  active: boolean = false;
-  studies_two: number = 3;
-
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private companyService: CompanyService, 
+    private careerService: CareerService, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Proyectos' }, { label: 'Añadir Proyecto', active: true }];
-    this.getCompaniesData().subscribe(data => { this.companies = Object.values(data)[0]; });
-    this.getCareersData().subscribe(data => { this.careers = Object.values(data)[0]; });
+    this.companyService.getCompaniesData().subscribe({ error: (err) => console.log(err), next: (rest) => this.companies = rest.data });
+    this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
   }
 
   successmsg() {
-    var body = {"code": "","name": "","description": "","general_objective": "","paper": 1,"devices": 1,"career_id": 1,"career_two_id": 1,"cycle_id": 1,"company": 1,"project_process_state_id": 1};
-    body["code"] = "PRY" + this.makeid(8);
-    body["name"] = this.name;
-    body["description"] = this.description;
-    body["general_objective"] = this.objective;
-    if (this.pswitch == true) { body["paper"] = 1; } else { body["paper"] = 0; }
-    if (this.requeriment == true) { body["devices"] = 1; } else { body["devices"] = 0; }
-    //if (this.active == true) { body["other_carrer_id"] = this.otherStudies; } else { body["other_carrer_id"] = 0; }
-    body["career_id"] = this.studies;
-    body["career_two_id"] = this.studies_two;
-    body["cycle_id"] = 1;
-    body["company"] = this.company;
-    body["project_process_state_id"] = 1;
-    console.log(body);
-    /*this.postProject(body).subscribe(result => {
-      console.log(result);
-    });;*/
-    Swal.fire({
-      title: 'Proyecto Registrado',
-      text: 'El proyecto ha sido registrado exitosamente',
-      icon: 'success',
-      confirmButtonColor: '#EF360E',
-    });
-  }
-
-  getCompaniesData() {
-    return this.http.get("http://localhost:30/api/v1.0/companies");
-  }
-
-  getCareersData() {
-    return this.http.get("http://localhost:30/api/v1.0/careers");
-  }
-
-  postProject(body) {
-    return this.http.post('http://localhost:30/api/v1.0/projects/save', body);
+    var body = { code: '', name: '', description: '', general_object: '', paper: 0, devices: 0, career_id: 0, project_process_state_id: 0, company: 0 };
+    body['code'] = 'PRY' + this.makeid(8);
+    body['name'] = this.name;
+    body['description'] = this.description;
+    body['general_object'] = this.objective;
+    if (this.pswitch) { body['paper'] = 1; } else { body['paper'] = 0; };
+    if (this.requeriment) { body['devices'] = 1; } else { body['devices'] = 0; };
+    //if (this.active) { body['other_career_id'] = this.studies_two; } else { body['other_career_id'] = 0; };
+    body['career_id'] = this.studies;
+    body['project_process_state_id'] = 1;
+    body['company'] = this.company;
+    /*
+    this.projectService.saveProject(body).subscribe({
+      error: (err) => console.log(err),
+      next: (rest) => {
+        Swal.fire({
+          title: 'Proyecto Registrado',
+          text: 'El proyecto ha sido registrado exitosamente',
+          icon: 'success',
+          confirmButtonColor: '#EF360E',
+        });
+      }
+    });*/
   }
 
   makeid(length) {
