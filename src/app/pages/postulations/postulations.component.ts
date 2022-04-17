@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
   selector: 'app-postulations',
@@ -9,55 +9,48 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostulationsComponent implements OnInit {
   page = 1;
-  number_projects: number = 50;
   pageSize = 10;
+  number_projects: number;
   keyword: string = "";
   postulations: any[] = [];
   filter: any[] = [];
   breadCrumbItems: Array<{}>;
 
-  constructor(private router: Router, private http: HttpClient) { }
-
-  gotodetails(id) {
-    this.router.navigate(['/project-details/'+this.postulations[id].code]);
-  }
-
-  getProjectsData() {
-    return this.http.get("http://localhost:30/api/v1.0/projects");
-  }
+  constructor(private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulaciones Cerradas' }, { label: 'Proyectos Cerrados', active: true }];
-    this.getProjectsData().subscribe(data => {
-      this.postulations = Object.values(data)[0];
-      this.number_projects = this.postulations.length;
-      this.filter = this.postulations;
+    this.projectService.getProjectsData().subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => { 
+        this.postulations = rest.data;
+        this.filter = this.postulations;
+        this.number_projects = this.postulations.length;
+      }
     });
   }
 
-  FiltrarTodos(): void {
-    this.filter = this.postulations;
-  }
-
-  FiltrarCC(): void {
-    this.filter = this.postulations.filter(function(item){return item.career.name == "Ciencias de la Computación";});
-  }
-
-  FiltrarSW(): void {
-    this.filter = this.postulations.filter(function(item){return item.career.name == "Ingeniería de Software";});
-  }
-
-  FiltrarIS(): void {
-    this.filter = this.postulations.filter(function(item){return item.career.name == "Ingeniería de Sistemas";});
+  onCareerFilter(id: number) {
+    switch(id) {
+      case 1: this.filter = this.postulations.filter(function(item){ return item.career.name == "Ingeniería de Sistemas"; }); break;
+      case 2: this.filter = this.postulations.filter(function(item){ return item.career.name == "Ingeniería de Software"; }); break;
+      case 3: this.filter = this.postulations.filter(function(item){ return item.career.name == "Ciencias de la Computación"; }); break;
+      default: this.filter = this.postulations;
+    }
+    this.number_projects = this.filter.length;
   }
 
   onSearchFilter(keyword: string) {
     this.filter = this.postulations.filter(function(item){
       return (item.code.toLowerCase().includes(keyword.toLowerCase()) || 
       item.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.company.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.career.name.toLowerCase().includes(keyword.toLowerCase()));
+      item.company.name.toLowerCase().includes(keyword.toLowerCase()));
     });
+    this.number_projects = this.filter.length;
+  }
+
+  gotodetails(id: number) {
+    this.router.navigate(['/project-details/'+this.postulations[id].code]);
   }
 
 }

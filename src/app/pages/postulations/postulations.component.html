@@ -20,10 +20,10 @@
                 Filtrar por Carrera <i class="mdi mdi-chevron-down"></i>
               </button>
               <div class="dropdown-menu" ngbDropdownMenu>
-                <a class="dropdown-item" (click)="FiltrarTodos()">Todos</a>
-                <a class="dropdown-item" (click)="FiltrarCC()">Ciencias de la Computación</a>
-                <a class="dropdown-item" (click)="FiltrarSW()">Ingeniería de Software</a>
-                <a class="dropdown-item" (click)="FiltrarIS()">Ingeniería de Sistemas</a>
+                <a class="dropdown-item" (click)="onCareerFilter(0)">Todos</a>
+                <a class="dropdown-item" (click)="onCareerFilter(3)">Ciencias de la Computación</a>
+                <a class="dropdown-item" (click)="onCareerFilter(2)">Ingeniería de Software</a>
+                <a class="dropdown-item" (click)="onCareerFilter(1)">Ingeniería de Sistemas</a>
               </div>
             </div>
           </div>
