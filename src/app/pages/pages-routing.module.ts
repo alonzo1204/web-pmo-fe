@@ -24,10 +24,14 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { BulkUploadUsersComponent } from './bulk-upload-users/bulk-upload-users.component';
 import { GroupViewComponent } from './group-view/group-view.component';
 import { GroupRegisterComponent } from './group-register/group-register.component';
+import { SemestersListComponent } from './semesters-list/semesters-list.component';
+import { SemesterRegisterComponent } from './semester-register/semester-register.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
     { path: 'profile/:code', component: ProfileComponent },
+    { path: 'semesters-list', component: SemestersListComponent },
+    { path: 'semester-register', component: SemesterRegisterComponent },
     { path: 'postulations', component: PostulationsComponent },
     { path: 'postulations-list', component: PostulationsListComponent },
     { path: 'postulations-details/:code', component: PostulationsDetailsComponent },

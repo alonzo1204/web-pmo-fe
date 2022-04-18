@@ -46,6 +46,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { BulkUploadUsersComponent } from './bulk-upload-users/bulk-upload-users.component';
 import { GroupViewComponent } from './group-view/group-view.component';
 import { GroupRegisterComponent } from './group-register/group-register.component';
+import { SemestersListComponent } from './semesters-list/semesters-list.component';
+import { SemesterRegisterComponent } from './semester-register/semester-register.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -59,7 +61,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent, PostulationsListComponent, PostulationsDetailsComponent, ProfileComponent, BulkUploadProjectsComponent, UserManagementComponent, BulkUploadUsersComponent, GroupViewComponent, GroupRegisterComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent, PostulationsListComponent, PostulationsDetailsComponent, ProfileComponent, BulkUploadProjectsComponent, UserManagementComponent, BulkUploadUsersComponent, GroupViewComponent, GroupRegisterComponent, SemestersListComponent, SemesterRegisterComponent],
   imports: [
     CommonModule,
     FormsModule,

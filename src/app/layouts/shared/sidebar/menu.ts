@@ -118,6 +118,29 @@ export const MENU: MenuItem[] = [
             },
         ]
     },
+    {
+        id: 7,
+        /* label: 'MENUITEMS.USERS.TEXT', */
+        label: 'Semestres',
+        //icon: 'ri-account-circle-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Registrar Semestre',
+                //icon: 'ri-file-add-line',
+                link: '/semester-register',
+                parentId: 7
+            },
+            {
+                id: 2,
+                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
+                label: 'Lista de Semestres',
+                link: '/semesters-list',
+                parentId: 7
+            },
+        ]
+    },
     // {
     //     id: 2,
     //     label: 'MENUITEMS.DASHBOARDS.TEXT',

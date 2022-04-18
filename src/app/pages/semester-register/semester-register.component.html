@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <app-pagetitle title="Registro de Usuario" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <aw-wizard>
+                        <aw-wizard-step stepTitle="Registro de Semestre">
+                            <div class="form-group row mt-4">
+                                <label for="name-input" class="col-md-2 col-form-label">Nombre</label>
+                                <div class="col-md-10">
+                                  <input class="form-control" type="text" id="name-input" [(ngModel)]="name">
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()">Registrar Semestre</button>
+                                <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
+                            </div>  
+                        </aw-wizard-step>
+                    </aw-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
