@@ -1,0 +1,101 @@
+<div class="home-btn d-none d-sm-block">
+    <a routerLink=""><i class="mdi mdi-home-variant h2 text-white"></i></a>
+  </div>
+  <div>
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
+        <div class="col-lg-4">
+          <div class="authentication-page-content p-4 d-flex align-items-center min-vh-100">
+            <div class="w-100">
+              <div class="row justify-content-center">
+                <div class="col-lg-9">
+                  <div>
+                    <div class="text-center">
+                      <div>
+                        <a routerLink="" class="logo"><img src="assets/images/logo-upc.png" height="130" alt="logo"></a>
+                      </div>
+  
+                      <h4 class="font-size-18 mt-4">Registro de Usuario</h4>
+                      <p class="text-muted">Completa los datos para registrarte exitosamente.</p>
+                    </div>
+  
+                    <div class="p-2 mt-5">
+                      <form class="form-horizontal" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                        <ngb-alert type="success" *ngIf="successmsg" [dismissible]="false">Socilitud de Acceso Enviada.
+                        </ngb-alert>
+                        <ngb-alert type="danger" *ngIf="error" [dismissible]="false">{{ error }}</ngb-alert>
+  
+                        <div class="form-group auth-form-group-custom mb-4">
+                          <i class="ri-user-2-line auti-custom-input-icon"></i>
+                          <label for="username">Codigo Universitario</label>
+                          <input type="text" formControlName="username" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" id="username"
+                            placeholder="Ingresa tu código universitario Ej. U202112345">
+                          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Codigo Universitario Requerido</div>
+                          </div>
+                        </div>
+
+                        <div class="form-group auth-form-group-custom mb-4">
+                          <i class="ri-lock-2-line auti-custom-input-icon"></i>
+                          <label for="password">Contraseña</label>
+                          <input type="password" formControlName="password" class="form-control" id="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Ingrese una contraseña">
+                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">La Contraseña es Requerida</div>
+                          </div>
+                        </div>
+
+                        <div class="form-group auth-form-group-custom mb-4">
+                          <i class="ri-user-shared-2-line auti-custom-input-icon"></i>
+                          <label for="firstname">Nombres Completos</label>
+                          <input type="text" formControlName="firstname" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" id="firstname"
+                            placeholder="Ingresa tus nombres completos Ej. Juan Lucas">
+                          <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstname.errors.required">Nombres Completos Requerido</div>
+                          </div>
+                        </div>
+
+                        <div class="form-group auth-form-group-custom mb-4">
+                          <i class="ri-user-shared-2-line auti-custom-input-icon"></i>
+                          <label for="lastname">Apellidos Completos</label>
+                          <input type="text" formControlName="lastname" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" id="lastname"
+                            placeholder="Ingresa tus apellidos completos Ej. Salvador Mejia">
+                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastname.errors.required">Apellidos Completos Requerido</div>
+                          </div>
+                        </div>
+
+                        <div class="text-center">
+                          <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Registrarse</button>
+                        </div>
+  
+                        <!-- <div class="mt-4 text-center">
+                          <p class="mb-0">By registering you agree to the Nazox <a href="#" class="text-primary">Terms of
+                              Use</a></p>
+                        </div> -->
+                      </form>
+                    </div>
+  
+                    <div class="mt-5 text-center">
+                      <p>Ya tienes una cuenta ?  <a routerLink="/account/login" class="font-weight-medium text-primary">
+                        Inicia Sesión</a> </p>
+                      <!-- <p>© 2020 Nazox. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="authentication-bg">
+            <div class="bg-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end page -->  
