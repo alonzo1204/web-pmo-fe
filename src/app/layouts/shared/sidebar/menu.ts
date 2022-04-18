@@ -6,6 +6,118 @@ export const MENU: MenuItem[] = [
         label: 'MENUITEMS.MENU.TEXT',
         isTitle: true
     },
+    {
+        id: 2,
+        //label: 'MENUITEMS.PROJECTS.TEXT',
+        label: 'Proyectos',
+        //icon: 'ri-layout-3-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.PROJECTS.LIST.ADDPROJECT', */
+                label: 'Añadir Proyecto',
+                //icon: 'ri-file-add-line',
+                link: '/add-project',
+                parentId: 2
+            },
+            {
+                id: 2,
+                /* label: 'MENUITEMS.PROJECTS.LIST.REVIEWPROJECTS', */
+                label: 'Lista de Proyectos',
+                link: '/project-review',
+                parentId: 2
+            }
+        ]
+    },
+    {
+        id: 3,
+        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
+        label: 'Asignación de Docentes',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
+                label: 'Listado de Proyectos',
+                link: '/projects-list',
+                parentId: 3
+            },
+        ]
+    },
+    {
+        id: 4,
+        /* label: 'MENUITEMS.POSTULATION.TEXT', */
+        label: 'Postulaciones',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Realizar Postulación',
+                link: '/project-portfolio',
+                parentId: 4
+            },
+            {
+                id: 2,
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Lista de Postulaciones',
+                link: '/postulations-list',
+                parentId: 4
+            },
+        ]
+    },
+    {
+        id: 5,
+        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
+        label: 'Grupos',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
+                label: 'Registrar Grupo',
+                link: '/group-register',
+                parentId: 5
+            },
+            {
+                id: 1,
+                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
+                label: 'Mi Grupo',
+                link: '/group-view',
+                parentId: 5
+            }
+        ]
+    },
+    {
+        id: 6,
+        /* label: 'MENUITEMS.USERS.TEXT', */
+        label: 'Usuarios',
+        //icon: 'ri-account-circle-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Registrar Usuario',
+                //icon: 'ri-file-add-line',
+                link: '/user-register',
+                parentId: 6
+            },
+            {
+                id: 2,
+                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
+                label: 'Lista de Usuarios',
+                link: '/users-list',
+                parentId: 6
+            },
+            {
+                id: 3,
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Administrar Usuarios',
+                link: '/user-management',
+                parentId: 6
+            },
+        ]
+    },
     // {
     //     id: 2,
     //     label: 'MENUITEMS.DASHBOARDS.TEXT',
@@ -28,87 +140,8 @@ export const MENU: MenuItem[] = [
     //     icon: 'ri-chat-1-line',
     //     link: '/chat'
     // },
-    {
-        id: 5,
-        label: 'MENUITEMS.PROJECTS.TEXT',
-        //icon: 'ri-layout-3-line',
-        subItems: [
-            {
-                id: 13,
-                /* label: 'MENUITEMS.PROJECTS.LIST.ADDPROJECT', */
-                label: 'Añadir Proyecto',
-                //icon: 'ri-file-add-line',
-                link: '/add-project',
-                parentId: 5
-            },
-            {
-                id: 12,
-                /* label: 'MENUITEMS.PROJECTS.LIST.REVIEWPROJECTS', */
-                label: 'Lista de Proyectos',
-                link: '/project-review',
-                parentId: 5
-            }
-        ]
-    },
-    {
-        id: 6,
-        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
-        label: 'Asignación de Docentes',
-        //icon: 'ri-profile-line',
-        subItems: [
-            {
-                id: 13,
-                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
-                label: 'Listado de Proyectos',
-                link: '/projects-list',
-                parentId: 6
-            },
-        ]
-    },
-    {
-        id: 7,
-        /* label: 'MENUITEMS.POSTULATION.TEXT', */
-        label: 'Postulaciones',
-        //icon: 'ri-profile-line',
-        subItems: [
-            {
-                id: 13,
-                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
-                label: 'Realizar Postulación',
-                link: '/project-portfolio',
-                parentId: 7
-            },
-            {
-                id: 12,
-                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
-                label: 'Lista de Postulaciones',
-                link: '/postulations-list',
-                parentId: 7
-            },
-        ]
-    },
-    {
-        id: 8,
-        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
-        label: 'Grupos',
-        //icon: 'ri-profile-line',
-        subItems: [
-            {
-                id: 13,
-                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
-                label: 'Registrar Grupo',
-                link: '/group-register',
-                parentId: 8
-            },
-            {
-                id: 12,
-                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
-                label: 'Mi Grupo',
-                link: '/group-view',
-                parentId: 8
-            }
-        ]
-    },
+    
+    
     /* {
         id: 6,
         label: 'MENUITEMS.POSTULATIONS.TEXT',
@@ -126,36 +159,6 @@ export const MENU: MenuItem[] = [
 
         ]
     }, */
-    {
-        id: 9,
-        /* label: 'MENUITEMS.USERS.TEXT', */
-        label: 'Usuarios',
-        //icon: 'ri-account-circle-line',
-        subItems: [
-            {
-                id: 13,
-                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
-                label: 'Registrar Usuario',
-                //icon: 'ri-file-add-line',
-                link: '/user-register',
-                parentId: 9
-            },
-            {
-                id: 12,
-                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
-                label: 'Lista de Usuarios',
-                link: '/users-list',
-                parentId: 9
-            },
-            {
-                id: 11,
-                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
-                label: 'Administrar Usuarios',
-                link: '/user-management',
-                parentId: 9
-            },
-        ]
-    },
     // {
     //     id: 14,
     //     label: 'MENUITEMS.EMAIL.TEXT',

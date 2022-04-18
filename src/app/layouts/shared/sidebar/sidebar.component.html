@@ -8,9 +8,9 @@
       <ul class="metismenu list-unstyled" id="side-menu" #sideMenu>
 
         <ng-container *ngFor="let item of menuItems">
-          <li class="menu-title" *ngIf="item.isTitle">{{ item.label | translate }}</li>
+          <li class="menu-title" *ngIf="item?.isTitle">{{ item.label | translate }}</li>
           <!-- Layouts menu -->
-          <li *ngIf="item.isLayout">
+          <li *ngIf="item?.isLayout">
             <a href="javascript: void(0);" class="has-arrow">
               <i class="ri-layout-3-line"></i>
               <span>Layouts</span>
@@ -30,7 +30,7 @@
           </li>
           <!-- end Layout menu -->
 
-          <li *ngIf="!item.isTitle && !item.isLayout">
+          <li *ngIf="!item?.isTitle && !item?.isLayout">
             <a *ngIf="hasItems(item)" href="javascript:void(0);" class="is-parent"
               [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}">
               <i class="bx {{item.icon}}" *ngIf="item.icon"></i>
@@ -39,15 +39,15 @@
                 *ngIf="item.badge">{{item.badge.text | translate}}</span>
             </a>
 
-            <a [routerLink]="item.link" *ngIf="!hasItems(item)" class="side-nav-link-ref" routerLinkActive="active">
-              <i class="bx {{ item.icon }}" *ngIf="item.icon"></i>
-              <span> {{ item.label | translate }}</span>
+            <a [routerLink]="item?.link" *ngIf="!hasItems(item)" class="side-nav-link-ref" routerLinkActive="active">
+              <i class="bx {{ item?.icon }}" *ngIf="item?.icon"></i>
+              <span> {{ item?.label | translate }}</span>
               <span class="badge badge-pill badge-{{item.badge.variant}} float-right"
-                *ngIf="item.badge">{{item.badge.text | translate}}</span>
+                *ngIf="item?.badge">{{item?.badge.text | translate}}</span>
             </a>
 
             <ul *ngIf="hasItems(item)" class="sub-menu" aria-expanded="false">
-              <li *ngFor="let subitem of item.subItems">
+              <li *ngFor="let subitem of item?.subItems">
                 <a [routerLink]="subitem.link" *ngIf="!hasItems(subitem)" class="side-nav-link-ref"
                   [attr.data-parent]="subitem.parentId" routerLinkActive="active">
                   {{ subitem.label | translate }}

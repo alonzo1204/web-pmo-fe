@@ -1,12 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import MetisMenu from 'metismenujs/dist/metismenujs';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-
 import { EventService } from '../../../core/services/event.service';
-
-
-import { MENU } from './menu';
 import { MenuItem } from './menu.model';
+import { MENU } from './menu';
+import { ROLES } from './roles';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,7 +14,6 @@ import { MenuItem } from './menu.model';
 export class SidebarComponent implements OnInit, AfterViewInit {
 
   menu: any;
-  menuMain = [];
   menuItems = [];
 
 
@@ -115,18 +112,23 @@ export class SidebarComponent implements OnInit, AfterViewInit {
    */
   initialize(): void {
     var count = 0;
-    var search: any[] = [];
-    var user = JSON.parse(localStorage.getItem('currentUser')!);
-    //console.log(user);
+    var roles = JSON.parse(localStorage.getItem('currentUser')!).user.roles;
+    var items = this.itemsMenu(roles);
+    while (count < items.length) { this.menuItems.push(MENU.filter(function(data){ return data.id == items[count] })[0]); count++ }
+    //console.log(this.menuItems);
+  }
 
-    this.menuMain = MENU;
-    this.menuItems = MENU
-    /* if (user == 'tdp' || user == 'tp1' || user == 'tp2') search = [1, 5, 7];
-    else search = [1, 6, 8];
-    while (count < search.length) {
-      this.menuItems.push(this.menuMain.filter(function(data){ return data.id == search[count] })[0]);
-      count++
-    } */
+  itemsMenu(roles: any) {
+    var count = 0; var items = []; var access = [];
+    if (roles.length != 1) {
+      while(count < roles.length) { items.push(ROLES.filter(function(data){ return data.id == roles[count].id; })[0]); count++; }; count = 0;
+      while(count < items.length) { count == 0 ? access = items[count].access : access = [...new Set([...access, ...items[count].access])]; count++; };
+    } else {
+      items = ROLES.filter(function(data){ return data.id == roles[count].id; });
+      access = items[0].access;
+    }
+    //console.log(access);
+    return access.sort();
   }
 
   /**
@@ -134,7 +136,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
    * @param item menuItem
    */
   hasItems(item: MenuItem) {
-    return item.subItems !== undefined ? item.subItems.length > 0 : false;
+    return item?.subItems !== undefined ? item.subItems.length > 0 : false;
   }
 
   /**
