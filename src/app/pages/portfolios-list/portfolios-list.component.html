@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <app-pagetitle title="Lista de Portafolios" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="bg-light pt-2 pb-2 topusers">
+                <div class="card-title list-title">
+                  <form class="search-box app-search d-none d-lg-block">
+                    <div class="position-relative">
+                      <input (ngModelChange)="onSearchFilter($event)" [(ngModel)]="keyword" name="search-box" type="text" class="form-control bg-white" placeholder="Buscar...">
+                      <span class="ri-search-line"></span>
+                    </div>
+                  </form>
+                </div>
+                <div class="dropdown" ngbDropdown>
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" ngbDropdownToggle>
+                      Filtrar lista <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                      <a class="dropdown-item" (click)="onStatusFilter(0)">Todos</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(1)">Abierta</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(2)">Sin Asignaciones</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(3)">Asignada</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(4)">Cerrada</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Semestre</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="isLoaded == true">
+                  <tr *ngFor="let portfolio of filter | slice: (page-1) * pageSize : page * pageSize">
+                    <td>{{ portfolio.Portfolio.name }}</td>
+                    <td>{{ portfolio.Semester.name }}</td>
+                    <td>{{ portfolio.Cantidad }}</td>
+                    <td>
+                        <div *ngIf="portfolio.Portfolio_state.id==1||portfolio.Portfolio_state.id==3" class="badge-soft-success badge font-size-15"> {{ portfolio.Portfolio_state.state }} </div>
+                        <div *ngIf="portfolio.Portfolio_state.id==2" class="badge-soft-warning badge font-size-15"> {{ portfolio.Portfolio_state.state }} </div>
+                        <div *ngIf="portfolio.Portfolio_state.id==4" class="badge-soft-danger badge font-size-15"> {{ portfolio.Portfolio_state.state }} </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-center mt-4">
+              <div class="centered">
+                <ngb-pagination class="pagination" [collectionSize]="number_portfolios" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+                  [boundaryLinks]="true"></ngb-pagination>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+
+  </div>

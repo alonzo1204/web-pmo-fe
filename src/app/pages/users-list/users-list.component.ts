@@ -38,7 +38,7 @@ export class UsersListComponent implements OnInit {
   onRoleFilter(id: number) {
     switch(id) {
       case 1: this.filter = this.users.filter(function(item){ return (item.role.name == "tdp" || item.role.name == "tp1" || item.role.name == "tp2"); }); break;
-      case 2: this.filter = this.users.filter(function(item){ return item.role.name == "docente" }); break;
+      case 2: this.filter = this.users.filter(function(item){ return item.role.name == "docente"; }); break;
       case 3: this.filter = this.users.filter(function(item){ return item.role.name == "comite"; }); break;
       case 4: this.filter = this.users.filter(function(item){ return item.active == 0; }); break;
       default: this.filter = this.users;

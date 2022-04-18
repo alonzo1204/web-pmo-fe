@@ -19,12 +19,12 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let postulation of postulations">
-                      <td class="pointer" (click)=gotodetails(postulation.code)>{{postulation.code}}</td>
-                      <td>{{postulation.date | date:'dd MMM yyy'}}</td>
+                      <td class="pointer" (click)=gotodetails(postulation.code)>{{ postulation.code }}</td>
+                      <td>{{ postulation.date | date:'dd MMM yyy' }}</td>
                       <td>
-                        <div *ngIf="postulation.status=='asiganado'" class="badge-soft-success badge font-size-15">{{postulation.status}}</div>
-                        <div *ngIf="postulation.status=='pendiente'" class="badge-soft-warning badge font-size-15">{{postulation.status}}</div>
-                        <div *ngIf="postulation.status=='rechazado'" class="badge-soft-danger badge font-size-15">{{postulation.status}}</div>
+                        <div *ngIf="postulation.status=='asiganado'" class="badge-soft-success badge font-size-15">{{ postulation.status }}</div>
+                        <div *ngIf="postulation.status=='pendiente'" class="badge-soft-warning badge font-size-15">{{ postulation.status }}</div>
+                        <div *ngIf="postulation.status=='rechazado'" class="badge-soft-danger badge font-size-15">{{ postulation.status }}</div>
                       </td>
                     </tr>
                   </tbody>

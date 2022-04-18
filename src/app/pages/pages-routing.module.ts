@@ -26,10 +26,14 @@ import { GroupViewComponent } from './group-view/group-view.component';
 import { GroupRegisterComponent } from './group-register/group-register.component';
 import { SemestersListComponent } from './semesters-list/semesters-list.component';
 import { SemesterRegisterComponent } from './semester-register/semester-register.component';
+import { PortfoliosListComponent } from './portfolios-list/portfolios-list.component';
+import { PortfolioRegisterComponent } from './portfolio-register/portfolio-register.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
     { path: 'profile/:code', component: ProfileComponent },
+    { path: 'portfolios-list', component: PortfoliosListComponent },
+    { path: 'portfolio-register', component: PortfolioRegisterComponent },
     { path: 'semesters-list', component: SemestersListComponent },
     { path: 'semester-register', component: SemesterRegisterComponent },
     { path: 'postulations', component: PostulationsComponent },

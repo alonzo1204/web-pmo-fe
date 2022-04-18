@@ -141,6 +141,29 @@ export const MENU: MenuItem[] = [
             },
         ]
     },
+    {
+        id: 8,
+        /* label: 'MENUITEMS.USERS.TEXT', */
+        label: 'Portafolios',
+        //icon: 'ri-account-circle-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Registrar Portafolio',
+                //icon: 'ri-file-add-line',
+                link: '/portfolio-register',
+                parentId: 8
+            },
+            {
+                id: 2,
+                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
+                label: 'Lista de Portafolios',
+                link: '/portfolios-list',
+                parentId: 8
+            },
+        ]
+    },
     // {
     //     id: 2,
     //     label: 'MENUITEMS.DASHBOARDS.TEXT',
