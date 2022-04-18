@@ -50,6 +50,8 @@ import { SemestersListComponent } from './semesters-list/semesters-list.componen
 import { SemesterRegisterComponent } from './semester-register/semester-register.component';
 import { PortfoliosListComponent } from './portfolios-list/portfolios-list.component';
 import { PortfolioRegisterComponent } from './portfolio-register/portfolio-register.component';
+import { CompanyRegisterComponent } from './company-register/company-register.component';
+import { CompaniesListComponent } from './companies-list/companies-list.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -63,7 +65,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent, PostulationsListComponent, PostulationsDetailsComponent, ProfileComponent, BulkUploadProjectsComponent, UserManagementComponent, BulkUploadUsersComponent, GroupViewComponent, GroupRegisterComponent, SemestersListComponent, SemesterRegisterComponent, PortfoliosListComponent, PortfolioRegisterComponent],
+  declarations: [DashboardComponent, PostulationsComponent, ProjectDetailsComponent, UserRegisterComponent, UsersListComponent, ChangeManagementComponent, MaintenanceComponent, AddProjectComponent, ProjectReviewComponent, ProjectsListComponent, ProjectDetailsReviewComponent, ProjectDetailsAsignationComponent, ProjectPortfolioComponent, ProjectDetailsPortfolioComponent, UserDetailsComponent, PostulationsListComponent, PostulationsDetailsComponent, ProfileComponent, BulkUploadProjectsComponent, UserManagementComponent, BulkUploadUsersComponent, GroupViewComponent, GroupRegisterComponent, SemestersListComponent, SemesterRegisterComponent, PortfoliosListComponent, PortfolioRegisterComponent, CompanyRegisterComponent, CompaniesListComponent],
   imports: [
     CommonModule,
     FormsModule,

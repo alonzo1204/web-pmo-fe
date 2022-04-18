@@ -164,6 +164,29 @@ export const MENU: MenuItem[] = [
             },
         ]
     },
+    {
+        id: 9,
+        /* label: 'MENUITEMS.USERS.TEXT', */
+        label: 'Empresas Virtuales',
+        //icon: 'ri-account-circle-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Registrar Empresa',
+                //icon: 'ri-file-add-line',
+                link: '/company-register',
+                parentId: 9
+            },
+            {
+                id: 2,
+                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
+                label: 'Lista de Empresas',
+                link: '/companies-list',
+                parentId: 9
+            },
+        ]
+    },
     // {
     //     id: 2,
     //     label: 'MENUITEMS.DASHBOARDS.TEXT',

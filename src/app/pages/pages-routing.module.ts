@@ -28,10 +28,14 @@ import { SemestersListComponent } from './semesters-list/semesters-list.componen
 import { SemesterRegisterComponent } from './semester-register/semester-register.component';
 import { PortfoliosListComponent } from './portfolios-list/portfolios-list.component';
 import { PortfolioRegisterComponent } from './portfolio-register/portfolio-register.component';
+import { CompaniesListComponent } from './companies-list/companies-list.component';
+import { CompanyRegisterComponent } from './company-register/company-register.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
     { path: 'profile/:code', component: ProfileComponent },
+    { path: 'companies-list', component: CompaniesListComponent },
+    { path: 'company-register', component: CompanyRegisterComponent },
     { path: 'portfolios-list', component: PortfoliosListComponent },
     { path: 'portfolio-register', component: PortfolioRegisterComponent },
     { path: 'semesters-list', component: SemestersListComponent },
