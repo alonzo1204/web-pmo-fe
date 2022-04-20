@@ -9,7 +9,7 @@ export const MENU: MenuItem[] = [
     {
         id: 2,
         //label: 'MENUITEMS.PROJECTS.TEXT',
-        label: 'Proyectos',
+        label: 'Revisión de Proyectos',
         //icon: 'ri-layout-3-line',
         subItems: [
             {
@@ -31,21 +31,6 @@ export const MENU: MenuItem[] = [
     },
     {
         id: 3,
-        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
-        label: 'Asignación de Docentes',
-        //icon: 'ri-profile-line',
-        subItems: [
-            {
-                id: 1,
-                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
-                label: 'Listado de Proyectos',
-                link: '/projects-list',
-                parentId: 3
-            },
-        ]
-    },
-    {
-        id: 4,
         /* label: 'MENUITEMS.POSTULATION.TEXT', */
         label: 'Postulaciones',
         //icon: 'ri-profile-line',
@@ -55,13 +40,28 @@ export const MENU: MenuItem[] = [
                 /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
                 label: 'Realizar Postulación',
                 link: '/project-portfolio',
-                parentId: 4
+                parentId: 3
             },
             {
                 id: 2,
                 /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
                 label: 'Lista de Postulaciones',
                 link: '/postulations-list',
+                parentId: 3
+            },
+        ]
+    },
+    {
+        id: 4,
+        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
+        label: 'Asignación de Docentes',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
+                label: 'Listado de Proyectos',
+                link: '/projects-list',
                 parentId: 4
             },
         ]
