@@ -31,7 +31,7 @@ export class AddProjectComponent implements OnInit {
     private careerService: CareerService, private projectService: ProjectService) { }
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Proyectos' }, { label: 'Añadir Proyecto', active: true }];
+    this.breadCrumbItems = [{ label: 'Revisión de Proyectos' }, { label: 'Añadir Proyecto', active: true }];
     this.companyService.getCompaniesData().subscribe({ error: (err) => console.log(err), next: (rest) => this.companies = rest.data });
     this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
   }

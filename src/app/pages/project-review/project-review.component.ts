@@ -21,7 +21,7 @@ export class ProjectReviewComponent implements OnInit {
   constructor(private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Proyectos' }, { label: 'Revisión de Proyectos', active: true }];
+    this.breadCrumbItems = [{ label: 'Revisión de Proyectos' }, { label: 'Revisión de Proyectos', active: true }];
     this.projectService.getProjectsData().subscribe({ 
       error: (err) => console.log(err), 
       next: (rest) => { 
