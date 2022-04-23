@@ -12,7 +12,7 @@ export class PortfolioRegisterComponent implements OnInit {
 
   name: string = '';
   semester: number = 1;
-  project_stated: number = 1;
+  portfolio_stated: number = 1;
   semesters: any[] = [];
   breadCrumbItems: Array<{}>; 
 
@@ -24,12 +24,12 @@ export class PortfolioRegisterComponent implements OnInit {
   }
 
   successmsg() {
-    var body = { name: '', semester_id: 0, project_stated_id: 0 };
+    var body = { name: '', semester_id: 0, portfolio_state_id: 0 };
     body['name'] = this.name;
     body['semester_id'] = this.semester;
-    body['project_stated_id'] = this.project_stated;
-    /*
-    this.semesterService.saveSemester(body).subscribe({
+    body['portfolio_state_id'] = this.portfolio_stated;
+    
+    this.portfolioService.savePortfolio(body).subscribe({
       error: (err) => console.log(err), 
       next: (rest) => {
         Swal.fire({
@@ -38,8 +38,13 @@ export class PortfolioRegisterComponent implements OnInit {
           icon: 'success',
           confirmButtonColor: '#EF360E',
         });
-      }
-    });*/
+      },
+      complete: () => this.cleanprocess()
+    });
+  }
+
+  cleanprocess() {
+    this.name = ''; this.semester = 1; this.portfolio_stated = 1;
   }
 
 }
