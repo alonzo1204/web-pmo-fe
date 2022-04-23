@@ -22,7 +22,7 @@ export class ProjectsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Asignación de Docentes' }, { label: 'Lista de Proyectos', active: true }]; 
-    this.projectService.getProjectsData().subscribe({ 
+    this.projectService.getProjectsbyStatus([5, 6]).subscribe({ 
       error: (err) => console.log(err), 
       next: (rest) => { 
         this.projects = rest.data;
