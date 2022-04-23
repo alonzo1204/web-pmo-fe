@@ -37,18 +37,18 @@ export class AddProjectComponent implements OnInit {
   }
 
   successmsg() {
-    var body = { code: '', name: '', description: '', general_object: '', paper: 0, devices: 0, career_id: 0, project_process_state_id: 0, company: 0 };
+    var body = { code: '', name: '', description: '', general_objective: '', paper: '', devices: '', career_id: '', project_process_state_id: '', company: '' };
     body['code'] = 'PRY' + this.makeid(8);
     body['name'] = this.name;
     body['description'] = this.description;
-    body['general_object'] = this.objective;
-    if (this.pswitch) { body['paper'] = 1; } else { body['paper'] = 0; };
-    if (this.requeriment) { body['devices'] = 1; } else { body['devices'] = 0; };
+    body['general_objective'] = this.objective;
+    if (this.pswitch) { body['paper'] = '1'; } else { body['paper'] = '0'; };
+    if (this.requeriment) { body['devices'] = '1'; } else { body['devices'] = '1'; };
     //if (this.active) { body['other_career_id'] = this.studies_two; } else { body['other_career_id'] = 0; };
-    body['career_id'] = this.studies;
-    body['project_process_state_id'] = 1;
-    body['company'] = this.company;
-    /*
+    body['career_id'] = this.studies.toString();
+    body['project_process_state_id'] = '1';
+    body['company'] = this.company.toString();
+    
     this.projectService.saveProject(body).subscribe({
       error: (err) => console.log(err),
       next: (rest) => {
@@ -58,8 +58,15 @@ export class AddProjectComponent implements OnInit {
           icon: 'success',
           confirmButtonColor: '#EF360E',
         });
-      }
-    });*/
+      }, 
+      complete: () => this.cleanprocess()
+    });
+  }
+
+  cleanprocess() {
+    this.studies = 3; this.studies_two = 3; this.company = 0;
+    this.active = false; this.pswitch = true; this.requeriment = true;
+    this.name = ''; this.petition = ''; this.description = ''; this.objective = '';
   }
 
   makeid(length) {
