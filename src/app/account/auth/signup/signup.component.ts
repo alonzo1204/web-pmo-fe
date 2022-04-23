@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/services/auth.service';
 import { environment } from '../../../../environments/environment';
 import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -45,35 +46,18 @@ export class SignupComponent implements OnInit, AfterViewInit {
    */
   onSubmit() {
     this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.signupForm.invalid) {
-      return;
-    } else {
-      if (environment.defaultauth === 'firebase') {
-        /*this.authenticationService.register(this.f.email.value, this.f.password.value).then((res: any) => {
-          this.successmsg = true;
-          if (this.successmsg) {
-            this.router.navigate(['/']);
-          }
-        })
-          .catch(error => {
-            this.error = error ? error : '';
-          });*/
-      } else {
-        /*this.userService.register(this.signupForm.value)
-          .pipe(first())
-          .subscribe(
-            data => {
-              this.successmsg = true;
-              if (this.successmsg) {
-                this.router.navigate(['/account/login']);
-              }
-            },
-            error => {
-              this.error = error ? error : '';
-            });*/
-      }
+    if (this.signupForm.invalid) return;
+    else {
+      this.authenticationService.requestAccess(this.f.username.value)
+        .pipe(first())
+        .subscribe(data => {
+          Swal.fire({
+            title: 'Solicitud Enviada',
+            icon: 'success',
+            confirmButtonColor: '#EF360E',
+          });
+          this.router.navigate(['/']);
+        }, error => { this.error = error ? error : ''; })
     }
   }
 }
