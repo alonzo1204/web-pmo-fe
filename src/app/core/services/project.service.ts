@@ -21,4 +21,8 @@ export class ProjectService {
     return this.http.get<any>(environment.apiURL + '/projects/?idState=' + idState)
   }
 
+  getProjectsbyStatusVarius(idState: any) {
+    return this.http.get<any>(environment.apiURL + '/projects/status/' + idState)
+  }
+
 }
