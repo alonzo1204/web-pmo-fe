@@ -41,7 +41,7 @@
               <tbody>
                 <tr *ngFor="let project of filter | slice: (page-1) * pageSize : page * pageSize">
                   <td>
-                    <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                    <img src="{{ imageCompany(project.company_id) }}" alt="product-img" title="product-img" class="avatar-md" />
                   </td>
                   <td class="project-description">
                     <div (click)="gotodetails(project.id)">
@@ -52,17 +52,17 @@
                     </div>
                   </td>
                   <td class="text-center">
-                    <label>{{ project.career.name }}</label>
+                    <label>{{ nameCareer(project.career_id) }}</label>
                   </td>
                   <td class="text-center">
-                    <div *ngIf="project.project_process_state.id == 2 || project.project_process_state.id == 4">
-                        <div class="badge-soft-success badge font-size-15">{{ project.project_process_state.name }}</div>
+                    <div *ngIf="project.project_process_state_id == 2 || project.project_process_state_id == 4">
+                        <div class="badge-soft-success badge font-size-15">{{ nameStatus(project.project_process_state_id) }}</div>
                     </div>
-                    <div *ngIf="project.project_process_state.id == 3">
-                        <div class="badge-soft-danger badge font-size-15">{{ project.project_process_state.name }}</div>
+                    <div *ngIf="project.project_process_state_id == 3">
+                        <div class="badge-soft-danger badge font-size-15">{{ nameStatus(project.project_process_state_id) }}</div>
                     </div>
-                    <div *ngIf="project.project_process_state.id == 1">
-                        <div class="badge-soft-warning badge font-size-15">{{ project.project_process_state.name }}</div>
+                    <div *ngIf="project.project_process_state_id == 1">
+                        <div class="badge-soft-warning badge font-size-15">{{ nameStatus(project.project_process_state_id) }}</div>
                     </div>
                   </td>
                 </tr>
