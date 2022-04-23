@@ -16,6 +16,8 @@ export class PortfolioRegisterComponent implements OnInit {
   semesters: any[] = [];
   breadCrumbItems: Array<{}>; 
 
+  button_state: boolean = false;
+
   constructor(private semesterService: SemesterService, private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
@@ -29,8 +31,18 @@ export class PortfolioRegisterComponent implements OnInit {
     body['semester_id'] = this.semester;
     body['portfolio_state_id'] = this.portfolio_stated;
     
+    this.button_state = true;
     this.portfolioService.savePortfolio(body).subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => {
+        console.log(err),
+        this.button_state = false;
+        Swal.fire({
+          title: 'Portafolio no pudo Registrarse',
+          text: 'Verifique llenar los campos correctamente',
+          icon: 'error',
+          confirmButtonColor: '#E42322',
+        });
+      }, 
       next: (rest) => {
         Swal.fire({
           title: 'Portafolio Registrado',
@@ -44,6 +56,7 @@ export class PortfolioRegisterComponent implements OnInit {
   }
 
   cleanprocess() {
+    this.button_state = false;
     this.name = ''; this.semester = 1; this.portfolio_stated = 1;
   }
 

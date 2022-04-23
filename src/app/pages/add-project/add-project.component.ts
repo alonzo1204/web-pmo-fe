@@ -23,6 +23,8 @@ export class AddProjectComponent implements OnInit {
   company: number = 0;
   description: string = '';
 
+  button_state: boolean = false;
+
   careers: any[] = [];
   companies: any[] = [];
   breadCrumbItems: Array<{}>;
@@ -49,8 +51,18 @@ export class AddProjectComponent implements OnInit {
     body['project_process_state_id'] = '1';
     body['company'] = this.company.toString();
     
+    this.button_state = true;
     this.projectService.saveProject(body).subscribe({
-      error: (err) => console.log(err),
+      error: (err) => {
+        console.log(err),
+        this.button_state = false;
+        Swal.fire({
+          title: 'Proyecto no pudo Registrarse',
+          text: 'Verifique llenar los campos correctamente',
+          icon: 'error',
+          confirmButtonColor: '#E42322',
+        });
+      },
       next: (rest) => {
         Swal.fire({
           title: 'Proyecto Registrado',
@@ -64,6 +76,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   cleanprocess() {
+    this.button_state = false;
     this.studies = 3; this.studies_two = 3; this.company = 0;
     this.active = false; this.pswitch = true; this.requeriment = true;
     this.name = ''; this.petition = ''; this.description = ''; this.objective = '';

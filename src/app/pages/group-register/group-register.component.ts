@@ -33,6 +33,8 @@ export class GroupRegisterComponent implements OnInit {
   active: boolean = false;
   breadCrumbItems: Array<{}>;
 
+  button_state: boolean = false;
+
   constructor(private router: Router, private careerService: CareerService, 
     private userService: UserService, private groupService: GroupService) { }
 
@@ -55,8 +57,17 @@ export class GroupRegisterComponent implements OnInit {
     body['student_1_id'] = this.user.id;
     body['student_2_id'] = this.partner_data.id;
 
+    this.button_state = true;
     this.groupService.saveGroup(body).subscribe({
-      error: (err) => console.log(err),
+      error: (err) => {
+        this.button_state = false;
+        Swal.fire({
+          title: 'Grupo no pudo Registrarse',
+          text: 'Verifique llenar los campos correctamente',
+          icon: 'error',
+          confirmButtonColor: '#E42322',
+        });
+      },
       next: (rest) => {
         Swal.fire({
           title: 'Grupo Registrado',
@@ -70,6 +81,7 @@ export class GroupRegisterComponent implements OnInit {
   }
 
   cleanprocess() {
+    this.button_state = false;
     this.active = false; this.partner_data = []; this.partner_name = '';
   }
 

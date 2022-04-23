@@ -19,6 +19,8 @@ export class UserRegisterComponent implements OnInit {
   type: string = 'alumno';
   teachertype: string = 'PM';
 
+  button_state: boolean = false;
+
   careers: any[] = [];
   breadCrumbItems: Array<{}>; 
 
@@ -42,8 +44,18 @@ export class UserRegisterComponent implements OnInit {
     else if (this.type == "mcomite") { body['role_id'] = 5; }
     body['career_id'] = this.studies;
     /*
+    this.button_state = true;
     this.userService.saveUser(body).subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => {
+        console.log(err),
+        this.button_state = false;
+        Swal.fire({
+          title: 'Usuario no pudo Registrarse',
+          text: 'Verifique llenar los campos correctamente',
+          icon: 'error',
+          confirmButtonColor: '#E42322',
+        });
+      },
       next: (rest) => {
         Swal.fire({
           title: 'Usuario Registrado',
@@ -51,7 +63,8 @@ export class UserRegisterComponent implements OnInit {
           icon: 'success',
           confirmButtonColor: '#EF360E',
         });
-      }
+      },
+      complete: () => this.button_state = false;
     })*/
   }
 

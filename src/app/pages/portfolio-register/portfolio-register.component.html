@@ -36,7 +36,7 @@
                   </div>
   
                 <div class="mt-4">
-                  <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()">Registrar Portafolio</button>
+                  <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()" [disabled]="button_state">Registrar Portafolio</button>
                   <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
                 </div>  
               </aw-wizard-step>
