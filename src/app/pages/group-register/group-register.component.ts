@@ -51,11 +51,10 @@ export class GroupRegisterComponent implements OnInit {
   }
 
   successmsg() {
-    var body = { student_1_id: 0, student_2_id: 0, group_weighted_average: 0 }
+    var body = { student_1_id: 0, student_2_id: 0 }
     body['student_1_id'] = this.user.id;
     body['student_2_id'] = this.partner_data.id;
-    body['group_weighted_average'] = 15.8;
-    /*
+
     this.groupService.saveGroup(body).subscribe({
       error: (err) => console.log(err),
       next: (rest) => {
@@ -65,8 +64,13 @@ export class GroupRegisterComponent implements OnInit {
           icon: 'success',
           confirmButtonColor: '#EF360E',
         });
-      }
-    });*/
+      },
+      complete: () => this.cleanprocess()
+    });
+  }
+
+  cleanprocess() {
+    this.active = false; this.partner_data = []; this.partner_name = '';
   }
 
   getPartnerData(code: any) {
