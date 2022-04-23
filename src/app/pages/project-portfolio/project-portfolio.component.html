@@ -75,8 +75,8 @@
                     </button>
                     <div class="dropdown-menu" ngbDropdownMenu>
                       <a class="dropdown-item" (click)="onStatusFilter(0)">Todos</a>
-                      <a class="dropdown-item" (click)="onStatusFilter(2)">Asignados</a>
-                      <a class="dropdown-item" (click)="onStatusFilter(1)">Pendientes</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(1)">Aprobado</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(2)">Aceptado con comentarios</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
               <tbody>
                 <tr *ngFor="let project of filter | slice: (page-1) * pageSize : page * pageSize">
                   <td>
-                    <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                    <img src="{{ imageCompany(project.company_id) }}" alt="product-img" title="product-img" class="avatar-md" />
                   </td>
                   <td class="project-description">
                     <div (click)="gotodetails(project.id)">
@@ -104,7 +104,7 @@
                     </div>
                   </td>
                   <td class="text-center">
-                    <label>{{ project.career.name }}</label>
+                    <label>{{ nameCareer(project.career_id) }}</label>
                   </td>
                   <td class="text-center">
                     <div *ngIf="project.added == false">

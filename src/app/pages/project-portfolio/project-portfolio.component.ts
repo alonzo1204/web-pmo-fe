@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import { CareerService } from 'src/app/core/services/career.service';
+import { CompanyService } from 'src/app/core/services/company.service';
 import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
@@ -10,24 +12,31 @@ import { ProjectService } from 'src/app/core/services/project.service';
   styleUrls: ['./project-portfolio.component.scss']
 })
 export class ProjectPortfolioComponent implements OnInit {
+
   page = 1;
-  number_projects: number = 50;
   pageSize = 10;
   keyword: string = "";
+  number_projects: number;
+  filter: any[] = [];
   projects: any[] = [];
   addedprojects: any[] = [];
-  filter: any[] = [];
   isLoaded: boolean = false;
   n_addeds: number = 0;
   canadd: boolean = true;
   canpostulate: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService) { }
+  careers: any[] = [];
+  companies: any[] = [];
+
+  constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService,
+              private companyService: CompanyService, private careerService: CareerService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos', active: true }];
-    this.projectService.getProjectsbyStatus([2, 4]).subscribe({
+    this.companyService.getCompaniesData().subscribe({ error: (err) => console.log(err), next: (rest) => this.companies = rest.data });
+    this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
+    this.projectService.getProjectsbyStatusVarius([2, 4]).subscribe({
       error: (err) => console.log(err), 
       next: (rest) => { 
         this.projects = rest.data;
@@ -45,11 +54,21 @@ export class ProjectPortfolioComponent implements OnInit {
 
   onStatusFilter(id: number) {
     switch(id) {
-      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 1; }); break;
-      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 2; }); break;
+      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state_id == 2; }); break;
+      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state_id == 4; }); break;
       default: this.filter = this.projects;
     }
     this.number_projects = this.filter.length;
+  }
+
+  nameCareer(id: number): string {
+    var career = this.careers.filter(function(item){ return item.id = id })[0];
+    return career.name;
+  }
+
+  imageCompany(id: number): string {
+    var company = this.companies.filter(function(item){ return item.id = id })[0];
+    return company.image;
   }
 
   onSearchFilter(keyword: string) {
