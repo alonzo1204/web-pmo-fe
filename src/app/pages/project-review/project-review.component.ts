@@ -22,10 +22,11 @@ export class ProjectReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Revisión de Proyectos' }, { label: 'Lista de Proyectos', active: true }];
-    this.projectService.getProjectsData().subscribe({ 
+    this.projectService.getProjectsbyStatus([1, 2, 3, 4]).subscribe({ 
       error: (err) => console.log(err), 
-      next: (rest) => { 
+      next: (rest) => {
         this.projects = rest.data;
+        console.log(this.projects);
         this.number_projects = this.projects.length;
         this.filter = this.projects;
         this.isLoaded = true;
@@ -38,6 +39,7 @@ export class ProjectReviewComponent implements OnInit {
       case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 1; }); break;
       case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 2; }); break;
       case 3: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 3; }); break;
+      case 4: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 4; }); break;
       default: this.filter = this.projects;
     }
     this.number_projects = this.filter.length;

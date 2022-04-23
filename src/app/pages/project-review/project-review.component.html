@@ -22,8 +22,9 @@
                     <div class="dropdown-menu" ngbDropdownMenu>
                       <a class="dropdown-item" (click)="onStatusFilter(0)">Todos</a>
                       <a class="dropdown-item" (click)="onStatusFilter(2)">Aprobados</a>
-                      <a class="dropdown-item" (click)="onStatusFilter(1)">Pendientes</a>
-                      <a class="dropdown-item" (click)="onStatusFilter(3)">Rechazados</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(3)">Denegados</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(1)">Pendientes de Aprobación</a>
+                      <a class="dropdown-item" (click)="onStatusFilter(4)">Aceptado con Comentarios</a>
                     </div>
                 </div>
             </div>
@@ -54,14 +55,14 @@
                     <label>{{ project.career.name }}</label>
                   </td>
                   <td class="text-center">
-                    <div *ngIf="project.project_process_state.id == 2">
-                        <div class="badge-soft-success badge font-size-15">Aprobado</div>
+                    <div *ngIf="project.project_process_state.id == 2 || project.project_process_state.id == 4">
+                        <div class="badge-soft-success badge font-size-15">{{ project.project_process_state.name }}</div>
                     </div>
                     <div *ngIf="project.project_process_state.id == 3">
-                        <div class="badge-soft-danger badge font-size-15">Rechazado</div>
+                        <div class="badge-soft-danger badge font-size-15">{{ project.project_process_state.name }}</div>
                     </div>
                     <div *ngIf="project.project_process_state.id == 1">
-                        <div class="badge-soft-warning badge font-size-15">Pendiente</div>
+                        <div class="badge-soft-warning badge font-size-15">{{ project.project_process_state.name }}</div>
                     </div>
                   </td>
                 </tr>
