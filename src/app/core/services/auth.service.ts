@@ -32,14 +32,19 @@ export class AuthenticationService {
       }));
   }
 
+  register(body: any) {
+    return this.http.post<any>(environment.apiURL + '/auth/register', body)
+      .pipe(map(response => {
+        return response.data;
+      }));
+  }
+
   logout() {
     let params = { token: this.getToken(), user_id: JSON.parse(localStorage.getItem('currentUser')!).user.information.id };
     return this.http.post<any>(environment.apiURL + '/auth/logout', params)
       .pipe(map(response => {
-        if (response) {
-          //console.log(response);
-          localStorage.clear();
-        } return response;
+        if (response) localStorage.clear();
+        return response;
       }));
   }
 
