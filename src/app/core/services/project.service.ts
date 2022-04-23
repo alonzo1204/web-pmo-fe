@@ -17,4 +17,8 @@ export class ProjectService {
     return this.http.post<any>(environment.apiURL + '/projects/save', body);
   }
 
+  getProjectsbyStatus(idState: any) {
+    return this.http.get<any>(environment.apiURL + '/projects/?idState=' + idState)
+  }
+
 }
