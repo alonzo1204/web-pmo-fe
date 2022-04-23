@@ -27,7 +27,7 @@ export class ProjectPortfolioComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos', active: true }];
-    this.projectService.getProjectsData().subscribe({
+    this.projectService.getProjectsbyStatus([2, 4]).subscribe({
       error: (err) => console.log(err), 
       next: (rest) => { 
         this.projects = rest.data;
