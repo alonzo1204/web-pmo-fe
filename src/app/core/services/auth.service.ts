@@ -32,8 +32,16 @@ export class AuthenticationService {
       }));
   }
 
-  register(body: any) {
-    return this.http.post<any>(environment.apiURL + '/auth/register', body)
+  register(params: any) {
+    return this.http.post<any>(environment.apiURL + '/auth/register', params)
+      .pipe(map(response => {
+        return response.data;
+      }));
+  }
+
+  requestAccess(code: string) {
+    let params = { code: code };
+    return this.http.post<any>(environment.apiURL + '/auth/getauth', params)
       .pipe(map(response => {
         return response.data;
       }));
