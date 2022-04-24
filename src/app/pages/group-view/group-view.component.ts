@@ -32,6 +32,10 @@ export class GroupViewComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
     this.searchPartnerData(this.group);
     this.searchProjectData(this.group);
+    this.groupService.getMyGroup({ code: 'u201613458'}).subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => console.log(rest)
+    })
     /*this.groupService.getGroupsData().subscribe({  
       error: (err) => console.log(err), 
       next: (rest) => { 
