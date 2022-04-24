@@ -17,12 +17,16 @@ export class ProjectService {
     return this.http.post<any>(environment.apiURL + '/projects/save', body);
   }
 
+  saveMasiveRegister(body: any) {
+    return this.http.post<any>(environment.apiURL + '/projects/saveExcel', body);
+  }
+
   getProjectsbyStatus(idState: any) {
-    return this.http.get<any>(environment.apiURL + '/projects/?idState=' + idState)
+    return this.http.get<any>(environment.apiURL + '/projects/?idState=' + idState);
   }
 
   getProjectsbyStatusVarius(idState: any) {
-    return this.http.get<any>(environment.apiURL + '/projects/status/' + idState)
+    return this.http.get<any>(environment.apiURL + '/projects/status/' + idState);
   }
 
 }
