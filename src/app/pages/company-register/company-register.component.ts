@@ -42,8 +42,6 @@ export class CompanyRegisterComponent implements OnInit {
     formData.append('name', this.form.get('name').value);
     formData.append('image', this.form.get('image').value);
 
-    console.log(this.form.get('image').value)
-
     this.button_state = true;
     this.companyService.saveCompany(formData).subscribe({
       error: (err) => {
