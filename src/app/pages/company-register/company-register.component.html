@@ -7,26 +7,26 @@
             <aw-wizard>
               <aw-wizard-step stepTitle="Registro de Empresa">
                 
-                <div class="tab-pane" id="regpoy">
-                  <div class="form-group row mt-4">
-                    <div class="col-lg-3 pt-2">
-                      <label for="projectname">Nombre</label>
-                    </div>
-                    <div class="col-lg-9">
-                      <input id="projectname" name="projectname" type="text" class="form-control" [(ngModel)]="name">
+                <form [formGroup]="form">
+                  <div class="tab-pane" id="regpoy">
+                    <div class="form-group row mt-4">
+                      <div class="col-lg-3 pt-2">
+                        <label for="projectname">Nombre</label>
+                      </div>
+                      <div class="col-lg-9">
+                        <input type="text" class="form-control" formControlName="name">
+                      </div>
                     </div>
                   </div>
-                </div>
-  
-                <div class="tab-pane" id="product-img">
-                  <h4 class="card-title">Adjuntar Imagen</h4>
-                  <form>
-                    <dropzone class="dropzone-container"></dropzone>
-                  </form>
-                </div>
+    
+                  <div class="tab-pane" id="product-img">
+                    <h4 class="card-title">Adjuntar Imagen</h4>
+                    <dropzone [config]="config" [message]="'Click or drag images here to upload'" (success)="onUploadSuccess($event)"></dropzone>
+                  </div>
+                </form>
   
                 <div class="mt-4">
-                  <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()">Registrar Empresa</button>
+                  <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()" [disabled]="button_state">Registrar Empresa</button>
                   <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
                 </div>           
                 
