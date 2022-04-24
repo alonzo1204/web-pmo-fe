@@ -17,4 +17,12 @@ export class UserService {
     return this.http.post<any>(environment.apiURL + '/users/save', body);
   }
 
+  saveMasiveRegister(body: any) {
+    return this.http.post<any>(environment.apiURL + '/users/registroMasivo', body);
+  }
+
+  saveMasiveRegisterLocked(body: any) {
+    return this.http.post<any>(environment.apiURL + '/users/registroMasivoB', body);
+  }
+
 }
