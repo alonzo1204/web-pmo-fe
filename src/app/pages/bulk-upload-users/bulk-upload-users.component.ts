@@ -66,8 +66,10 @@ export class BulkUploadUsersComponent implements OnInit {
           title: 'Archivo Excel subido',
           text: 'El archivo Excel ha sido subido exitosamente',
           icon: 'success',
-          confirmButtonColor: '#EF360E',
+          timer: 2500
+          //confirmButtonColor: '#EF360E',
         });
+        setTimeout(() => this.goback(), 2500);
       }, 
       complete: () => this.cleanprocess()
     });
