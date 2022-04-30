@@ -54,21 +54,11 @@ export class ProjectPortfolioComponent implements OnInit {
 
   onStatusFilter(id: number) {
     switch(id) {
-      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state_id == 2; }); break;
-      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state_id == 4; }); break;
+      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 2; }); break;
+      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 4; }); break;
       default: this.filter = this.projects;
     }
     this.number_projects = this.filter.length;
-  }
-
-  nameCareer(id: number): string {
-    var career = this.careers.filter(function(item){ return item.id = id })[0];
-    return career.name;
-  }
-
-  imageCompany(id: number): string {
-    var company = this.companies.filter(function(item){ return item.id = id })[0];
-    return company.image;
   }
 
   onSearchFilter(keyword: string) {

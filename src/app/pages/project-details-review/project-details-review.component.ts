@@ -10,6 +10,7 @@ import { ProjectService } from 'src/app/core/services/project.service';
 })
 export class ProjectDetailsReviewComponent implements OnInit {
   projects: any[] = [];
+  code: string = '';
   name: string = '';
   titlecode: string = '';
   studies: string = '';
@@ -30,7 +31,9 @@ export class ProjectDetailsReviewComponent implements OnInit {
       error: (err) => console.log(err), 
       next: (rest) => { 
         this.projects = rest.data;
+        console.log(this.projects)
         var project = this.projects.filter(function(data){ return data.code == code })[0];
+        this.code = project.code;
         this.name = project.name;
         this.studies = project.career.name;
         this.image = project.company.image;
@@ -46,7 +49,7 @@ export class ProjectDetailsReviewComponent implements OnInit {
     this.router.navigate(['/project-review']);
   }
 
-  approved() {
+  approved(idProject: any) {
     console.log(this.name);
     console.log(this.studies);
     console.log(this.objective);
@@ -59,15 +62,37 @@ export class ProjectDetailsReviewComponent implements OnInit {
       icon: 'success',
       confirmButtonColor: '#EF360E',
     });
+    /*this.projectService.acceptProject(idProject).subscribe({
+      error: (err) => console.log(err),
+      next: (rest) => {
+        Swal.fire({
+          title: 'Proyecto Aprobado',
+          text: 'El proyecto fue aprobado con éxito',
+          icon: 'success',
+          confirmButtonColor: '#EF360E',
+        });
+      }
+    });*/
   }
 
-  rejected() {
+  rejected(idProject: any) {
     Swal.fire({
       title: 'Proyecto Rechazado',
       text: 'El proyecto fue rechazado',
       icon: 'error',
       confirmButtonColor: '#EF360E',
     });
+    /*this.projectService.deniedProject(idProject).subscribe({
+      error: (err) => console.log(err),
+      next: (rest) => {
+        Swal.fire({
+          title: 'Proyecto Rechazado',
+          text: 'El proyecto fue rechazado',
+          icon: 'error',
+          confirmButtonColor: '#EF360E',
+        });
+      }
+    });*/
   }
 
   comented() {

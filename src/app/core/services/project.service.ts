@@ -21,6 +21,14 @@ export class ProjectService {
     return this.http.post<any>(environment.apiURL + '/projects/saveExcel', body);
   }
 
+  acceptProject(idProject: any) {
+    return this.http.post<any>(environment.apiURL + '/projects/aceptar/?idProject=' + idProject, {});
+  }
+
+  deniedProject(idProject: any) {
+    return this.http.post<any>(environment.apiURL + '/projects/denegar/?idProject=' + idProject, {});
+  }
+
   getProjectsbyStatus(idState: any) {
     return this.http.get<any>(environment.apiURL + '/projects/?idState=' + idState);
   }
