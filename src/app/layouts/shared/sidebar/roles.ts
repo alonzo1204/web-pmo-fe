@@ -7,12 +7,12 @@ export const ROLES: any[] = [
     { 
         id: 2, 
         name: 'tp1', 
-        access: [1, 4, 6] 
+        access: [1, 3, 6] 
     },
     { 
         id: 3, 
         name: 'tp2', 
-        access: [1, 4, 6] 
+        access: [1, 3, 6] 
     },
     { 
         id: 4, 
@@ -22,6 +22,6 @@ export const ROLES: any[] = [
     { 
         id: 5, 
         name: 'comite', 
-        access: [1, 2, 3, 5, 8, 9, 10] 
+        access: [1, 2, 4, 5, 8, 9, 10] 
     }
 ];

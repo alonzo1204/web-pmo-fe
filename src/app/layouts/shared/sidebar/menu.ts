@@ -31,6 +31,43 @@ export const MENU: MenuItem[] = [
     },
     {
         id: 3,
+        /* label: 'MENUITEMS.POSTULATION.TEXT', */
+        label: 'Postulaciones',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Realizar Postulación',
+                link: '/project-portfolio',
+                parentId: 3
+            },
+            {
+                id: 2,
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Lista de Postulaciones',
+                link: '/postulations-list',
+                parentId: 3
+            },
+        ]
+    },
+    {
+        id: 4,
+        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
+        label: 'Asignación de Docentes',
+        //icon: 'ri-profile-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
+                label: 'Listado de Proyectos',
+                link: '/projects-list',
+                parentId: 4
+            },
+        ]
+    },
+    {
+        id: 5,
         /* label: 'MENUITEMS.USERS.TEXT', */
         label: 'Carga Masivas',
         //icon: 'ri-account-circle-line',
@@ -41,50 +78,13 @@ export const MENU: MenuItem[] = [
                 label: 'Añadir Proyectos',
                 //icon: 'ri-file-add-line',
                 link: '/bulk-upload-projects',
-                parentId: 3
+                parentId: 5
             },
             {
                 id: 2,
                 /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
                 label: 'Registro de Usuarios',
                 link: '/bulk-upload-users',
-                parentId: 3
-            },
-        ]
-    },
-    {
-        id: 4,
-        /* label: 'MENUITEMS.POSTULATION.TEXT', */
-        label: 'Postulaciones',
-        //icon: 'ri-profile-line',
-        subItems: [
-            {
-                id: 1,
-                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
-                label: 'Realizar Postulación',
-                link: '/project-portfolio',
-                parentId: 4
-            },
-            {
-                id: 2,
-                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
-                label: 'Lista de Postulaciones',
-                link: '/postulations-list',
-                parentId: 4
-            },
-        ]
-    },
-    {
-        id: 5,
-        /* label: 'MENUITEMS.TEACHERASSIGNMENT.TEXT', */
-        label: 'Asignación de Docentes',
-        //icon: 'ri-profile-line',
-        subItems: [
-            {
-                id: 1,
-                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
-                label: 'Listado de Proyectos',
-                link: '/projects-list',
                 parentId: 5
             },
         ]
