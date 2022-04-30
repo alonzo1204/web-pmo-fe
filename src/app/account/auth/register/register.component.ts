@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
             icon: 'success',
             confirmButtonColor: '#EF360E',
           });
-          this.router.navigate(['/']);
+          this.router.navigate(['/account/login']);
         }, error => { this.error = error ? error : ''; })
     }
   }
