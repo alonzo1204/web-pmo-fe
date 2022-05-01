@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostulationService } from 'src/app/core/services/postulation.service';
 
 @Component({
   selector: 'app-postulations-list',
@@ -13,13 +14,18 @@ export class PostulationsListComponent implements OnInit {
   breadCrumbItems: Array<{}>;
   
   postulations: any[] = [];
+  myPostulations: any[] = [];
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private postulationService: PostulationService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulaciones' }, { label: 'Lista de Postulaciones', active: true }];
     this.postulations = this.getPostulationData();
     this.number_postulations = this.postulations.length;
+    this.postulationService.getMyPostulations('u201613458').subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => this.myPostulations = rest.data
+    });
   }
 
   getPostulationData() {

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { CareerService } from 'src/app/core/services/career.service';
 import { CompanyService } from 'src/app/core/services/company.service';
 import { ProjectService } from 'src/app/core/services/project.service';
+import { GroupService } from 'src/app/core/services/group.service';
 
 @Component({
   selector: 'app-project-portfolio',
@@ -29,13 +30,23 @@ export class ProjectPortfolioComponent implements OnInit {
   careers: any[] = [];
   companies: any[] = [];
 
+  mygroup: any;
+  groupLoaded: boolean = true;
+
   constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService,
-              private companyService: CompanyService, private careerService: CareerService) { }
+              private companyService: CompanyService, private careerService: CareerService, private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos', active: true }];
     this.companyService.getCompaniesData().subscribe({ error: (err) => console.log(err), next: (rest) => this.companies = rest.data });
     this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
+    this.groupService.getMyGroup({ code: 'u201613458'}).subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => {
+        console.log(rest)
+        this.groupLoaded = true;
+      }
+    })
     this.projectService.getProjectsbyStatusVarius([2, 4]).subscribe({
       error: (err) => console.log(err), 
       next: (rest) => { 
@@ -135,6 +146,10 @@ export class ProjectPortfolioComponent implements OnInit {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  }
+
+  groupregister() {
+    this.router.navigate(['/group-register']);
   }
 
 }
