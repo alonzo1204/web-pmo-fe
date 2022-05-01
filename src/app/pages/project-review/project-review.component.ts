@@ -16,19 +16,22 @@ export class ProjectReviewComponent implements OnInit {
   keyword: string = '';
   number_projects!: number;
   isLoaded: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Revisión de Proyectos' }, { label: 'Lista de Proyectos', active: true }];
+    this.loading = true;
     this.projectService.getProjectsbyStatusVarius([1, 2, 3, 4]).subscribe({ 
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => {
         this.projects = rest.data;
         this.number_projects = this.projects.length;
         this.filter = this.projects;
         this.isLoaded = true;
+        this.loading = false;
         console.log(rest.data)
       } 
     });

@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 export class SemesterRegisterComponent implements OnInit {
 
   name: string = '';
+  button_state: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>; 
 
   constructor(private semesterService: SemesterService) { }
@@ -22,8 +24,13 @@ export class SemesterRegisterComponent implements OnInit {
     var body = { name: '' };
     body['name'] = this.name;
     /*
+    this.button_state = true;
+    this.loading = true;
     this.semesterService.saveSemester(body).subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => { 
+        this.loading = false;
+        this.button_state = false;
+      }, 
       next: (rest) => {
         Swal.fire({
           title: 'Semestre Registrado',
@@ -31,6 +38,8 @@ export class SemesterRegisterComponent implements OnInit {
           icon: 'success',
           confirmButtonColor: '#EF360E',
         });
+        this.loading = false;
+        this.button_sate = false;
       }
     });*/
   }

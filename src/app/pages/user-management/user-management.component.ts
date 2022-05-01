@@ -21,6 +21,7 @@ export class UserManagementComponent implements OnInit {
 
   title: string = "Todos";
   isLoaded: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private semesterService: SemesterService, private userService: UserService) { }
@@ -28,14 +29,16 @@ export class UserManagementComponent implements OnInit {
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Usuarios' }, { label: 'Administrar Usuarios', active: true }];
     this.semesterService.getSemestersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.semesters = rest.data });
+    this.loading = true;
     this.userService.getUsersData().subscribe({ 
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => {
         this.users = rest.data;
         this.new_users = this.newUserData(this.users);
         this.number_users = this.new_users.length;
         this.filter = this.new_users;
         this.isLoaded = true;
+        this.loading = false;
         console.log(this.new_users);
       }
     });

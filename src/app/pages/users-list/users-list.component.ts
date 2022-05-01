@@ -18,19 +18,22 @@ export class UsersListComponent implements OnInit {
   level: number;
   title: string = "Todos";
   isLoaded: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Usuarios' }, { label: 'Lista de Usuarios', active: true }];
+    this.loading = true;
     this.userService.getUsersData().subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => { 
         this.users = rest.data;
         this.filter = this.users;
         this.number_users = this.users.length;
         this.isLoaded = true;
+        this.loading = false;
       }
     });
   }

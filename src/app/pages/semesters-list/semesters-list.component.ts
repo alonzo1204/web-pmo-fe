@@ -15,19 +15,22 @@ export class SemestersListComponent implements OnInit {
   semesters: any[] = [];
   filter: any[] = [];
   isLoaded: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private semesterService: SemesterService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Semestres' }, { label: 'Lista de Semestres', active: true }];
+    this.loading = true;
     this.semesterService.getSemestersData().subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => {
         this.semesters = rest.data;
         this.filter = this.semesters;
         this.number_semesters = this.semesters.length;
         this.isLoaded = true;
+        this.loading = false;
       }
     });
   }

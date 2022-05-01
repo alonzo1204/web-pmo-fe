@@ -20,6 +20,7 @@ export class UserRegisterComponent implements OnInit {
   teachertype: string = 'PM';
 
   button_state: boolean = false;
+  loading: boolean = false;
 
   careers: any[] = [];
   breadCrumbItems: Array<{}>; 
@@ -45,10 +46,12 @@ export class UserRegisterComponent implements OnInit {
     body['career_id'] = this.studies;
     /*
     this.button_state = true;
+    this.loading = true;
     this.userService.saveUser(body).subscribe({
       error: (err) => {
         console.log(err),
         this.button_state = false;
+        this.loading = false;
         Swal.fire({
           title: 'Usuario no pudo Registrarse',
           text: 'Verifique llenar los campos correctamente',
@@ -64,7 +67,7 @@ export class UserRegisterComponent implements OnInit {
           confirmButtonColor: '#EF360E',
         });
       },
-      complete: () => this.button_state = false;
+      complete: () => { this.button_state = false; this.loading = false; }
     })*/
   }
 

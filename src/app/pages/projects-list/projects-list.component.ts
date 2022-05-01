@@ -16,19 +16,22 @@ export class ProjectsListComponent implements OnInit {
   keyword: string = '';
   number_projects!: number;
   isLoaded: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Asignación de Docentes' }, { label: 'Lista de Proyectos', active: true }]; 
+    this.loading = true;
     this.projectService.getProjectsbyStatusVarius([5, 6]).subscribe({ 
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => { 
         this.projects = rest.data;
         this.number_projects = this.projects.length;
         this.filter = this.projects;
         this.isLoaded = true;
+        this.loading = false;
       } 
     });
   }

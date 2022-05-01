@@ -14,7 +14,7 @@
                                 </div>
                             </div>
                             <div class="mt-4">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()">Registrar Semestre</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()" [disabled]="button_state">Registrar Semestre</button>
                                 <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
                             </div>  
                         </aw-wizard-step>
@@ -24,3 +24,5 @@
         </div>
     </div>
 </div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }" [template]="customLoadingTemplate"></ngx-loading>
