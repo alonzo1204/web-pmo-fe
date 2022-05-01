@@ -17,6 +17,10 @@ export class AddProjectComponent implements OnInit {
   studies_two: number = 3;
   active: boolean = false;
   objective: string = '';
+  objective_specific_one: string = '';
+  objective_specific_two: string = '';
+  objective_specific_three: string = '';
+  objective_specific_four: string = '';
   pswitch: boolean = true;
   petition: string = "";
   requeriment: boolean = true;
@@ -39,11 +43,16 @@ export class AddProjectComponent implements OnInit {
   }
 
   successmsg() {
-    var body = { code: '', name: '', description: '', general_objective: '', paper: '', devices: '', career_id: '', project_process_state_id: '', company: '' };
+    var body = { code: '', name: '', description: '', general_objective: '', specific_objective_1: '', specific_objective_2: '', specific_objective_3: '',
+    specific_objective_4: '', paper: '', devices: '', career_id: '', project_process_state_id: '', company: '' };
     body['code'] = 'PRY' + this.makeid(8);
     body['name'] = this.name;
     body['description'] = this.description;
     body['general_objective'] = this.objective;
+    //body['specific_objective_1'] = this.objective_specific_one;
+    //body['specific_objective_2'] = this.objective_specific_two;
+    //body['specific_objective_3'] = this.objective_specific_three;
+    //body['specific_objective_4'] = this.objective_specific_four;
     if (this.pswitch) { body['paper'] = '1'; } else { body['paper'] = '0'; };
     if (this.requeriment) { body['devices'] = '1'; } else { body['devices'] = '1'; };
     //if (this.active) { body['other_career_id'] = this.studies_two; } else { body['other_career_id'] = 0; };
