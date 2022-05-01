@@ -65,7 +65,7 @@ export class ProjectDetailsReviewComponent implements OnInit {
   }
 
   approved(idProject: any) {
-    console.log(this.name);
+    /*console.log(this.name);
     console.log(this.studies);
     console.log(this.objective);
     console.log(this.studies);
@@ -76,8 +76,8 @@ export class ProjectDetailsReviewComponent implements OnInit {
       text: 'El proyecto fue aprobado con éxito',
       icon: 'success',
       confirmButtonColor: '#EF360E',
-    });
-    /*this.projectService.acceptProject(idProject).subscribe({
+    });*/
+    this.projectService.acceptProject(idProject).subscribe({
       error: (err) => console.log(err),
       next: (rest) => {
         Swal.fire({
@@ -87,17 +87,17 @@ export class ProjectDetailsReviewComponent implements OnInit {
           confirmButtonColor: '#EF360E',
         });
       }
-    });*/
+    });
   }
 
   rejected(idProject: any) {
-    Swal.fire({
+    /*Swal.fire({
       title: 'Proyecto Rechazado',
       text: 'El proyecto fue rechazado',
       icon: 'error',
       confirmButtonColor: '#EF360E',
-    });
-    /*this.projectService.deniedProject(idProject).subscribe({
+    });*/
+    this.projectService.deniedProject(idProject).subscribe({
       error: (err) => console.log(err),
       next: (rest) => {
         Swal.fire({
@@ -107,7 +107,7 @@ export class ProjectDetailsReviewComponent implements OnInit {
           confirmButtonColor: '#EF360E',
         });
       }
-    });*/
+    });
   }
 
   comented() {
