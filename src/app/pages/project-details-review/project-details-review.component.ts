@@ -19,6 +19,8 @@ export class ProjectDetailsReviewComponent implements OnInit {
   objective_specific_two: string = '';
   objective_specific_three: string = '';
   objective_specific_four: string = '';
+  file: string = '';
+  sharepoint: string = '';
   petition: string = '';
   description: string = '';
   image: string = '';
@@ -46,6 +48,8 @@ export class ProjectDetailsReviewComponent implements OnInit {
         this.objective_specific_two = project.specific_objective_2;
         this.objective_specific_three = project.specific_objective_3;
         this.objective_specific_four = project.specific_objective_4;
+        this.file = project.url_file;
+        this.sharepoint = project.url_sharepoint;
         this.petition = 'Lentes de realidad aumentada';
         this.description = project.description;
         this.isLoaded = true;
