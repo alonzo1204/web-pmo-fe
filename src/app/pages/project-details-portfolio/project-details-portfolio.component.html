@@ -46,17 +46,34 @@
                       <label>Sí</label>
                     </div>
                 </div>
-                <br>
-                <div class="form-group row">
+                <br *ngIf="project.url_file != ''">
+                <div class="form-group row" *ngIf="project.url_file != ''">
                     <div class="col-lg-4 pt-2">
                       <label class="text-black" for="peticion">Documento Adjunto</label>
                     </div>
                     <div class="col-lg-3">
+                      <a href="{{project.url_file}}" download="{{project.code}} - {{project.name}}.pdf" target="_blank">
                         <button type="button" class="btn btn-download">
-                            Descargar<i class="fas fa-file-download align-middle ml-2"></i>
+                          <!--i class="fas fa-file-download align-middle"></i-->
+                          <span class="ml-0"> Descargar </span>
                         </button>
+                      </a>
                     </div>
                 </div>
+                <br *ngIf="project.url_sharepoint != ''">
+                <div class="form-group row" *ngIf="project.url_sharepoint != ''">
+                  <div class="col-lg-4 pt-2">
+                    <label class="text-black" for="peticion">Espacio de Trabajo</label>
+                  </div>
+                  <div class="col-lg-3">
+                    <a href="{{project.url_sharepoint}}" target="_blank">
+                      <button type="button" class="btn btn-sharepoint">
+                        <!--i class="fas fa-file-download align-middle"></i-->
+                        <span class="ml-0"> Sharepoint </span>
+                      </button>
+                    </a>
+                  </div>
+              </div>
                 <br>
                 <div class="text-black">Descripción:</div>
                 <div>{{ project.description }}</div>
