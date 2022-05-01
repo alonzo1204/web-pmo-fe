@@ -24,6 +24,8 @@ export class GroupViewComponent implements OnInit {
   isLoaded: boolean = true;
   breadCrumbItems: Array<{}>;
 
+  loading: boolean = false;
+
   constructor(private router: Router, private userService: UserService, 
     private projectService: ProjectService, private groupService: GroupService) { }
 
@@ -32,9 +34,10 @@ export class GroupViewComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
     this.searchPartnerData(this.group);
     this.searchProjectData(this.group);
+    this.loading = true;
     this.groupService.getMyGroup({ code: 'u201613458'}).subscribe({
-      error: (err) => console.log(err), 
-      next: (rest) => console.log(rest)
+      error: (err) => this.loading = false, 
+      next: (rest) => this.loading = false
     })
     /*this.groupService.getGroupsData().subscribe({  
       error: (err) => console.log(err), 

@@ -32,6 +32,7 @@ export class AddProjectComponent implements OnInit {
   careers: any[] = [];
   companies: any[] = [];
   breadCrumbItems: Array<{}>;
+  loading: boolean = false;
 
   constructor(private router: Router, private companyService: CompanyService, 
     private careerService: CareerService, private projectService: ProjectService) { }
@@ -61,10 +62,12 @@ export class AddProjectComponent implements OnInit {
     body['company'] = this.company.toString();
     
     this.button_state = true;
+    this.loading = true;
     this.projectService.saveProject(body).subscribe({
       error: (err) => {
         console.log(err),
         this.button_state = false;
+        this.loading = false;
         Swal.fire({
           title: 'Proyecto no pudo Registrarse',
           text: 'Verifique llenar los campos correctamente',
@@ -85,6 +88,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   cleanprocess() {
+    this.loading = false;
     this.button_state = false;
     this.studies = 3; this.studies_two = 3; this.company = 0;
     this.active = false; this.pswitch = true; this.requeriment = true;

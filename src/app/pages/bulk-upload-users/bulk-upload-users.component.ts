@@ -14,6 +14,7 @@ export class BulkUploadUsersComponent implements OnInit {
 
   form: FormGroup;
   button_state: boolean = false;
+  loading: boolean = false;
   type_upload: number = 1;
   breadCrumbItems: Array<{}>;
 
@@ -49,11 +50,13 @@ export class BulkUploadUsersComponent implements OnInit {
     formData.append('file', this.form.get('file').value);
 
     this.button_state = true;
+    this.loading = true;
     let select_service = this.type_upload == 1 ? this.userService.saveMasiveRegister(formData) : this.userService.saveMasiveRegisterLocked(formData);
     select_service.subscribe({
       error: (err) => {
         console.log(err),
         this.button_state = false;
+        this.loading = false;
         Swal.fire({
           title: 'Archivo Excel no pudo subido',
           text: 'Verifique llenar los campos correctamente',
@@ -77,6 +80,7 @@ export class BulkUploadUsersComponent implements OnInit {
   
   cleanprocess() {
     this.button_state = false;
+    this.loading = false;
     this.type_upload = 1;
   }
 

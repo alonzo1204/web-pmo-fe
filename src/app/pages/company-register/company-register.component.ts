@@ -13,6 +13,7 @@ export class CompanyRegisterComponent implements OnInit {
   
   form: FormGroup;
   button_state: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   config: DropzoneConfigInterface = {
@@ -43,10 +44,12 @@ export class CompanyRegisterComponent implements OnInit {
     formData.append('image', this.form.get('image').value);
 
     this.button_state = true;
+    this.loading = true;
     this.companyService.saveCompany(formData).subscribe({
       error: (err) => {
         console.log(err),
         this.button_state = false;
+        this.loading = false;
         Swal.fire({
           title: 'Empresa no pudo Registrarse',
           text: 'Verifique llenar los campos correctamente',
@@ -67,7 +70,8 @@ export class CompanyRegisterComponent implements OnInit {
   }
 
   cleanprocess() {
-    this.button_state = false
+    this.loading = false;
+    this.button_state = false;
     this.form.patchValue({ name: '', image: null });
   }
 

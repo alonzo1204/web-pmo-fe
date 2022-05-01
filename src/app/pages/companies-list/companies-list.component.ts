@@ -15,6 +15,7 @@ export class CompaniesListComponent implements OnInit {
   companies: any[] = [];
   filter: any[] = [];
   level: number;
+  loading: boolean = false;
   isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
@@ -22,6 +23,7 @@ export class CompaniesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Empresas Virtuales' }, { label: 'Lista de Empresas', active: true }];
+    this.loading = true;
     this.companyService.getCompaniesData().subscribe({
       error: (err) => console.log(err), 
       next: (rest) => { 
@@ -29,6 +31,7 @@ export class CompaniesListComponent implements OnInit {
         this.filter = this.companies;
         this.number_companies = this.companies.length;
         this.isLoaded = true;
+        this.loading = false;
       }
     });
   }

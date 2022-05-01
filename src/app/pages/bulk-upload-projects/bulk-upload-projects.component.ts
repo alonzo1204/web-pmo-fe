@@ -14,6 +14,7 @@ export class BulkUploadProjectsComponent implements OnInit {
 
   form: FormGroup;
   button_state: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   config: DropzoneConfigInterface = {
@@ -42,10 +43,12 @@ export class BulkUploadProjectsComponent implements OnInit {
     formData.append('file', this.form.get('file').value);
     //console.log(this.form.get('file').value)
     this.button_state = true;
+    this.loading = true;
     this.projectService.saveMasiveRegister(formData).subscribe({
       error: (err) => {
         console.log(err),
         this.button_state = false;
+        this.loading = false;
         Swal.fire({
           title: 'Archivo Excel no pudo subido',
           text: 'Verifique llenar los campos correctamente',
@@ -63,8 +66,13 @@ export class BulkUploadProjectsComponent implements OnInit {
         });
         setTimeout(() => this.goback(), 2500);
       }, 
-      complete: () => this.button_state = false
+      complete: () => this.cleanprocess()
     });
+  }
+
+  cleanprocess() {
+    this.loading = false;
+    this.button_state = false;
   }
 
   goback() {

@@ -34,6 +34,7 @@ export class GroupRegisterComponent implements OnInit {
   breadCrumbItems: Array<{}>;
 
   button_state: boolean = false;
+  loading: boolean = false;
 
   constructor(private router: Router, private careerService: CareerService, 
     private userService: UserService, private groupService: GroupService) { }
@@ -43,11 +44,13 @@ export class GroupRegisterComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
     this.name = this.user.firstname+" "+this.user.lastname;
     this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
+    this.loading = true;
     this.userService.getUsersData().subscribe({ 
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false,
       next: (rest) => {
         var count = 0; this.users = rest.data;
-        while(count < this.users.length) { this.users[count].code != this.user.code ? this.codes.push(this.users[count].code) : ''; count++; }
+        while(count < this.users.length) { this.users[count].code != this.user.code ? this.codes.push(this.users[count].code) : ''; count++; };
+        this.loading = false;
       } 
     });
   }
@@ -58,8 +61,10 @@ export class GroupRegisterComponent implements OnInit {
     body['student_2_id'] = this.partner_data.id;
 
     this.button_state = true;
+    this.loading = true;
     this.groupService.saveGroup(body).subscribe({
       error: (err) => {
+        this.loading = false;
         this.button_state = false;
         Swal.fire({
           title: 'Grupo no pudo Registrarse',
@@ -81,6 +86,7 @@ export class GroupRegisterComponent implements OnInit {
   }
 
   cleanprocess() {
+    this.loading = false;
     this.button_state = false;
     this.active = false; this.partner_data = []; this.partner_name = '';
   }

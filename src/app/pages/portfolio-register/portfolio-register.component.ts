@@ -17,6 +17,7 @@ export class PortfolioRegisterComponent implements OnInit {
   breadCrumbItems: Array<{}>; 
 
   button_state: boolean = false;
+  loading: boolean = false;
 
   constructor(private semesterService: SemesterService, private portfolioService: PortfolioService) { }
 
@@ -32,10 +33,12 @@ export class PortfolioRegisterComponent implements OnInit {
     body['portfolio_state_id'] = this.portfolio_stated;
     
     this.button_state = true;
+    this.loading = true;
     this.portfolioService.savePortfolio(body).subscribe({
       error: (err) => {
         console.log(err),
         this.button_state = false;
+        this.loading = false;
         Swal.fire({
           title: 'Portafolio no pudo Registrarse',
           text: 'Verifique llenar los campos correctamente',
@@ -56,6 +59,7 @@ export class PortfolioRegisterComponent implements OnInit {
   }
 
   cleanprocess() {
+    this.loading = false;
     this.button_state = false;
     this.name = ''; this.semester = 1; this.portfolio_stated = 1;
   }
