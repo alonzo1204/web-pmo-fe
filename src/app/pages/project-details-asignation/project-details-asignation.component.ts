@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { timeStamp } from 'console';
 import { ProjectService } from 'src/app/core/services/project.service';
 import Swal from 'sweetalert2';
 
@@ -28,6 +29,7 @@ export class ProjectDetailsAsignationComponent implements OnInit {
   pmanager: string = "AB";
   coautor: string = "FS";
   isLoaded: Boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) { }
@@ -36,8 +38,9 @@ export class ProjectDetailsAsignationComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Asignación de Docentes' }, { label: 'Lista de Proyectos'}, { label: 'Detalles', active: true }];
     var code = this.route.snapshot.params.code
     this.titlecode = "Detalles del Proyecto " + code;
+    this.loading = true;
     this.projectService.getProjectsData().subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => { 
         this.projects = rest.data;
         var project = this.projects.filter(function(data){ return data.code == code })[0];
@@ -55,6 +58,7 @@ export class ProjectDetailsAsignationComponent implements OnInit {
         this.petition = "Lentes de realidad aumentada";
         this.description = project.description;
         this.isLoaded = true;
+        this.loading = false;
       }
     });
   }

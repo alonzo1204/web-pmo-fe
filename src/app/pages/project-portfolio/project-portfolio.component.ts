@@ -32,6 +32,7 @@ export class ProjectPortfolioComponent implements OnInit {
 
   mygroup: any;
   groupLoaded: boolean = true;
+  loading: boolean = false;
 
   constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService,
               private companyService: CompanyService, private careerService: CareerService, private groupService: GroupService) { }
@@ -40,6 +41,7 @@ export class ProjectPortfolioComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos', active: true }];
     this.companyService.getCompaniesData().subscribe({ error: (err) => console.log(err), next: (rest) => this.companies = rest.data });
     this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
+    this.loading = true;
     this.groupService.getMyGroup({ code: 'u201613458'}).subscribe({
       error: (err) => console.log(err), 
       next: (rest) => {
@@ -48,13 +50,14 @@ export class ProjectPortfolioComponent implements OnInit {
       }
     })
     this.projectService.getProjectsbyStatusVarius([2, 4]).subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => { 
         this.projects = rest.data;
         this.number_projects = this.projects.length;
         this.projects.forEach(function (element) { element.added = false; });
         this.filter = this.projects;
         this.isLoaded = true;
+        this.loading = false;
       } 
     });
   }

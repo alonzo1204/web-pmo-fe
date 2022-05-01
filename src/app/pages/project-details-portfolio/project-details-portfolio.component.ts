@@ -13,6 +13,7 @@ export class ProjectDetailsPortfolioComponent implements OnInit {
   projects: any[] = [];
   titlecode: string = "";
   isLoaded: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService) { }
@@ -21,12 +22,14 @@ export class ProjectDetailsPortfolioComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos' }, { label: 'Detalles', active: true }];
     var code = this.route.snapshot.params.code;
     this.titlecode = "Detalles del Proyecto " + code;
+    this.loading = true;
     this.projectService.getProjectsData().subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => { 
         this.projects = rest.data;
         this.project = this.projects.filter(function(data){ return data.code == code })[0];
         this.isLoaded = true;
+        this.loading = false;
       } 
     });
   }

@@ -17,17 +17,21 @@ export class PortfoliosListComponent implements OnInit {
   isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
+  loading: boolean = false;
+
   constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Portafolios' }, { label: 'Lista de Portafolios', active: true }];
+    this.loading = true;
     this.portfolioService.getPortfoliosData().subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => {
         this.portfolios = rest.data;
         this.filter = this.portfolios;
         this.number_portfolios = this.portfolios.length;
         this.isLoaded = true;
+        this.loading = false;
       }
     });
   }

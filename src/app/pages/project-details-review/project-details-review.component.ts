@@ -25,6 +25,7 @@ export class ProjectDetailsReviewComponent implements OnInit {
   description: string = '';
   image: string = '';
   isLoaded: boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) { }
@@ -33,8 +34,9 @@ export class ProjectDetailsReviewComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Proyectos' }, { label: 'Revisión de Proyectos'}, { label: 'Detalles', active: true }];
     var code = this.route.snapshot.params.code;
     this.titlecode = "Detalles del Proyecto " + code;
+    this.loading = true;
     this.projectService.getProjectsData().subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => { 
         this.projects = rest.data;
         console.log(this.projects)
@@ -53,6 +55,7 @@ export class ProjectDetailsReviewComponent implements OnInit {
         this.petition = 'Lentes de realidad aumentada';
         this.description = project.description;
         this.isLoaded = true;
+        this.loading = false;
       } 
     })
   }

@@ -16,16 +16,20 @@ export class PostulationsComponent implements OnInit {
   filter: any[] = [];
   breadCrumbItems: Array<{}>;
 
+  loading: boolean = false;
+  
   constructor(private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulaciones Cerradas' }, { label: 'Proyectos Cerrados', active: true }];
+    this.loading = true;
     this.projectService.getProjectsData().subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => this.loading = false, 
       next: (rest) => { 
         this.postulations = rest.data;
         this.filter = this.postulations;
         this.number_projects = this.postulations.length;
+        this.loading = false;
       }
     });
   }

@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PostulationsDetailsComponent implements OnInit {
   postulation: any;
   isLoaded: Boolean = false;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
   constructor(private route: ActivatedRoute, private router: Router) { }

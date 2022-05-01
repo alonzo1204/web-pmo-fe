@@ -11,6 +11,7 @@ export class PostulationsListComponent implements OnInit {
   page = 1;
   number_postulations: number = 0;
   pageSize = 10;
+  loading: boolean = false;
   breadCrumbItems: Array<{}>;
   
   postulations: any[] = [];
@@ -22,9 +23,13 @@ export class PostulationsListComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Postulaciones' }, { label: 'Lista de Postulaciones', active: true }];
     this.postulations = this.getPostulationData();
     this.number_postulations = this.postulations.length;
+    this.loading = true;
     this.postulationService.getMyPostulations('u201613458').subscribe({
-      error: (err) => console.log(err), 
-      next: (rest) => this.myPostulations = rest.data
+      error: (err) => this.loading = false, 
+      next: (rest) => {
+        this.myPostulations = rest.data;
+        this.loading = false;
+      }
     });
   }
 
