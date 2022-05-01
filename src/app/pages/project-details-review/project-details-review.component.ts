@@ -15,6 +15,10 @@ export class ProjectDetailsReviewComponent implements OnInit {
   titlecode: string = '';
   studies: string = '';
   objective: string = '';
+  objective_specific_one: string = '';
+  objective_specific_two: string = '';
+  objective_specific_three: string = '';
+  objective_specific_four: string = '';
   petition: string = '';
   description: string = '';
   image: string = '';
@@ -38,6 +42,10 @@ export class ProjectDetailsReviewComponent implements OnInit {
         this.studies = project.career.name;
         this.image = project.company.image;
         this.objective = project.general_objective;
+        this.objective_specific_one = project.specific_objective_1;
+        this.objective_specific_two = project.specific_objective_2;
+        this.objective_specific_three = project.specific_objective_3;
+        this.objective_specific_four = project.specific_objective_4;
         this.petition = 'Lentes de realidad aumentada';
         this.description = project.description;
         this.isLoaded = true;
