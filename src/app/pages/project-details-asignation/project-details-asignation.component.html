@@ -89,16 +89,33 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-lg-3 pt-2">
-                              <label for="peticion">Documento Adjunto</label>
-                            </div>
-                            <div class="col-lg-3">
-                                <button (click)="downloadMyFile()" type="button" class="btn btn-download">
-                                    Descargar<i class="fas fa-file-download align-middle ml-2"></i>
-                                </button>
-                            </div>
+                        <div class="form-group row" *ngIf="file != ''">
+                          <div class="col-lg-3 pt-2">
+                            <label for="peticion">Documento Adjunto</label>
+                          </div>
+                          <div class="col-lg-3">
+                            <a href="{{file}}" download="{{code}} - {{name}}.pdf" target="_blank">
+                              <button type="button" class="btn btn-download">
+                                <!--i class="fas fa-file-download align-middle"></i-->
+                                <span class="ml-0"> Descargar </span>
+                              </button>
+                            </a>
+                          </div>
+                      </div>
+
+                      <div class="form-group row" *ngIf="sharepoint != ''">
+                        <div class="col-lg-3 pt-2">
+                          <label for="peticion">Espacio de Trabajo</label>
                         </div>
+                        <div class="col-lg-3">
+                          <a href="{{sharepoint}}" target="_blank">
+                            <button type="button" class="btn btn-sharepoint">
+                              <!--i class="fas fa-file-download align-middle"></i-->
+                              <span class="ml-0"> Sharepoint </span>
+                            </button>
+                          </a>
+                        </div>
+                    </div>
   
                     <div class="form-group">
                       <label for="Descripcion">Descripción</label>
