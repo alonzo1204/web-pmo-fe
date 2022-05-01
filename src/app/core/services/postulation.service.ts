@@ -17,4 +17,8 @@ export class PostulationService {
     return this.http.post<any>(environment.apiURL + '/postulations/save', body);
   }
 
+  getMyPostulations(code: string) {
+    return this.http.get<any>(environment.apiURL + '/postulations/mypostulations' + code);
+  }
+
 }

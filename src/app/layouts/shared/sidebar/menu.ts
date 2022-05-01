@@ -45,7 +45,7 @@ export const MENU: MenuItem[] = [
             {
                 id: 2,
                 /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
-                label: 'Lista de Postulaciones',
+                label: 'Mis Postulaciones',
                 link: '/postulations-list',
                 parentId: 3
             },
