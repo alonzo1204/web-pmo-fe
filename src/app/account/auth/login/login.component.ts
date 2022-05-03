@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     document.body.classList.add('auth-body-bg');
 
     this.loginForm = this.formBuilder.group({
-      email: ['u201523986@upc.edu.pe', [Validators.required, Validators.email]],
+      email: ['u201613458@upc.edu.pe', [Validators.required, Validators.email]],
       password: ['12345', [Validators.required]],
     });
 

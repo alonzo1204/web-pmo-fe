@@ -21,23 +21,24 @@ export class GroupViewComponent implements OnInit {
   projects: any[] = [];
 
   assigned: boolean = true;
-  isLoaded: boolean = true;
+  isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
   loading: boolean = false;
 
-  constructor(private router: Router, private userService: UserService, 
+  constructor(private router: Router, private userService: UserService,
     private projectService: ProjectService, private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Grupos' }, { label: 'Visualizar Mi Grupo', active: true }];
     this.user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
-    this.searchPartnerData(this.group);
     this.searchProjectData(this.group);
     this.loading = true;
-    this.groupService.getMyGroup({ code: 'u201613458'}).subscribe({
-      error: (err) => this.loading = false, 
-      next: (rest) => this.loading = false
+    this.groupService.getMyGroup({ code: this.user.code }).subscribe({
+      error: (err) => this.loading = false,
+      next: (rest) => {
+        this.loading = false; this.isLoaded = true; this.searchPartnerData(rest.data[0].alumno2.id);;
+      }
     })
     /*this.groupService.getGroupsData().subscribe({  
       error: (err) => console.log(err), 
@@ -50,14 +51,16 @@ export class GroupViewComponent implements OnInit {
     });*/
   }
 
-  searchPartnerData(group: any) {
+  searchPartnerData(partner_id: any) {
     //var partner_id = (this.user.id == group.student_1_id ? group.student_1_id : group.student_2_id);
+    console.log(partner_id);
+
     this.userService.getUsersData().subscribe({
-      error: (err) => console.log(err), 
-      next: (rest) => { 
+      error: (err) => console.log(err),
+      next: (rest) => {
         this.users = rest.data;
-        this.partner = this.users.filter(function(data){ return data.id == '3' })[0];
-        //console.log(this.partner);
+        this.partner = this.users.filter(function (data) { return data.id == partner_id })[0];
+        console.log(this.partner);
       }
     });
   }
@@ -65,9 +68,9 @@ export class GroupViewComponent implements OnInit {
   searchProjectData(group: any) {
     //var project_id = group.project_assigned;
     this.projectService.getProjectsData().subscribe({
-      next: (rest) => { 
+      next: (rest) => {
         this.projects = rest.data;
-        this.project = this.projects.filter(function(data){ return data.id == '3' })[0];
+        this.project = this.projects.filter(function (data) { return data.id == '3' })[0];
         //console.log(this.project);
       }
     });
@@ -78,7 +81,7 @@ export class GroupViewComponent implements OnInit {
   }
 
   gotodetails(code: string) {
-    this.router.navigate(['/project-details-portfolio/'+code]);
+    this.router.navigate(['/project-details-portfolio/' + code]);
   }
 
 }

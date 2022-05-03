@@ -18,7 +18,7 @@ export class GroupService {
   }
 
   getMyGroup(body: any) {
-    return this.http.get<any>(environment.apiURL + '/group/mygroup', body);
+    return this.http.post<any>(environment.apiURL + '/group/mygroup', body);
   }
 
 }
