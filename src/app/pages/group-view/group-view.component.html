@@ -10,7 +10,7 @@
                             <h3 class="card-title mt-0 text-center">GRP20212001</h3>
 
                             <h3 class="card-title mt-4 px-4">Promedio Ponderado Grupal</h3>
-                            <div class="ml-4">18.50</div>
+                            <div class="ml-4">{{mygroup?.group_weighted_average}}</div>
 
                             <h3 class="card-title mt-4 px-4">Proyecto Asignado</h3>
                             <div class="px-4" *ngIf="!assigned">Actualmente no cuentas con un proyecto asignado</div>
@@ -48,10 +48,10 @@
                             <div class="row mt-2 px-4">
                                 <div class="col-md-6 mb-2 padding-right">
                                     <div class="text-black">Nombre Completo:</div>
-                                    <div>{{ user?.firstname+" "+user?.lastname }}</div>
+                                    <div>{{ mygroup?.alumno1.nombre+" "+mygroup?.alumno1.apellido }}</div>
                                     <br>
                                     <div class="text-black">Correo:</div>
-                                    <div>{{ user?.code+"@upc.edu.pe" }}</div>
+                                    <div>{{ mygroup?.alumno1.codigo+"@upc.edu.pe" }}</div>
                                     <br>
                                     <div class="text-black">Carrera:</div>
                                     <div>Ciencias de la Computación</div>
@@ -73,10 +73,10 @@
                             <div class="row mt-2 mb-2 px-4">
                                 <div class="col-md-6 mb-2 padding-right">
                                     <div class="text-black">Nombre Completo:</div>
-                                    <div>{{ partner?.firstname+" "+partner?.lastname }}</div>
+                                    <div>{{ mygroup?.alumno2.nombre+" "+mygroup?.alumno2.apellido }}</div>
                                     <br>
                                     <div class="text-black">Correo:</div>
-                                    <div>{{ partner?.code+"@upc.edu.pe" }}</div>
+                                    <div>{{ mygroup?.alumno1.codigo+"@upc.edu.pe" }}</div>
                                     <br>
                                     <div class="text-black">Carrera:</div>
                                     <div>Ciencias de la Computación</div>

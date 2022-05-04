@@ -20,9 +20,11 @@ export class GroupViewComponent implements OnInit {
   groups: any[] = [];
   projects: any[] = [];
 
-  assigned: boolean = true;
+  assigned: boolean = false;
   isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
+
+  mygroup: any;
 
   loading: boolean = false;
 
@@ -37,7 +39,7 @@ export class GroupViewComponent implements OnInit {
     this.groupService.getMyGroup({ code: this.user.code }).subscribe({
       error: (err) => this.loading = false,
       next: (rest) => {
-        this.loading = false; this.isLoaded = true; this.searchPartnerData(rest.data[0].alumno2.id);;
+        this.loading = false; this.isLoaded = true; this.mygroup = rest.data[0]; this.searchPartnerData(rest.data[0].alumno2.id);;
       }
     })
     /*this.groupService.getGroupsData().subscribe({  

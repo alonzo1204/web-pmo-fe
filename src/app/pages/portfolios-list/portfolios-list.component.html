@@ -33,19 +33,19 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Semestre</th>
-                    <th>Cantidad</th>
+                    <th>Cantidad de Proyectos</th>
                     <th>Estado</th>
                   </tr>
                 </thead>
                 <tbody *ngIf="isLoaded == true">
                   <tr *ngFor="let portfolio of filter | slice: (page-1) * pageSize : page * pageSize">
-                    <td>{{ portfolio.Portfolio.name }}</td>
-                    <td>{{ portfolio.Semester.name }}</td>
-                    <td>{{ portfolio.Cantidad }}</td>
+                    <td>{{ portfolio.portfolio.name }}</td>
+                    <td>{{ portfolio.semester.name }}</td>
+                    <td>{{ portfolio.cantidad }}</td>
                     <td>
-                        <div *ngIf="portfolio.Portfolio_state.id==1||portfolio.Portfolio_state.id==3" class="badge-soft-success badge font-size-15"> {{ portfolio.Portfolio_state.state }} </div>
-                        <div *ngIf="portfolio.Portfolio_state.id==2" class="badge-soft-warning badge font-size-15"> {{ portfolio.Portfolio_state.state }} </div>
-                        <div *ngIf="portfolio.Portfolio_state.id==4" class="badge-soft-danger badge font-size-15"> {{ portfolio.Portfolio_state.state }} </div>
+                        <div *ngIf="portfolio.portfolio_state.id==1||portfolio.portfolio_state.id==3" class="badge-soft-success badge font-size-15"> {{ portfolio.portfolio_state.state }} </div>
+                        <div *ngIf="portfolio.portfolio_state.id==2" class="badge-soft-warning badge font-size-15"> {{ portfolio.portfolio_state.state }} </div>
+                        <div *ngIf="portfolio.portfolio_state.id==4" class="badge-soft-danger badge font-size-15"> {{ portfolio.portfolio_state.state }} </div>
                     </td>
                   </tr>
                 </tbody>

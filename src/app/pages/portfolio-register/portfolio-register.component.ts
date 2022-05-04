@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PortfolioService } from 'src/app/core/services/portfolio.service';
 import { SemesterService } from 'src/app/core/services/semester.service';
 import Swal from 'sweetalert2';
@@ -14,12 +15,12 @@ export class PortfolioRegisterComponent implements OnInit {
   semester: number = 1;
   portfolio_stated: number = 1;
   semesters: any[] = [];
-  breadCrumbItems: Array<{}>; 
+  breadCrumbItems: Array<{}>;
 
   button_state: boolean = false;
   loading: boolean = false;
 
-  constructor(private semesterService: SemesterService, private portfolioService: PortfolioService) { }
+  constructor(private semesterService: SemesterService, private router: Router, private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Portafolio' }, { label: 'Añadir Portafolio', active: true }];
@@ -31,13 +32,13 @@ export class PortfolioRegisterComponent implements OnInit {
     body['name'] = this.name;
     body['semester_id'] = this.semester;
     body['portfolio_state_id'] = this.portfolio_stated;
-    
+
     this.button_state = true;
     this.loading = true;
     this.portfolioService.savePortfolio(body).subscribe({
       error: (err) => {
         console.log(err),
-        this.button_state = false;
+          this.button_state = false;
         this.loading = false;
         Swal.fire({
           title: 'Portafolio no pudo Registrarse',
@@ -45,7 +46,7 @@ export class PortfolioRegisterComponent implements OnInit {
           icon: 'error',
           confirmButtonColor: '#E42322',
         });
-      }, 
+      },
       next: (rest) => {
         Swal.fire({
           title: 'Portafolio Registrado',
@@ -62,6 +63,7 @@ export class PortfolioRegisterComponent implements OnInit {
     this.loading = false;
     this.button_state = false;
     this.name = ''; this.semester = 1; this.portfolio_stated = 1;
+    this.router.navigate(['/portfolios-list']);
   }
 
 }
