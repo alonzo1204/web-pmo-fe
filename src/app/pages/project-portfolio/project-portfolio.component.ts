@@ -6,6 +6,7 @@ import { CareerService } from 'src/app/core/services/career.service';
 import { CompanyService } from 'src/app/core/services/company.service';
 import { ProjectService } from 'src/app/core/services/project.service';
 import { GroupService } from 'src/app/core/services/group.service';
+import { PostulationService } from 'src/app/core/services/postulation.service';
 
 @Component({
   selector: 'app-project-portfolio',
@@ -34,22 +35,18 @@ export class ProjectPortfolioComponent implements OnInit {
   groupLoaded: boolean = true;
   loading: boolean = false;
 
-  constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService,
+  constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService, private postulationService: PostulationService,
               private companyService: CompanyService, private careerService: CareerService, private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos', active: true }];
     this.companyService.getCompaniesData().subscribe({ error: (err) => console.log(err), next: (rest) => this.companies = rest.data });
     this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
+    let user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
     this.loading = true;
-    this.groupService.getMyGroup({ code: 'u201613458'}).subscribe({
-      error: (err) => console.log(err), 
-      next: (rest) => {
-        console.log(rest)
-        this.groupLoaded = true;
-      }
-    })
-    this.projectService.getProjectsbyStatusVarius([2, 4]).subscribe({
+    this.groupService.getMyGroup(user.code).subscribe({ error: (err) => console.log(err), 
+      next: (rest) => { this.mygroup = rest.data[0]; if (this.mygroup) this.groupLoaded = true; else this.groupLoaded = false; }});
+    this.projectService.getProjectsbyStatusVarius([1, 2, 4]).subscribe({
       error: (err) => this.loading = false, 
       next: (rest) => { 
         this.projects = rest.data;
@@ -105,18 +102,33 @@ export class ProjectPortfolioComponent implements OnInit {
   }
 
   postular(): void {
-    this.requestProjects();
-    this.addedprojects = []; this.n_addeds = 0;
-    this.canadd = true; this.canpostulate = false;
-    this.projects.forEach(function (element) {element.added = false;});
-    Swal.fire({
-      title: 'Postulación enviada',
-      text: 'Su postulación ha sido enviada con éxito',
-      icon: 'success',
-      confirmButtonColor: '#EF360E',
+    let body = {"group_id": 0, "project_1_id": 0, "project_2_id": 0, "project_3_id": 0, "project_4_id": 0};
+    body['group_id'] = this.mygroup.group_id;
+    body['project_1_id'] = this.addedprojects[0].id;
+    body['project_2_id'] = this.addedprojects[1].id;
+    body['project_3_id'] = this.addedprojects[2].id;
+    body['project_4_id'] = this.addedprojects[3].id;
+    this.postulationService.savePostulation(body).subscribe({
+      error: (err) => console.log(err), 
+      next: (rest) => {
+        Swal.fire({
+          title: 'Postulación enviada',
+          text: 'Su postulación ha sido enviada con éxito',
+          icon: 'success',
+          confirmButtonColor: '#EF360E',
+        });
+      },
+      complete: () => this.cleanprocess()
     });
   }
 
+  cleanprocess() {
+    this.addedprojects = []; this.n_addeds = 0;
+    this.canadd = true; this.canpostulate = false;
+    this.projects.forEach(function (element) {element.added = false;});
+  }
+
+  /*
   requestProjects(): void {
     var count: number = 0;
     var projects: any[] = [];
@@ -140,6 +152,7 @@ export class ProjectPortfolioComponent implements OnInit {
     localStorage.setItem('postulations', JSON.stringify(requestPostulation));
     console.log(requestPostulation);
   }
+  */
 
   makeid(length) {
     var result = '';
