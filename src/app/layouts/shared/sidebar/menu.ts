@@ -132,13 +132,12 @@ export const MENU: MenuItem[] = [
                 link: '/users-list',
                 parentId: 7
             },
-            {
+            /* {
                 id: 3,
-                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
                 label: 'Administrar Usuarios',
                 link: '/user-management',
                 parentId: 7
-            },
+            }, */
         ]
     },
     {

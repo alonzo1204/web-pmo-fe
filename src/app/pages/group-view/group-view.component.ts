@@ -14,13 +14,15 @@ export class GroupViewComponent implements OnInit {
   group: any;
   project: any;
 
-  assigned: boolean = true;
-  isLoaded: boolean = true;
+  assigned: boolean = false;
+  isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
+
+  mygroup: any;
 
   loading: boolean = false;
 
-  constructor(private router: Router, private userService: UserService, 
+  constructor(private router: Router, private userService: UserService,
     private projectService: ProjectService, private groupService: GroupService) { }
 
   ngOnInit(): void {
@@ -55,7 +57,7 @@ export class GroupViewComponent implements OnInit {
   }
 
   gotodetails(code: string) {
-    this.router.navigate(['/project-details-portfolio/'+code]);
+    this.router.navigate(['/project-details-portfolio/' + code]);
   }
 
 }

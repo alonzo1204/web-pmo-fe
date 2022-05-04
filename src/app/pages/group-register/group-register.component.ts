@@ -36,22 +36,22 @@ export class GroupRegisterComponent implements OnInit {
   button_state: boolean = false;
   loading: boolean = false;
 
-  constructor(private router: Router, private careerService: CareerService, 
+  constructor(private router: Router, private careerService: CareerService,
     private userService: UserService, private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Grupos' }, { label: 'Añadir Grupo', active: true }];
     this.user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
-    this.name = this.user.firstname+" "+this.user.lastname;
+    this.name = this.user.firstname + " " + this.user.lastname;
     this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
     this.loading = true;
-    this.userService.getUsersData().subscribe({ 
+    this.userService.getUsersData().subscribe({
       error: (err) => this.loading = false,
       next: (rest) => {
         var count = 0; this.users = rest.data;
-        while(count < this.users.length) { this.users[count].code != this.user.code ? this.codes.push(this.users[count].code) : ''; count++; };
+        while (count < this.users.length) { this.users[count].code != this.user.code ? this.codes.push(this.users[count].code) : ''; count++; };
         this.loading = false;
-      } 
+      }
     });
   }
 
@@ -68,7 +68,7 @@ export class GroupRegisterComponent implements OnInit {
         this.button_state = false;
         Swal.fire({
           title: 'Grupo no pudo Registrarse',
-          text: 'Verifique llenar los campos correctamente',
+          text: err,
           icon: 'error',
           confirmButtonColor: '#E42322',
         });
@@ -89,12 +89,13 @@ export class GroupRegisterComponent implements OnInit {
     this.loading = false;
     this.button_state = false;
     this.active = false; this.partner_data = []; this.partner_name = '';
+    this.router.navigate(["/group-view"]);
   }
 
   getPartnerData(code: any) {
-    if(code.length == 10){
-      this.partner_data = this.users.filter(function(data){ return data.code == code })[0];
-      this.partner_data != undefined ? this.partner_name = this.partner_data.firstname+" "+this.partner_data.lastname : this.partner_name = '';
+    if (code.length == 10) {
+      this.partner_data = this.users.filter(function (data) { return data.code == code })[0];
+      this.partner_data != undefined ? this.partner_name = this.partner_data.firstname + " " + this.partner_data.lastname : this.partner_name = '';
     }
     code.length < 10 ? this.active = false : this.active = true;
   }
@@ -103,5 +104,5 @@ export class GroupRegisterComponent implements OnInit {
     .debounceTime(200)
     .distinctUntilChanged()
     .map(term => term.length < 3 ? [] : this.codes.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
-  
+
 }

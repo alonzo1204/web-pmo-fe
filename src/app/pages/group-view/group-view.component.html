@@ -18,26 +18,28 @@
                                 <table class="table table-centered mb-0">
                                     <thead class="bg-white">
                                         <tr>
-                                          <th style="width: 120px">Empresa</th>
-                                          <th>Descripción del proyecto</th>
-                                          <th class="text-center">Carrera</th>
+                                            <th style="width: 120px">Empresa</th>
+                                            <th>Descripción del proyecto</th>
+                                            <th class="text-center">Carrera</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img src="{{ project?.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                                                <img src="{{ mygroup?.project_assigned.company.image }}" alt="product-img"
+                                                    title="product-img" class="avatar-md" />
                                             </td>
                                             <td class="project-description">
                                                 <div (click)="gotodetails(project?.code)">
-                                                    <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project?.code }}</a></h5>
+                                                    <h5 class="font-size-14 text-truncate"><a
+                                                            class="text-dark pointer">{{ mygroup?.project_assigned.code }}</a></h5>
                                                 </div>
                                                 <div>
-                                                    <p class="card-text">{{ project?.name }}</p>
+                                                    <p class="card-text">{{ mygroup?.project_assigned.name }}</p>
                                                 </div>
                                             </td>
                                             <td class="text-center">
-                                                <label>{{ project?.career.name }}</label>
+                                                <label>{{ mygroup?.project_assigned.career.name }}</label>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -101,25 +103,26 @@
 
             <div class="text-center my-5" *ngIf="!isLoaded">
                 <div class="mb-4">
-                  <a routerLink="">
-                    <img src="assets/images/logo-upc.png" alt="logo" height="60" />
-                  </a>
+                    <a routerLink="">
+                        <img src="assets/images/logo-upc.png" alt="logo" height="60" />
+                    </a>
                 </div>
-      
+
                 <div class="row justify-content-center">
-                  <div class="col-sm-4">
-                    <div class="maintenance-img">
-                      <img src="assets/images/maintenance-bg.png" alt="" class="img-fluid mx-auto d-block">
+                    <div class="col-sm-4">
+                        <div class="maintenance-img">
+                            <img src="assets/images/maintenance-bg.png" alt="" class="img-fluid mx-auto d-block">
+                        </div>
                     </div>
-                  </div>
                 </div>
 
                 <h3 class="mt-4">Actualmente no cuentas con un grupo</h3>
                 <p>Porfavor dirigete al botón para registrar tu grupo.</p>
 
                 <div class="mt-3 text-center">
-                    <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light" (click)="groupregister()">Registrar Grupo</button>
-                </div> 
+                    <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light"
+                        (click)="groupregister()">Registrar Grupo</button>
+                </div>
                 <!-- end row -->
             </div>
         </div>

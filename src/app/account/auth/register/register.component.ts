@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       body['password'] = this.f.password.value;
       body['firstname'] = this.f.firstname.value;
       body['lastname'] = this.f.lastname.value;
-      body['role_id'] = 1;
+      body['role_id'] = 2;
       body['semester_id'] = 1;
 
       this.authService.register(body)

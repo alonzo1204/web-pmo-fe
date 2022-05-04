@@ -22,11 +22,11 @@ export class ProjectService {
   }
 
   acceptProject(idProject: any) {
-    return this.http.post<any>(environment.apiURL + '/projects/aceptar/?idProject=' + idProject, {});
+    return this.http.post<any>(environment.apiURL + '/projects/aceptar/idProject=' + idProject, {});
   }
 
   deniedProject(idProject: any) {
-    return this.http.post<any>(environment.apiURL + '/projects/denegar/?idProject=' + idProject, {});
+    return this.http.post<any>(environment.apiURL + '/projects/denegar/idProject=' + idProject, {});
   }
 
   getProjectsbyStatus(idState: any) {

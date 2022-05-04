@@ -85,6 +85,7 @@ export class ProjectDetailsReviewComponent implements OnInit {
           text: 'El proyecto fue aprobado con éxito',
           icon: 'success',
           confirmButtonColor: '#EF360E',
+          onClose: () => {  this.router.navigate(['/project-review']); }
         });
       }
     });
@@ -105,6 +106,7 @@ export class ProjectDetailsReviewComponent implements OnInit {
           text: 'El proyecto fue rechazado',
           icon: 'error',
           confirmButtonColor: '#EF360E',
+          onClose: () => {  this.router.navigate(['/project-review']); }
         });
       }
     });
