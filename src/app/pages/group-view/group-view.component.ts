@@ -39,7 +39,13 @@ export class GroupViewComponent implements OnInit {
     this.groupService.getMyGroup({ code: this.user.code }).subscribe({
       error: (err) => this.loading = false,
       next: (rest) => {
-        this.loading = false; this.isLoaded = true; this.mygroup = rest.data[0]; this.searchPartnerData(rest.data[0].alumno2.id);;
+        this.loading = false;
+        this.isLoaded = true;
+        this.mygroup = rest.data[0];
+        if (this.mygroup.project_assigned.id) {
+          this.assigned = true;
+        }
+        this.searchPartnerData(rest.data[0].alumno2.id);
       }
     })
     /*this.groupService.getGroupsData().subscribe({  
