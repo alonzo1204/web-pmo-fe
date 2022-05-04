@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     document.body.classList.add('auth-body-bg');
 
     this.loginForm = this.formBuilder.group({
-      email: ['u201613458@upc.edu.pe', [Validators.required, Validators.email]],
+      email: ['pcsiabar@upc.edu.pe', [Validators.required, Validators.email]],
       password: ['12345', [Validators.required]],
     });
 
@@ -48,7 +48,12 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.loginForm.invalid) return;
     else {
-      var email = (this.f.email.value).substring(0, 10);
+      var email = "";
+      if (this.f.email.value[0] == "u" || this.f.email.value[0] == "U") {
+        email = (this.f.email.value).substring(0, 10);
+      } else {
+        email = (this.f.email.value).substring(0, 8);
+      }
       this.authService.login(email, this.f.password.value)
         .pipe(first())
         .subscribe(data => {
