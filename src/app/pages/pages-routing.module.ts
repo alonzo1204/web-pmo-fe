@@ -16,8 +16,6 @@ import { ProjectDetailsReviewComponent } from './project-details-review/project-
 import { ProjectPortfolioComponent } from './project-portfolio/project-portfolio.component';
 import { ProjectDetailsPortfolioComponent } from './project-details-portfolio/project-details-portfolio.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { PostulationsListComponent } from './postulations-list/postulations-list.component';
-import { PostulationsDetailsComponent } from './postulations-details/postulations-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BulkUploadProjectsComponent } from './bulk-upload-projects/bulk-upload-projects.component';
 import { UserManagementComponent } from './user-management/user-management.component';
@@ -31,6 +29,7 @@ import { PortfolioRegisterComponent } from './portfolio-register/portfolio-regis
 import { CompaniesListComponent } from './companies-list/companies-list.component';
 import { CompanyRegisterComponent } from './company-register/company-register.component';
 import { RoleGuard } from '../core/guards/role.guard';
+import { PostulationsViewComponent } from './postulations-view/postulations-view.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -42,8 +41,7 @@ const routes: Routes = [
     { path: 'semesters-list', component: SemestersListComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'semester-register', component: SemesterRegisterComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'postulations', component: PostulationsComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
-    { path: 'postulations-list', component: PostulationsListComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
-    { path: 'postulations-details/:code', component: PostulationsDetailsComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
+    { path: 'postulations-view', component: PostulationsViewComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
     { path: 'project-details/:code', component: ProjectDetailsComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'change-management/:code', component: ChangeManagementComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'user-register', component: UserRegisterComponent, data: { role: [4] }, canActivate: [RoleGuard] },

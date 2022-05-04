@@ -38,8 +38,6 @@ import { ProjectDetailsPortfolioComponent } from './project-details-portfolio/pr
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { PostulationsListComponent } from './postulations-list/postulations-list.component';
-import { PostulationsDetailsComponent } from './postulations-details/postulations-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BulkUploadProjectsComponent } from './bulk-upload-projects/bulk-upload-projects.component';
 import { UserManagementComponent } from './user-management/user-management.component';
@@ -53,6 +51,7 @@ import { PortfolioRegisterComponent } from './portfolio-register/portfolio-regis
 import { CompanyRegisterComponent } from './company-register/company-register.component';
 import { CompaniesListComponent } from './companies-list/companies-list.component';
 import { NgxLoadingModule } from 'ngx-loading';
+import { PostulationsViewComponent } from './postulations-view/postulations-view.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -82,8 +81,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     ProjectPortfolioComponent, 
     ProjectDetailsPortfolioComponent, 
     UserDetailsComponent, 
-    PostulationsListComponent, 
-    PostulationsDetailsComponent, 
     ProfileComponent, 
     BulkUploadProjectsComponent, 
     UserManagementComponent, 
@@ -95,7 +92,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     PortfoliosListComponent, 
     PortfolioRegisterComponent, 
     CompanyRegisterComponent, 
-    CompaniesListComponent
+    CompaniesListComponent, PostulationsViewComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,26 @@
+.text-black {
+    font-weight: 700;
+    color: black;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.more-shadow {
+    --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.btn-download {
+    background-color: #6760f0;
+    color: white;
+}
+
+.padding-right {
+    padding-right: 50px;
+}
+
 .topusers {
     display:flex;
     justify-content: space-between;
