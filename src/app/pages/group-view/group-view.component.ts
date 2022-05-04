@@ -11,14 +11,8 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class GroupViewComponent implements OnInit {
 
-  user: any;
   group: any;
   project: any;
-  partner: any;
-
-  users: any[] = [];
-  groups: any[] = [];
-  projects: any[] = [];
 
   assigned: boolean = true;
   isLoaded: boolean = true;
@@ -31,43 +25,26 @@ export class GroupViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Grupos' }, { label: 'Visualizar Mi Grupo', active: true }];
-    this.user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
-    this.searchPartnerData(this.group);
-    this.searchProjectData(this.group);
+    let user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
     this.loading = true;
-    this.groupService.getMyGroup({ code: 'u201613458'}).subscribe({
+    this.groupService.getMyGroup(user.code).subscribe({
       error: (err) => this.loading = false, 
-      next: (rest) => this.loading = false
+      next: (rest) => {
+        this.group = rest.data[0];
+        this.searchProjectData(this.group.project_assigned.id);
+        if (this.group.project_assigned) this.assigned = true; else this.assigned = false; 
+        if (this.group) this.isLoaded = true; else this.isLoaded = false;
+        this.loading = false
+      }
     })
-    /*this.groupService.getGroupsData().subscribe({  
-      error: (err) => console.log(err), 
-      next: (rest) => { 
-        this.groups = rest.data;
-        this.group = this.group.filter(function(data){ return data.student_1_id == this.user.id || data.student_2_id == this.user.id })[0];
-        this.searchPartnerData(this.group);
-        if (this.group) this.isLoaded = true; 
-      }
-    });*/
   }
 
-  searchPartnerData(group: any) {
-    //var partner_id = (this.user.id == group.student_1_id ? group.student_1_id : group.student_2_id);
-    this.userService.getUsersData().subscribe({
-      error: (err) => console.log(err), 
-      next: (rest) => { 
-        this.users = rest.data;
-        this.partner = this.users.filter(function(data){ return data.id == '3' })[0];
-        //console.log(this.partner);
-      }
-    });
-  }
-
-  searchProjectData(group: any) {
+  searchProjectData(project: any) {
     //var project_id = group.project_assigned;
     this.projectService.getProjectsData().subscribe({
       next: (rest) => { 
-        this.projects = rest.data;
-        this.project = this.projects.filter(function(data){ return data.id == '3' })[0];
+        let projects = rest.data;
+        this.project = projects.filter(function(data){ return data.id == project })[0];
         //console.log(this.project);
       }
     });
