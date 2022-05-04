@@ -68,7 +68,7 @@ export class GroupRegisterComponent implements OnInit {
         this.button_state = false;
         Swal.fire({
           title: 'Grupo no pudo Registrarse',
-          text: 'Verifique llenar los campos correctamente',
+          text: err,
           icon: 'error',
           confirmButtonColor: '#E42322',
         });
