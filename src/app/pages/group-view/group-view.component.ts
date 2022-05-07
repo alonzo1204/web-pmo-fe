@@ -18,8 +18,6 @@ export class GroupViewComponent implements OnInit {
   isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  mygroup: any;
-
   loading: boolean = false;
 
   constructor(private router: Router, private userService: UserService,
