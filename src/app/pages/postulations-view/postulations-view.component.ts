@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PostulationService } from 'src/app/core/services/postulation.service';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
   selector: 'app-postulations-view',
@@ -7,12 +10,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostulationsViewComponent implements OnInit {
 
+  mypostulations: any;
+  projects: any[] = [];
+  loading: boolean = false;
+  isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor() { }
+  constructor(private router: Router, private postulationService: PostulationService, 
+    private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulaciones' }, { label: 'Visualizar Mis Postulaciones', active: true }];
+    let user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
+    this.loading = true;
+    this.postulationService.getMyPostulations(user.code).subscribe({
+      error: (err) => this.loading = false, 
+      next: (rest) => {
+        this.mypostulations = rest.data[0];
+        this.searchProjectData(this.mypostulations.project_1_id);
+        this.searchProjectData(this.mypostulations.project_2_id);
+        this.searchProjectData(this.mypostulations.project_3_id);
+        this.searchProjectData(this.mypostulations.project_4_id);
+        if (this.mypostulations) this.isLoaded = true; else this.isLoaded = false;
+        this.loading = false
+      }
+    })
+  }
+
+  searchProjectData(project: any) {
+    //var project_id = group.project_assigned;
+    this.projectService.getProjectsData().subscribe({
+      next: (rest) => { 
+        let projects = rest.data;
+        this.projects.push(projects.filter(function(data){ return data.id == project })[0]);
+      }
+    });
+  }
+
+  groupregister() {
+    this.router.navigate(['/group-register']);
+  }
+
+  gotodetails(code: string) {
+    this.router.navigate(['/project-details-portfolio/' + code]);
   }
 
 }
