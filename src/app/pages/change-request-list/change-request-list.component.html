@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <app-pagetitle title="Lista de Solicitudes de Cambio" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="bg-light pt-2 pb-2 topusers">
+                        <div class="card-title list-title">
+                            <form class="search-box app-search d-none d-lg-block">
+                              <div class="position-relative">
+                                <input [(ngModel)]="keyword" name="search-box" type="text" class="form-control bg-white" placeholder="Buscar...">
+                                <span class="ri-search-line"></span>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Semestre</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <!--div class="text-center mt-4">
+                        <div class="centered">
+                            <ngb-pagination class="pagination" [collectionSize]="number_semesters" [(page)]="page" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+                            [boundaryLinks]="true"></ngb-pagination>
+                        </div>
+                    </div-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }"></ngx-loading>

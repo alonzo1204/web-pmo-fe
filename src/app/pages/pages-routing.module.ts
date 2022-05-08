@@ -31,11 +31,15 @@ import { CompanyRegisterComponent } from './company-register/company-register.co
 import { RoleGuard } from '../core/guards/role.guard';
 import { PostulationsViewComponent } from './postulations-view/postulations-view.component';
 import { ApplicationSettingsComponent } from './application-settings/application-settings.component';
+import { ChangeRequestListComponent } from './change-request-list/change-request-list.component';
+import { AddChangeRequestComponent } from './add-change-request/add-change-request.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
     { path: 'profile/:code', component: ProfileComponent },
     { path: 'application-settings', component: ApplicationSettingsComponent },
+    { path: 'change-request-list', component: ChangeRequestListComponent, data: { role: [2,3,4,5] }, canActivate: [RoleGuard] },
+    { path: 'add-change-request', component: AddChangeRequestComponent, data: { role: [2,3,4,5] }, canActivate: [RoleGuard] },
     { path: 'companies-list', component: CompaniesListComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'company-register', component: CompanyRegisterComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'portfolios-list', component: PortfoliosListComponent, data: { role: [5] }, canActivate: [RoleGuard] },
