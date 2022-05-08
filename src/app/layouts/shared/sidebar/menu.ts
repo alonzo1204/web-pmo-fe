@@ -224,6 +224,30 @@ export const MENU: MenuItem[] = [
                 parentId: 11
             }
         ]
+    },
+    {
+        id: 12,
+        /* label: 'MENUITEMS.USERS.TEXT', */
+        label: 'Solicitud de Cambio',
+        //icon: 'ri-account-circle-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Registrar Solicitud de Cambio',
+                //icon: 'ri-file-add-line',
+                link: '/add-change-request',
+                parentId: 12
+            },
+            {
+                id: 1,
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Lista de Solicitudes de Cambio',
+                //icon: 'ri-file-add-line',
+                link: '/change-request-list',
+                parentId: 12
+            }
+        ]
     }
     // {
     //     id: 2,
