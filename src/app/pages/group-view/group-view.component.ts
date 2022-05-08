@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GroupService } from 'src/app/core/services/group.service';
 import { ProjectService } from 'src/app/core/services/project.service';
-import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-group-view',
@@ -13,17 +12,14 @@ export class GroupViewComponent implements OnInit {
 
   group: any;
   project: any;
-
   assigned: boolean = false;
   isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  mygroup: any;
-
   loading: boolean = false;
 
-  constructor(private router: Router, private userService: UserService,
-    private projectService: ProjectService, private groupService: GroupService) { }
+  constructor(private router: Router, private projectService: ProjectService, 
+    private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Grupos' }, { label: 'Visualizar Mi Grupo', active: true }];

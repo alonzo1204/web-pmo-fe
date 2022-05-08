@@ -26,20 +26,20 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img src="{{ mygroup?.project_assigned.company.image }}" alt="product-img"
+                                                <img src="{{ project?.project_assigned.company.image }}" alt="product-img"
                                                     title="product-img" class="avatar-md" />
                                             </td>
                                             <td class="project-description">
                                                 <div (click)="gotodetails(project?.code)">
                                                     <h5 class="font-size-14 text-truncate"><a
-                                                            class="text-dark pointer">{{ mygroup?.project_assigned.code }}</a></h5>
+                                                            class="text-dark pointer">{{ project?.project_assigned.code }}</a></h5>
                                                 </div>
                                                 <div>
-                                                    <p class="card-text">{{ mygroup?.project_assigned.name }}</p>
+                                                    <p class="card-text">{{ project?.project_assigned.name }}</p>
                                                 </div>
                                             </td>
                                             <td class="text-center">
-                                                <label>{{ mygroup?.project_assigned.career.name }}</label>
+                                                <label>{{ project?.project_assigned.career.name }}</label>
                                             </td>
                                         </tr>
                                     </tbody>
