@@ -17,6 +17,9 @@ export class RegisterComponent implements OnInit {
   error = '';
   successmsg = false;
 
+  button_state: boolean = false;
+  loading: boolean = false;
+
   // set the currenr year
   year: number = new Date().getFullYear();
 
@@ -48,16 +51,20 @@ export class RegisterComponent implements OnInit {
       body['role_id'] = 2;
       body['semester_id'] = 1;
 
+      this.button_state = true;
+      this.loading = true;
       this.authService.register(body)
         .pipe(first())
         .subscribe(data => {
+          this.button_state = false;
+          this.loading = false;
           Swal.fire({
             title: 'Registrado Exitosamente',
             icon: 'success',
             confirmButtonColor: '#EF360E',
           });
           this.router.navigate(['/account/login']);
-        }, error => { this.error = error ? error : ''; })
+        }, error => { this.error = error ? error : ''; this.button_state = false; this.loading = false; })
     }
   }
 

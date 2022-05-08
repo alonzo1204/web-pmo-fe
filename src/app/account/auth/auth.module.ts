@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { RegisterComponent } from './register/register.component';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, PasswordresetComponent, RegisterComponent],
@@ -19,7 +20,8 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     NgbAlertModule,
     UiModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    NgxLoadingModule
   ]
 })
 export class AuthModule { }

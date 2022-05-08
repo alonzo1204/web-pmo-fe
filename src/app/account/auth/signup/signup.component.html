@@ -36,7 +36,7 @@
                         </div>
                       </div>
                       <div class="text-center">
-                        <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Enviar Solicitud</button>
+                        <button class="btn btn-primary w-md waves-effect waves-light" type="submit" [disabled]="button_state">Enviar Solicitud</button>
                       </div>
 
                       <!-- <div class="mt-4 text-center">
@@ -66,3 +66,5 @@
   </div>
 </div>
 <!-- end page -->
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }"></ngx-loading>

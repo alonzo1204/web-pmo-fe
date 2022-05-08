@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
   error = '';
   returnUrl: string;
 
+  button_state: boolean = false;
+  loading: boolean = false;
+
   // set the currenr year
   year: number = new Date().getFullYear();
 
@@ -54,12 +57,16 @@ export class LoginComponent implements OnInit {
       } else {
         email = (this.f.email.value).substring(0, 8);
       }
+      this.button_state = true;
+      this.loading = true;
       this.authService.login(email, this.f.password.value)
         .pipe(first())
         .subscribe(data => {
+          this.button_state = false;
+          this.loading = false;
           //console.log(data);
           this.router.navigate(['/']);
-        }, error => { this.error = error ? error : ''; });
+        }, error => { this.error = error ? error : ''; this.button_state = false; this.loading = false; });
     }
   }
 

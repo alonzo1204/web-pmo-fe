@@ -51,7 +51,7 @@
                       </div>
 
                       <div class="mt-4 text-center">
-                        <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Iniciar Sesión</button>
+                        <button class="btn btn-primary w-md waves-effect waves-light" type="submit" [disabled]="button_state">Iniciar Sesión</button>
                       </div>
 
                       <div class="mt-4 text-center">
@@ -88,3 +88,5 @@
   </div>
 </div>
 <!-- end page -->
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }"></ngx-loading>
