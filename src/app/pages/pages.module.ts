@@ -52,6 +52,7 @@ import { CompanyRegisterComponent } from './company-register/company-register.co
 import { CompaniesListComponent } from './companies-list/companies-list.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import { PostulationsViewComponent } from './postulations-view/postulations-view.component';
+import { ApplicationSettingsComponent } from './application-settings/application-settings.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -92,7 +93,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     PortfoliosListComponent, 
     PortfolioRegisterComponent, 
     CompanyRegisterComponent, 
-    CompaniesListComponent, PostulationsViewComponent
+    CompaniesListComponent, PostulationsViewComponent, ApplicationSettingsComponent
   ],
   imports: [
     CommonModule,

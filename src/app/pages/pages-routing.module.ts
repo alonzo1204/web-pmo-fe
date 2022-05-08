@@ -30,10 +30,12 @@ import { CompaniesListComponent } from './companies-list/companies-list.componen
 import { CompanyRegisterComponent } from './company-register/company-register.component';
 import { RoleGuard } from '../core/guards/role.guard';
 import { PostulationsViewComponent } from './postulations-view/postulations-view.component';
+import { ApplicationSettingsComponent } from './application-settings/application-settings.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
     { path: 'profile/:code', component: ProfileComponent },
+    { path: 'application-settings', component: ApplicationSettingsComponent },
     { path: 'companies-list', component: CompaniesListComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'company-register', component: CompanyRegisterComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'portfolios-list', component: PortfoliosListComponent, data: { role: [5] }, canActivate: [RoleGuard] },

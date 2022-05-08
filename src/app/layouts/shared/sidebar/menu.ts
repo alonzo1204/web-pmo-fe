@@ -209,6 +209,22 @@ export const MENU: MenuItem[] = [
             },
         ]
     },
+    {
+        id: 11,
+        /* label: 'MENUITEMS.USERS.TEXT', */
+        label: 'Configuraciones',
+        //icon: 'ri-account-circle-line',
+        subItems: [
+            {
+                id: 1,
+                /* label: 'MENUITEMS.USERS.LIST.ADDUSER', */
+                label: 'Configuraciones del Aplicativo',
+                //icon: 'ri-file-add-line',
+                link: '/application-settings',
+                parentId: 11
+            }
+        ]
+    }
     // {
     //     id: 2,
     //     label: 'MENUITEMS.DASHBOARDS.TEXT',

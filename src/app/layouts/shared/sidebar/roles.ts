@@ -22,6 +22,6 @@ export const ROLES: any[] = [
     { 
         id: 5, 
         name: 'comite', 
-        access: [1, 2, 4, 5, 8, 9, 10] 
+        access: [1, 2, 4, 5, 8, 9, 10, 11] 
     }
 ];
