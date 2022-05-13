@@ -12,7 +12,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<Auth>;
   public currentUser: Observable<Auth>;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<Auth>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -21,8 +21,8 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, password: string) {
-    let params = { code: email, password: password };
+  login(code: string, password: string) {
+    let params = { code, password };
     return this.http.post<any>(environment.apiURL + '/auth/login', params)
       .pipe(map(response => {
         if (response) {
