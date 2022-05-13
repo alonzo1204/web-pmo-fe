@@ -24,8 +24,8 @@ export class ProjectReviewComponent implements OnInit {
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Revisión de Proyectos' }, { label: 'Lista de Proyectos', active: true }];
     this.loading = true;
-    this.projectService.getProjectsbyStatusVarius([1, 2, 3, 4]).subscribe({ 
-      error: (err) => this.loading = false, 
+    this.projectService.getProjectsbyStatusVarius([1, 2, 3, 4]).subscribe({
+      error: (err) => this.loading = false,
       next: (rest) => {
         this.projects = rest.data;
         this.number_projects = this.projects.length;
@@ -33,23 +33,23 @@ export class ProjectReviewComponent implements OnInit {
         this.isLoaded = true;
         this.loading = false;
         console.log(rest.data)
-      } 
+      }
     });
   }
 
   onStatusFilter(id: number) {
-    switch(id) {
-      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 1; }); break;
-      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 2; }); break;
-      case 3: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 3; }); break;
-      case 4: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 4; }); break;
+    switch (id) {
+      case 1: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 1; }); break;
+      case 2: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 2; }); break;
+      case 3: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 3; }); break;
+      case 4: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 4; }); break;
       default: this.filter = this.projects;
     }
     this.number_projects = this.filter.length;
   }
 
   nameStatus(id: number): string {
-    switch(id) {
+    switch (id) {
       case 1: return 'Pendiente de aprobación'; break;
       case 2: return 'Aprobado'; break;
       case 3: return 'Denegado'; break;
@@ -60,17 +60,19 @@ export class ProjectReviewComponent implements OnInit {
   }
 
   onSearchFilter(keyword: string) {
-    this.filter = this.projects.filter(function(item){
-      return (item.code.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.company.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.career.name.toLowerCase().includes(keyword.toLowerCase()));
+    this.filter = this.projects.filter(function (item) {
+      return (item.code.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.company.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.career.name.toLowerCase().includes(keyword.toLowerCase()));
     });
     this.number_projects = this.filter.length;
   }
 
-  gotodetails(id: number) {
-    this.router.navigate(['/project-details-review/'+this.projects[id-1].code]);
+  gotodetails(code: string) {
+    console.log('here');
+
+    this.router.navigate(['/project-details-review/' + code]);
   }
 
 }
