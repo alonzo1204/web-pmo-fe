@@ -133,7 +133,7 @@ const chatData = [
         id: 1,
         name: 'Frank Vickery',
         message: 'Hey! I am available',
-        image: 'assets/images/users/avatar-2.jpg',
+        image: 'assets/images/users/avatar-9.png',
         time: '12:09'
     },
     {
@@ -150,14 +150,14 @@ const chatData = [
         id: 3,
         name: 'Frank Vickery',
         message: 'Hello!',
-        image: 'assets/images/users/avatar-2.jpg',
+        image: 'assets/images/users/avatar-9.png',
         time: '10:06'
     },
     {
         id: 4,
         name: 'Frank Vickery',
         message: '& Next meeting tomorrow 10.00AM',
-        image: 'assets/images/users/avatar-2.jpg',
+        image: 'assets/images/users/avatar-9.png',
         time: '10:06'
     },
     {
