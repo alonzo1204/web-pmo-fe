@@ -46,7 +46,7 @@ export class ProjectPortfolioComponent implements OnInit {
     this.loading = true;
     this.groupService.getMyGroup(user.code).subscribe({ error: (err) => console.log(err), 
       next: (rest) => { this.mygroup = rest.data[0]; if (this.mygroup) this.groupLoaded = true; else this.groupLoaded = false; }});
-    this.projectService.getProjectsbyStatusVarius([1, 2, 4]).subscribe({
+    this.projectService.getProjectsbyStatusVarius([2, 4]).subscribe({
       error: (err) => this.loading = false, 
       next: (rest) => { 
         this.projects = rest.data;
