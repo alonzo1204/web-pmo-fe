@@ -8,7 +8,7 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
- 
+
   page = 1;
   pageSize = 15;
   number_users: number;
@@ -27,8 +27,8 @@ export class UsersListComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Usuarios' }, { label: 'Lista de Usuarios', active: true }];
     this.loading = true;
     this.userService.getUsersData().subscribe({
-      error: (err) => this.loading = false, 
-      next: (rest) => { 
+      error: (err) => this.loading = false,
+      next: (rest) => {
         this.users = rest.data;
         this.filter = this.users;
         this.number_users = this.users.length;
@@ -39,23 +39,23 @@ export class UsersListComponent implements OnInit {
   }
 
   onRoleFilter(id: number) {
-    switch(id) {
-      case 1: this.filter = this.users.filter(function(item){ return (item.role.name == "tdp" || item.role.name == "tp1" || item.role.name == "tp2"); }); break;
-      case 2: this.filter = this.users.filter(function(item){ return item.role.name == "docente"; }); break;
-      case 3: this.filter = this.users.filter(function(item){ return item.role.name == "comite"; }); break;
-      case 4: this.filter = this.users.filter(function(item){ return item.active == 0; }); break;
+    switch (id) {
+      case 1: this.filter = this.users.filter(function (item) { return (item.role.name == "tdp" || item.role.name == "tp1" || item.role.name == "tp2"); }); break;
+      case 2: this.filter = this.users.filter(function (item) { return item.role.name == "docente"; }); break;
+      case 3: this.filter = this.users.filter(function (item) { return item.role.name == "comite"; }); break;
+      case 4: this.filter = this.users.filter(function (item) { return item.active == 0; }); break;
       default: this.filter = this.users;
     }
     this.number_users = this.filter.length;
   }
 
   onSearchFilter(keyword: string) {
-    this.filter = this.users.filter(function(item){
+    this.filter = this.users.filter(function (item) {
       var username = item.firstname + " " + item.lastname;
-      return (username.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.code.toLowerCase().includes(keyword.toLowerCase()));
+      return (username.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.code.toLowerCase().includes(keyword.toLowerCase()));
     });
-    this.number_users = this.filter.length; 
+    this.number_users = this.filter.length;
   }
 
   averageStudent(min: number, max: number): string {
@@ -72,8 +72,8 @@ export class UsersListComponent implements OnInit {
     return level == 5 ? level + '- no apto' : level + ' - apto'
   }
 
-  gotodetails(id: number) {
-    this.router.navigate(['/user-details/'+this.users[id-1].code]);
+  gotodetails(code: string) {
+    this.router.navigate(['/user-details/' + code]);
   }
 
 }

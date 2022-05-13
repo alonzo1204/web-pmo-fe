@@ -43,7 +43,7 @@
                 </thead>
                 <tbody *ngIf="isLoaded == true">
                   <tr *ngFor="let user of filter | slice: (page-1) * pageSize : page * pageSize">
-                    <td class="pointer" (click)=gotodetails(user.id)>{{ user.firstname + ' ' + user.lastname }}</td>
+                    <td class="pointer" (click)=gotodetails(user.code)>{{ user.firstname + ' ' + user.lastname }}</td>
                     <td>{{ user.code }}</td>
                     <td>
                       <ng-template [ngIf]="user.role.id == 4">Docente</ng-template>

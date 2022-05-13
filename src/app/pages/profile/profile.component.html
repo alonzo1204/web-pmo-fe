@@ -17,8 +17,8 @@
                     <div class="text-black">Correo:</div>
                     <div>{{ user?.code }}@upc.edu.pe</div>
                     <br>
-                    <div class="text-black">Carrera:</div>
-                    <div>Ciencias de la Computación</div>
+                    <div class="text-black" *ngIf="isStudent()">Carrera:</div>
+                    <div *ngIf="isStudent()">Ciencias de la Computación</div>
                   </div>
                   <div class="col-md-6 mb-4 padding-right">
                     <div class="text-black">Sede:</div>
@@ -27,8 +27,8 @@
                     <div class="text-black">Teléfono:</div>
                     <div>972734556</div>
                     <br>
-                    <div class="text-black">Promedio Ponderado:</div>
-                    <div>{{ user?.weighted_average }}</div>
+                    <div *ngIf="isStudent()" class="text-black">Promedio Ponderado:</div>
+                    <div *ngIf="isStudent()">{{ user?.weighted_average }}</div>
                   </div>
                 </div>
               </div>

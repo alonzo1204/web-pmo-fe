@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  roles: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+    let localUser = JSON.parse(localStorage.getItem('currentUser')).user;
+    console.log(localUser);
+
+    localUser.roles.map((r) => { this.roles = this.roles + r.name.toUpperCase() + ' ' })
   }
 
 }

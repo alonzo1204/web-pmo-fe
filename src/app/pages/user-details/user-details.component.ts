@@ -9,6 +9,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class UserDetailsComponent implements OnInit {
   user: any;
+  roles: string = '';
   users: any[] = [];
   isLoaded: Boolean = false;
   loading: boolean = false;
@@ -21,14 +22,16 @@ export class UserDetailsComponent implements OnInit {
     var code = this.route.snapshot.params.code;
     this.loading = true;
     this.userService.getUsersData().subscribe({
-      error: (err) => this.loading = false, 
-      next: (rest) => { 
+      error: (err) => this.loading = false,
+      next: (rest) => {
         this.users = rest.data;
-        this.user = this.users.filter(function(data){ return data.code == code })[0];
+        this.user = this.users.filter(function (data) { return data.code == code })[0];
         this.isLoaded = true;
         this.loading = false;
       }
     });
+    let localUser = JSON.parse(localStorage.getItem('currentUser')).user;    
+    localUser.roles.map((r) => { this.roles = this.roles + r.name + ' ' })
   }
 
 }
