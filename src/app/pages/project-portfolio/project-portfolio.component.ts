@@ -33,10 +33,12 @@ export class ProjectPortfolioComponent implements OnInit {
 
   mygroup: any;
   groupLoaded: boolean = true;
+
+  button_state: boolean = false;
   loading: boolean = false;
 
   constructor(private router: Router, private modalService: NgbModal, private projectService: ProjectService, private postulationService: PostulationService,
-              private companyService: CompanyService, private careerService: CareerService, private groupService: GroupService) { }
+    private companyService: CompanyService, private careerService: CareerService, private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos', active: true }];
@@ -44,57 +46,59 @@ export class ProjectPortfolioComponent implements OnInit {
     this.careerService.getCareersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.careers = rest.data });
     let user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
     this.loading = true;
-    this.groupService.getMyGroup(user.code).subscribe({ error: (err) => console.log(err), 
-      next: (rest) => { this.mygroup = rest.data[0]; if (this.mygroup) this.groupLoaded = true; else this.groupLoaded = false; }});
+    this.groupService.getMyGroup(user.code).subscribe({
+      error: (err) => console.log(err),
+      next: (rest) => { this.mygroup = rest.data[0]; if (this.mygroup) this.groupLoaded = true; else this.groupLoaded = false; }
+    });
     this.projectService.getProjectsbyStatusVarius([2, 4]).subscribe({
-      error: (err) => this.loading = false, 
-      next: (rest) => { 
+      error: (err) => this.loading = false,
+      next: (rest) => {
         this.projects = rest.data;
         this.number_projects = this.projects.length;
         this.projects.forEach(function (element) { element.added = false; });
         this.filter = this.projects;
         this.isLoaded = true;
         this.loading = false;
-      } 
+      }
     });
   }
 
   openConfirmationModal(confirmationModal: any) {
-    this.modalService.open(confirmationModal, { centered: true, size: 'lg'});
+    this.modalService.open(confirmationModal, { centered: true, size: 'lg' });
   }
 
   onStatusFilter(id: number) {
-    switch(id) {
-      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 2; }); break;
-      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 4; }); break;
+    switch (id) {
+      case 1: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 2; }); break;
+      case 2: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 4; }); break;
       default: this.filter = this.projects;
     }
     this.number_projects = this.filter.length;
   }
 
   onSearchFilter(keyword: string) {
-    this.filter = this.projects.filter(function(item){
-      return (item.code.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.company.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.career.name.toLowerCase().includes(keyword.toLowerCase()));
+    this.filter = this.projects.filter(function (item) {
+      return (item.code.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.company.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.career.name.toLowerCase().includes(keyword.toLowerCase()));
     });
     this.number_projects = this.filter.length;
   }
 
   gotodetails(id: number) {
-    this.router.navigate(['/project-details-portfolio/'+this.projects[id-1].code]);
+    this.router.navigate(['/project-details-portfolio/' + this.projects[id - 1].code]);
   }
 
   addProject(id): void {
-    this.projects[id-1].added = true;
-    this.addedprojects.push(this.projects[id-1]);
+    this.projects[id - 1].added = true;
+    this.addedprojects.push(this.projects[id - 1]);
     this.n_addeds = this.n_addeds + 1;
     if (this.n_addeds >= 4) { this.canadd = false; this.canpostulate = true; }
   }
 
   removeProject(id): void {
-    this.projects[id-1].added = false;
+    this.projects[id - 1].added = false;
     var removeIndex = this.addedprojects.map(item => item.id).indexOf(id);
     ~removeIndex && this.addedprojects.splice(removeIndex, 1);
     this.n_addeds = this.n_addeds - 1;
@@ -102,14 +106,28 @@ export class ProjectPortfolioComponent implements OnInit {
   }
 
   postular(): void {
-    let body = {"group_id": 0, "project_1_id": 0, "project_2_id": 0, "project_3_id": 0, "project_4_id": 0};
+    let body = { "group_id": 0, "project_1_id": 0, "project_2_id": 0, "project_3_id": 0, "project_4_id": 0 };
+    console.log(this.mygroup);
+
     body['group_id'] = this.mygroup.group_id;
     body['project_1_id'] = this.addedprojects[0].id;
     body['project_2_id'] = this.addedprojects[1].id;
     body['project_3_id'] = this.addedprojects[2].id;
     body['project_4_id'] = this.addedprojects[3].id;
+    this.button_state = true;
+    this.loading = true;
     this.postulationService.savePostulation(body).subscribe({
-      error: (err) => console.log(err), 
+      error: (err) => {
+        console.log(err);
+        this.button_state = false;
+        this.loading = false;
+        Swal.fire({
+          title: 'No se pudo realizar la postulación',
+          text: err ? err : 'Ha ocurrido un error',
+          icon: 'error',
+          confirmButtonColor: '#E42322',
+        });
+      },
       next: (rest) => {
         Swal.fire({
           title: 'Postulación enviada',
@@ -125,7 +143,9 @@ export class ProjectPortfolioComponent implements OnInit {
   cleanprocess() {
     this.addedprojects = []; this.n_addeds = 0;
     this.canadd = true; this.canpostulate = false;
-    this.projects.forEach(function (element) {element.added = false;});
+    this.button_state = false;
+    this.loading = false;
+    this.projects.forEach(function (element) { element.added = false; });
   }
 
   /*
@@ -158,7 +178,7 @@ export class ProjectPortfolioComponent implements OnInit {
     var result = '';
     var characters = '0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
+    for (var i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;

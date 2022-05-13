@@ -190,8 +190,8 @@
     <div class="text-center mb-4">
         <div class="text-center mb-2">¿Estas seguro de enviar la Postulación?</div>
         <div class="text-center">
-            <button type="button" (click)="modal.dismiss('Cross click')" class="btn btn-primary mr-4">Cancelar</button>
-            <button type="button" (click)="modal.dismiss('Cross click'); postular()" class="btn btn-primary">Aceptar</button>
+            <button type="button" (click)="modal.dismiss('Cross click')" [disabled]="button_state" class="btn btn-primary mr-4">Cancelar</button>
+            <button type="button" (click)="modal.dismiss('Cross click'); postular()" [disabled]="button_state" class="btn btn-primary">Aceptar</button>
         </div>
     </div>
 </ng-template>
