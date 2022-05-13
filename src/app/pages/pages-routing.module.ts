@@ -63,7 +63,7 @@ const routes: Routes = [
     { path: 'projects-list', component: ProjectsListComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'project-portfolio', component: ProjectPortfolioComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
     { path: 'bulk-upload-projects', component: BulkUploadProjectsComponent, data: { role: [5] }, canActivate: [RoleGuard] },
-    { path: 'project-details-review/:code', component: ProjectDetailsReviewComponent, data: { role: [5] }, canActivate: [RoleGuard] },
+    { path: 'project-details-review/:code', component: ProjectDetailsReviewComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'project-details-asignation/:code', component: ProjectDetailsAsignationComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'project-details-portfolio/:code', component: ProjectDetailsPortfolioComponent, data: { role: [2,3,4,5] }, canActivate: [RoleGuard] },
 ];
