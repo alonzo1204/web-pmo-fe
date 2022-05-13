@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DropzoneConfigInterface, DropzoneDirective } from 'ngx-dropzone-wrapper';
 import { CompanyService } from 'src/app/core/services/company.service';
 import Swal from 'sweetalert2';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./company-register.component.scss']
 })
 export class CompanyRegisterComponent implements OnInit {
-  
+
   form: FormGroup;
   button_state: boolean = false;
   loading: boolean = false;
@@ -21,7 +22,7 @@ export class CompanyRegisterComponent implements OnInit {
     maxFiles: 1,
   }
 
-  constructor(private formBuilder: FormBuilder, private companyService: CompanyService) { 
+  constructor(private formBuilder: FormBuilder, private companyService: CompanyService, private router: Router) {
     this.form = this.formBuilder.group({
       name: [''],
       image: [null]
@@ -48,7 +49,7 @@ export class CompanyRegisterComponent implements OnInit {
     this.companyService.saveCompany(formData).subscribe({
       error: (err) => {
         console.log(err),
-        this.button_state = false;
+          this.button_state = false;
         this.loading = false;
         Swal.fire({
           title: 'Empresa no pudo Registrarse',
@@ -63,6 +64,9 @@ export class CompanyRegisterComponent implements OnInit {
           text: 'La Empresa ha sido registrado exitosamente',
           icon: 'success',
           confirmButtonColor: '#EF360E',
+          onClose: () => {
+            this.router.navigate(['/companies-list']);
+          }
         });
       },
       complete: () => this.cleanprocess()
