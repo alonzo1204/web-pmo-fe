@@ -30,7 +30,7 @@ export class GroupViewComponent implements OnInit {
       next: (rest) => {
         this.group = rest.data[0];
         this.searchProjectData(this.group.project_assigned.id);
-        if (this.group.project_assigned) this.assigned = true; else this.assigned = false; 
+        if (this.group.project_assigned.id) this.assigned = true; else this.assigned = false; 
         if (this.group) this.isLoaded = true; else this.isLoaded = false;
         this.loading = false
       }
