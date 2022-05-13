@@ -14,7 +14,7 @@ export class UserService {
   }
 
   saveUser(body: any) {
-    return this.http.post<any>(environment.apiURL + '/users/save', body);
+    return this.http.post<any>(environment.apiURL + '/auth/register', body);
   }
 
   saveMasiveRegister(body: any) {

@@ -50,6 +50,7 @@ export class RegisterComponent implements OnInit {
       body['lastname'] = this.f.lastname.value;
       body['role_id'] = 2;
       body['semester_id'] = 1;
+      body['isStudent'] = true;
 
       this.button_state = true;
       this.loading = true;

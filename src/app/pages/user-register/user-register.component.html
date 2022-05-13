@@ -13,19 +13,31 @@
         <div class="card-body">
           <aw-wizard>
             <aw-wizard-step stepTitle="Registro de Usuario">
-              <div class="form-group row mt-4">
-                <label for="name-input" class="col-md-2 col-form-label">Nombre</label>
-                <div class="col-md-10">
-                  <input class="form-control" type="text" id="name-input" [(ngModel)]="name">
-                </div>
-              </div>
               <div class="form-group row">
                 <label for="code-input" class="col-md-2 col-form-label">Código</label>
                 <div class="col-md-10">
                   <input class="form-control" type="text" id="code-input" [(ngModel)]="code">
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row mt-4">
+                <label for="firstname-input" class="col-md-2 col-form-label">Nombres</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="firstname-input" [(ngModel)]="firstname">
+                </div>
+              </div>
+              <div class="form-group row mt-4">
+                <label for="lastname-input" class="col-md-2 col-form-label">Apellidos</label>
+                <div class="col-md-10">
+                  <input autocomplete="nope" class="form-control" type="text" id="lastname-input" [(ngModel)]="lastname">
+                </div>
+              </div>
+              <div class="form-group row mt-4">
+                <label for="password-input" class="col-md-2 col-form-label">Contraseña</label>
+                <div class="col-md-10">
+                  <input autocomplete="nope" class="form-control" id="password-input" [(ngModel)]="password">
+                </div>
+              </div>
+              <div *ngIf="false" class="form-group row">
                 <label for="code-input" class="col-md-2 col-form-label">Sede Perteneciente</label>
                 <div class="col-md-10">
                   <select class="form-control" [(ngModel)]="sede">
@@ -39,21 +51,29 @@
               <div class="form-group row">
                 <label for="usertype-input" class="col-md-2 col-form-label">Tipo de usuario</label>
                 <div class="col-md-10 row mt-2 pl-5">
-                    <div class="form-check mr-5">
-                      <input class="form-check-input" type="radio" name="userTypeRadios" id="alumnoRadio" value="alumno" checked [(ngModel)]="type">
-                      <label class="form-check-label" for="alumnoRadio">Alumno</label>
-                    </div>
-                    <div class="form-check mr-5">
-                      <input class="form-check-input" type="radio" name="userTypeRadios" id="docenteRadio" value="docente" [(ngModel)]="type">
-                      <label class="form-check-label" for="docenteRadio">Docente</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="userTypeRadios" id="mcomiteRadio" value="mcomite" [(ngModel)]="type">
-                      <label class="form-check-label" for="mcomiteRadio">Miembro de Comité</label>
-                    </div>
+                  <div class="form-check mr-5">
+                    <input class="form-check-input" type="radio" name="userTypeRadios" id="tp1Radio" value="tp1" checked
+                      [(ngModel)]="type">
+                    <label class="form-check-label" for="tp1Radio">TP1</label>
+                  </div>
+                  <div class="form-check mr-5">
+                    <input class="form-check-input" type="radio" name="userTypeRadios" id="tp2Radio" value="tp2" checked
+                      [(ngModel)]="type">
+                    <label class="form-check-label" for="tp2Radio">TP2</label>
+                  </div>
+                  <div class="form-check mr-5">
+                    <input class="form-check-input" type="radio" name="userTypeRadios" id="docenteRadio" value="docente"
+                      [(ngModel)]="type">
+                    <label class="form-check-label" for="docenteRadio">Docente</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="userTypeRadios" id="mcomiteRadio" value="mcomite"
+                      [(ngModel)]="type">
+                    <label class="form-check-label" for="mcomiteRadio">Miembro de Comité</label>
+                  </div>
                 </div>
               </div>
-              <div *ngIf="type == 'alumno'">
+              <div *ngIf="false">
                 <div class="form-group row">
                   <label class="col-md-2 col-form-label">Carrera</label>
                   <div class="col-md-10">
@@ -69,7 +89,7 @@
                   </div>
                 </div-->
               </div>
-              <div *ngIf="type == 'docente'">
+              <div *ngIf="false">
                 <div class="form-group row">
                   <label class="col-md-2 col-form-label">Tipo de docente</label>
                   <div class="col-md-10">
@@ -83,10 +103,12 @@
               </div>
 
               <div class="mt-4">
-                <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light float-left" (click)="buckupload()">Carga Masiva de Usuarios</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light float-right" (click)="successmsg()" [disabled]="button_state">Registrar Usuario</button>
+                <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light float-left"
+                  (click)="buckupload()">Habilitar Códigos</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light float-right"
+                  (click)="successmsg()" [disabled]="button_state">Registrar Usuario</button>
                 <button type="submit" class="btn btn-light waves-effect mr-3 float-right">Cancelar</button>
-              </div>  
+              </div>
             </aw-wizard-step>
           </aw-wizard>
         </div>
