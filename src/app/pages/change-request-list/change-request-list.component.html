@@ -30,7 +30,6 @@
                         <table class="table mb-0">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
                                     <th>Atributo</th>
                                     <th style="display: none;">Valor a Cambiar</th>
                                     <th>Solicitante</th>
@@ -40,8 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody *ngIf="isLoaded == true">
-                                <tr *ngFor="let request of filter | slice: (page-1) * pageSize : page * pageSize">
-                                    <td>{{ request.id }}</td>
+                                <tr *ngFor="let request of filter | slice: (page-1) * pageSize : page * pageSize" class="pointer" (click)=gotodetails(request.id)>
                                     <td>{{ request.attribute_to_change }}</td>
                                     <td style="display: none;">{{ request.value }}</td>
                                     <td>{{ request.user.firstname + ' ' + request.user.lastname }}</td>
@@ -55,7 +53,7 @@
                                             <div class="badge-soft-danger badge font-size-15">rechazado</div>
                                         </div>
                                         <div *ngIf="request.accepted == 2;">
-                                            <div class="badge-soft-success badge font-size-15">aceptado</div>
+                                            <div class="badge-soft-success badge font-size-15">aprobado</div>
                                         </div>
                                     </td>
                                 </tr>

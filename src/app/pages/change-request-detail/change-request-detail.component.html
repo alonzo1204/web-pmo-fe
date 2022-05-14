@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <app-pagetitle title="Detalle Solictud de Cambio" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-md-10 centered">
+                        <div class="card card-body more-shadow" *ngIf="isLoaded">
+                            <h3 class="card-title mt-0 text-center">Solicitud de Cambio</h3>
+
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h3 class="card-title mt-4 px-4"> Fecha de Solicitud </h3>
+                                    <div class="ml-4"> {{ request?.request_date | date: 'dd-MM-yyy' }} </div>
+                                </div>
+
+                                <div class="text-right">
+                                    <h3 class="card-title mt-4 px-4"> Estado de Solicitud </h3>
+                                    <div *ngIf="request?.accepted == 2">
+                                        <div class="badge-soft-success badge font-size-15 mr-4"> Aprobado </div>
+                                    </div>
+                                    <div *ngIf="request?.accepted == 1">
+                                        <div class="badge-soft-danger badge font-size-15 mr-4"> Rechazado </div>
+                                    </div>
+                                    <div *ngIf="request?.accepted == 0">
+                                        <div class="badge-soft-warning badge font-size-15 mr-4"> Pendiente </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="card-title mt-4 px-4">Atributo a Modificar</h3>
+                            <div class="ml-4"> {{ request?.attribute_to_change }} </div>
+
+                            <h3 class="card-title mt-4 px-4">Valor</h3>
+                            <textarea class="ml-4 mr-4" id="Descripcion" rows="5" [value]="value" [disabled]="true"></textarea>
+
+                            <h3 class="card-title mt-4 px-4">Solicitante</h3>
+                            <div class="ml-4"> {{ request.user.firstname + ' ' + request.user.lastname }} </div>
+
+                            <h3 class="card-title mt-4 px-4">Proyecto Asignado</h3>
+                            <div class="d-flex mt-2 px-4 table-responsive">
+                                <table class="table table-centered mb-0">
+                                    <thead class="bg-white">
+                                        <tr>
+                                            <th style="width: 120px">Empresa</th>
+                                            <th>Descripción del proyecto</th>
+                                            <th class="text-center">Carrera</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="{{ project?.company.image }}" alt="product-img"
+                                                    title="product-img" class="avatar-md" />
+                                            </td>
+                                            <td class="project-description">
+                                                <div (click)="gotodetails(project?.code)">
+                                                    <h5 class="font-size-14 text-truncate">
+                                                        <a class="text-dark pointer">{{ project?.code }}</a></h5>
+                                                </div>
+                                                <div>
+                                                    <p class="card-text">{{ project?.name }}</p>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <label>{{ project?.career.name }}</label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="text-center mt-4" *ngIf="this.roles[0].id == 4 || this.roles[0].id == 5">
+                                <button type="submit" class="btn btn-danger waves-effect mr-3">Rechazar</button>
+                                <button type="submit" class="btn btn-success waves-effect mr-3">Aprobar</button>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }"></ngx-loading>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class ChangeRequestListComponent implements OnInit {
   loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Solicitud de Cambio' }, { label: 'Lista de Solicitudes de Cambio', active: true }];
@@ -51,7 +52,6 @@ export class ChangeRequestListComponent implements OnInit {
       error: (err) => this.loading = false, 
       next: (rest) => {        
         this.requests = rest.data;
-        console.log(this.requests);
         this.filter = this.requests;
         this.number_requests = this.requests.length;
         this.isLoaded = true;
@@ -65,13 +65,16 @@ export class ChangeRequestListComponent implements OnInit {
       error: (err) => this.loading = false, 
       next: (rest) => {        
         this.requests = rest.data;
-        console.log(this.requests);
         this.filter = this.requests;
         this.number_requests = this.requests.length;
         this.isLoaded = true;
         this.loading = false;
       }
     });
+  }
+
+  gotodetails(code: string) {
+    this.router.navigate(['/change-request/' + code]);
   }
 
 }
