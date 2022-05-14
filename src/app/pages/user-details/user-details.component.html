@@ -18,8 +18,8 @@
                 <div class="text-black">Correo:</div>
                 <div>{{ user.code }}@upc.edu.pe</div>
                 <br>
-                <div class="text-black">Carrera:</div>
-                <div>Ciencias de la Computación</div>
+                <div *ngIf="user.role.id == 1 || user.role.id == 2 || user.role.id == 3" class="text-black">Carrera:</div>
+                <div *ngIf="user.role.id == 1 || user.role.id == 2 || user.role.id == 3" >Ciencias de la Computación</div>
               </div>
               <div class="col-md-6 mb-4 padding-right">
                 <div class="text-black">Sede:</div>

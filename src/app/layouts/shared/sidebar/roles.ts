@@ -17,7 +17,7 @@ export const ROLES: any[] = [
     { 
         id: 4, 
         name: 'docente', 
-        access: [1, 2, 3, 7] 
+        access: [1, 2, 7] 
     },
     { 
         id: 5, 
