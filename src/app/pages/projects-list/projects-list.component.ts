@@ -8,7 +8,7 @@ import { ProjectService } from 'src/app/core/services/project.service';
   styleUrls: ['./projects-list.component.scss']
 })
 export class ProjectsListComponent implements OnInit {
-  
+
   page = 1;
   pageSize = 10;
   projects: any[] = [];
@@ -22,31 +22,31 @@ export class ProjectsListComponent implements OnInit {
   constructor(private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Asignación de Docentes' }, { label: 'Lista de Proyectos', active: true }]; 
+    this.breadCrumbItems = [{ label: 'Asignación de Docentes' }, { label: 'Lista de Proyectos', active: true }];
     this.loading = true;
-    this.projectService.getProjectsbyStatusVarius([5, 6]).subscribe({ 
-      error: (err) => this.loading = false, 
-      next: (rest) => { 
+    this.projectService.getProjectsbyStatusVarius([5, 6]).subscribe({
+      error: (err) => this.loading = false,
+      next: (rest) => {
         this.projects = rest.data;
         this.number_projects = this.projects.length;
         this.filter = this.projects;
         this.isLoaded = true;
         this.loading = false;
-      } 
+      }
     });
   }
 
   onStatusFilter(id: number) {
-    switch(id) {
-      case 1: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 5; }); break;
-      case 2: this.filter = this.projects.filter(function(item){ return item.project_process_state.id == 6; }); break;
+    switch (id) {
+      case 1: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 5; }); break;
+      case 2: this.filter = this.projects.filter(function (item) { return item.project_process_state.id == 6; }); break;
       default: this.filter = this.projects;
     }
     this.number_projects = this.filter.length;
   }
 
   nameStatus(id: number): string {
-    switch(id) {
+    switch (id) {
       case 1: return 'Pendiente de aprobación'; break;
       case 2: return 'Aprobado'; break;
       case 3: return 'Denegado'; break;
@@ -57,17 +57,16 @@ export class ProjectsListComponent implements OnInit {
   }
 
   onSearchFilter(keyword: string) {
-    this.filter = this.projects.filter(function(item){
-      return (item.code.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.company.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.career.name.toLowerCase().includes(keyword.toLowerCase()));
+    this.filter = this.projects.filter(function (item) {
+      return (item.code.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.company.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.career.name.toLowerCase().includes(keyword.toLowerCase()));
     });
     this.number_projects = this.filter.length;
   }
 
-  gotodetails(id: number) {
-    this.router.navigate(['/project-details-asignation/'+this.projects[id-1].code]);
+  gotodetails(code: string) {
+    this.router.navigate(['/project-details-asignation/' + code]);
   }
-
 }

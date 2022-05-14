@@ -42,7 +42,7 @@
                     <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
                   </td>
                   <td class="project-description">
-                    <div (click)="gotodetails(project.id)">
+                    <div (click)="gotodetails(project.code)">
                         <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
                     </div>
                     <div>
@@ -53,11 +53,11 @@
                     <label>{{ project.career.name }}</label>
                   </td>
                   <td class="text-center">
-                    <div *ngIf="project.project_process_state.id == 2 || project.project_process_state.id == 4">
-                        <div class="badge-soft-success badge font-size-15">{{ project.project_process_state.name }}</div>
+                    <div *ngIf="project.project_process_state.id == 5 || project.project_process_state.id == 4">
+                        <div class="badge-soft-warning badge font-size-15">{{ project.project_process_state.name }}</div>
                     </div>
-                    <div *ngIf="project.project_process_state.id == 3">
-                        <div class="badge-soft-danger badge font-size-15">{{ project.project_process_state.name }}</div>
+                    <div *ngIf="project.project_process_state.id == 6">
+                        <div class="badge-soft-success badge font-size-15">{{ project.project_process_state.name }}</div>
                     </div>
                     <div *ngIf="project.project_process_state.id == 1">
                         <div class="badge-soft-warning badge font-size-15">{{ project.project_process_state.name }}</div>

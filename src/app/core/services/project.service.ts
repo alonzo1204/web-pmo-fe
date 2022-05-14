@@ -37,4 +37,7 @@ export class ProjectService {
     return this.http.get<any>(environment.apiURL + '/projects/status/' + idState);
   }
 
+  saveTeachers(body: any) {
+    return this.http.post<any>(environment.apiURL + '/projects/save_teachers', body);
+  }
 }

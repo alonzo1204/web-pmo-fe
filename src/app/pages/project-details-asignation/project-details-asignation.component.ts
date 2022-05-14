@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/core/services/project.service';
+import { UserService } from 'src/app/core/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -31,18 +33,24 @@ export class ProjectDetailsAsignationComponent implements OnInit {
   loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) { }
+  teachers: any[] = [];
+
+  product_owner: any;
+  portfolio_manager: any;
+  co_autor: any;
+
+  constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Asignación de Docentes' }, { label: 'Lista de Proyectos'}, { label: 'Detalles', active: true }];
+    this.breadCrumbItems = [{ label: 'Asignación de Docentes' }, { label: 'Lista de Proyectos' }, { label: 'Detalles', active: true }];
     var code = this.route.snapshot.params.code
     this.titlecode = "Detalles del Proyecto " + code;
     this.loading = true;
     this.projectService.getProjectsData().subscribe({
-      error: (err) => this.loading = false, 
-      next: (rest) => { 
+      error: (err) => this.loading = false,
+      next: (rest) => {
         this.projects = rest.data;
-        var project = this.projects.filter(function(data){ return data.code == code })[0];
+        var project = this.projects.filter(function (data) { return data.code == code })[0];
         this.code = project.code;
         this.name = project.name;
         this.studies = project.career.name;
@@ -56,10 +64,18 @@ export class ProjectDetailsAsignationComponent implements OnInit {
         this.sharepoint = project.url_sharepoint;
         this.petition = "Lentes de realidad aumentada";
         this.description = project.description;
-        this.isLoaded = true;
-        this.loading = false;
+        this.userService.getTeachersData().subscribe({
+          error: (e) => this.loading = false,
+          next: (response) => {
+            this.teachers = response.data;
+            this.isLoaded = true;
+            this.loading = false;
+            console.log(this.teachers);
+          }
+        })
       }
     });
+
   }
 
   goback() {
@@ -67,18 +83,57 @@ export class ProjectDetailsAsignationComponent implements OnInit {
   }
 
   saveAsignation() {
-    console.log(this.name);
-    console.log(this.studies);
-    console.log(this.objective);
-    console.log(this.powner);
-    console.log(this.pmanager);
-    console.log(this.coautor);
-    Swal.fire({
-      title: 'Asignaciones Guardadas',
-      text: 'Se guardó la asignación de Product Owner, Portfolio Manager y Co-Autor con éxito',
-      icon: 'success',
-      confirmButtonColor: '#EF360E',
-    });
+    if (!this.product_owner || !this.portfolio_manager || !this.co_autor) {
+      Swal.fire({
+        title: 'Asignar todos los docentes',
+        text: 'Se debe enviar todos los docentes que estarán relacionados con el proyecto',
+        icon: 'error',
+        confirmButtonColor: '#EF360E',
+      });
+    } else {
+      this.loading = true;
+      const body = {
+        code: this.code,
+        product_owner_id: this.product_owner.id,
+        portfolio_manager_id: this.portfolio_manager.id,
+        co_autor_id: this.co_autor.id,
+      }
+
+      this.projectService.saveTeachers(body).subscribe({
+        error: (e) => {
+          this.loading = false;
+          Swal.fire({
+            title: 'Asignar todos los docentes',
+            text: e,
+            icon: 'error',
+            confirmButtonColor: '#EF360E',
+          });
+        },
+        next: (response) => {
+          this.loading = false;
+          Swal.fire({
+            title: 'Asignaciones Guardadas',
+            text: 'Se guardó la asignación de Product Owner, Portfolio Manager y Co-Autor con éxito',
+            icon: 'success',
+            confirmButtonColor: '#EF360E',
+            onClose: () => {
+              this.goback();
+            }
+          });
+        }
+      })
+
+
+    }
+  }
+
+  searchTeacher = (text$: Observable<string>) => text$
+    .debounceTime(200)
+    .distinctUntilChanged()
+    .map(term => term.length < 2 ? [] : this.teachers.filter(v => v.fullInformation.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+
+  formatValueList = (value: any) => {
+    return value.fullInformation;
   }
 
   downloadMyFile() {

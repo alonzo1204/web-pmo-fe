@@ -13,6 +13,10 @@ export class UserService {
     return this.http.get<any>(environment.apiURL + '/users/');
   }
 
+  getTeachersData() {
+    return this.http.get<any>(environment.apiURL + '/users/teachers/');
+  }
+
   saveUser(body: any) {
     return this.http.post<any>(environment.apiURL + '/auth/register', body);
   }
