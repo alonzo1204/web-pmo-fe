@@ -10,6 +10,7 @@ import { ProjectService } from 'src/app/core/services/project.service';
 })
 export class PostulationsViewComponent implements OnInit {
 
+  type_error: boolean;
   mypostulations: any;
   projects: any[] = [];
   loading: boolean = false;
@@ -23,16 +24,22 @@ export class PostulationsViewComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Postulaciones' }, { label: 'Visualizar Mis Postulaciones', active: true }];
     let user = JSON.parse(localStorage.getItem('currentUser')!).user.information;
     this.loading = true;
+    this.type_error = false;
     this.postulationService.getMyPostulations(user.code).subscribe({
-      error: (err) => this.loading = false, 
+      error: (err) => {
+        this.loading = false,
+        this.isLoaded = false
+      }, 
       next: (rest) => {
         this.mypostulations = rest.data[0];
+        console.log('postulations', this.mypostulations)
         this.searchProjectData(this.mypostulations.project_1_id);
         this.searchProjectData(this.mypostulations.project_2_id);
         this.searchProjectData(this.mypostulations.project_3_id);
         this.searchProjectData(this.mypostulations.project_4_id);
         if (this.mypostulations) this.isLoaded = true; else this.isLoaded = false;
-        this.loading = false
+        this.type_error = true;
+        this.loading = false;
       }
     })
   }
@@ -49,6 +56,10 @@ export class PostulationsViewComponent implements OnInit {
 
   groupregister() {
     this.router.navigate(['/group-register']);
+  }
+
+  postulationregister() {
+    this.router.navigate(['/project-portfolio']);
   }
 
   gotodetails(code: string) {
