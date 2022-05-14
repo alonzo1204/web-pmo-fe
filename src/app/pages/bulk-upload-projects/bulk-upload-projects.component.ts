@@ -76,7 +76,7 @@ export class BulkUploadProjectsComponent implements OnInit {
   }
 
   goback() {
-    this.router.navigate(['/add-project']);
+    this.router.navigate(['/project-review']);
   }
   
 }
