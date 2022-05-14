@@ -40,4 +40,12 @@ export class ProjectService {
   saveTeachers(body: any) {
     return this.http.post<any>(environment.apiURL + '/projects/save_teachers', body);
   }
+
+  getMyRequestsEdits() {
+    return this.http.get<any>(environment.apiURL + '/projects/my_request_edits');
+  }
+
+  getAllRequestsEdits() {
+    return this.http.get<any>(environment.apiURL + '/projects/all_request_edits');
+  }
 }
