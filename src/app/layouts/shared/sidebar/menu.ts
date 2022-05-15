@@ -49,6 +49,13 @@ export const MENU: MenuItem[] = [
                 link: '/postulations-view',
                 parentId: 3
             },
+            {
+                id: 3,
+                /* label: 'MENUITEMS.POSTULATION.LIST.LISTPROJECTS', */
+                label: 'Lista de Postulaciones',
+                link: '/postulations-list',
+                parentId: 3
+            },
         ]
     },
     {

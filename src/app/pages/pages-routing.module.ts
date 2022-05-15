@@ -34,6 +34,8 @@ import { ApplicationSettingsComponent } from './application-settings/application
 import { ChangeRequestListComponent } from './change-request-list/change-request-list.component';
 import { AddChangeRequestComponent } from './add-change-request/add-change-request.component';
 import { ChangeRequestDetailComponent } from './change-request-detail/change-request-detail.component';
+import { PostulationsListComponent } from './postulations-list/postulations-list.component';
+import { PostulationsDetailComponent } from './postulations-detail/postulations-detail.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -50,6 +52,8 @@ const routes: Routes = [
     { path: 'semester-register', component: SemesterRegisterComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'postulations', component: PostulationsComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
     { path: 'postulations-view', component: PostulationsViewComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
+    { path: 'postulations-list', component: PostulationsListComponent },
+    { path: 'postulations-detail/:code', component: PostulationsDetailComponent },
     { path: 'project-details/:code', component: ProjectDetailsComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'change-management/:code', component: ChangeManagementComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'user-register', component: UserRegisterComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },

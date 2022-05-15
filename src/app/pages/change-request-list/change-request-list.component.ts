@@ -23,7 +23,7 @@ export class ChangeRequestListComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Solicitud de Cambio' }, { label: 'Lista de Solicitudes de Cambio', active: true }];
-    //this.loading = true;
+    this.loading = true;
     let roles = JSON.parse(localStorage.getItem('currentUser')!).user.roles;
     if (roles[0].id == 1 || roles[0].id == 2 || roles[0].id == 3) { this.getMyEdits() } else this.getAllEdits()
   }
