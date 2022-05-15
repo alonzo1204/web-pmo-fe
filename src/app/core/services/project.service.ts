@@ -48,4 +48,8 @@ export class ProjectService {
   getAllRequestsEdits() {
     return this.http.get<any>(environment.apiURL + '/projects/all_request_edits');
   }
+
+  saveRequestEdits(body: any) {
+    return this.http.post<any>(environment.apiURL + '/projects/save_request_edits', body);
+  }
 }
