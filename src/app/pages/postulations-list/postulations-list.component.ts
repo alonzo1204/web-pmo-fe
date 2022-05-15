@@ -41,8 +41,8 @@ export class PostulationsListComponent implements OnInit {
 
   onSearchFilter(keyword: string) {
     this.filter = this.postulations.filter(function (item) {
-      return (item.studen_1.code.toLowerCase().includes(keyword.toLowerCase()) ||
-        item.studen_2.code.toLowerCase().includes(keyword.toLowerCase()) ||
+      return (item.student_1.code.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.student_2.code.toLowerCase().includes(keyword.toLowerCase()) ||
         item.proj1.code.toLowerCase().includes(keyword.toLowerCase()));
     });
     this.number_postulations = this.filter.length;
