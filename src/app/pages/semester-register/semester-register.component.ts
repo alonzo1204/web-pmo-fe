@@ -20,6 +20,13 @@ export class SemesterRegisterComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Semestres' }, { label: 'Añadir Semestre', active: true }]; 
   }
 
+  validate(): boolean {
+    if (this.name == '') {
+      return false;
+    }
+    return true
+  }
+
   successmsg() {
     var body = { name: '' };
     body['name'] = this.name;

@@ -27,36 +27,52 @@ export class PortfolioRegisterComponent implements OnInit {
     this.semesterService.getSemestersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.semesters = rest.data });
   }
 
-  successmsg() {
-    var body = { name: '', semester_id: 0, portfolio_state_id: 0 };
-    body['name'] = this.name;
-    body['semester_id'] = this.semester;
-    body['portfolio_state_id'] = this.portfolio_stated;
+  validate(): boolean {
+    if (this.name == '') {
+      return false;
+    }
+    return true
+  }
 
-    this.button_state = true;
-    this.loading = true;
-    this.portfolioService.savePortfolio(body).subscribe({
-      error: (err) => {
-        console.log(err),
+  successmsg() {
+    if(this.validate()) {
+      var body = { name: '', semester_id: 0, portfolio_state_id: 0 };
+      body['name'] = this.name;
+      body['semester_id'] = this.semester;
+      body['portfolio_state_id'] = this.portfolio_stated;
+
+      this.button_state = true;
+      this.loading = true;
+      this.portfolioService.savePortfolio(body).subscribe({
+        error: (err) => {
+          console.log(err),
           this.button_state = false;
-        this.loading = false;
-        Swal.fire({
-          title: 'Portafolio no pudo Registrarse',
-          text: 'Verifique llenar los campos correctamente',
-          icon: 'error',
-          confirmButtonColor: '#E42322',
-        });
-      },
-      next: (rest) => {
-        Swal.fire({
-          title: 'Portafolio Registrado',
-          text: 'El Portafolio fue registrado satisfactoriamente',
-          icon: 'success',
-          confirmButtonColor: '#EF360E',
-        });
-      },
-      complete: () => this.cleanprocess()
-    });
+          this.loading = false;
+          Swal.fire({
+            title: 'Portafolio no pudo Registrarse',
+            text: err,
+            icon: 'error',
+            confirmButtonColor: '#E42322',
+          });
+        },
+        next: (rest) => {
+          Swal.fire({
+            title: 'Portafolio Registrado',
+            text: 'El Portafolio fue registrado satisfactoriamente',
+            icon: 'success',
+            confirmButtonColor: '#EF360E',
+          });
+        },
+        complete: () => this.cleanprocess()
+      });
+    } else {
+      Swal.fire({
+        title: 'Complete el formulario',
+        text: 'Todos los campos son obligatorios',
+        icon: 'error',
+        confirmButtonColor: '#E42322',
+      });
+    }
   }
 
   cleanprocess() {

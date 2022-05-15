@@ -38,36 +38,52 @@ export class BulkUploadProjectsComponent implements OnInit {
     this.form.get('file').updateValueAndValidity();
   }
 
+  validate(): boolean {
+    if (this.form.get('file').value == '' || this.form.get('file').value == null || this.form.get('file').value == undefined) {
+      return false;
+    }
+    return true
+  }
+
   successmsg() {
-    var formData: any = new FormData();
-    formData.append('file', this.form.get('file').value);
-    //console.log(this.form.get('file').value)
-    this.button_state = true;
-    this.loading = true;
-    this.projectService.saveMasiveRegister(formData).subscribe({
-      error: (err) => {
-        console.log(err),
-        this.button_state = false;
-        this.loading = false;
-        Swal.fire({
-          title: 'Archivo Excel no pudo subido',
-          text: 'Verifique llenar los campos correctamente',
-          icon: 'error',
-          confirmButtonColor: '#E42322',
-        });
-      },
-      next: (rest) => {
-        Swal.fire({
-          title: 'Archivo Excel subido',
-          text: 'El archivo Excel ha sido subido exitosamente',
-          icon: 'success',
-          timer: 2500
-          //confirmButtonColor: '#EF360E',
-        });
-        setTimeout(() => this.goback(), 2500);
-      }, 
-      complete: () => this.cleanprocess()
-    });
+    if(this.validate()) {
+      var formData: any = new FormData();
+      formData.append('file', this.form.get('file').value);
+      //console.log(this.form.get('file').value)
+      this.button_state = true;
+      this.loading = true;
+      this.projectService.saveMasiveRegister(formData).subscribe({
+        error: (err) => {
+          console.log(err),
+          this.button_state = false;
+          this.loading = false;
+          Swal.fire({
+            title: 'Archivo Excel no pudo subido',
+            text: err,
+            icon: 'error',
+            confirmButtonColor: '#E42322',
+          });
+        },
+        next: (rest) => {
+          Swal.fire({
+            title: 'Archivo Excel subido',
+            text: 'El archivo Excel ha sido subido exitosamente',
+            icon: 'success',
+            timer: 2500
+            //confirmButtonColor: '#EF360E',
+          });
+          setTimeout(() => this.goback(), 2500);
+        }, 
+        complete: () => this.cleanprocess()
+      });
+    } else {
+      Swal.fire({
+        title: 'Es necesario subir un archivo',
+        text: 'Todos los campos son obligatorios',
+        icon: 'error',
+        confirmButtonColor: '#E42322',
+      });
+    }
   }
 
   cleanprocess() {

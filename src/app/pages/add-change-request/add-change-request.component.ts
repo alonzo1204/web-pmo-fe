@@ -45,41 +45,56 @@ export class AddChangeRequestComponent implements OnInit {
     });
   }
 
-  successmsg() {
-    var body = { user_id: '', project_id: '', attribue_to_change: '', value: '' };
-    body['user_id'] = this.user.id;
-    body['project_id'] = this.project.id;
-    body['attribue_to_change'] = this.atribute;
-    body['value'] = this.value;
+  validate(): boolean {
+    if (this.atribute == '' || this.value == '') {
+      return false;
+    }
+    return true
+  }
 
-    this.button_state = true;
-    this.loading = true;
-    this.projectService.saveRequestEdits(body).subscribe({
-      error: (err) => {
-        console.log(err),
-        this.button_state = false;
-        this.loading = false;
-        Swal.fire({
-          title: 'Solicitud no pudo Registrarse',
-          text: 'Verifique llenar los campos correctamente',
-          icon: 'error',
-          confirmButtonColor: '#E42322',
-        });
-      },
-      next: (rest) => {
-        Swal.fire({
-          title: 'Solicitud Registrada',
-          text: 'La solicitud ha sido registrado exitosamente',
-          icon: 'success',
-          confirmButtonColor: '#EF360E',
-          onClose: () => {
-            this.router.navigate(['/change-request-list']);
-          }
-        });
-      },
-      complete: () => this.cleanprocess()
-    });
-    console.log(body);
+  successmsg() {
+    if(this.validate()) {
+      var body = { user_id: '', project_id: '', attribue_to_change: '', value: '' };
+      body['user_id'] = this.user.id;
+      body['project_id'] = this.project.id;
+      body['attribue_to_change'] = this.atribute;
+      body['value'] = this.value;
+
+      this.button_state = true;
+      this.loading = true;
+      this.projectService.saveRequestEdits(body).subscribe({
+        error: (err) => {
+          console.log(err),
+          this.button_state = false;
+          this.loading = false;
+          Swal.fire({
+            title: 'Solicitud no pudo Registrarse',
+            text: err,
+            icon: 'error',
+            confirmButtonColor: '#E42322',
+          });
+        },
+        next: (rest) => {
+          Swal.fire({
+            title: 'Solicitud Registrada',
+            text: 'La solicitud ha sido registrado exitosamente',
+            icon: 'success',
+            confirmButtonColor: '#EF360E',
+            onClose: () => {
+              this.router.navigate(['/change-request-list']);
+            }
+          });
+        },
+        complete: () => this.cleanprocess()
+      });
+    } else {
+      Swal.fire({
+        title: 'Complete el formulario',
+        text: 'Todos los campos son obligatorios',
+        icon: 'error',
+        confirmButtonColor: '#E42322',
+      });
+    }
   }
 
   cleanprocess() {

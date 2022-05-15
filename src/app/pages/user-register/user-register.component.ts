@@ -59,7 +59,7 @@ export class UserRegisterComponent implements OnInit {
       this.userService.saveUser(body).subscribe({
         error: (err) => {
           console.log(err),
-            this.button_state = false;
+          this.button_state = false;
           this.loading = false;
           Swal.fire({
             title: 'Usuario no pudo Registrarse',

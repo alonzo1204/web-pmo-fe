@@ -55,34 +55,50 @@ export class GroupRegisterComponent implements OnInit {
     });
   }
 
-  successmsg() {
-    var body = { student_1_id: 0, student_2_id: 0 }
-    body['student_1_id'] = this.user.id;
-    body['student_2_id'] = this.partner_data.id;
+  validate(): boolean {
+    if (this.partner_data.id == '' || this.partner_data.id == null || this.partner_data.id == undefined) {
+      return false;
+    }
+    return true
+  }
 
-    this.button_state = true;
-    this.loading = true;
-    this.groupService.saveGroup(body).subscribe({
-      error: (err) => {
-        this.loading = false;
-        this.button_state = false;
-        Swal.fire({
-          title: 'Grupo no pudo Registrarse',
-          text: err,
-          icon: 'error',
-          confirmButtonColor: '#E42322',
-        });
-      },
-      next: (rest) => {
-        Swal.fire({
-          title: 'Grupo Registrado',
-          text: 'El grupo ha sido registrado exitosamente',
-          icon: 'success',
-          confirmButtonColor: '#EF360E',
-        });
-      },
-      complete: () => this.cleanprocess()
-    });
+  successmsg() {
+    if(this.validate()) {
+      var body = { student_1_id: 0, student_2_id: 0 }
+      body['student_1_id'] = this.user.id;
+      body['student_2_id'] = this.partner_data.id;
+
+      this.button_state = true;
+      this.loading = true;
+      this.groupService.saveGroup(body).subscribe({
+        error: (err) => {
+          this.loading = false;
+          this.button_state = false;
+          Swal.fire({
+            title: 'Grupo no pudo Registrarse',
+            text: err,
+            icon: 'error',
+            confirmButtonColor: '#E42322',
+          });
+        },
+        next: (rest) => {
+          Swal.fire({
+            title: 'Grupo Registrado',
+            text: 'El grupo ha sido registrado exitosamente',
+            icon: 'success',
+            confirmButtonColor: '#EF360E',
+          });
+        },
+        complete: () => this.cleanprocess()
+      });
+    } else {
+      Swal.fire({
+        title: 'Seleccione a su Compañero',
+        text: 'Todos los campos son obligatorios',
+        icon: 'error',
+        confirmButtonColor: '#E42322',
+      });
+    }
   }
 
   cleanprocess() {
