@@ -12,7 +12,6 @@ export class ChangeRequestDetailComponent implements OnInit {
   roles: any;
   request: any;
   project: any;
-  value: string = '';
   requests: any[] = [];
   loading: boolean = false;
   isLoaded: boolean = false;
@@ -46,7 +45,6 @@ export class ChangeRequestDetailComponent implements OnInit {
         this.requests = rest.data;
         this.request = this.requests.filter(function (data) { return data.id == code })[0];
         this.searchProjectData(this.request.project.code);
-        this.value = this.request.value;
         this.isLoaded = true;
         this.loading = false;
       }
@@ -60,7 +58,6 @@ export class ChangeRequestDetailComponent implements OnInit {
         this.requests = rest.data;
         this.request = this.requests.filter(function (data) { return data.id == code })[0];
         this.searchProjectData(this.request.project.code);
-        this.value = this.request.value;
         this.isLoaded = true;
         this.loading = false;
       }

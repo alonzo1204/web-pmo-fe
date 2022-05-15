@@ -33,7 +33,7 @@
                             <div class="ml-4"> {{ request?.attribute_to_change }} </div>
 
                             <h3 class="card-title mt-4 px-4">Valor</h3>
-                            <textarea class="ml-4 mr-4" id="Descripcion" rows="5" [value]="value" [disabled]="true"></textarea>
+                            <textarea class="ml-4 mr-4" id="Descripcion" rows="5" [(ngModel)]="request.value" [disabled]="true"></textarea>
 
                             <h3 class="card-title mt-4 px-4">Solicitante</h3>
                             <div class="ml-4"> {{ request.user.firstname + ' ' + request.user.lastname }} </div>
