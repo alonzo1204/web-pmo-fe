@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/services/auth.service';
 import { LanguageService } from '../../../core/services/language.service';
 import { first } from 'rxjs/operators';
+import { SocketService } from 'src/app/core/services/socket.service';
 
 @Component({
   selector: 'app-topbar',
@@ -21,6 +22,7 @@ export class TopbarComponent implements OnInit {
   countryName;
   valueset: string;
   error = '';
+  configProject: any;
 
   listLang = [
     { text: 'English', flag: 'assets/images/flags/us.jpg', lang: 'en' },
@@ -31,13 +33,15 @@ export class TopbarComponent implements OnInit {
   ];
 
   // tslint:disable-next-line: max-line-length
-  constructor(@Inject(DOCUMENT) private document: any, private router: Router, private authService: AuthenticationService, public languageService: LanguageService, public cookiesService: CookieService) { }
+  constructor(@Inject(DOCUMENT) private document: any, private router: Router, private socketService: SocketService,
+  private authService: AuthenticationService, public languageService: LanguageService, public cookiesService: CookieService) { }
 
   @Output() mobileMenuButtonClicked = new EventEmitter();
   @Output() settingsButtonClicked = new EventEmitter();
 
   ngOnInit(): void {
     var currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    this.configProject = JSON.parse(localStorage.getItem("configProject")!);
     this.username = currentUser.user.information.code;
 
     //this.username = JSON.parse(currentUser).email.substring(0,10).toUpperCase();

@@ -19,11 +19,18 @@ import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FakeBackendInterceptor } from './core/helpers/fake-backend';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
 } else {
   // tslint:disable-next-line: no-unused-expression
   FakeBackendInterceptor;
+}
+
+const config: SocketIoConfig = {
+  url: 'http://localhost:31/',
+  options: { transports: ['websocket'] }
 }
 
 export function createTranslateLoader(http: HttpClient): any {
@@ -41,6 +48,7 @@ export function createTranslateLoader(http: HttpClient): any {
     AppRoutingModule,
     PagesModule,
     LayoutsModule,
+    SocketIoModule.forRoot(config),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
+import { SocketService } from 'src/app/core/services/socket.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
   year: number = new Date().getFullYear();
 
   // tslint:disable-next-line: max-line-length
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, public authService: AuthenticationService) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, 
+    public authService: AuthenticationService, private socketService: SocketService) { }
 
   ngOnInit() {
     document.body.removeAttribute('data-layout');
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
     else {
       this.button_state = true;
       this.loading = true;
+      this.socketService.fetchMessage();
       this.authService.login(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(data => {
