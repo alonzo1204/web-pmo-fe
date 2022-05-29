@@ -56,4 +56,8 @@ export class ProjectService {
   downloadProjects(body: any) {
     return this.http.post<any>(environment.apiURL + '/projects/download', body);
   }
+
+  getHistoryProjects(idPostulation: number) {
+    return this.http.get<any>(environment.apiURL + '/projects/history')
+  }
 }
