@@ -68,6 +68,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-md-10 centered">
           <div class="card card-body more-shadow">
             <h3 class="card-title mt-0 text-center">Integrantes del grupo</h3>
@@ -107,18 +108,19 @@
             </div>
           </div>
         </div>
+
         <div class="col-md-10 centered">
           <div class="card card-body more-shadow">
             <div class="row">
               <div class="col-md-10 mb-4 padding-right">
                 <div class="text-black">Product Owner Asignado:</div>
-                <div>{{ project.product_owner.firstname + project.product_owner.lastname }}</div>
+                <div>{{ project.product_owner.firstname + ' ' + project.product_owner.lastname }}</div>
                 <br>
                 <div class="text-black">Portfolio Manager Asignado:</div>
-                <div>{{ project.portfolio_manager.firstname + project.portfolio_manager.lastname }}</div>
+                <div>{{ project.portfolio_manager.firstname + ' ' + project.portfolio_manager.lastname }}</div>
                 <br>
                 <div class="text-black">Coautor Asignado:</div>
-                <div>{{ project.co_autor.firstname + project.co_autor.lastname }}</div>
+                <div>{{ project.co_autor.firstname + ' ' + project.co_autor.lastname }}</div>
                 <br>
                 <div class="text-black">Observaciones:</div>
                 <div>Ninguna</div>
@@ -126,11 +128,58 @@
             </div>
           </div>
         </div>
+
+        <div class="col-md-10 centered">
+          <div class="card card-body more-shadow">
+            <h3 class="card-title mt-0 text-center">Historial de Proyectos</h3> 
+
+            <div class="table-responsive">
+              <table class="table table-centered mb-0">
+                <thead class="bg-white">
+                  <tr>
+                    <th style="width: 120px">Empresa</th>
+                    <th>Descripción del proyecto</th>
+                    <th class="text-center">Carrera</th>
+                    <th class="text-center">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let project of records">
+                    <td>
+                      <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
+                    </td>
+                    <td class="project-description">
+                      <div>
+                          <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
+                      </div>
+                      <div>
+                          <p class="card-text">{{ project.name }}</p>
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <label>{{ project.career.name }}</label>
+                    </td>
+                    <td class="text-center">
+                      <div *ngIf="project.project_process_state.id == 5 || project.project_process_state.id == 4">
+                          <div class="badge-soft-warning badge font-size-15">{{ project.project_process_state.name }}</div>
+                      </div>
+                      <div *ngIf="project.project_process_state.id == 6">
+                          <div class="badge-soft-success badge font-size-15">{{ project.project_process_state.name }}</div>
+                      </div>
+                      <div *ngIf="project.project_process_state.id == 1">
+                          <div class="badge-soft-warning badge font-size-15">{{ project.project_process_state.name }}</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table> 
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
     <!-- end row -->
-  
-    
   
   </div> <!-- container-fluid -->
 

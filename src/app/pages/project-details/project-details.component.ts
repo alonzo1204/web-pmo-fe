@@ -9,6 +9,7 @@ import { ProjectService } from 'src/app/core/services/project.service';
 })
 export class ProjectDetailsComponent implements OnInit {
   project: any;
+  records: any[] = [];
   projects: any[] = [];
   isLoaded: Boolean = false;
   loading: boolean = false;
@@ -27,6 +28,23 @@ export class ProjectDetailsComponent implements OnInit {
         this.project = this.projects.filter(function(data){ return data.code == code })[0];
         this.isLoaded = true;
         this.loading = false;
+      }
+    });
+    this.historyProjects();
+  }
+
+
+  historyProjects() {
+    this.projectService.getHistoryProjects(0).subscribe({
+      error: (err) => {
+        this.loading = false;
+        console.log(err);
+      },
+      next: (rest) => {
+        this.records = rest.data;
+        this.isLoaded = true;
+        this.loading = false;
+        console.log(rest)
       }
     });
   }
