@@ -33,8 +33,8 @@ export class ProjectService {
     return this.http.get<any>(environment.apiURL + '/projects/?idState=' + idState);
   }
 
-  getProjectsbyStatusVarius(idState: any) {
-    return this.http.get<any>(environment.apiURL + '/projects/status/' + idState);
+  getProjectsbyStatusVarius(idState: any, idCareer: any) {
+    return this.http.get<any>(environment.apiURL + '/projects/status/' + idState + '/' + idCareer);
   }
 
   saveTeachers(body: any) {
@@ -51,5 +51,9 @@ export class ProjectService {
 
   saveRequestEdits(body: any) {
     return this.http.post<any>(environment.apiURL + '/projects/save_request_edits', body);
+  }
+
+  downloadProjects(body: any) {
+    return this.http.post<any>(environment.apiURL + '/projects/download', body);
   }
 }
