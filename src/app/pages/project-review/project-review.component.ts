@@ -24,7 +24,7 @@ export class ProjectReviewComponent implements OnInit {
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Revisión de Proyectos' }, { label: 'Lista de Proyectos', active: true }];
     this.loading = true;
-    this.projectService.getProjectsbyStatusVarius([1, 2, 3, 4]).subscribe({
+    this.projectService.getProjectsbyStatusVarius([1, 2, 3, 4], [1, 2, 3]).subscribe({
       error: (err) => this.loading = false,
       next: (rest) => {
         this.projects = rest.data;
@@ -67,6 +67,17 @@ export class ProjectReviewComponent implements OnInit {
         item.career.name.toLowerCase().includes(keyword.toLowerCase()));
     });
     this.number_projects = this.filter.length;
+  }
+
+  onDownload(data: any) {
+    let body = { data: data }
+    this.projectService.downloadProjects(body).subscribe({
+      error: (err) => this.loading = false,
+      next: (rest) => {
+        this.loading = false;
+        console.log(rest)
+      }
+    })
   }
 
   gotodetails(code: string) {
