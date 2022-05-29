@@ -19,14 +19,18 @@
                         <table class="table mb-0">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
+                                    <th style="display: none">Código</th>
                                     <th>Semestre</th>
+                                    <th>Inicio</th>
+                                    <th>Fin</th>
                                 </tr>
                             </thead>
                             <tbody *ngIf="isLoaded == true">
                                 <tr *ngFor="let semester of filter | slice: (page-1) * pageSize : page * pageSize">
-                                    <td>{{ semester.id }}</td>
+                                    <td style="display: none">{{ semester.id }}</td>
                                     <td>{{ semester.name }}</td>
+                                    <td>{{ semester.date_from | date: 'dd-MM-yyy' }}</td>
+                                    <td>{{ semester.date_until | date: 'dd-MM-yyy' }}</td>
                                 </tr>
                             </tbody>
                         </table>
