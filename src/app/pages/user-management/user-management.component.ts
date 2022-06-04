@@ -30,18 +30,27 @@ export class UserManagementComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Usuarios' }, { label: 'Administrar Usuarios', active: true }];
     this.semesterService.getSemestersData().subscribe({ error: (err) => console.log(err), next: (rest) => this.semesters = rest.data });
     this.loading = true;
-    this.userService.getUsersData().subscribe({ 
-      error: (err) => this.loading = false, 
+    this.userService.getUsersData().subscribe({
+      error: (err) => this.loading = false,
       next: (rest) => {
         this.users = rest.data;
-        this.new_users = this.newUserData(this.users);
+        this.new_users = this.newUser(this.users);
         this.number_users = this.new_users.length;
         this.filter = this.new_users;
         this.isLoaded = true;
         this.loading = false;
-        console.log(this.new_users);
       }
-    });
+    })
+  }
+
+  newUser(users: any) {
+    let listUsers = [];
+    for (let user of users) {
+      let position = Math.floor(Math.random() * (this.semesters.length - 2 + 1) + 1);
+      var params = { code: user.code, semester: this.semesters[position]?.name, status: Math.floor(Math.random() * (1 - 0 + 1) + 0) }
+      listUsers.push(params);
+    }
+    return listUsers;
   }
 
   onAllFilter() {
@@ -49,37 +58,22 @@ export class UserManagementComponent implements OnInit {
     this.number_users = this.filter.length;
   }
 
-  onSemesterFilter(semester: number) {
-    this.filter = this.new_users.filter(function(item){return (item.semester == semester);});
-    this.number_users = this.filter.length;
-  }
-
   onStatusFilter(status: number) {
-    this.filter = this.new_users.filter(function(item){return item.status == status;});
+    this.filter = this.new_users.filter((item) => {return item.status == status;});
     this.number_users = this.filter.length;
   }
 
-  newUserData(users: any) {
-    var count = 0; var newusers = []
-    while(count < this.users.length) {
-      var body = { code: users[count].code, semester: Math.floor(Math.random() * (this.semesters.length - 1 + 1) + 1), 
-        status: Math.floor(Math.random() * (1 - 0 + 1) + 0) };
-      newusers.push(body);
-      count++;
-    }
-    return newusers;
+  onSemesterFilter(semester: string) {
+    this.filter = this.new_users.filter((item) => {return (item.semester == semester);});
+    this.number_users = this.filter.length;
   }
 
   onSearchFilter(keyword: string) {
-    this.filter = this.new_users.filter(function(item){ var code = item.code;
-      return (code.toLowerCase().includes(keyword.toLowerCase()));
+    this.filter = this.new_users.filter((item) => {
+      var code = item.code;
+      return (code.toLowerCase().includes(keyword.toLocaleLowerCase()));
     });
     this.number_users = this.filter.length;
-  }
-
-  semesterData(semester: number): string {
-    var viewsemester = this.semesters.filter(function(data){ return data.id == semester })[0];
-    return viewsemester.name;
   }
 
 }

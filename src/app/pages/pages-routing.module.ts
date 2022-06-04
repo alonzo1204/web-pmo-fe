@@ -57,7 +57,7 @@ const routes: Routes = [
     { path: 'project-details/:code', component: ProjectDetailsComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'change-management/:code', component: ChangeManagementComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'user-register', component: UserRegisterComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
-    { path: 'user-management', component: UserManagementComponent, data: { role: [4] }, canActivate: [RoleGuard] },
+    { path: 'user-management', component: UserManagementComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'users-list', component: UsersListComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'bulk-upload-users', component: BulkUploadUsersComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'user-details/:code', component: UserDetailsComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },

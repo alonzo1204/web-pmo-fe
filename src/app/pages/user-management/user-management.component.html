@@ -31,7 +31,7 @@
                                 </button>
                                 <div class="dropdown-menu" ngbDropdownMenu>
                                   <a class="dropdown-item" (click)="onAllFilter()">Todos</a>
-                                  <a *ngFor="let semester of semesters" class="dropdown-item" (click)="onSemesterFilter(semester.id)">{{ semester.name }}</a>
+                                  <a *ngFor="let semester of semesters" class="dropdown-item" (click)="onSemesterFilter(semester.name)">{{ semester.name }}</a>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                           <tbody *ngIf="isLoaded == true">
                             <tr *ngFor="let user of filter | slice: (page-1) * pageSize : page * pageSize">
                               <td>{{ user.code }}</td>
-                              <td>{{ semesterData(user.semester) }}</td>
+                              <td>{{ user.semester }}</td>
                               <td>
                                 <div *ngIf="user.status == 1; else elseBlock1">
                                     <div class="badge-soft-success badge font-size-15">Habilitado</div>
