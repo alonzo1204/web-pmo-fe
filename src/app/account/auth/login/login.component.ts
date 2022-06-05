@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, 
-    public authService: AuthenticationService, private socketService: SocketService) { }
+    public authService: AuthenticationService) { }
 
   ngOnInit() {
     document.body.removeAttribute('data-layout');
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     else {
       this.button_state = true;
       this.loading = true;
-      this.socketService.fetchMessage();
+      //this.socketService.fetchMessage();
       this.authService.login(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(data => {

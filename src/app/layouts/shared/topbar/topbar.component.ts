@@ -44,6 +44,10 @@ export class TopbarComponent implements OnInit {
     this.configProject = JSON.parse(localStorage.getItem("configProject")!);
     this.username = currentUser.user.information.code;
 
+    setInterval(() => {
+      this.configProject = JSON.parse(localStorage.getItem("configProject")!);
+    }, 5000)
+
     //this.username = JSON.parse(currentUser).email.substring(0,10).toUpperCase();
     this.element = document.documentElement;
     this.configData = {
