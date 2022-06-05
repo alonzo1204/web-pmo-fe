@@ -110,10 +110,17 @@ export const MENU: MenuItem[] = [
                 parentId: 6
             },
             {
-                id: 1,
+                id: 2,
                 /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
                 label: 'Mi Grupo',
                 link: '/group-view',
+                parentId: 6
+            },
+            {
+                id: 3,
+                /* label: 'MENUITEMS.TEACHERASSIGNMENT.LIST.LISTPROJECTS', */
+                label: 'Listado de Grupos',
+                link: '/group-list',
                 parentId: 6
             }
         ]

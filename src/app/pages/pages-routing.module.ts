@@ -36,6 +36,7 @@ import { AddChangeRequestComponent } from './add-change-request/add-change-reque
 import { ChangeRequestDetailComponent } from './change-request-detail/change-request-detail.component';
 import { PostulationsListComponent } from './postulations-list/postulations-list.component';
 import { PostulationsDetailComponent } from './postulations-detail/postulations-detail.component';
+import { GroupListComponent } from './group-list/group-list.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -61,6 +62,7 @@ const routes: Routes = [
     { path: 'users-list', component: UsersListComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'bulk-upload-users', component: BulkUploadUsersComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'user-details/:code', component: UserDetailsComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
+    { path: 'group-list', component: GroupListComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
     { path: 'group-view', component: GroupViewComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
     { path: 'group-register', component: GroupRegisterComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
     { path: 'employees', component: DashboardComponent },
