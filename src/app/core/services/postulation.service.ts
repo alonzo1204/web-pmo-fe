@@ -21,6 +21,10 @@ export class PostulationService {
     return this.http.get<any>(environment.apiURL + '/postulations/mypostulations/' + code);
   }
 
+  getHistoryPostulation(body: any) {
+    return this.http.post<any>(environment.apiURL + '/postulations/history', body);
+  }
+
   asignProyects() {
     return this.http.get<any>(environment.apiURL + '/postulations/asign')
   }
