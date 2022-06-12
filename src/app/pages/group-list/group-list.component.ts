@@ -34,6 +34,7 @@ export class GroupListComponent implements OnInit {
       error: (err) => this.loading = false,
       next: (rest) => {
         this.groups = rest.data;
+        console.log(this.groups)
         this.new_groups = this.newGroup(this.groups);
         this.number_groups = this.new_groups.length;
         this.filter = this.new_groups;
@@ -47,7 +48,7 @@ export class GroupListComponent implements OnInit {
     let listGroups = [];
     for (let group of groups) {
       let position = Math.floor(Math.random() * (this.semesters.length - 2 + 1) + 1);
-      var params = { student_1: group.alumno1.codigo, student_2: group.alumno2.codigo, project: group.project_assigned.code, semester: this.semesters[position]?.name }
+      var params = { student_1: group.student_1?.Codigo, student_2: group.student_2?.Codigo, project: group.project.nombre, semester: this.semesters[position]?.name }
       listGroups.push(params);
     }
     return listGroups;
