@@ -21,6 +21,14 @@
                                 </div>
                             </div>
 
+                            <h3 class="card-title mt-4 px-4">Historial de Postulaciones</h3>
+                            <div class="mt-2 px-4">
+                                <button type="button" class="btn btn-primary waves-effect waves-light" (click)="gotoHistory()">
+                                    <!--i class="fas fa-file-download align-middle"></i-->
+                                  <span class="ml-0"> Historial </span>
+                                </button>
+                            </div>
+
                             <h3 class="card-title mt-4 px-4">Solicitud de Postulaciones</h3>
                             <div class="d-flex mt-2 px-4 table-responsive">
                                 <table class="table table-centered mb-0">
@@ -57,44 +65,6 @@
                         </div>
                     </div>
 
-                    <div class="col-md-10 centered">
-                        <div class="card card-body more-shadow">
-                          <h3 class="card-title mt-0 text-center">Historial de Postulaciones</h3> 
-              
-                          <div class="table-responsive">
-                            <table class="table table-centered mb-0">
-                              <thead class="bg-white">
-                                <tr>
-                                  <th style="width: 120px">Empresa</th>
-                                  <th>Descripción del proyecto</th>
-                                  <th class="text-center">Carrera</th>
-                                  <th class="text-center">Estado</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr *ngFor="let project of pprojects">
-                                    <td>
-                                      <img src="{{ project?.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
-                                    </td>
-                                    <td class="project-description">
-                                      <div>
-                                          <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project?.code || 'No disponible' }}</a></h5>
-                                      </div>
-                                      <div>
-                                          <p class="card-text">{{ project?.name || 'No disponible' }}</p>
-                                      </div>
-                                    </td>
-                                    <td class="text-center">
-                                      <label>{{ project?.career.name || 'No disponible' }}</label>
-                                    </td>
-                                    <td> No Disponible </td>
-                                  </tr>
-                              </tbody>
-                            </table> 
-                          </div>
-                        </div>
-                      </div>
-              
                 </div>
             </div>
         </div>
