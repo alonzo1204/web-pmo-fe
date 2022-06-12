@@ -17,7 +17,6 @@ export class PostulationsDetailComponent implements OnInit {
   isLoaded: boolean = false;
   breadCrumbItems: Array<{}>;
 
-
   constructor(private route: ActivatedRoute, private router: Router, private postulationService: PostulationService, private projectService: ProjectService) { }
 
   ngOnInit(): void {
@@ -29,6 +28,7 @@ export class PostulationsDetailComponent implements OnInit {
       next: (rest) => {
         this.postulations = rest.data;
         this.mypostulations = this.postulations.filter(function (data) { return data.id == code })[0];
+        console.log(this.mypostulations)
         this.searchProjectData(this.mypostulations.p1.id);
         this.searchProjectData(this.mypostulations.p2.id);
         this.searchProjectData(this.mypostulations.p4.id);
@@ -49,7 +49,8 @@ export class PostulationsDetailComponent implements OnInit {
   }
 
   gotodetails(code: string) {
-    this.router.navigate(['/project-details-portfolio/' + code]);
+    if(code != null) this.router.navigate(['/project-details-portfolio/' + code]);
+    else return;
   }
 
 }
