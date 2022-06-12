@@ -50,7 +50,7 @@ export class ProjectService {
   }
 
   saveRequestEdits(body: any) {
-    return this.http.post<any>(environment.apiURL + '/projects/save_request_edits', body);
+    return this.http.post<any>(environment.apiURL + '/projects/request_update', body);
   }
 
   downloadProjects(body: any) {

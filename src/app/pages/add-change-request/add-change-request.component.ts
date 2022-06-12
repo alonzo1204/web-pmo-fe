@@ -56,10 +56,9 @@ export class AddChangeRequestComponent implements OnInit {
 
   successmsg() {
     if(this.validate()) {
-      var body = { user_id: '', project_id: '', attribue_to_change: '', value: '' };
-      body['user_id'] = this.user.id;
+      var body = { project_id: '', column: 0, value: '' };
       body['project_id'] = this.project.id;
-      body['attribue_to_change'] = this.atribute;
+      body['column'] = 1;
       body['value'] = this.value;
 
       this.button_state = true;
