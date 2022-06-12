@@ -14,7 +14,7 @@ export class UserService {
   }
 
   getTeachersData() {
-    return this.http.get<any>(environment.apiURL + '/users/teachers/');
+    return this.http.get<any>(environment.apiURL + '/users/teachers');
   }
 
   saveUser(body: any) {
