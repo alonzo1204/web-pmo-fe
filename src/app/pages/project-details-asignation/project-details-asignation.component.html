@@ -131,6 +131,61 @@
             </div>
           </div>
 
+          <div style="margin: 4rem 0;">
+            <h3 class="card-title mt-0 text-center">Historial de Proyectos</h3> 
+
+            <div class="table-responsive">
+              <table class="table table-centered mb-0">
+                <thead class="bg-white">
+                  <tr>
+                    <th style="width: 120px">Empresa</th>
+                    <th>Descripción del proyecto</th>
+                    <th class="text-center">Carrera</th>
+                    <th class="text-center">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let project of records">
+                    <td>
+                      <img src="{{ searchCompanyData(project.company_id) }}" alt="product-img" title="product-img" class="avatar-md" />
+                    </td>
+                    <td class="project-description">
+                      <div>
+                          <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project?.code }}</a></h5>
+                      </div>
+                      <div>
+                          <p class="card-text">{{ project?.name }}</p>
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <label>{{ searchCareerData(project?.career_id) }}</label>
+                    </td>
+                    <td class="text-center">
+                      <div *ngIf="project?.project_process_state_id == 5">
+                          <div class="badge-soft-warning badge font-size-15">Asignado</div>
+                      </div>
+                      <div *ngIf="project?.project_process_state_id == 4">
+                        <div class="badge-soft-warning badge font-size-15">Aceptado con comentarios</div>
+                      </div>
+                      <div *ngIf="project?.project_process_state_id == 3">
+                        <div class="badge-soft-warning badge font-size-15">Denegado</div>
+                      </div>
+                      <div *ngIf="project?.project_process_state_id == 2">
+                        <div class="badge-soft-warning badge font-size-15">Aprobado</div>
+                      </div>
+                      <div *ngIf="project?.project_process_state_id == 6">
+                          <div class="badge-soft-success badge font-size-15">Pendiente de asignación de docentes</div>
+                      </div>
+                      <div *ngIf="project?.project_process_state_id == 1">
+                          <div class="badge-soft-warning badge font-size-15">Pendiente de aprobación</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table> 
+            </div>
+          </div>
+
           <div class="form-group row">
             <div class="col-lg-3 pt-2">
               <label>Product Owner</label>
