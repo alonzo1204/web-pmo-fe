@@ -37,6 +37,7 @@ import { ChangeRequestDetailComponent } from './change-request-detail/change-req
 import { PostulationsListComponent } from './postulations-list/postulations-list.component';
 import { PostulationsDetailComponent } from './postulations-detail/postulations-detail.component';
 import { GroupListComponent } from './group-list/group-list.component';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -65,6 +66,7 @@ const routes: Routes = [
     { path: 'group-list', component: GroupListComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
     { path: 'group-view', component: GroupViewComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
     { path: 'group-register', component: GroupRegisterComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
+    { path: 'group-detail/:code', component: GroupDetailComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
     { path: 'employees', component: DashboardComponent },
     { path: 'add-project', component: AddProjectComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'project-review', component: ProjectReviewComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },

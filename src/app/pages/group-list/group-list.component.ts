@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GroupService } from 'src/app/core/services/group.service';
 import { SemesterService } from 'src/app/core/services/semester.service';
 
@@ -24,7 +25,7 @@ export class GroupListComponent implements OnInit {
   loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private semesterService: SemesterService, private groupService: GroupService) { }
+  constructor(private router: Router, private semesterService: SemesterService, private groupService: GroupService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Grupos' }, { label: 'Listado de Grupos', active: true }];
@@ -70,6 +71,10 @@ export class GroupListComponent implements OnInit {
       return (code.toLowerCase().includes(keyword.toLocaleLowerCase()));
     });
     this.number_groups = this.filter.length;
+  }
+
+  gotodetails(code: any) {
+    this.router.navigate(['/group-detail/' + code]);
   }
 
 }

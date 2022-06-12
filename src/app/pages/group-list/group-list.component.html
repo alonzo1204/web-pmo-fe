@@ -37,7 +37,7 @@
                             </tr>
                           </thead>
                           <tbody *ngIf="isLoaded == true">
-                            <tr *ngFor="let group of filter | slice: (page-1) * pageSize : page * pageSize">
+                            <tr *ngFor="let group of filter | slice: (page-1) * pageSize : page * pageSize" class="pointer" (click)="gotodetails(group?.student_1)">
                               <td>{{ group.student_1 }}</td>
                               <td>{{ group.student_2 }}</td>
                               <td>{{ group.project || 'Sin Datos' }}</td>

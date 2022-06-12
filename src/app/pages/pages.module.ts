@@ -59,6 +59,7 @@ import { ChangeRequestDetailComponent } from './change-request-detail/change-req
 import { PostulationsListComponent } from './postulations-list/postulations-list.component';
 import { PostulationsDetailComponent } from './postulations-detail/postulations-detail.component';
 import { GroupListComponent } from './group-list/group-list.component';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -99,7 +100,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     PortfoliosListComponent, 
     PortfolioRegisterComponent, 
     CompanyRegisterComponent, 
-    CompaniesListComponent, PostulationsViewComponent, ApplicationSettingsComponent, ChangeRequestListComponent, AddChangeRequestComponent, ChangeRequestDetailComponent, PostulationsListComponent, PostulationsDetailComponent, GroupListComponent
+    CompaniesListComponent, PostulationsViewComponent, ApplicationSettingsComponent, ChangeRequestListComponent, AddChangeRequestComponent, ChangeRequestDetailComponent, PostulationsListComponent, PostulationsDetailComponent, GroupListComponent, GroupDetailComponent
   ],
   imports: [
     CommonModule,
