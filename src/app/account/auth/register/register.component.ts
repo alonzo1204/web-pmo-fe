@@ -43,13 +43,14 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     if (this.signupForm.invalid) return;
     else {
-      var body = { code: '', password: '', firstname: '', lastname: '', role_id: 0, semester_id: 0 }
+      var body = { code: '', password: '', firstname: '', lastname: '', role_id: 0, semester_id: 0, career_id: 0 }
       body['code'] = this.f.username.value;
       body['password'] = this.f.password.value;
       body['firstname'] = this.f.firstname.value;
       body['lastname'] = this.f.lastname.value;
       body['role_id'] = 2;
       body['semester_id'] = 1;
+      body['career_id'] = 1;
       body['isStudent'] = true;
 
       this.button_state = true;
