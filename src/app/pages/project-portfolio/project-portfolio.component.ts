@@ -86,20 +86,20 @@ export class ProjectPortfolioComponent implements OnInit {
     this.number_projects = this.filter.length;
   }
 
-  gotodetails(id: number) {
-    this.router.navigate(['/project-details-portfolio/' + this.projects[id - 1].code]);
+  gotodetails(code: any) {
+    this.router.navigate(['/project-details-portfolio/' + code]);
   }
 
-  addProject(id): void {
-    this.projects[id - 1].added = true;
-    this.addedprojects.push(this.projects[id - 1]);
+  addProject(project: any): void {
+    this.projects[this.projects.indexOf(project)].added = true;
+    this.addedprojects.push(this.projects[this.projects.indexOf(project)]);
     this.n_addeds = this.n_addeds + 1;
     if (this.n_addeds >= 4) { this.canadd = false; this.canpostulate = true; }
   }
 
-  removeProject(id): void {
-    this.projects[id - 1].added = false;
-    var removeIndex = this.addedprojects.map(item => item.id).indexOf(id);
+  removeProject(project: any): void {
+    this.projects[this.projects.indexOf(project)].added = false;
+    var removeIndex = this.addedprojects.map(item => item.id).indexOf(project.id);
     ~removeIndex && this.addedprojects.splice(removeIndex, 1);
     this.n_addeds = this.n_addeds - 1;
     if (this.n_addeds < 4) { this.canadd = true; this.canpostulate = false; }

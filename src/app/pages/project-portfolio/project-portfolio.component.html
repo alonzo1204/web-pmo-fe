@@ -25,7 +25,7 @@
                     <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
                   </td>
                   <td class="project-description">
-                    <div (click)="gotodetails(project.id)">
+                    <div (click)="gotodetails(project.code)">
                         <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
                     </div>
                     <div>
@@ -36,7 +36,7 @@
                     <label>{{ project.career.name }}</label>
                   </td>
                   <td class="text-center">
-                    <button (click)="removeProject(project.id)" type="button" class="btn btn-primary btn-sm">QUITAR</button>
+                    <button (click)="removeProject(project)" type="button" class="btn btn-primary btn-sm">QUITAR</button>
                   </td>
                 </tr>
               </tbody>
@@ -120,7 +120,7 @@
                     <img src="{{ project.company.image }}" alt="product-img" title="product-img" class="avatar-md" />
                   </td>
                   <td class="project-description">
-                    <div (click)="gotodetails(project.id)">
+                    <div (click)="gotodetails(project.code)">
                         <h5 class="font-size-14 text-truncate"><a class="text-dark pointer">{{ project.code }}</a></h5>
                     </div>
                     <div>
@@ -133,10 +133,10 @@
                   <td class="text-center">
                     <div *ngIf="project.added == false">
                         <div *ngIf="canadd == true">
-                            <button (click)="addProject(project.id)" type="button" class="btn btn-primary btn-sm">AGREGAR</button>
+                            <button (click)="addProject(project)" type="button" class="btn btn-primary btn-sm">AGREGAR</button>
                         </div>
                         <div *ngIf="canadd == false">
-                            <button (click)="addProject(project.id)" type="button" class="btn btn-primary btn-sm" disabled>AGREGAR</button>
+                            <button (click)="addProject(project)" type="button" class="btn btn-primary btn-sm" disabled>AGREGAR</button>
                         </div>
                     </div>
                     <div *ngIf="project.added == true">
