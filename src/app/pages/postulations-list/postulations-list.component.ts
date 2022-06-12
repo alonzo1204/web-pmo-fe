@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostulationService } from 'src/app/core/services/postulation.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-postulations-list',
@@ -46,6 +47,18 @@ export class PostulationsListComponent implements OnInit {
         item.proj1.code.toLowerCase().includes(keyword.toLowerCase()));
     });
     this.number_postulations = this.filter.length;
+  }
+
+  onAsignProyecto() {
+    this.postulationService.asignProyects().subscribe({
+      next: (resp) => {
+        Swal.fire({
+          title: 'Proceso Ejecutado',
+          text: resp.data.msg,
+          icon: 'success'
+        })
+      }
+    })
   }
 
   gotodetails(code: string) {

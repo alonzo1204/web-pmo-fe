@@ -21,4 +21,8 @@ export class PostulationService {
     return this.http.get<any>(environment.apiURL + '/postulations/mypostulations/' + code);
   }
 
+  asignProyects() {
+    return this.http.get<any>(environment.apiURL + '/postulations/asign')
+  }
+
 }
