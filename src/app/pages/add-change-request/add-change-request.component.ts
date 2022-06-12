@@ -16,6 +16,7 @@ export class AddChangeRequestComponent implements OnInit {
   project: any;
   value: string = '';
   atribute: string = '';
+  isLoaded: boolean = false;
   loading: boolean = false;
   button_state: boolean = false;
   breadCrumbItems: Array<{}>;
@@ -35,11 +36,12 @@ export class AddChangeRequestComponent implements OnInit {
   }
 
   searchProjectData(project: any) {
-    //var project_id = group.project_assigned;
     this.projectService.getProjectsData().subscribe({
       next: (rest) => { 
         let projects = rest.data;
         this.project = projects.filter(function(data){ return data.id == project })[0];
+        if (this.project == undefined) this.isLoaded = false;
+        else this.isLoaded = true;
         //console.log(this.project);
       }
     });
@@ -64,7 +66,7 @@ export class AddChangeRequestComponent implements OnInit {
       this.loading = true;
       this.projectService.saveRequestEdits(body).subscribe({
         error: (err) => {
-          console.log(err),
+          //console.log(err),
           this.button_state = false;
           this.loading = false;
           Swal.fire({

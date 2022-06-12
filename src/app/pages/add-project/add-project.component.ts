@@ -52,7 +52,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   successmsg() {
-    if(this.validate()) {
+    if(!this.validate()) {
       var body = {
         code: '', name: '', description: '', general_objective: '', specific_objective_1: '', specific_objective_2: '', specific_objective_3: '',
         specific_objective_4: '', paper: '', devices: '', career_id: '', project_process_state_id: '', company: ''
