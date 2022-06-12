@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/core/services/project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-change-request-detail',
@@ -60,6 +61,22 @@ export class ChangeRequestDetailComponent implements OnInit {
         this.searchProjectData(this.request.project.code);
         this.isLoaded = true;
         this.loading = false;
+      }
+    });
+  }
+
+  stateEdit(id, state) {
+    let params = { id: id, state: state };
+    this.projectService.handleEditRequest(params).subscribe({
+      error: (err) => this.loading = false, 
+      next: (rest) => {
+        Swal.fire({
+          title: 'Solicitud de Cambio ' + state,
+          text: 'La solicitud de cambio fue ' + state + ' con éxito',
+          icon: 'success',
+          confirmButtonColor: '#EF360E',
+          onClose: () => {  this.router.navigate(['/change-request-list']); }
+        });
       }
     });
   }

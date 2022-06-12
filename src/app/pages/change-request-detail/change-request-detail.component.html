@@ -72,8 +72,8 @@
                             </div>
 
                             <div class="text-center mt-4" *ngIf="this.roles[0].id == 4 || this.roles[0].id == 5">
-                                <button type="submit" class="btn btn-danger waves-effect mr-3">Rechazar</button>
-                                <button type="submit" class="btn btn-success waves-effect mr-3">Aprobar</button>
+                                <button type="submit" class="btn btn-danger waves-effect mr-3" (click)="stateEdit(request.id, 'Desaprobado')">Rechazar</button>
+                                <button type="submit" class="btn btn-success waves-effect mr-3" (click)="stateEdit(request.id, 'Aprobado')">Aprobar</button>
                             </div>  
                         </div>
                     </div>

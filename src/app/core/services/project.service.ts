@@ -58,6 +58,10 @@ export class ProjectService {
   }
 
   getHistoryProjects(body: any) {
-    return this.http.post<any>(environment.apiURL + '/projects/history', body)
+    return this.http.post<any>(environment.apiURL + '/projects/history', body);
+  }
+
+  handleEditRequest(body: any) {
+    return this.http.post<any>(environment.apiURL + '/projects/handle_update', body);
   }
 }
