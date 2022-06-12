@@ -35,7 +35,8 @@ export class ProjectDetailsComponent implements OnInit {
 
 
   historyProjects() {
-    this.projectService.getHistoryProjects(0).subscribe({
+    let params = { id_postulation_row: this.project.id }
+    this.projectService.getHistoryProjects(params).subscribe({
       error: (err) => {
         this.loading = false;
         console.log(err);
