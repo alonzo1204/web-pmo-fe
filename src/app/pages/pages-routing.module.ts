@@ -38,6 +38,8 @@ import { PostulationsListComponent } from './postulations-list/postulations-list
 import { PostulationsDetailComponent } from './postulations-detail/postulations-detail.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
+import { ProjectHistoryComponent } from './project-history/project-history.component';
+import { PostulationsHistoryComponent } from './postulations-history/postulations-history.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -55,6 +57,7 @@ const routes: Routes = [
     { path: 'postulations', component: PostulationsComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
     { path: 'postulations-view', component: PostulationsViewComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
     { path: 'postulations-list', component: PostulationsListComponent },
+    { path: 'postulations-history/:code', component: PostulationsHistoryComponent },
     { path: 'postulations-detail/:code', component: PostulationsDetailComponent },
     { path: 'project-details/:code', component: ProjectDetailsComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'change-management/:code', component: ChangeManagementComponent, data: { role: [5] }, canActivate: [RoleGuard] },
@@ -72,6 +75,7 @@ const routes: Routes = [
     { path: 'project-review', component: ProjectReviewComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'projects-list', component: ProjectsListComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'project-portfolio', component: ProjectPortfolioComponent, data: { role: [2,3,4] }, canActivate: [RoleGuard] },
+    { path: 'project-history/:code', component: ProjectHistoryComponent, data: { role: [2,3,4,5] }, canActivate: [RoleGuard] },
     { path: 'bulk-upload-projects', component: BulkUploadProjectsComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'project-details-review/:code', component: ProjectDetailsReviewComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'project-details-asignation/:code', component: ProjectDetailsAsignationComponent, data: { role: [5] }, canActivate: [RoleGuard] },

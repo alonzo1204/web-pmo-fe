@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/core/services/project.service';
 import { CompanyService } from 'src/app/core/services/company.service';
 import { CareerService } from 'src/app/core/services/career.service';
@@ -18,18 +18,14 @@ export class ProjectDetailsPortfolioComponent implements OnInit {
   loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  records: any[] = [];
-  companies: any[] = [];
-  careers: any[] = [];
+  newcode: any;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private companyService: CompanyService, 
-    private careerService: CareerService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Postulación' }, { label: 'Cartera de Proyectos' }, { label: 'Detalles', active: true }];
     var code = this.route.snapshot.params.code;
-    this.companyService.getCompaniesData().subscribe({ next: (rest) => this.companies = rest.data });
-    this.careerService.getCareersData().subscribe({ next: (rest) => this.careers = rest.data });
+    this.newcode = code;
     this.titlecode = "Detalles del Proyecto " + code;
     this.loading = true;
     this.projectService.getProjectsData().subscribe({
@@ -43,29 +39,8 @@ export class ProjectDetailsPortfolioComponent implements OnInit {
     });
   }
 
-  historyProjects(id) {
-    let params = { id_postulation_row: id }
-    this.projectService.getHistoryProjects(params).subscribe({
-      error: (err) => {
-        this.loading = false;
-        console.log(err);
-      },
-      next: (rest) => {
-        this.records = rest.data;
-        this.isLoaded = true;
-        this.loading = false;
-        console.log(rest)
-      }
-    });
+  goToHistory(): void {
+    this.router.navigate(['/project-history/' + this.newcode]);
   }
 
-  searchCareerData(id): string {
-    let career = this.careers.filter((item) => { return item.id == id })[0];
-    return career.name;
-  }
-
-  searchCompanyData(id): string {
-    let company = this.companies.filter((item) => { return item.id == id })[0];
-    return company.image
-  }
 }
