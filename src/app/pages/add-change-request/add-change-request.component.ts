@@ -21,6 +21,14 @@ export class AddChangeRequestComponent implements OnInit {
   button_state: boolean = false;
   breadCrumbItems: Array<{}>;
   
+  atributes: any[] = [
+    { value: 'Nombre', column: 'name' },
+    { value: 'Descripción', column: 'description' },
+    { value: 'Objetivo General', column: 'general_objective' },
+    { value: 'Documento', column: 'url_file' },
+    { value: 'Sharepoint', column: 'url_sharepoint' }
+  ]
+
   constructor(private router: Router, private projectService: ProjectService, private groupService: GroupService) { }
 
   ngOnInit(): void {
@@ -56,9 +64,9 @@ export class AddChangeRequestComponent implements OnInit {
 
   successmsg() {
     if(this.validate()) {
-      var body = { project_id: '', column: 0, value: '' };
+      var body = { project_id: '', column: '', value: '' };
       body['project_id'] = this.project.id;
-      body['column'] = 1;
+      body['column'] = this.atribute;
       body['value'] = this.value;
 
       this.button_state = true;

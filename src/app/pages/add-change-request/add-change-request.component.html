@@ -15,7 +15,11 @@
                         <label for="atribute">Atributo a Cambiar</label>
                       </div>
                       <div class="col-lg-9">
-                        <input id="atribute" name="atribute" type="text" class="form-control" [(ngModel)]="atribute">
+                        <!-- <input id="atribute" name="atribute" type="text" class="form-control" [(ngModel)]="atribute"> -->
+                        <select class="form-control" [(ngModel)]="atribute">
+                          <option [ngValue]="''">Seleccione un atributo</option>
+                          <option *ngFor="let atribute of atributes" [ngValue]="atribute.column">{{ atribute.value }}</option>
+                        </select>
                       </div>
                     </div>
 
