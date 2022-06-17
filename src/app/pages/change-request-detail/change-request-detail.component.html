@@ -17,10 +17,10 @@
 
                                 <div class="text-right">
                                     <h3 class="card-title mt-4 px-4"> Estado de Solicitud </h3>
-                                    <div *ngIf="request?.accepted == 2">
+                                    <div *ngIf="request?.accepted == 1">
                                         <div class="badge-soft-success badge font-size-15 mr-4"> Aprobado </div>
                                     </div>
-                                    <div *ngIf="request?.accepted == 1">
+                                    <div *ngIf="request?.accepted == 2">
                                         <div class="badge-soft-danger badge font-size-15 mr-4"> Rechazado </div>
                                     </div>
                                     <div *ngIf="request?.accepted == 0">
@@ -71,7 +71,7 @@
                                 </table>
                             </div>
 
-                            <div class="text-center mt-4" *ngIf="this.roles[0].id == 4 || this.roles[0].id == 5">
+                            <div class="text-center mt-4" *ngIf="this.roles[0].id == 4 && request?.accepted == 0 || this.roles[0].id == 5 && request?.accepted == 0">
                                 <button type="submit" class="btn btn-danger waves-effect mr-3" (click)="stateEdit(request.id, 'Desaprobado')">Rechazar</button>
                                 <button type="submit" class="btn btn-success waves-effect mr-3" (click)="stateEdit(request.id, 'Aprobado')">Aprobar</button>
                             </div>  

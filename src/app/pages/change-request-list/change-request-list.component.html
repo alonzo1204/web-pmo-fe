@@ -21,8 +21,8 @@
                             <div class="dropdown-menu" ngbDropdownMenu>
                               <a class="dropdown-item" (click)="onStateFilter(0)">Todos</a>
                               <a class="dropdown-item" (click)="onStateFilter(1)">Pendientes</a>
-                              <a class="dropdown-item" (click)="onStateFilter(2)">Rechazados</a>
-                              <a class="dropdown-item" (click)="onStateFilter(3)">Aprobados</a>
+                              <a class="dropdown-item" (click)="onStateFilter(3)">Rechazados</a>
+                              <a class="dropdown-item" (click)="onStateFilter(2)">Aprobados</a>
                             </div>
                         </div>
                     </div>
@@ -49,10 +49,10 @@
                                         <div *ngIf="request.accepted == 0;">
                                             <div class="badge-soft-warning badge font-size-15">pendiente</div>
                                         </div>
-                                        <div *ngIf="request.accepted == 1;">
+                                        <div *ngIf="request.accepted == 2;">
                                             <div class="badge-soft-danger badge font-size-15">rechazado</div>
                                         </div>
-                                        <div *ngIf="request.accepted == 2;">
+                                        <div *ngIf="request.accepted == 1;">
                                             <div class="badge-soft-success badge font-size-15">aprobado</div>
                                         </div>
                                     </td>
