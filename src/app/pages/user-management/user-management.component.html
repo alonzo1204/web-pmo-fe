@@ -47,14 +47,14 @@
                           </thead>
                           <tbody *ngIf="isLoaded == true">
                             <tr *ngFor="let user of filter | slice: (page-1) * pageSize : page * pageSize">
-                              <td>{{ user.code }}</td>
-                              <td>{{ user.semester }}</td>
+                              <td>{{ user.registration_permissions.code }}</td>
+                              <td>{{ user.registration_permissions.semester.name }}</td>
                               <td>
-                                <div *ngIf="user.status == 1; else elseBlock1">
-                                    <div class="badge-soft-success badge font-size-15">Habilitado</div>
+                                <div *ngIf="user.registration_permissions.enabled == 'Habilitado'; else elseBlock1">
+                                    <div class="badge-soft-success badge font-size-15">{{ user.registration_permissions.enabled }}</div>
                                 </div>
                                 <ng-template #elseBlock1>
-                                    <div class="badge-soft-danger badge font-size-15">Bloqueado</div>
+                                    <div class="badge-soft-danger badge font-size-15">{{ user.registration_permissions.enabled }}</div>
                                 </ng-template>
                               </td>
                             </tr>
