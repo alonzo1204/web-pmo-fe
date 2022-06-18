@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -54,7 +54,7 @@ export class ProjectService {
   }
 
   downloadProjects(body: any) {
-    return this.http.post<any>(environment.apiURL + '/projects/download', body);
+    return this.http.post<any>(environment.apiURL + '/projects/download', body, { responseType: 'blob' as 'json' });
   }
 
   getHistoryProjects(body: any) {
