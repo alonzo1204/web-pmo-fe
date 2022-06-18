@@ -16,10 +16,12 @@
                   </form>
                 </div>
 
-                <button type="button" class="btn btn-sharepoint" style="margin-left: auto;" (click)="onDownload(filter)">
-                  <!--i class="fas fa-file-download align-middle"></i-->
-                  <span class="ml-0"> Descargar Proyectos </span>
-                </button>
+                <a [href]="fileURL" download="projects.xlsx" style="margin-left: auto;">
+                  <button type="button" class="btn btn-sharepoint">
+                    <!--i class="fas fa-file-download align-middle"></i-->
+                    <span class="ml-0"> Descargar Proyectos </span>
+                  </button>
+                </a>
                 
                 <div class="dropdown" style="margin-left: 1rem;" ngbDropdown>
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" ngbDropdownToggle>

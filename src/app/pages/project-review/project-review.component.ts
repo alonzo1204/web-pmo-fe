@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/core/services/project.service';
 
@@ -10,6 +11,7 @@ import { ProjectService } from 'src/app/core/services/project.service';
 export class ProjectReviewComponent implements OnInit {
 
   page = 1;
+  fileURL: any;
   pageSize = 10;
   projects: any[] = [];
   filter: any[] = [];
@@ -19,7 +21,7 @@ export class ProjectReviewComponent implements OnInit {
   loading: boolean = false;
   breadCrumbItems: Array<{}>;
 
-  constructor(private router: Router, private projectService: ProjectService) { }
+  constructor(private router: Router, private projectService: ProjectService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Revisión de Proyectos' }, { label: 'Lista de Proyectos', active: true }];
@@ -30,6 +32,7 @@ export class ProjectReviewComponent implements OnInit {
         this.projects = rest.data;
         this.number_projects = this.projects.length;
         this.filter = this.projects;
+        this.onDownload(this.filter);
         this.isLoaded = true;
         this.loading = false;
         console.log(rest.data)
@@ -75,7 +78,10 @@ export class ProjectReviewComponent implements OnInit {
       error: (err) => this.loading = false,
       next: (rest) => {
         this.loading = false;
-        console.log(rest)
+        // const str = JSON.stringify(rest);
+        // const bytes = new TextEncoder().encode(str);
+        // const blob = new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" })
+        this.fileURL = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(rest));
       }
     })
   }
