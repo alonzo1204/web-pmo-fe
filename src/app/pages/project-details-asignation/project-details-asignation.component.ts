@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/core/services/project.service';
-import { CompanyService } from 'src/app/core/services/company.service';
-import { CareerService } from 'src/app/core/services/career.service';
 import { UserService } from 'src/app/core/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -34,6 +32,7 @@ export class ProjectDetailsAsignationComponent implements OnInit {
   isLoaded: Boolean = false;
   loading: boolean = false;
   breadCrumbItems: Array<{}>;
+  projectState: number = 0;
 
   newcode: any;
   teachers: any[] = [];
@@ -41,6 +40,10 @@ export class ProjectDetailsAsignationComponent implements OnInit {
   product_owner: any;
   portfolio_manager: any;
   co_autor: any;
+
+  productOwner: any;
+  portfolioManager: any;
+  coAutor: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService, private userService: UserService) { }
 
@@ -68,10 +71,19 @@ export class ProjectDetailsAsignationComponent implements OnInit {
         this.sharepoint = project.url_sharepoint;
         this.petition = "Lentes de realidad aumentada";
         this.description = project.description;
+        this.projectState = project.project_process_state.id;
+        
+        this.productOwner = project.product_owner;
+        this.coAutor = project.co_autor;
+        this.portfolioManager = project.portfolio_manager;
+
         this.userService.getTeachersData().subscribe({
           error: (e) => this.loading = false,
           next: (response) => {
             this.teachers = response.data;
+            this.product_owner = this.teachers.filter((item) => { return item.id == this.productOwner.id })[0];
+            this.co_autor = this.teachers.filter((item) => { return item.id == this.coAutor.id })[0];
+            this.portfolio_manager = this.teachers.filter((item) => { return item.id == this.portfolioManager.id })[0];
             this.isLoaded = true;
             this.loading = false;
             console.log(this.teachers);
