@@ -11,13 +11,28 @@
 
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <h3 class="card-title mt-4 px-4">Promedio Ponderado Grupal</h3>
-                                    <div class="ml-4"> {{mypostulations?.group_weighted_average || 0}} </div>
+                                    <h3 class="card-title mt-4 px-4"> Fecha de Postulación </h3>
+                                    <div class="ml-4"> {{ mypostulations?.postulation_date | date: 'dd-MM-yyyy' }} </div>
                                 </div>
 
                                 <div class="text-right">
-                                    <h3 class="card-title mt-4 px-4">Fecha de Postulación</h3>
-                                    <div class="mr-4"> {{mypostulations?.postulation_date | date: 'dd-MM-yyyy'}} </div>
+                                    <h3 class="card-title mt-4 px-4"> Estado de Postulación </h3>
+                                    <div *ngIf="mypostulations?.accepted == 1">
+                                        <div class="badge-soft-success badge font-size-15 mr-4"> Aprobado </div>
+                                    </div>
+                                    <div *ngIf="mypostulations?.accepted == 0">
+                                        <div class="badge-soft-danger badge font-size-15 mr-4"> Rechazado </div>
+                                    </div>
+                                    <div *ngIf="mypostulations?.accepted == null">
+                                        <div class="badge-soft-warning badge font-size-15 mr-4"> Pendiente </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h3 class="card-title mt-4 px-4">Promedio Ponderado Grupal</h3>
+                                    <div class="ml-4"> {{mypostulations?.group_weighted_average || 0}} </div>
                                 </div>
                             </div>
 
@@ -54,6 +69,9 @@
                                 </table>
                             </div>
 
+                            <div class="mt-3" style="text-align: center;" *ngIf="mypostulations?.accepted == 0">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light" (click)="postulationregister()">Re Postulación</button>
+                            </div> 
                         </div>
                     </div>
                 </div>
