@@ -62,6 +62,8 @@ import { GroupListComponent } from './group-list/group-list.component';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { ProjectHistoryComponent } from './project-history/project-history.component';
 import { PostulationsHistoryComponent } from './postulations-history/postulations-history.component';
+import { BulkUploadEnglishComponent } from './bulk-upload-english/bulk-upload-english.component';
+import { BulkUploadAverageComponent } from './bulk-upload-average/bulk-upload-average.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -102,7 +104,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     PortfoliosListComponent, 
     PortfolioRegisterComponent, 
     CompanyRegisterComponent, 
-    CompaniesListComponent, PostulationsViewComponent, ApplicationSettingsComponent, ChangeRequestListComponent, AddChangeRequestComponent, ChangeRequestDetailComponent, PostulationsListComponent, PostulationsDetailComponent, GroupListComponent, GroupDetailComponent, ProjectHistoryComponent, PostulationsHistoryComponent
+    CompaniesListComponent, PostulationsViewComponent, ApplicationSettingsComponent, ChangeRequestListComponent, AddChangeRequestComponent, ChangeRequestDetailComponent, PostulationsListComponent, PostulationsDetailComponent, GroupListComponent, GroupDetailComponent, ProjectHistoryComponent, PostulationsHistoryComponent, BulkUploadEnglishComponent, BulkUploadAverageComponent
   ],
   imports: [
     CommonModule,

@@ -40,6 +40,8 @@ import { GroupListComponent } from './group-list/group-list.component';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { ProjectHistoryComponent } from './project-history/project-history.component';
 import { PostulationsHistoryComponent } from './postulations-history/postulations-history.component';
+import { BulkUploadEnglishComponent } from './bulk-upload-english/bulk-upload-english.component';
+import { BulkUploadAverageComponent } from './bulk-upload-average/bulk-upload-average.component';
 
 const routes: Routes = [
     { path: '', component: MaintenanceComponent },
@@ -65,6 +67,8 @@ const routes: Routes = [
     { path: 'user-management', component: UserManagementComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'users-list', component: UsersListComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'bulk-upload-users', component: BulkUploadUsersComponent, data: { role: [5] }, canActivate: [RoleGuard] },
+    { path: 'bulk-upload-users-english', component: BulkUploadEnglishComponent, data: { role: [5] }, canActivate: [RoleGuard] },
+    { path: 'bulk-upload-users-average', component: BulkUploadAverageComponent, data: { role: [5] }, canActivate: [RoleGuard] },
     { path: 'user-details/:code', component: UserDetailsComponent, data: { role: [4,5] }, canActivate: [RoleGuard] },
     { path: 'group-list', component: GroupListComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },
     { path: 'group-view', component: GroupViewComponent, data: { role: [2,3] }, canActivate: [RoleGuard] },

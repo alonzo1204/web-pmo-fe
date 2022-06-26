@@ -29,4 +29,12 @@ export class UserService {
     return this.http.post<any>(environment.apiURL + '/users/registroMasivoB', body);
   }
 
+  saveMasiveRegisterEnglish(body: any) {
+    return this.http.post<any>(environment.apiURL + '/users/registroMasivoEnglish', body);
+  }
+
+  saveMasiveRegisterAverage(body: any) {
+    return this.http.post<any>(environment.apiURL + '/users/registroMasivoAverage', body);
+  }
+
 }

@@ -94,6 +94,20 @@ export const MENU: MenuItem[] = [
                 link: '/bulk-upload-users',
                 parentId: 5
             },
+            {
+                id: 3,
+                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
+                label: 'Registro de Promedio Ponderado Acumulado',
+                link: '/bulk-upload-users-average',
+                parentId: 5
+            },
+            {
+                id: 4,
+                /* label: 'MENUITEMS.USERS.LIST.USERLIST', */
+                label: 'Registro de Nivel de Ingles',
+                link: '/bulk-upload-users-english',
+                parentId: 5
+            }
         ]
     },
     {
