@@ -68,19 +68,19 @@ export class ApplicationSettingsComponent implements OnInit {
         this.loading = false;
         this.button_state = false;
         Swal.fire({
-          title: 'Proyecto no pudo Registrarse',
-          text: 'Verifique llenar los campos correctamente',
+          title: 'Configuración no pudo Actualizada',
+          text: 'Verifique editar bien los campos',
           icon: 'error',
-          confirmButtonColor: '#E42322',
+          confirmButtonColor: '#E42322'
         });
       },
       next: (rest) => {
         this.getSetting();
         Swal.fire({
-          title: 'Proyecto Registrado',
-          text: 'El proyecto ha sido registrado exitosamente',
+          title: 'Configuración Actualizada',
+          text: 'La configuración ha sido actualizada exitosamente',
           icon: 'success',
-          confirmButtonColor: '#EF360E',
+          confirmButtonColor: '#EF360E'
         });
       }, 
       complete: () => this.cleanprocess()
