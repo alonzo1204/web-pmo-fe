@@ -21,6 +21,10 @@ export class UserService {
     return this.http.post<any>(environment.apiURL + '/auth/register', body);
   }
 
+  editUsers(id: number, body: any) {
+    return this.http.post<any>(environment.apiURL + '/users/edit/' + id, body);
+  }
+
   saveMasiveRegister(body: any) {
     return this.http.post<any>(environment.apiURL + '/users/registroMasivo', body);
   }
